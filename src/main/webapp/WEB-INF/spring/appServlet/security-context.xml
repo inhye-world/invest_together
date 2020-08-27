@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+    
+    <!-- 검사 URL -->
+    <http auto-config="true" use-expressions="true">
+        <intercept-url pattern="/login/loginForm2" access="permitAll" />
+        <intercept-url pattern="/user/**" access="permitAll" />
+        <intercept-url pattern="/" access="permitAll" />
+        <intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />
+        <intercept-url pattern="/**" access="hasAnyRole('USER, ADMIN')" />
+        
+        <form-login login-page="/login/loginForm2"
+                    default-target-url="/"
+                    authentication-failure-url="/login/loginForm2?error"
+                    username-parameter="id"
+                    password-parameter="password" />
+        
+         <logout logout-url="/logout"
+                logout-success-url="/" /> 
+                
+        <access-denied-handler error-page="/login/accessDenied" />
+    </http>    
+    
+    
+    <beans:bean id="bcryptPasswordEncoder"
+          class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+    
+	
+    <beans:bean id="customUserDetailsService"
+    	class="bit.it.into.security.CustomUserDetailsService"/>
+    
+    
+<!--      <jdbc-user-service 
+            data-source-ref="dataSource"
+            role-prefix=""
+            users-by-username-query="select username, password, enabled from users where username = ?"
+            authorities-by-username-query="select username, authority from authorities where username = ?"
+            group-authorities-by-username-query="select g.id, g.group_name, ga.authority from groups g, group_members gm, group_authorities ga where gm.username = ? and g.id = ga.group_id and g.id = gm.group_id"
+    /> -->
+	
+    <!--  provider  -->
+    
+   
+     <authentication-manager>
+     	<authentication-provider user-service-ref="customUserDetailsService">
+     		<password-encoder ref="customNoOpPasswordEncoder"/>
+	    </authentication-provider>
+    </authentication-manager> 
+    
+<!--    <authentication-manager>
+        <authentication-provider>
+        <jdbc-user-service 
+            data-source-ref="dataSource"
+         />
+        </authentication-provider>
+    </authentication-manager> -->
+   
+</beans:beans>
