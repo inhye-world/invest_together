@@ -158,3 +158,8 @@ Servers/
 /target/ 
 /bin/
 /.settings/
+
+
+.gradle
+.idea
+application-oauth.properties
