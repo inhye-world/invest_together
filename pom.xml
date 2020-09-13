@@ -297,7 +297,19 @@
 		    <artifactId>hibernate-validator</artifactId>
 		    <version>6.0.1.Final</version>
 		</dependency>
-
+	
+		<!-- email 인증 -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
 		
 	</dependencies>
 	

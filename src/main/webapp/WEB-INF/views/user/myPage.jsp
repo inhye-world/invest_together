@@ -22,6 +22,5 @@
 				<button class="button5" onclick="location.href='${open_url}'">계좌 추가하기</button><br>
 			</div>
 		</div>
-
 	</body>
 </html>

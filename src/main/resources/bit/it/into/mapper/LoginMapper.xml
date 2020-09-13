@@ -46,7 +46,7 @@
 	
 	<insert id="insertUser">
 		<![CDATA[
-			INSERT INTO member(member_num, id, pw, name, nickname, email, phone, sns_type) VALUES(MEMBER_NUM_SEQ.nextval, #{id}, #{pw}, #{name}, #{nickname}, #{email}, #{phone}, 'normal')
+			INSERT INTO member(member_num, id, pw, name, nickname, email, phone, sns_type, authkey) VALUES(MEMBER_NUM_SEQ.nextval, #{id}, #{pw}, #{name}, #{nickname}, #{email}, #{phone}, 'normal', '0')
 		]]>
 	</insert>
 	
@@ -97,4 +97,11 @@
 			SELECT COUNT(*) FROM member WHERE email=#{email}
 		]]>
 	</select>
+	
+	<update id="updateAuthKey">
+		<![CDATA[
+			UPDATE member SET authkey = 1 WHERE email=#{email}
+		]]>
+	</update>
+
 </mapper>

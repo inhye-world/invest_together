@@ -17,8 +17,8 @@ import bit.it.into.api.NaverLoginApi;
 
 @Service
 public class NaverService {
-	private final static String CLIENT_ID = "rHsyIIB2Y2gc39_y0DvH";
-	private final static String CLIENT_SECRET = "xLgF3yxIlB";
+	private final static String CLIENT_ID = "0K_f8p4Da6FxivNFttya";
+	private final static String CLIENT_SECRET = "FAjmoa8cn9";
 	private final static String REDIRECT_URI = "http://localhost:8282/into/callback";
 	private final static String SESSION_STATE = "oauth_state";
 	private final static String PROFILE_API_URL = "https://openapi.naver.com/v1/nid/me";

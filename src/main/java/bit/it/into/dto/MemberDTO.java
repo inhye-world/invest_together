@@ -24,6 +24,7 @@ public class MemberDTO {
 	private int set_price;
 	private String sns_type;
 	private String sns_token;
+	private String authkey;
 	
 	private AutheritiesDTO autheritiesDTO;
 	
@@ -37,5 +38,7 @@ public class MemberDTO {
 		this.email = dto.getEmail();
 		this.phone = dto.getPhone();
 	}
+
+
 	
 }
