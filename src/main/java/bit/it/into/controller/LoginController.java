@@ -103,6 +103,7 @@ public class LoginController {
 		return "login/resistration_clear";
 	}
 	
+	//이메일인증
 	@PostMapping("/authConfirm")
 	public String updateAuthKey(@RequestParam("email") String email, @RequestParam("authkey") String authkey, MemberDTO memberDTO) {
 		log.info("LoginController - updateAuthKey()");
