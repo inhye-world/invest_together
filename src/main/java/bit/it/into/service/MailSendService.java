@@ -6,10 +6,11 @@ import javax.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import bit.it.into.mail.MailUtils;
 
-@Service("mailSendService")
+@Service()
 public class MailSendService {
 	
 	private int size;
@@ -38,6 +39,7 @@ public class MailSendService {
 	    }
 
 	    //인증메일 보내기
+	    @Transactional
 	    public String sendAuthMail(String email) {
 	        //6자리 난수 인증번호 생성
 	        String authKey = getKey(6);
@@ -48,7 +50,7 @@ public class MailSendService {
 	            sendMail.setSubject("회원가입 이메일 인증");
 	            sendMail.setText(new StringBuffer().append("<h1>[이메일 인증]</h1>")
 	            .append("<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>")
-	            .append("<a href='http://localhost:8080/into/authConfirm?email=")
+	            .append("<a href='http://localhost:8282/into/authConfirm?email=")
 	            .append(email)
 	            .append("&authKey=")
 	            .append(authKey)

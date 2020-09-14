@@ -1,31 +1,22 @@
 package bit.it.into.controller;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import bit.it.into.dto.MemberDTO;
 import bit.it.into.dto.ValidMemberDTO;
 import bit.it.into.service.KakaoService;
 import bit.it.into.service.LoginService;
 import bit.it.into.service.MailSendService;
 import bit.it.into.service.NaverService;
-import bit.it.into.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -95,30 +86,38 @@ public class LoginController {
 		}
 		
 		MemberDTO memberDTO = new MemberDTO(validMemberDTO);
-		service.addUser(memberDTO);	
 		
 		String authKey = mailSendService.sendAuthMail(memberDTO.getEmail());
 		memberDTO.setAuthkey(authKey);
+		service.addUser(memberDTO);		
 		
 		return "login/resistration_clear";
 	}
 	
 	//이메일인증
-	@PostMapping("/authConfirm")
-	public String updateAuthKey(@RequestParam("email") String email, @RequestParam("authkey") String authkey, MemberDTO memberDTO) {
+	@RequestMapping("/authConfirm")
+	public String updateAuthKey(@RequestParam("email") String email) {
 		log.info("LoginController - updateAuthKey()");
-		
-		Map<String, String> map = new HashMap<String, String>();
-        map.put("email", email);
-        map.put("authKey", authkey);
-        	      
-        log.info(map);
-		
-        service.updateAuthKey(map);
-		
-		return "login/loginForm";
+		 		
+        service.updateAuthKey(email);	    
+        
+		return "login/authConfirm";
 	}
 	
+	//id찾기
+	@RequestMapping("/idFind")
+	public String idFind() {
+		log.info("LoginController - idFind()");
+		
+		return "idFind";
+	}
 	
-	
+	//pw찾기
+	@RequestMapping("/passwordFind")
+	public String passwordFind() {
+		log.info("LoginController - passwordFind()");
+		
+		return "pwFind";
+	}
+		
 }

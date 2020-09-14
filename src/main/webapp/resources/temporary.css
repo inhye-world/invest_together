@@ -171,6 +171,9 @@
 	float: left;
 }
 .loginForm-footer span:nth-child(2) {
+	float: left;
+}
+.loginForm-footer span:nth-child(3) {
 	float: right;
 }
 
