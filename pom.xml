@@ -297,6 +297,7 @@
 		    <artifactId>hibernate-validator</artifactId>
 		    <version>6.0.1.Final</version>
 		</dependency>
+
 	
 		<!-- email 인증 -->
 		<dependency>
@@ -310,6 +311,15 @@
 			<artifactId>spring-context-support</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+
+		
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20180813</version>
+		</dependency>
+
 		
 	</dependencies>
 	
