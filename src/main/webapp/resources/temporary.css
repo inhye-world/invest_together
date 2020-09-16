@@ -119,7 +119,7 @@
 
 .loginForm fieldset {
 	margin: 0 auto;
-	width: 65%;
+	width: 66%;
 	border-color: #F6F6F6;
 	border-width: 1px 0 0 0;
 }
@@ -131,20 +131,22 @@
 
 .kakao-btn {
 	margin: 0 auto;
-	width: 65%;
+	width: 66%;
 	height: 50px;
 	background-color: #FFDE00;
 	border-radius: 3px;
 	padding: 0;
+	cursor: pointer;
 }
 
 .naver-btn {
 	margin: 5px auto;
-	width: 65%;
+	width: 66%;
 	height: 50px;
 	background-color: #1ec800;
 	border-radius: 3px;
 	padding: 0;
+	cursor: pointer;
 }
 
 .btn-span1 {
@@ -176,10 +178,194 @@
 
 .registrationForm div {
 	margin: 0 auto;
-	width: 65%;
+	width: 66%;
 	height: 20px;
 	color: red;
 	font-size: 10px;
 	text-align: left;
 	padding-bottom: 5px;
 }
+
+.section {
+	border: none;
+	width: 420px;
+	height: 100px;
+	font-family: 'MapoDPPA';
+	display: inline-block;
+	transition-duration: 0.4s;
+	cursor: pointer;
+	background-color: #F6F6F6;
+	color: black;
+	border-radius: 3px;
+}
+
+.section:hover {
+	background-color: #E7E7E7;
+}
+
+#sec1 {
+	width: 100px;
+	height: 100px;
+	float: left;
+	line-height: 100px;
+	font-size: 30px;
+}
+#sec2 {
+	width: 20px;
+	height: 100px;
+	float: right;
+	font-size: 20px;
+	text-align: left;
+	line-height: 100px;
+}
+#sec3 {
+	width: 250px;
+	height: 100px;
+	float: right;
+	display: table;
+	font-size: 20px;
+	text-align: left;
+}
+
+#sec4 {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.transactionList {
+	font-family: 'MapoDPPA';
+	color: #C5C1C0;
+}
+
+.hr-sect {
+	display: flex;
+	flex-basis: 100%;
+	align-items: center;
+	color: #C5C1C0;
+	font-size: 15px;
+	margin: 50px 0px 8px;
+	padding: 10px 42px;
+}
+.hr-sect::after {
+	content: "";
+	flex-grow: 1;
+	background: #C5C1C0;
+	height: 1px;
+	font-size: 0px;
+	line-height: 0px;
+	margin: 0px 16px;
+}
+
+.tran {
+	text-align: left;
+	margin-bottom: 20px;
+	padding: 0 42px;
+}
+
+.tran2 {
+	font-size: 20px;
+	color: black;
+}
+
+.tran3 {
+	float: right;
+}
+
+#sec5 {
+	text-align: left;
+	padding: 23px 30px;
+}
+
+#sec6 {
+	font-size: 15px;
+}
+
+#sec7 {
+	font-size: 30px;
+}
+
+.balance {
+	color: #C5C1C0;
+	font-size: 15px;
+	font-family: 'MapoDPPA';
+	text-align: left;
+	padding: 0 42px;
+	margin: 20px 0;
+}
+
+.bal2 {
+	color: black;
+	font-size: 20px;
+	float: right;
+}
+
+.container2 {
+	width: 1200px;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+.container2 h2 {
+	text-align: left;
+}
+
+.table {
+	color: #858796;
+	border: 1px solid #e3e6f0;
+	border-collapse: collapse!important;
+}
+
+.table td,.table th{
+	border: 1px solid #dddfeb;
+	padding: 5px;
+}
+
+.table td {
+	text-align: center;
+}
+
+.table th {
+	text-align: left;
+}
+
+.table thead th {
+	border-top-width: 2px;
+	border-bottom-width: 2px;
+}
+
+table tr td:nth-child(1), table tr th:nth-child(1) {
+	width: 22px;
+	height: 22px;
+}
+
+#stock-table {
+	width: 800px;
+}
+
+#bond-table {
+	width: 1200px;
+}
+
+.stock-list {
+	height: 250px;
+}
+
+.btn-list {
+	text-align: left;
+	padding-bottom: 5px;
+}
+
+.btn-list button {
+	margin: 0;
+}
+
+.stock-right-btn {
+	position: relative;
+	left: 469px;
+}
+
+.bond-right-btn {
+	position: relative;
+	left: 868px;
+}
+
