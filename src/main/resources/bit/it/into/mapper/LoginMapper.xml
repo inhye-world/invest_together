@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="bit.it.into.mapper.LoginMapper">
+
+	<resultMap id="Autherities" type="bit.it.into.dto.AutheritiesDTO">
+		<id property="member_num" column="member_num"/>
+		<result property="autherity" column="autherity" />		
+	</resultMap>
+	
+	<resultMap id="Rank" type="bit.it.into.dto.RankDTO">
+		<id property="member_num" column="member_num"/>
+		<result property="score" column="score" />		
+	</resultMap>
+	
+	<resultMap id="Member" type="bit.it.into.dto.MemberDTO">
+		<id property="member_num" column="member_num" />
+		<result property="id" column="id" />
+		<result property="pw" column="pw" />
+		<result property="name" column="name" />
+		<result property="nickname" column="nickname" />
+		<result property="email" column="email" />
+		<result property="phone" column="phone" />
+		<result property="access_token" column="access_token" />
+		<result property="refresh_token" column="refresh_token" />
+		<result property="user_seq_no" column="user_seq_no" />
+		<result property="set_price" column="set_price" />
+		<result property="sns_type" column="sns_type" />
+		<result property="sns_token" column="sns_token" />
+		<result property="authkey" column="authkey" />
+		<association property="autheritiesDTO" resultMap="Autherities" />
+		<association property="rankDTO" resultMap="Rank" />
+	</resultMap>
+	
+	<select id="readUser" resultMap="Member" >
+		<![CDATA[
+			SELECT * 
+			FROM member m 
+				INNER JOIN autherities a ON m.member_num=a.member_num 
+				LEFT JOIN rank r ON m.member_num=r.member_num 
+			WHERE m.id=#{id} and m.authkey='1'
+		]]>
+	</select>
+	
+	<insert id="insertUser">
+		<![CDATA[
+			INSERT INTO member(member_num, id, pw, name, nickname, email, phone, sns_type, authkey) VALUES(MEMBER_NUM_SEQ.nextval, #{id}, #{pw}, #{name}, #{nickname}, #{email}, #{phone}, 'normal', #{authkey})
+		]]>
+	</insert>
+	
+	<insert id="insertAuthorities">
+		<![CDATA[
+			INSERT INTO autherities VALUES(MEMBER_NUM_SEQ.currval, 'ROLE_USER')
+		]]>
+	</insert>
+	
+	<select id="selectUserByKakaoId" resultType="bit.it.into.dto.MemberDTO">
+		<![CDATA[
+			SELECT * FROM member WHERE id=#{id} AND sns_type=#{sns_type}
+		]]>
+	</select>
+	
+	<select id="selectUserByNaverId" resultType="bit.it.into.dto.MemberDTO">
+		<![CDATA[
+			SELECT * FROM member WHERE id=#{id} AND sns_type=#{sns_type}
+		]]>
+	</select>
+	
+	<insert id="insertKakaoUser">
+		<![CDATA[
+			INSERT INTO member(member_num, id, pw, name, nickname, email, sns_type, sns_token, authkey) VALUES(MEMBER_NUM_SEQ.nextval, #{id}, #{pw}, #{name}, #{nickname}, #{email}, #{sns_type}, #{sns_token}, '1')
+		]]>
+	</insert>
+	
+	<insert id="insertNaverUser">
+		<![CDATA[
+			INSERT INTO member(member_num, id, pw, name, nickname, email, sns_type, sns_token, authkey) VALUES(MEMBER_NUM_SEQ.nextval, #{id}, #{pw}, #{name}, #{nickname}, #{email}, #{sns_type}, #{sns_token}, '1')
+		]]>
+	</insert>
+	
+	<select id="selectUserById" resultType="Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM member WHERE id=#{id}
+		]]>
+	</select>
+	
+	<select id="selectUserByNickname" resultType="Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM member WHERE nickname=#{nickname}
+		]]>
+	</select>
+	
+	<select id="selectUserByEmail" resultType="Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM member WHERE email=#{email}
+		]]>
+	</select>
+	
+	<update id="updateAuthKey">
+		<![CDATA[
+			UPDATE member SET authkey = 1 WHERE email=#{email}
+		]]>
+	</update>
+
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="bit.it.into.mapper.UserMapper">
+	<update id="updateUserToken">
+		<![CDATA[
+			UPDATE member SET access_token=#{access_token}, refresh_token=#{refresh_token}, user_seq_no=#{user_seq_no} WHERE member_num=#{member_num}
+		]]>
+	</update>
+	
+	<insert id="insertAccount">
+		<![CDATA[
+			INSERT INTO account(member_num, fintech_use_num, account_alias, bank_name) VALUES(#{member_num}, #{fintech_use_num}, #{account_alias}, #{bank_name})
+		]]>
+	</insert>
+	
+</mapper>
