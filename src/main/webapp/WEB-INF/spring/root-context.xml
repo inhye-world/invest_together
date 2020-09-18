@@ -28,6 +28,7 @@
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
 	</bean>
 	
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -35,8 +36,7 @@
     </bean>
     
     
-    <mybatis-spring:scan
-		base-package="bit.it.into.mapper" />
+    <mybatis-spring:scan base-package="bit.it.into.mapper" />
 
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
