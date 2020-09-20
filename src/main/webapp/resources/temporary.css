@@ -89,6 +89,12 @@
 	color: black;
 }
 
+.container .mainB{
+	font-family: 'MapoDPPA';
+	font-size: 20px;
+	text-decoration: none;
+}
+
 .container h2{
 	font-family: 'MapoDPPA';
 }

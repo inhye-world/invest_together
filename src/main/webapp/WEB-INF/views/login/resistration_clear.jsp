@@ -10,6 +10,10 @@
 </head>
 	<body>
 		
+		<script type="text/javascript">
+			alert("이메일이 전송되었습니다. 메일 인증 후 정상적으로 로그인이 가능합니다.")
+		</script>
+		
 		<div class="wrapper">
 			<div class="container">
 				<a class="mainA" href="/into"> 같이투자 API TEST</a>

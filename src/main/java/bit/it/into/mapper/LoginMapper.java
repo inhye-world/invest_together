@@ -1,10 +1,6 @@
 package bit.it.into.mapper;
 
-import java.util.Map;
-
 import org.apache.ibatis.annotations.Param;
-import org.springframework.ui.Model;
-
 import bit.it.into.dto.MemberDTO;
 
 public interface LoginMapper {
@@ -30,4 +26,6 @@ public interface LoginMapper {
 	public Integer selectUserByEmail(String email); 
 
 	public void updateAuthKey(String email);
+
+	public void updatePw(String id);
 }
