@@ -347,7 +347,7 @@ table tr td:nth-child(1), table tr th:nth-child(1) {
 }
 
 .stock-list {
-	height: 250px;
+	padding-bottom: 70px;
 }
 
 .btn-list {
@@ -369,3 +369,20 @@ table tr td:nth-child(1), table tr th:nth-child(1) {
 	left: 868px;
 }
 
+.container2 input[type=submit] {
+	width: 16px;
+	height: 16px;
+}
+
+.ui-autocomplete {
+    max-height: 300px;
+    overflow-y: auto; /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+}
+
+.empty_stock_bond {
+	height: 50px;
+	color: black;
+	font-family: 'MapoDPPA';
+	font-size: 20px;
+}

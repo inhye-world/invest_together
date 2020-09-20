@@ -37,4 +37,49 @@
 		]]>
 	</select>
 	
+	<select id="selectStockCount" resultType="Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM stock WHERE member_num=#{member_num} AND stockinfo_symbols=#{stockinfo_symbols}
+		]]>
+	</select>
+	
+	<insert id="insertStock">
+		<![CDATA[
+			INSERT INTO stock(member_num, stockinfo_symbols, company, purchase_price, quantity) values(#{member_num}, #{stockinfo_symbols}, #{company}, #{purchase_price}, #{quantity})
+		]]>
+	</insert>
+	
+	<select id="selectStock" resultType="bit.it.into.dto.StockDTO">
+		<![CDATA[
+			SELECT * FROM stock WHERE member_num=#{member_num} AND stockinfo_symbols=#{stockinfo_symbols}
+		]]>
+	</select>
+	
+	<update id="updateAddStock">
+		<![CDATA[
+			UPDATE stock SET company=#{company}, purchase_price=#{purchase_price}, quantity=#{quantity} 
+			WHERE member_num=#{member_num} AND stockinfo_symbols=#{stockinfo_symbols}
+		]]>
+	</update>
+	
+	<update id="updateRemoveStock">
+		<![CDATA[
+			UPDATE stock SET quantity=#{quantity} 
+			WHERE member_num=#{member_num} AND stockinfo_symbols=#{stockinfo_symbols}
+		]]>
+	</update>
+	
+	<delete id="deleteStock">
+		<![CDATA[
+			DELETE stock WHERE member_num=#{member_num} AND stockinfo_symbols=#{stockinfo_symbols}
+		]]>
+	</delete>
+	
+	<select id="selectAutocompleteList" resultType="String">
+		<![CDATA[
+			SELECT stockinfo_symbols FROM stock_info 
+    		WHERE stockinfo_symbols LIKE concat(UPPER(#{value}), '%') OR stockinfo_symbols LIKE concat(LOWER(#{value}), '%')
+		]]>
+	</select>
+	
 </mapper>
