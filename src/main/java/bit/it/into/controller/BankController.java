@@ -134,10 +134,10 @@ public class BankController {
 					AccountTransactionDTO transactionDTO = new AccountTransactionDTO(tran_date_time, inout_type, tran_type, print_content, tran_amt, branch_name, product_name, day);
 					accountTransactionList.add(transactionDTO);
 					
-					if(inout_type.equals("ìž…ê¸ˆ")) {
+					if(inout_type.equals("ÀÔ±Ý")) {
 						incomeSum += Integer.valueOf(tran_amt);
 					}
-					if(inout_type.equals("ì¶œê¸ˆ")) {
+					if(inout_type.equals("Ãâ±Ý")) {
 						expenseSum += Integer.valueOf(tran_amt);
 					}
 				}	
