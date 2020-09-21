@@ -73,14 +73,13 @@
       
                
          $("#verifyNumber-submit").click(function(e) {
-            e.preventDefault();
-            alert("인증번호를 입력해주세요.");
             var verifyNumber = $("#verifyNumber").val();
             var authKey = ${authKey};
             if(verifyNumber != authKey) {
                alert("인증번호를 다시 확인해주세요.");
+               e.preventDefault();
             }
-         });  */
+         });  
       
    </script> 
    </body>
