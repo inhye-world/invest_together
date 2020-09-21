@@ -1,9 +1,7 @@
 package bit.it.into.controller;
 
-import javax.inject.Inject;
 
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,17 +14,16 @@ import bit.it.into.dto.AccountDTO;
 import bit.it.into.security.CustomUser;
 import bit.it.into.service.OpenBankingService;
 import bit.it.into.service.UserService;
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @Controller
+@AllArgsConstructor
 @Log4j
 public class UserController {
 	
-	@Inject
-	UserService service;
-	
-	@Inject
-	OpenBankingService open;
+	private UserService service;
+	private OpenBankingService open;
 	
 	@RequestMapping("/user/myPage")
 	public String myPage(Model model) {
@@ -43,6 +40,9 @@ public class UserController {
 	public String addAccount(@RequestParam("code") String code, Authentication authentication) {
 		log.info("OpenBankingController - addAccount()");
 		
+		CustomUser user = (CustomUser)authentication.getPrincipal();
+		
+		
 		JsonNode node = open.getAccessToken(code);
 		String access_token = node.get("access_token").asText();
 		String refresh_token = node.get("refresh_token").asText();
@@ -53,19 +53,13 @@ public class UserController {
 		String account_alias = userInfo.get("res_list").get(0).get("account_alias").asText();
 		String bank_name = userInfo.get("res_list").get(0).get("bank_name").asText();
 		
-		CustomUser user = (CustomUser)authentication.getPrincipal();
 		
-		if(user==null) {
-			return "error/accessDenied";
-		}else {
-			
-			int user_num = user.getDto().getMember_num();
-			
-			AccountDTO accountDTO = new AccountDTO(user_num, fintech_use_num, account_alias, bank_name);
-			
-			service.addUserAccountInfo(accountDTO, user_num, access_token, refresh_token, user_seq_no);
+		int user_num = user.getDto().getMember_num();
 		
-		}
+		AccountDTO accountDTO = new AccountDTO(user_num, fintech_use_num, account_alias, bank_name);
+		
+		service.addUserAccountInfo(accountDTO, user_num, access_token, refresh_token, user_seq_no);
+		
 		
 		return "user/addAccount_clear";
 	}

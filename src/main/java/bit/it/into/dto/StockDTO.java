@@ -21,4 +21,16 @@ public class StockDTO {
 	
 	private StockInfoDTO stockInfoDTO;
 	
+	public StockDTO(StockBuyDTO stockBuyDTO) {
+		this.stockinfo_symbols = stockBuyDTO.getBuy_stockinfo_symbols();
+		this.company = stockBuyDTO.getBuy_company();
+		this.purchase_price = stockBuyDTO.getBuy_purchase_price();
+		this.quantity = stockBuyDTO.getBuy_quantity();
+	}
+
+	public StockDTO(StockSellDTO stockSellDTO) {
+		this.stockinfo_symbols = stockSellDTO.getSell_stockinfo_symbols();
+		this.quantity = stockSellDTO.getSell_quantity();
+	}
+
 }
