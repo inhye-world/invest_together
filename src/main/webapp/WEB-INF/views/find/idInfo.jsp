@@ -28,12 +28,12 @@
                         <dl class="notification__txt">
                            <dt></dt>
                            <dt>
-                              회원님의 본인인증 정보로 검색된 아이디는
+                              	회원님의 본인인증 정보로 검색된 아이디는
                               <br>
                               <span class="color-blue">      
-                              총${fn:length(id)}개
+                             	 총${fn:length(id)}개
                               </span>
-                              입니다.
+                              	입니다.
                            </dt>
                         </dl>   
                      </article>

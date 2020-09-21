@@ -1,10 +1,13 @@
 package bit.it.into.controller;
 
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,7 +51,7 @@ public class UserFindCotroller {
 	}
 	
 	@RequestMapping("/idEmailSend")
-	public String idEmailSend(MemberDTO memberDTO, Model model) {
+	public String idEmailSend(MemberDTO memberDTO, Model model, HttpServletResponse response) throws Exception {
 		log.info("LoginController - idEmailSend()");
 		
 		//name와 매칭되는 이메일 호출
@@ -57,6 +60,12 @@ public class UserFindCotroller {
 		if(email.equals(memberDTO.getEmail())) {
 			String authKey = mailSendService.idsendFindMail(memberDTO.getEmail());
 			model.addAttribute("authKey", authKey);
+			
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('이메일이 전송되었습니다 이메일을 확인해주세요.'); </script>");
+			out.flush();
+
 			
 		} else {
 			
