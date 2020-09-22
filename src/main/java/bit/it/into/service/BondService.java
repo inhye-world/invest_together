@@ -17,6 +17,6 @@ public interface BondService {
 
 	public void remove(String bond_symbols);
 
-	public int update(BondDto bondDto) throws Exception;
+	public void update(BondDto bondDto) throws Exception;
 	
 }

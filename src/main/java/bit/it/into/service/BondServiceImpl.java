@@ -36,9 +36,9 @@ public class BondServiceImpl implements BondService {
 	}
 
 	@Override
-	public int update(BondDto bondDto) throws Exception{
+	public void update(BondDto bondDto) throws Exception{
         
-        return mapper.update(bondDto);
+        mapper.update(bondDto);
     }
 
 	

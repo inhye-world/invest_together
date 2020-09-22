@@ -515,6 +515,52 @@
 
  	        });
 		    
+		  //수정 
+			$(document).on("click","button[name=modify]",function(){
+				$("input[class='checkRow']:checked").each(function(){
+					
+					var str = "";
+					var tdArr = new Array();
+					var checkBtn = $(this);
+					
+					// checkBtn.parent() : checkBtn의 부모는 <td>이다.
+		            // checkBtn.parent().parent() : <td>의 부모이므로 <tr>이다.
+		            var tr = checkBtn.parent().parent();
+		            var td = tr.children();
+		            var id = tr.attr('id');
+		            console.log("id: "+id);
+					
+					// tr.text()는 클릭된 Row 즉 tr에 있는 모든 값을 가져온다.
+					console.log("클릭한 row의 모든 데이터: "+tr.text());
+					
+					// 반복문을 이용해서 배열에 값을 담아 사용할 수 도 있다.
+		            td.each(function(i){
+		                tdArr.push(td.eq(i).text());
+		            });
+
+					console.log("배열에 담긴 값: "+tdArr);
+					
+					str +=     
+			            '    <td><input type="checkbox" class="checkRow" name="checkRow" data-symbols="${dto.bond_symbols}"/></td>'+
+			            '    <td><input type="text" name="bond_symbols" value='+tdArr[1]+' placeholder='+tdArr[1]+' /></td>'+
+			            '    <td><input type="number" name="total_interest" value='+tdArr[2]+' placeholder='+tdArr[2]+' /></td>'+
+			            '    <td><input type="text" name="bond_company" value='+tdArr[3]+' placeholder='+tdArr[3]+' /></td>'+
+			            '    <td><input type="number" name="bond_price" value='+tdArr[4]+' placeholder='+tdArr[4]+' /></td>'+
+			            '    <td><input type="date" name="bond_date" value='+tdArr[5]+' placeholder='+tdArr[5]+' /></td>'+
+			            '    <td><input type="number" name="coupon_interest_rate" value='+tdArr[6]+' placeholder='+tdArr[6]+' /></td>'+
+			            '    <td><input type="number" name="discount_rate" value='+tdArr[7]+' placeholder='+tdArr[7]+' /></td>'+
+			            '    <td><input type="number" name="gross_price" value='+tdArr[8]+' placeholder='+tdArr[8]+' /></td>'+
+			            '    <td><input type="date" name="maturity_date" value='+tdArr[9]+' placeholder='+tdArr[9]+' /></td>'+
+			            '    <td><input type="text" name="grade" value='+tdArr[10]+' placeholder='+tdArr[10]+' />'+
+			            '  	 <input type="submit" class="btn btn-outline btn-primary" value="+" formaction="/modify" /></td>';
+					
+					$("#"+id).html(str);
+		    	   });
+				
+		        
+		    }); 
+		  
+		    
 		    //추가 저장 버튼 
 /*   		    function createRow(){
 		    	var bond_symbols = $("#bond_symbols").val();

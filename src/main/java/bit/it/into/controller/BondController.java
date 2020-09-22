@@ -62,10 +62,12 @@ public class BondController {
 	
 	
 	@RequestMapping("/modify")
-    @ResponseBody
-    private int modify(BondDto bondDto) throws Exception{
-
-        return bondService.update(bondDto);
+    private String modify(BondDto bondDto) throws Exception{
+		logger.info("////////////////////modify///////////////////////");
+		
+		bondService.update(bondDto);
+        
+		return "redirect:bond";
     }
 
 	

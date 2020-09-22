@@ -12,6 +12,6 @@ public interface BondMapper {
 
 	public void delete(String bond_symbols);
 	
-	public int update(BondDto bondDto) throws Exception;
+	public void update(BondDto bondDto) throws Exception;
 
 }
