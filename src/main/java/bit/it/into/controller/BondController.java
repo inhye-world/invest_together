@@ -29,14 +29,14 @@ public class BondController {
 	@Inject
 	BondService bondService;
 	
-	@RequestMapping("/bond")
+	@GetMapping("/bond")
 	public String list(Model model) throws Exception {	
 		logger.info("////////////////////list/////////////////////");
 		model.addAttribute("list", bondService.getList());
 		return "bond/list";
 	}
 
-	@PostMapping("/write")
+	@PostMapping("/bond/write")
 	public String write(BondDto bondDto) throws Exception {
 		logger.info("////////////////////write///////////////////////");
 		
@@ -46,7 +46,7 @@ public class BondController {
 	}
 
 	@ResponseBody
-	@PostMapping("/delete")
+	@PostMapping("/bond/delete")
 	public int delete(@RequestParam(value = "checkRow[]") List<String> checkArr){
 		logger.info("////////////////////delete///////////////////////");
 
@@ -60,8 +60,7 @@ public class BondController {
 		 return result;  
 	}
 	
-	
-	@RequestMapping("/modify")
+	@PostMapping("/bond/modify")
     private String modify(BondDto bondDto) throws Exception{
 		logger.info("////////////////////modify///////////////////////");
 		

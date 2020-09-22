@@ -8,7 +8,6 @@
 
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
-
 	
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -358,10 +357,8 @@
               	
               	<button type="button" class="btn btn-outline btn-primary pull-right" name="addRow">추가</button>
               	<button type="button" class="btn btn-outline btn-primary pull-right" name="modify">수정</button>
-              	<!-- input type="submit" class="btn btn-outline btn-primary pull-right" value="삭제" name="delRow" 
-              			data-symbols="${dto.bond_symbols}"formaction="/delete" -->
               	<button type="button" class="btn btn-outline btn-primary pull-right" name="delRow">삭제</button>
-              	<button type="button" class="btn btn-outline btn-primary pull-right" id="exel">엑셀파일로 다운</button>
+              	<button type="button" class="btn btn-outline btn-primary pull-right" id="downloadExel">엑셀파일로 다운</button>
                 
                 
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -457,37 +454,12 @@
 		            '    <td><input type="number" name="gross_price" placeholder="총상환금액" /></td>'+
 		            '    <td><input type="date" name="maturity_date" placeholder="만기일" /></td>'+
 		            '    <td><input type="text" name="grade" placeholder="신용등급" />'+
-		            '  	 <input type="submit" class="btn btn-outline btn-primary" value="+" formaction="/write" /></td>'+
+		            '  	 <input type="submit" class="btn btn-outline btn-primary" value="+" formaction="bond/write" /></td>'+
 		            '</tr>';
 		            
 		            $("#bond_tbody").append(addTableRow);
 		        
 		    });
-
-		    
-		    //수정 
-			$(document).on("click","button[name=modify]",function(){
-				$("input[class='checkRow']:checked").each(function(){
-					
-					var a =     
-			            '    <td><input type="checkbox" class="checkRow" name="checkRow" data-symbols="${dto.bond_symbols}" /></td>'+
-			            '    <td><input type="text" name="bond_symbols" placeholder="종목" /></td>'+
-			            '    <td><input type="number" name="total_interest" placeholder="세후보유기간이자" /></td>'+
-			            '    <td><input type="text" name="bond_company" placeholder="증권사" /></td>'+
-			            '    <td><input type="number" name="bond_price" placeholder="매수금액" /></td>'+
-			            '    <td><input type="date" name="bond_date" placeholder="매수일자" /></td>'+
-			            '    <td><input type="number" name="coupon_interest_rate" placeholder="발행이자율" /></td>'+
-			            '    <td><input type="number" name="discount_rate" placeholder="할인발행율" /></td>'+
-			            '    <td><input type="number" name="gross_price" placeholder="총상환금액" /></td>'+
-			            '    <td><input type="date" name="maturity_date" placeholder="만기일" /></td>'+
-			            '    <td><input type="text" name="grade" placeholder="신용등급" />'+
-			            '  	 <input type="submit" class="btn btn-outline btn-primary" value="+" formaction="/write" /></td>';
-					
-					$("#bondList_효성").html(a);
-		    	   });
-				
-		        
-		    }); 
 
 		    
 		    //삭제 버튼
@@ -502,7 +474,7 @@
 		    	   });
 		    	    
 		    	   $.ajax({
-		    	    url : "/delete",
+		    	    url : "bond/delete",
 		    	    type : "post",
 		    	    data : {"checkRow" : checkArr},
 		    	    dataType : "json",
@@ -552,15 +524,27 @@
 			            '    <td><input type="number" name="gross_price" value='+tdArr[8]+' placeholder='+tdArr[8]+' /></td>'+
 			            '    <td><input type="date" name="maturity_date" value='+tdArr[9]+' placeholder='+tdArr[9]+' /></td>'+
 			            '    <td><input type="text" name="grade" value='+tdArr[10]+' placeholder='+tdArr[10]+' />'+
-			            '  	 <input type="submit" class="btn btn-outline btn-primary" value="+" formaction="/modify" /></td>';
+			            '  	 <input type="submit" class="btn btn-outline btn-primary" value="+" formaction="bond/modify" /></td>';
 					
 					$("#"+id).html(str);
 		    	   });
 				
 		        
 		    }); 
+
+		  	//ExelExport
+		  	$(document).ready(function () {
+                $('#downloadExel').on('click', function (e) {
+                    console.log("test");
+                    e.preventDefault();
+
+                    $('table').tableExport({type:'excel'});
+
+                });
+		  	});
+
 		  
-		    
+		  
 		    //추가 저장 버튼 
 /*   		    function createRow(){
 		    	var bond_symbols = $("#bond_symbols").val();
@@ -702,6 +686,11 @@
 
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
+  
+	 <!-- Exel Export -->
+	<script type="text/javascript" src="js/FileSaver/FileSaver.min.js"></script>
+	<script type="text/javascript" src="js/js-xlsx/xlsx.core.min.js"></script>
+	<script type="text/javascript" src="js/tableExport.min.js"></script>
 
 </body>
 
