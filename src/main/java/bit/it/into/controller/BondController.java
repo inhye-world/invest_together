@@ -29,10 +29,11 @@ public class BondController {
 	@Inject
 	BondService bondService;
 	
-	@GetMapping("/bond")
-	public void list(Model model) throws Exception {	
+	@RequestMapping("/bond")
+	public String list(Model model) throws Exception {	
 		logger.info("////////////////////list/////////////////////");
 		model.addAttribute("list", bondService.getList());
+		return "bond/list";
 	}
 
 	@PostMapping("/write")
@@ -60,7 +61,7 @@ public class BondController {
 	}
 	
 	
-	@RequestMapping("/modify") //댓글 수정  
+	@RequestMapping("/modify")
     @ResponseBody
     private int modify(BondDto bondDto) throws Exception{
 
