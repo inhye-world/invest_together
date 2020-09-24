@@ -33,7 +33,7 @@ public class UserFindCotroller {
 	@Autowired
 	private MailSendService mailSendService;
 	
-	//idÃ£±â
+	//idì°¾ê¸°
 	@RequestMapping("/idFind")
 	public String idFind() {
 		log.info("LoginController - idFind()");
@@ -41,7 +41,7 @@ public class UserFindCotroller {
 		return "find/idFind";
 	}
 	
-	//pwÃ£±â
+	//pwì°¾ê¸°
 	@RequestMapping("/pwFind")
 	public String pwFind() {
 		log.info("LoginController - pwFind()");
@@ -53,7 +53,7 @@ public class UserFindCotroller {
 	public String idEmailSend(MemberDTO memberDTO, Model model, HttpServletResponse response) throws Exception {
 		log.info("LoginController - idEmailSend()");
 		
-		//name¿Í ¸ÅÄªµÇ´Â ÀÌ¸ŞÀÏ È£Ãâ
+		//nameì™€ ë§¤ì¹­ë˜ëŠ” ì´ë©”ì¼ í˜¸ì¶œ
 		String email = userService.nameCheck(memberDTO.getName());
 		
 		if(email.equals(memberDTO.getEmail())) {
@@ -62,7 +62,7 @@ public class UserFindCotroller {
 			
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('ÀÌ¸ŞÀÏÀÌ Àü¼ÛµÇ¾ú½À´Ï´Ù ÀÌ¸ŞÀÏÀ» È®ÀÎÇØÁÖ¼¼¿ä.'); </script>");
+			out.println("<script>alert('ì´ë©”ì¼ì´ ì „ì†¡ë˜ì—ˆìŠµë‹ˆë‹¤ ì´ë©”ì¼ì„ í™•ì¸í•´ì£¼ì„¸ìš”.'); </script>");
 			out.flush();
 			
 		} else {
@@ -89,17 +89,17 @@ public class UserFindCotroller {
 	public String pwdEmailSend(MemberDTO memberDTO, Model model, HttpServletResponse response) throws Exception {
 		log.info("UserFindCotroller - pwdEmailSend()");	
 		
-		//id¿Í ¸ÅÄªµÇ´Â ÀÌ¸ŞÀÏ È£Ãâ
+		//idì™€ ë§¤ì¹­ë˜ëŠ” ì´ë©”ì¼ í˜¸ì¶œ
 		String email = userService.idCheck(memberDTO.getId());
 		
 		if(loginService.hasUserById(memberDTO.getId())) {
 			
-			//ºñ¹Ğ¹øÈ£ Ã£±â¸¦ À§ÇÑ ÀÎÁõ¹øÈ£ emailÀü¼Û 
+			//ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°ë¥¼ ìœ„í•œ ì¸ì¦ë²ˆí˜¸ emailì „ì†¡ 
 			String authKey = mailSendService.pwsendFindMail(email);
 
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('ÀÌ¸ŞÀÏÀÌ Àü¼ÛµÇ¾ú½À´Ï´Ù ÀÌ¸ŞÀÏÀ» È®ÀÎÇØÁÖ¼¼¿ä.'); </script>");
+			out.println("<script>alert('ì´ë©”ì¼ì´ ì „ì†¡ë˜ì—ˆìŠµë‹ˆë‹¤ ì´ë©”ì¼ì„ í™•ì¸í•´ì£¼ì„¸ìš”.'); </script>");
 			out.flush();
 
 			model.addAttribute("authKey", authKey);
@@ -119,7 +119,7 @@ public class UserFindCotroller {
 		return "find/resetPwd";
 	}
 	
-	//ÀÎÁõµÈ user ºñ¹Ğ¹øÈ£ º¯°æ
+	//ì¸ì¦ëœ user ë¹„ë°€ë²ˆí˜¸ ë³€ê²½
 	@RequestMapping(value="/resetPwd", method = RequestMethod.POST)
 	public String resetPwd(@Valid PwdVaildDTO pwdVaildDTO, Errors errors, Model model) throws Exception {
 		log.info("UserFindCotroller - resetPwd()");

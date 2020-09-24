@@ -85,7 +85,7 @@ public class KakaoLoginController {
 	public String addKakaoUser(MemberDTO memberDTO, Model model) {
 				
 		if(loginService.hasUserByNickname(memberDTO.getNickname())) {
-			model.addAttribute("valid_nickname", "´Ğ³×ÀÓÀÌ Áßº¹ µÇ¾ú½À´Ï´Ù.");
+			model.addAttribute("valid_nickname", "ë‹‰ë„¤ì„ì´ ì¤‘ë³µ ë˜ì—ˆìŠµë‹ˆë‹¤.");
 			
 			return "login/kakaoAddInfo";
 		}

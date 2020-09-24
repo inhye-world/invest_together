@@ -30,12 +30,12 @@ public class UserService {
 		
 		int updateUserTokenCount = mapper.updateUserToken(member_num, access_token, refresh_token, user_seq_no);
 		if(updateUserTokenCount != 1) {
-			log.info("updateUserTokenCount ¿À·ù");
+			log.info("updateUserTokenCount ì˜¤ë¥˜");
 		}
 		
 		int insertAccountCount = mapper.insertAccount(accountDTO);
 		if(insertAccountCount != 1) {
-			log.info("insertAccountCount ¿À·ù");
+			log.info("insertAccountCount ì˜¤ë¥˜");
 		}
 	
 	}

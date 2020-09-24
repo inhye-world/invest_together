@@ -18,13 +18,13 @@ public class MailSendService {
 	 @Autowired
 	 private JavaMailSenderImpl mailSender;
 
-	    //ÀÎÁõÅ° »ı¼º
+	 	//ì¸ì¦í‚¤ ìƒì„±
 	    private String getKey(int size) {
 	        this.size = size;
 	        return getAuthCode();
 	    }
 
-	    //ÀÎÁõÄÚµå ³­¼ö ¹ß»ı
+	    //ì¸ì¦ì½”ë“œ ë‚œìˆ˜ ë°œìƒ
 	    private String getAuthCode() {
 	        Random random = new Random();
 	        StringBuffer buffer = new StringBuffer();
@@ -38,25 +38,25 @@ public class MailSendService {
 	        return buffer.toString();
 	    }
 
-	    //È¸¿ø°¡ÀÔ½Ã ÀÎÁõ¸ŞÀÏ º¸³»±â
+	    //íšŒì›ê°€ì…ì‹œ ì¸ì¦ë©”ì¼ ë³´ë‚´ê¸°
 	    @Transactional
 	    public String sendAuthMail(String email) {
-	        //6ÀÚ¸® ³­¼ö ÀÎÁõ¹øÈ£ »ı¼º
+	    	//6ìë¦¬ ë‚œìˆ˜ ì¸ì¦ë²ˆí˜¸ ìƒì„±
 	        String authKey = getKey(6);
 
-	        //ÀÎÁõ¸ŞÀÏ º¸³»±â
+	        //ì¸ì¦ë©”ì¼ ë³´ë‚´ê¸°
 	        try {
 	            MailUtils sendMail = new MailUtils(mailSender);
-	            sendMail.setSubject("È¸¿ø°¡ÀÔ ÀÌ¸ŞÀÏ ÀÎÁõ");
-	            sendMail.setText(new StringBuffer().append("<h1>[ÀÌ¸ŞÀÏ ÀÎÁõ]</h1>")
-	            .append("<p>¾Æ·¡ ¸µÅ©¸¦ Å¬¸¯ÇÏ½Ã¸é ÀÌ¸ŞÀÏ ÀÎÁõÀÌ ¿Ï·áµË´Ï´Ù.</p>")
+	            sendMail.setSubject("íšŒì›ê°€ì… ì´ë©”ì¼ ì¸ì¦");
+	            sendMail.setText(new StringBuffer().append("<h1>[ì´ë©”ì¼ ì¸ì¦]</h1>")
+	            .append("<p>ì•„ë˜ ë§í¬ë¥¼ í´ë¦­í•˜ì‹œë©´ ì´ë©”ì¼ ì¸ì¦ì´ ì™„ë£Œë©ë‹ˆë‹¤.</p>")
 	            .append("<a href='http://localhost:8282/into/authConfirm?email=")
 	            .append(email)
 	            .append("&authKey=")
 	            .append(authKey)
-	            .append("' target='_blenk'>ÀÌ¸ŞÀÏ ÀÎÁõ È®ÀÎ</a>")
+	            .append("' target='_blenk'>ì´ë©”ì¼ ì¸ì¦ í™•ì¸</a>")
 	            .toString());
-	            sendMail.setFrom("hanrnj22@gmail.com", "°°ÀÌÅõÀÚ");
+	            sendMail.setFrom("hanrnj22@gmail.com", "ê°™ì´íˆ¬ì");
 	            sendMail.setTo(email);
 	            sendMail.send();
 	        } catch (MessagingException e) {
@@ -67,21 +67,21 @@ public class MailSendService {
 	          return authKey;
 	    }
 	    
-	    //ºñ¹Ğ¹øÈ£ Ã£À»¶§ ¸ŞÀÏ Àü¼Û
+	    //ë¹„ë°€ë²ˆí˜¸ ì°¾ì„ë•Œ ë©”ì¼ ì „ì†¡
 	    @Transactional
 	    public String pwsendFindMail(String email) {
-	        //6ÀÚ¸® ³­¼ö ÀÎÁõ¹øÈ£ »ı¼º
+	        //6ìë¦¬ ë‚œìˆ˜ ì¸ì¦ë²ˆí˜¸ ìƒì„±
 	        String authKey = getKey(6);
 
-	        //ÀÎÁõ¸ŞÀÏ º¸³»±â
+	        //ì¸ì¦ë©”ì¼ ë³´ë‚´ê¸°
 	        try {
 	            MailUtils sendMail = new MailUtils(mailSender);
-	            sendMail.setSubject("ºñ¹Ğ¹øÈ£ Ã£±â ÀÎÁõ¹øÈ£ Àü¼Û");
-	            sendMail.setText(new StringBuffer().append("<h1>[ÀÎÁõ¹øÈ£ ¾È³»]</h1>")
-	            .append("<p>¾Æ·¡ÀÇ ÀÎÁõ¹øÈ£¸¦ º¹»çÇÏ½Å ÈÄ ÀÌ¸ŞÀÏ ÀÎÁõ¹øÈ£ ÀÔ·Â¶õ¿¡ ÀÔ·ÂÇØ ÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.</p>")
-	            .append("ÀÎÁõ¹øÈ£ : " + authKey)
+	            sendMail.setSubject("ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° ì¸ì¦ë²ˆí˜¸ ì „ì†¡");
+	            sendMail.setText(new StringBuffer().append("<h1>[ì¸ì¦ë²ˆí˜¸ ì•ˆë‚´]</h1>")
+	            .append("<p>ì•„ë˜ì˜ ì¸ì¦ë²ˆí˜¸ë¥¼ ë³µì‚¬í•˜ì‹  í›„ ì´ë©”ì¼ ì¸ì¦ë²ˆí˜¸ ì…ë ¥ë€ì— ì…ë ¥í•´ ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.</p>")
+	            .append("ì¸ì¦ë²ˆí˜¸ : " + authKey)
 	            .toString());
-	            sendMail.setFrom("hanrnj22@gmail.com", "°°ÀÌÅõÀÚ");
+	            sendMail.setFrom("hanrnj22@gmail.com", "ê°™ì´íˆ¬ì");
 	            sendMail.setTo(email);
 	            sendMail.send();
 	        } catch (MessagingException e) {
@@ -92,21 +92,21 @@ public class MailSendService {
 	          return authKey;
 	    }
 	    
-	    //¾ÆÀÌµğ Ã£À»¶§ ¸ŞÀÏ Àü¼Û
+	    //ì•„ì´ë”” ì°¾ì„ë•Œ ë©”ì¼ ì „ì†¡
 	    @Transactional
 	    public String idsendFindMail(String email) {
-	        //6ÀÚ¸® ³­¼ö ÀÎÁõ¹øÈ£ »ı¼º
+	        //6ìë¦¬ ë‚œìˆ˜ ì¸ì¦ë²ˆí˜¸ ìƒì„±
 	        String authKey = getKey(6);
 
-	        //ÀÎÁõ¸ŞÀÏ º¸³»±â
+	        //ì¸ì¦ë©”ì¼ ë³´ë‚´ê¸°
 	        try {
 	            MailUtils sendMail = new MailUtils(mailSender);
-	            sendMail.setSubject("¾ÆÀÌµğ Ã£±â ÀÎÁõ¹øÈ£ Àü¼Û");
-	            sendMail.setText(new StringBuffer().append("<h1>[ÀÎÁõ¹øÈ£ ¾È³»]</h1>")
-	            .append("<p>¾Æ·¡ÀÇ ÀÎÁõ¹øÈ£¸¦ º¹»çÇÏ½Å ÈÄ ÀÌ¸ŞÀÏ ÀÎÁõ¹øÈ£ ÀÔ·Â¶õ¿¡ ÀÔ·ÂÇØ ÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.</p>")
-	            .append("ÀÎÁõ¹øÈ£ : " + authKey)
+	            sendMail.setSubject("ì•„ì´ë”” ì°¾ê¸° ì¸ì¦ë²ˆí˜¸ ì „ì†¡");
+	            sendMail.setText(new StringBuffer().append("<h1>[ì¸ì¦ë²ˆí˜¸ ì•ˆë‚´]</h1>")
+	            .append("<p>ì•„ë˜ì˜ ì¸ì¦ë²ˆí˜¸ë¥¼ ë³µì‚¬í•˜ì‹  í›„ ì´ë©”ì¼ ì¸ì¦ë²ˆí˜¸ ì…ë ¥ë€ì— ì…ë ¥í•´ ì£¼ì‹œê¸° ë°”ëë‹ˆë‹¤.</p>")
+	            .append("ì¸ì¦ë²ˆí˜¸ : " + authKey)
 	            .toString());
-	            sendMail.setFrom("hanrnj22@gmail.com", "°°ÀÌÅõÀÚ");
+	            sendMail.setFrom("hanrnj22@gmail.com", "ê°™ì´íˆ¬ì");
 	            sendMail.setTo(email);
 	            sendMail.send();
 	        } catch (MessagingException e) {
