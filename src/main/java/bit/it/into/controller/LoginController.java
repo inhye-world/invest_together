@@ -1,5 +1,6 @@
 package bit.it.into.controller;
 
+
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -61,10 +62,10 @@ public class LoginController {
             for (String key : validatorResult.keySet()) {
                 model.addAttribute(key, validatorResult.get(key));
             }
-
+            log.info(errors);
+            
             return "login/registrationForm";
         }
-		
 		
 		if(service.hasUserById(validMemberDTO.getId())) {
 			model.addAttribute("valid_id", "아이디가 중복 되었습니다.");
@@ -83,7 +84,7 @@ public class LoginController {
 			
 			return "login/registrationForm";
 		}
-		
+				
 		MemberDTO memberDTO = new MemberDTO(validMemberDTO);
 		
 		String authKey = mailSendService.sendAuthMail(memberDTO.getEmail());

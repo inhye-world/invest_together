@@ -285,8 +285,7 @@
 			<artifactId>json-simple</artifactId>
 			<version>1.1.1</version>
 		</dependency>
-		
-		
+				
 		<!-- validation -->
 		<dependency>
 		    <groupId>javax.validation</groupId>
@@ -298,7 +297,7 @@
 		    <artifactId>hibernate-validator</artifactId>
 		    <version>6.0.1.Final</version>
 		</dependency>
-	
+		
 		<!-- email 인증 -->
 		<dependency>
 			<groupId>javax.mail</groupId>

@@ -8,6 +8,11 @@
 		<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 		<link href="resources/find.css" rel="stylesheet" type="text/css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+		<style type="text/css">
+			.pw_form span.error {color:red;} 
+		</style>
+	
 	</head>
 	<body>
 		<div class="wrapper">
@@ -34,12 +39,12 @@
 								</dl>
 							</article>
 							<article class="user-area">
-								<form:form action="resetPwd" method="POST">
+								<form:form class="pw_form" action="resetPwd" method="POST">
 									<input type="hidden" name="id" value="${memberDTO.id}">	
 									<input type="password" id="pw1" name="pw" placeholder="비밀번호 (8~32자리)" /><br>
 									<div>${valid_pw} </div>
-									<input type="password" id="pw2" placeholder="비밀번호 재입력" /><br>
-									<div id="pw-correct"></div>						
+									<input type="password" id="pw2" placeholder="비밀번호 재입력" /><br>	
+									<div id="pw-correct"></div>				
 									<input id="pwd-submit" class="button5" type="submit" value="완료">
 								</form:form>
 							</article>
@@ -72,6 +77,35 @@
 					e.preventDefault();
 				}
 			});
+			
+			$(document).ready(function (){
+				$(".pw_form").validate({
+					//규칙
+					rules:{
+						pw:{
+							required : true, //필수입력여부
+							minlength : 8,	//최소 입력 글자수
+							maxlength : 32	//최대 입력 글자수
+						},
+					},
+
+					//메시지
+					messages:{
+						pw:{
+							required : "비밀번호를 입력해주세요.",
+							minlength : "최소 8글자 이상 입력해주세요.",	
+							maxlength : "최대 32글자까지 입력가능합니다."
+						},
+					},
+
+					//메시지 태그
+					errorElement : 'span', 	//태그
+					errorClass: 'error',	//클래스 이름
+					validClass:'vaild' 
+
+				});
+			});
+			
 			
 		</script>
 			

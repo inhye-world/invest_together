@@ -1,5 +1,7 @@
 package bit.it.into.dto;
 
+import javax.validation.Valid;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,8 +39,7 @@ public class MemberDTO {
 		this.nickname = dto.getNickname();
 		this.email = dto.getEmail();
 		this.phone = dto.getPhone();
+		
 	}
-
-
 	
 }

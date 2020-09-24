@@ -40,11 +40,11 @@ public class LoginService {
 		int countInsertAuthorities = mapper.insertAuthorities(memberDTO);
 		
 		if(countInsertUser != 1) {
-			log.info("유저 INSERT 오류");
+			log.info("�쑀�� INSERT �삤瑜�");
 		}
 		
 		if(countInsertAuthorities != 1) {
-			log.info("유저 권한 INSERT 오류");
+			log.info("�쑀�� 沅뚰븳 INSERT �삤瑜�");
 		}
 	}
 
@@ -77,11 +77,11 @@ public class LoginService {
 		int countInsertAuthorities = mapper.insertAuthorities(memberDTO);
 		
 		if(countInsertKakaoUser != 1) {
-			log.info("카카오 유저 INSERT 오류");
+			log.info("移댁뭅�삤 �쑀�� INSERT �삤瑜�");
 		}
 		
 		if(countInsertAuthorities != 1) {
-			log.info("유저 권한 INSERT 오류");
+			log.info("�쑀�� 沅뚰븳 INSERT �삤瑜�");
 		}
 	}
 	
@@ -99,11 +99,11 @@ public class LoginService {
 		int countInsertAuthorities = mapper.insertAuthorities(memberDTO);
 		
 		if(countInsertNaverUser != 1) {
-			log.info("네이버 유저 INSERT 오류");
+			log.info("�꽕�씠踰� �쑀�� INSERT �삤瑜�");
 		}
 		
 		if(countInsertAuthorities != 1) {
-			log.info("유저 권한 INSERT 오류");
+			log.info("�쑀�� 沅뚰븳 INSERT �삤瑜�");
 		}
 	}
 
@@ -137,7 +137,7 @@ public class LoginService {
 
 	public boolean hasUserByNickname(String nickname) {
 		log.info("LoginService - hasUserByNickname()");
-		
+				
 		Integer count = mapper.selectUserByNickname(nickname);
 		
 		if(count==0) {

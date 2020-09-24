@@ -1,7 +1,6 @@
 package bit.it.into.controller;
 
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
@@ -87,7 +86,7 @@ public class UserFindCotroller {
 	
 	
 	@RequestMapping(value="/pwdEmailSend", method = RequestMethod.POST)
-	public String pwdEmailSend(MemberDTO memberDTO, Model model) {
+	public String pwdEmailSend(MemberDTO memberDTO, Model model, HttpServletResponse response) throws Exception {
 		log.info("UserFindCotroller - pwdEmailSend()");	
 		
 		//id와 매칭되는 이메일 호출
@@ -97,9 +96,12 @@ public class UserFindCotroller {
 			
 			//비밀번호 찾기를 위한 인증번호 email전송 
 			String authKey = mailSendService.pwsendFindMail(email);
-			boolean mailsendcomplete = true;
-			
-			model.addAttribute("mailsendcomplete", mailsendcomplete);
+
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('이메일이 전송되었습니다 이메일을 확인해주세요.'); </script>");
+			out.flush();
+
 			model.addAttribute("authKey", authKey);
 					
 		} else {
@@ -119,7 +121,7 @@ public class UserFindCotroller {
 	
 	//인증된 user 비밀번호 변경
 	@RequestMapping(value="/resetPwd", method = RequestMethod.POST)
-	public String resetPwd(@Valid PwdVaildDTO pwdVaildDTO, Errors errors, Model model) {
+	public String resetPwd(@Valid PwdVaildDTO pwdVaildDTO, Errors errors, Model model) throws Exception {
 		log.info("UserFindCotroller - resetPwd()");
 		
 		if (errors.hasErrors()) {
@@ -129,7 +131,7 @@ public class UserFindCotroller {
                 model.addAttribute(key, validatorResult.get(key));
             }
 
-            return "forward:/verifyEmail";
+            return "forward:/verifyPwd";
         }
 		
 		Map<String, String> userInfo = new HashMap<>();

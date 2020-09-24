@@ -23,7 +23,7 @@
                      <article class="notification">
                         <div class="notification_pic">
                            <img src=" //d2h5doj4xlbun0.cloudfront.net/member-0.0.1367/
-                           images/member/member_status_img3.jpg">   
+							images/member/member_status_img3.jpg">   
                         </div>                        
                         <dl class="notification__txt">
                            <dt></dt>
@@ -60,27 +60,5 @@
             </div>      
          </section>
       </div>
-      
-    <script type="text/javascript">   
-    
-         /* $("#pwFind-submit").click(function(e) {
-            var id = $("#id").val();
-            if(id == null) {
-               alert("아이디를 다시 확인해주세요.");
-               e.preventDefault();
-            }
-         });
-      
-               
-         $("#verifyNumber-submit").click(function(e) {
-            var verifyNumber = $("#verifyNumber").val();
-            var authKey = ${authKey};
-            if(verifyNumber != authKey) {
-               alert("인증번호를 다시 확인해주세요.");
-               e.preventDefault();
-            }
-         });  
-      
-   </script> 
    </body>
 </html>

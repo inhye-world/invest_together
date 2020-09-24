@@ -16,30 +16,31 @@ import lombok.Setter;
 @Setter
 public class ValidMemberDTO {
    
-   @NotEmpty(message="´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.")
-   @Size(min=4, max=12, message="´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.")
-   @Pattern(regexp = "^[a-z0-9]+$", message="´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.")
+   @NotEmpty
+   @Size(min=4, max=12)
+   @Pattern(regexp = "^[a-z0-9]+$", message = "¿µ¹®°ú ¼ıÀÚ°¡ È¥ÇÕµÈ ¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.")
    private String id;
    
-   @NotEmpty(message = "´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.")
-   @Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z]).{8,32}", message="´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.")
+   @NotEmpty
+   @Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z]).{8,32}", message = "¿µ¹®°ú ¼ıÀÚ°¡ Æ÷ÇÔµÈ ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä. ")
    private String pw;
    
-   @NotEmpty(message = "´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.")
-   @Size(min=2, max=8, message="´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.")
-   @Pattern(regexp = "^[°¡-ÆR]+$", message="´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.")
+   @NotEmpty
+   @Size(min=2, max=8)
+   @Pattern(regexp = "^[°¡-ÆR]+$", message = "Çü½Ä¿¡ ¸ÂÁö ¾Ê½À´Ï´Ù.")
    private String name;
    
-   @NotEmpty(message = "´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.")
-   @Size(min=2, max=8, message="´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.")
-   @Pattern(regexp = "^[°¡-ÆRa-zA-Z0-9]+$", message="´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.")
+   @NotEmpty
+   @Size(min=2, max=8)
+   @Pattern(regexp = "^[°¡-ÆRa-zA-Z0-9]+$", message = "Çü½Ä¿¡ ¸ÂÁö ¾Ê½À´Ï´Ù.")
    private String nickname;
    
-   @NotEmpty(message = "´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.")
-   @Email(message = "´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.")
+   @NotEmpty
+   @Email
    private String email;
    
-   @NotEmpty(message = "´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.")
-   @Pattern(regexp="^01(?:0|1|[6-9])(?:\\d{3}|\\d{4})\\d{4}$", message = "´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä.")
+   @NotEmpty
+   @Pattern(regexp="^01(?:0|1|[6-9])(?:\\d{3}|\\d{4})\\d{4}$", message = "Çü½Ä¿¡ ¸ÂÁö ¾Ê½À´Ï´Ù.")
    private String phone;
+
 }
