@@ -1,10 +1,16 @@
 package bit.it.into.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 
 import bit.it.into.dto.BondDto;
 import bit.it.into.mapper.BondMapper;
@@ -30,16 +36,29 @@ public class BondServiceImpl implements BondService {
 	}
 
 	@Override
-	public void remove(String bond_symbols) {
-		mapper.delete(bond_symbols);
+	public void remove(String bond_num) {
+		mapper.delete(bond_num);
 		
 	}
 
 	@Override
-	public void update(BondDto bondDto) throws Exception{
-        
+	public void update(BondDto bondDto) throws Exception{        
         mapper.update(bondDto);
     }
+
+	@Override
+	public Map<String, String> validateHandling(Errors errors) {
+		log.info("BondService - validateHandling()");
+		
+		Map<String, String> validatorResult = new HashMap<>();
+
+        for (FieldError error : errors.getFieldErrors()) {
+            String validKeyName = String.format("valid_%s", error.getField());
+            validatorResult.put(validKeyName, error.getDefaultMessage());
+        }
+
+        return validatorResult;
+	}
 
 	
 	

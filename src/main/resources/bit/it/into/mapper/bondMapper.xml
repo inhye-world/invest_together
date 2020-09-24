@@ -5,21 +5,25 @@
 <mapper namespace="bit.it.into.mapper.BondMapper">
 
 	<select id="getList" resultType="bondDto">
-        SELECT * FROM BOND
+        SELECT * FROM BOND ORDER BY bond_num DESC
     </select>
 	
 	<insert id="writeBond">
-        INSERT INTO BOND VALUES (#{bond_symbols}, '00000', #{total_interest}, #{bond_company}, #{bond_price}, 
+        INSERT INTO BOND(bond_num, bond_symbols, member_num, total_interest, bond_company, bond_price, bond_date, coupon_interest_rate,
+							discount_rate, gross_price, maturity_date, grade) 
+					VALUES ((SELECT NVL( MAX(bond_num) , 1) + 1 FROM BOND), #{bond_symbols}, '1111', #{total_interest}, #{bond_company}, #{bond_price}, 
 						#{bond_date}, #{coupon_interest_rate}, #{discount_rate}, 
 						#{gross_price}, #{maturity_date}, #{grade})
     </insert>
+    <!-- SELECT NVL(MAX(bond_num), 1)+1 -->
     
     <delete id="delete">
-    	DELETE FROM BOND WHERE bond_symbols = #{bond_symbols}
+    	DELETE FROM BOND WHERE bond_num = #{bond_num}
     </delete>
     
     <update id="update">
-    	UPDATE BOND SET total_interest = #{total_interest}, 
+    	UPDATE BOND SET bond_symbols = #{bond_symbols},
+    					total_interest = #{total_interest}, 
     					bond_company = #{bond_company}, 
     					bond_price = #{bond_price}, 
 						bond_date = #{bond_date}, 
@@ -28,7 +32,7 @@
 						gross_price = #{gross_price}, 
 						maturity_date = #{maturity_date}, 
 						grade = #{grade}
-					WHERE bond_symbols = #{bond_symbols}
+					WHERE bond_num = #{bond_num}
     </update>
 
 </mapper>

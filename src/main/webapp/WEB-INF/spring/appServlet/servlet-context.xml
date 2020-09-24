@@ -24,6 +24,4 @@
 	
 	<context:component-scan base-package="bit.it.into" />
 	
-	
-	
 </beans:beans>

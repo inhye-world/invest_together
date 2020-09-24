@@ -10,7 +10,7 @@ public interface BondMapper {
 
 	public void writeBond(BondDto bondDto);
 
-	public void delete(String bond_symbols);
+	public void delete(String bond_num);
 	
 	public void update(BondDto bondDto) throws Exception;
 
