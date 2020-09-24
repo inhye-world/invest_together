@@ -30,6 +30,7 @@
 		<result property="set_price" column="set_price" />
 		<result property="sns_type" column="sns_type" />
 		<result property="sns_token" column="sns_token" />
+		<result property="authkey" column="authkey" />
 		<association property="autheritiesDTO" resultMap="Autherities" />
 		<association property="rankDTO" resultMap="Rank" />
 	</resultMap>
@@ -40,13 +41,13 @@
 			FROM member m 
 				INNER JOIN autherities a ON m.member_num=a.member_num 
 				LEFT JOIN rank r ON m.member_num=r.member_num 
-			WHERE m.id=#{id}
+			WHERE m.id=#{id} and m.authkey='1'
 		]]>
 	</select>
 	
 	<insert id="insertUser">
 		<![CDATA[
-			INSERT INTO member(member_num, id, pw, name, nickname, email, phone, sns_type) VALUES(MEMBER_NUM_SEQ.nextval, #{id}, #{pw}, #{name}, #{nickname}, #{email}, #{phone}, 'normal')
+			INSERT INTO member(member_num, id, pw, name, nickname, email, phone, sns_type, authkey) VALUES(MEMBER_NUM_SEQ.nextval, #{id}, #{pw}, #{name}, #{nickname}, #{email}, #{phone}, 'normal', '0')
 		]]>
 	</insert>
 	
@@ -70,13 +71,13 @@
 	
 	<insert id="insertKakaoUser">
 		<![CDATA[
-			INSERT INTO member(member_num, id, pw, name, nickname, email, sns_type, sns_token) VALUES(MEMBER_NUM_SEQ.nextval, #{id}, #{pw}, #{name}, #{nickname}, #{email}, #{sns_type}, #{sns_token})
+			INSERT INTO member(member_num, id, pw, name, nickname, email, sns_type, sns_token, authkey) VALUES(MEMBER_NUM_SEQ.nextval, #{id}, #{pw}, #{name}, #{nickname}, #{email}, #{sns_type}, #{sns_token}, '1')
 		]]>
 	</insert>
 	
 	<insert id="insertNaverUser">
 		<![CDATA[
-			INSERT INTO member(member_num, id, pw, name, nickname, email, sns_type, sns_token) VALUES(MEMBER_NUM_SEQ.nextval, #{id}, #{pw}, #{name}, #{nickname}, #{email}, #{sns_type}, #{sns_token})
+			INSERT INTO member(member_num, id, pw, name, nickname, email, sns_type, sns_token, authkey) VALUES(MEMBER_NUM_SEQ.nextval, #{id}, #{pw}, #{name}, #{nickname}, #{email}, #{sns_type}, #{sns_token}, '1')
 		]]>
 	</insert>
 	
@@ -97,4 +98,16 @@
 			SELECT COUNT(*) FROM member WHERE email=#{email}
 		]]>
 	</select>
+	
+	<update id="updateAuthKey">
+		<![CDATA[
+			UPDATE member SET authkey = 1 WHERE email=#{email}
+		]]>
+	</update>
+
+	<update id="updatePw">
+		<![CDATA[
+			UPDATE member SET authkey = 1 WHERE email=#{email}
+		]]>
+	</update>
 </mapper>

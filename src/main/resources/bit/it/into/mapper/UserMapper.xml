@@ -17,4 +17,28 @@
 		]]>
 	</insert>
 	
+	<select id="selectPwdEmail" resultType="String">
+		<![CDATA[
+			select email from member where id = #{id}
+		]]>
+	</select>
+	
+	<update id="updatePwd">
+		<![CDATA[
+			update member set pw = #{pw} where id = #{id}
+		]]>
+	</update>
+	
+	<select id="selectIdEmail" resultType="String">
+		<![CDATA[
+			select email from member where name = #{name} and sns_type = 'normal'
+		]]>
+	</select>
+	
+	<select id="selectIdInfo" resultType="bit.it.into.dto.MemberDTO">
+		<![CDATA[
+			select * from member where email= #{email}
+		]]>
+	</select>
+	
 </mapper>

@@ -12,7 +12,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 
-import bit.it.into.dto.BondDto;
+import bit.it.into.dto.BondDTO;
 import bit.it.into.mapper.BondMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -26,13 +26,13 @@ public class BondServiceImpl implements BondService {
 	private BondMapper mapper;
 
 	@Override
-	public List<BondDto> getList() throws Exception {
+	public List<BondDTO> getList() throws Exception {
 		return mapper.getList();
 	}
 
 	@Override
-	public void writeBond(BondDto bondDto) {
-		mapper.writeBond(bondDto);
+	public void writeBond(BondDTO bondDTO) {
+		mapper.writeBond(bondDTO);
 	}
 
 	@Override
@@ -42,8 +42,8 @@ public class BondServiceImpl implements BondService {
 	}
 
 	@Override
-	public void update(BondDto bondDto) throws Exception{        
-        mapper.update(bondDto);
+	public void update(BondDTO bondDTO) throws Exception{        
+        mapper.update(bondDTO);
     }
 
 	@Override

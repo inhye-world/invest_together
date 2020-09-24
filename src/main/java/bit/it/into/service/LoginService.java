@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 
@@ -158,5 +159,18 @@ public class LoginService {
 		
 		return true;
 	}
+
+	public void updateAuthKey(String email) {
+		log.info("LoginService -updateAuthKey()");
+		
+		mapper.updateAuthKey(email);
+	}
+
+	public void updatePw(String id) {
+		log.info("LoginService -updatePw()");
+		
+		mapper.updatePw(id);
+	}
+	
 	
 }

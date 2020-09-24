@@ -13,7 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class BondDto {
+public class BondDTO {
 	
 	private String bond_num;
 	

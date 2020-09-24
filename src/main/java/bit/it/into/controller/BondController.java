@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import bit.it.into.dto.BondDto;
+import bit.it.into.dto.BondDTO;
 import bit.it.into.service.BondService;
 
 import lombok.AllArgsConstructor;
@@ -40,7 +40,7 @@ public class BondController {
 	}
 
 	@PostMapping("/writeBond")
-	public String write(@Valid BondDto bondDto, BindingResult result) throws Exception {
+	public String write(@Valid BondDTO bondDTO, BindingResult result) throws Exception {
 		log.info("////////////////////write///////////////////////");
 		
 		if( result.hasErrors() ) {
@@ -51,7 +51,7 @@ public class BondController {
 			return "redirect:bond";
 		}
 
-		bondService.writeBond(bondDto);
+		bondService.writeBond(bondDTO);
 		
 		return "redirect:bond";
 	}
@@ -73,7 +73,7 @@ public class BondController {
 	
 
 	@PostMapping("/modifyBond")
-    private String modify(@Valid BondDto bondDto, BindingResult result) throws Exception{
+    private String modify(@Valid BondDTO bondDTO, BindingResult result) throws Exception{
 		log.info("////////////////////modify///////////////////////");
 		
 		if( result.hasErrors() ) {
@@ -84,7 +84,7 @@ public class BondController {
 			return "redirect:bond";
 		}
 		
-		bondService.update(bondDto);
+		bondService.update(bondDTO);
         
 		return "redirect:bond";
     }

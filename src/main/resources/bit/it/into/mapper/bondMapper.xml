@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bit.it.into.mapper.BondMapper">
 
-	<select id="getList" resultType="bondDto">
+	<select id="getList" resultType="bondDTO">
         SELECT * FROM BOND ORDER BY bond_num DESC
     </select>
 	
