@@ -10,7 +10,8 @@
 	<link href="resources/temporary.css" rel="stylesheet" type="text/css">
 	
 	<style type="text/css">
-		.form div.error {color:red;} 
+		.form div.error {color:red;}
+		.form div{color:red;}
 	</style>
 </head>
 	<body>

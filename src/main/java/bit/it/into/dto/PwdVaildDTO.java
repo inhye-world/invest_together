@@ -15,7 +15,7 @@ import lombok.Setter;
 public class PwdVaildDTO {
 	
 	@NotEmpty
-	@Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z]).{8,32}", message="8ÀÚ ÀÌ»ó 32ÀÚ ÀÌ³»ÀÇ ÇÏ³ªÀÇ ¿µ¹®ÀÌ Æ÷ÇÔµÈ ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.")
+	@Pattern(regexp="(?=.*[0-9])(?=.*[a-zA-Z]).{8,32}", message="8ì ì´ìƒ 32ì ì´ë‚´ì˜ í•˜ë‚˜ì˜ ì˜ë¬¸ì´ í¬í•¨ëœ ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”.")
 	private String pw;	
 	
 	private String id;
