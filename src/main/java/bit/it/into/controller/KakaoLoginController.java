@@ -1,7 +1,6 @@
 package bit.it.into.controller;
 
 import java.util.Collections;
-
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -34,6 +33,7 @@ public class KakaoLoginController {
 	protected CustomUserDetailsService userDetailsService;
 	
 	private String secret = "KAKAOD8FJEK31O777A000SECRET";
+	
 	
 	@Autowired
 	KakaoService kakaoService;
@@ -82,10 +82,17 @@ public class KakaoLoginController {
 	
 	
 	@PostMapping("/addKakaoUser")
-	public String addKakaoUser(MemberDTO memberDTO) {
+	public String addKakaoUser(MemberDTO memberDTO, Model model) {				
+		
+		if(loginService.hasUserByNickname(memberDTO.getNickname())) {
+			model.addAttribute("valid_nickname", "닉네임이 중복 되었습니다.");
+			
+			return "login/kakaoAddInfo";
+		}
+					
 		memberDTO.setPw(secret);
 		loginService.addKakaoUser(memberDTO);
 		
-		return "login/resistration_clear";
+		return "login/resistration_SNS_Clear";
 	}
 }

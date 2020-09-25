@@ -3,10 +3,12 @@ package bit.it.into.controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Collections;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +40,7 @@ public class NaverLoginController {
 	protected CustomUserDetailsService userDetailsService;
 	
 	private String secret = "NAVERO7S8D9S00098777A000SECRET";
-	
+		
 	@Autowired
 	NaverService naverService;
 	@Autowired
@@ -85,14 +87,20 @@ public class NaverLoginController {
 		    return "redirect:/";
 		}
 		
-	}
-	
+	}	
 	
 	@PostMapping("/addNaverUser")
-	public String addNaverUser(MemberDTO memberDTO) {
+	public String addNaverUser(MemberDTO memberDTO, Model model) {
+		
+		if(loginService.hasUserByNickname(memberDTO.getNickname())) {
+			model.addAttribute("valid_nickname", "닉네임이 중복 되었습니다.");
+			
+			return "login/naverAddInfo";
+		}
+		
 		memberDTO.setPw(secret);
 		loginService.addNaverUser(memberDTO);
 		
-		return "login/resistration_clear";
+		return "login/resistration_SNS_Clear";
 	}
 }

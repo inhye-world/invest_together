@@ -7,8 +7,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -18,20 +16,18 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.springframework.stereotype.Service;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import lombok.extern.log4j.Log4j;
 
 @Service
 @Log4j
 public class OpenBankingService {
 	
-	private final static String O_CLIENT_ID = "TmlHvtfDp4g3a4KxAqPlexXCgmUz7V5xKd8hNnSd";
-	private final static String O_CLIENT_SECRET= "540RGNZttoNAaI3K1CvL36vlnPlltJsLL16I9X5z";
+	private final static String O_CLIENT_ID = "W9618Ccs1JZCOYPsVyT2XWzZB071pZLM7PpaRoyq";
+	private final static String O_CLIENT_SECRET= "5XOMFT67n8HpKS5DC5lHhwFNn6iVT1RvGN1vLQkc";
 	private final static String O_REDIRECT_URI = "http://localhost:8282/into/user/addAccount";
-	private final static String O_ORGANIZATION_CODE = "T991648810";
+	private final static String O_ORGANIZATION_CODE = "T991650270";
 	
 	public String getUrl() {
 		String openUrl = 	"https://testapi.openbanking.or.kr/oauth/2.0/authorize?"
