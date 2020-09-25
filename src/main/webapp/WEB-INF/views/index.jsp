@@ -20,8 +20,9 @@
 	
 				<button class="button5" onclick="location.href='accountBalance'">자산</button><br>
 				<button id="accountTransaction" class="button5">가계부</button><br>
-				<button class="button5" onclick="location.href='stockBondTable'">주식/채권</button><br>
+				<button class="button5" onclick="location.href='stockBondTable'">주식</button><br>
 				<button class="button5" onclick="location.href='bond'">채권</button><br>
+				<button class="button5" onclick="location.href='testmain'">메인?</button><br>
 			</div>
 		</div>
 		
