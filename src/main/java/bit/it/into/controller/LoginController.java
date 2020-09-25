@@ -62,29 +62,29 @@ public class LoginController {
             for (String key : validatorResult.keySet()) {
                 model.addAttribute(key, validatorResult.get(key));
             }
-
+            log.info(errors);
+            
             return "login/registrationForm";
         }
 		
-		
 		if(service.hasUserById(validMemberDTO.getId())) {
-			model.addAttribute("valid_id", "�븘�씠�뵒媛� 以묐났 �릺�뿀�뒿�땲�떎.");
+			model.addAttribute("valid_id", "아이디가 중복 되었습니다.");
 			
 			return "login/registrationForm";
 		}
 		
 		if(service.hasUserByNickname(validMemberDTO.getNickname())) {
-			model.addAttribute("valid_nickname", "�땳�꽕�엫�씠 以묐났 �릺�뿀�뒿�땲�떎.");
+			model.addAttribute("valid_nickname", "닉네임이 중복 되었습니다.");
 			
 			return "login/registrationForm";
 		}
 		
 		if(service.hasUserByEmail(validMemberDTO.getEmail())) {
-			model.addAttribute("valid_email", "�씠硫붿씪�씠 以묐났 �릺�뿀�뒿�땲�떎.");
+			model.addAttribute("valid_email", "이메일이 중복 되었습니다.");
 			
 			return "login/registrationForm";
 		}
-		
+				
 		MemberDTO memberDTO = new MemberDTO(validMemberDTO);
 		
 		String authKey = mailSendService.sendAuthMail(memberDTO.getEmail());
@@ -96,28 +96,11 @@ public class LoginController {
 	
 	//이메일인증
 	@RequestMapping("/authConfirm")
-	public String updateAuthKey(@RequestParam("email") String email) {
+	public String updateAuthKey(MemberDTO memberDTO) {
 		log.info("LoginController - updateAuthKey()");
 		 		
-        service.updateAuthKey(email);	    
+        service.updateAuthKey(memberDTO.getEmail());	    
         
 		return "login/authConfirm";
 	}
-	
-	//id찾기
-	@RequestMapping("/idFind")
-	public String idFind() {
-		log.info("LoginController - idFind()");
-		
-		return "idFind";
-	}
-	
-	//pw찾기
-	@RequestMapping("/passwordFind")
-	public String passwordFind() {
-		log.info("LoginController - passwordFind()");
-		
-		return "pwFind";
-	}
-		
 }
