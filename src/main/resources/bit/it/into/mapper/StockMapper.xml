@@ -4,7 +4,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="bit.it.into.mapper.StockBondMapper">
+<mapper namespace="bit.it.into.mapper.StockMapper">
 	
 	<resultMap id="StockInfo" type="bit.it.into.dto.StockInfoDTO">
 		<id property="stockinfo_symbols" column="stockinfo_symbols"/>
@@ -79,6 +79,12 @@
 		<![CDATA[
 			SELECT stockinfo_symbols FROM stock_info 
     		WHERE stockinfo_symbols LIKE concat(UPPER(#{value}), '%') OR stockinfo_symbols LIKE concat(LOWER(#{value}), '%')
+		]]>
+	</select>
+	
+	<select id="selectStockInfoBySymbol" resultType="Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM stock_info WHERE stockinfo_symbols=#{stockinfo_symbols}
 		]]>
 	</select>
 	

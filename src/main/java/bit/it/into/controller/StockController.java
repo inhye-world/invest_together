@@ -15,27 +15,33 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.databind.JsonNode;
+
+import bit.it.into.dto.AccountDTO;
 import bit.it.into.dto.BondDTO;
 import bit.it.into.dto.StockBuyDTO;
 import bit.it.into.dto.StockDTO;
 import bit.it.into.dto.StockSellDTO;
 import bit.it.into.security.CustomUser;
+import bit.it.into.service.BankService;
 import bit.it.into.service.OpenBankingService;
-import bit.it.into.service.StockBondService;
+import bit.it.into.service.StockService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @Controller
 @AllArgsConstructor
 @Log4j
-public class StockBondController {
+public class StockController {
 
-	private StockBondService service;
+	private StockService service;
+	private BankService bank;
 	private OpenBankingService open;
+	
 	
 	@RequestMapping("/stockBondTable")
 	public String stockBondTable(Authentication authentication, Model model) {
-		log.info("StockBondController - stockBondTable()");
+		log.info("StockController - stockBondTable()");
 		
 		if(authentication==null) {
 			return "login/login_require";
@@ -44,19 +50,33 @@ public class StockBondController {
 		
 		CustomUser user = (CustomUser)authentication.getPrincipal();
 		int user_num = user.getDto().getMember_num();
+		String access_token = user.getDto().getAccess_token();
 		
 		List<StockDTO> stockList = service.getStockList(user_num);
 		List<BondDTO> bondList = service.getBondList(user_num);
 		
+		int accountSum = 0;
+		
+		List<AccountDTO> accountList = bank.getAccountList(user_num);
+		
+		for(AccountDTO dto : accountList) {
+			String fintech_use_num = dto.getFintech_use_num();
+			JsonNode node = open.getAccountBalance(access_token, fintech_use_num);
+			String balance_amt = node.get("balance_amt").asText();
+			accountSum += Integer.valueOf(balance_amt);
+		}
+		
 		model.addAttribute("stockList", stockList);
 		model.addAttribute("bondList", bondList);
+		model.addAttribute("accountSum", accountSum);
+		
 		
 		return "stockbond/table";
 	}
 	
 	@PostMapping("/buyStock")
 	public String buyStock(Authentication authentication, StockBuyDTO stockBuyDTO) {
-		log.info("StockBondController - buyStock");
+		log.info("StockController - buyStock()");
 		
 		if(authentication==null) {
 			return "login/login_require";
@@ -83,7 +103,7 @@ public class StockBondController {
 	
 	@PostMapping("/sellStock")
 	public String sellStock(Authentication authentication, StockSellDTO stockSellDTO) {
-		log.info("StockBondController - sellStock");
+		log.info("StockController - sellStock()");
 		
 		if(authentication==null) {
 			return "login/login_require";
@@ -104,7 +124,7 @@ public class StockBondController {
 	
 	@PostMapping("/deleteStock")
 	public String deleteStock(Authentication authentication, HttpServletRequest request) {
-		log.info("StockBondController - deleteStock");
+		log.info("StockController - deleteStock()");
 		
 		if(authentication==null) {
 			return "login/login_require";
@@ -125,7 +145,7 @@ public class StockBondController {
 	@ResponseBody
 	@RequestMapping("/rest/stockInfo/{code}")
 	public String stockInfo(@PathVariable int code) {
-		log.info("StockBondController - stockInfo()");
+		log.info("StockController - stockInfo()");
 		
 		String strCode = String.format("%06d", code); 
 		String stockInfoXml = service.getStockInfoXml(strCode);
@@ -135,9 +155,24 @@ public class StockBondController {
 	}
 	
 	@ResponseBody
+	@RequestMapping("/rest/stockSymbolValid")
+	public String stockSymbolValid(HttpServletRequest request) {
+		log.info("StockController - stockSymbolValid()");
+		
+		String symbol = request.getParameter("symbol");
+		
+		boolean hasStock = service.hasStockInfoBySymbol(symbol);
+		
+		JSONObject object = new JSONObject();
+		object.put("hasStock", hasStock);
+		
+		return object.toString();
+	}
+	
+	@ResponseBody
 	@RequestMapping(value="/rest/stockAutocomplete", produces="application/text; charset=utf8")
 	public String stockAutocomplete(HttpServletRequest request) {
-		log.info("StockBondController - stockAutocomplete()");
+		log.info("StockController - stockAutocomplete()");
 		
 		String value = request.getParameter("value");
 		

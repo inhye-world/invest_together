@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import bit.it.into.dto.BondDTO;
 import bit.it.into.dto.StockDTO;
 
-public interface StockBondMapper {
+public interface StockMapper {
 
 	public List<StockDTO> selectStockList(int member_num);
 
@@ -26,5 +26,7 @@ public interface StockBondMapper {
 	public int deleteStock(@Param("member_num")int member_num, @Param("stockinfo_symbols")String stockinfo_symbols);
 
 	public List<String> selectAutocompleteList(String value);
+
+	public Integer selectStockInfoBySymbol(@Param("stockinfo_symbols")String symbol);
 
 }

@@ -1,0 +1,477 @@
+@charset "UTF-8";
+
+@font-face { font-family: 'designhouseOTFLight00'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/designhouseOTFLight00.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+
+.header-ribbon {
+	height: 34px;
+	padding: 5px 20px;
+	background-color:  #f4f4f4;
+}
+
+.log-box-1 {
+	position: relative;
+    float: right;
+    display: block;
+    cursor: pointer;
+}
+
+.login-a {
+	position: relative;
+    display: block;
+    padding: 6px 12px;
+    color: #fff;
+    border-radius: 2px;
+    background: #227fec;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.login-a:hover {
+	text-decoration: none;
+	color: #fff;
+}
+
+.log-box-2 {
+	position: relative;
+    float: right;
+    display: block;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-weight: inherit;
+    letter-spacing: -.5px;
+    vertical-align: baseline;
+    text-decoration: none;
+    line-height: 1.43;
+}
+
+.mypage-a {
+	display: inline-block;
+    padding: 0 0 0 16px;
+    color: #999;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 24px;
+    vertical-align: top;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: -.5px;
+}
+
+.mypage-a:hover {
+	text-decoration: none;
+	color: #999;
+}
+
+.mypage-a:before {
+	position: absolute;
+    top: calc(50% - 5px);
+    right: auto;
+    bottom: auto;
+    left: 0;
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 8c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm0 2c-2.7 0-8 1.3-8 4v2h16v-2c0-2.7-5.3-4-8-4z' fill='%23ACACAC' fill-rule='evenodd'/%3E%3C/svg%3E") no-repeat;
+    line-height: 0;
+    content: "";
+}
+
+.logout-btn {
+	display: inline-block;
+    margin: 0 0 0 16px;
+    color: #999;
+    font-size: 12px;
+    line-height: 24px;
+    text-decoration: underline;
+    vertical-align: top;
+    background: transparent;
+    border-radius: 0;
+    cursor: pointer;
+    padding: 0;
+    border: none;
+    letter-spacing: -1px;
+    text-align: left;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    align-items: flex-start;
+}
+
+.logout-btn:focus {
+	 outline:none;
+}
+
+.header-nav {
+	height: 56px;
+	border-bottom: 1px solid #E9E9E9;
+}
+
+.header-nav-wrap {
+	max-width: 1300px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+.header-nav-logo {
+	float: left;
+    display: block;
+    cursor: pointer;
+    color: #227fec;
+    font-family: 'designhouseOTFLight00';
+    line-height: 60px;
+    font-size: 25px;
+    padding-right: 40px;
+    margin-right: 40px;
+}
+
+.header-nav-ul {
+	float: left;
+	height: 56px;
+	display: block;
+	line-height: 56px;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.header-nav-ul ul {
+	height: 56px;
+	display: inline-block;
+	list-style-type: disc;
+    margin: 0px;
+    padding: 0px;
+}
+
+.header-nav-ul ul>li {
+	display: inline-block;
+    height: 56px;
+    cursor: pointer;
+    padding: 0 29px;
+}
+
+.header-nav-ul div:hover {
+	color: #227fec;
+}
+
+.header-nav-hamburger
+{
+  display: none;
+  font-family: 'Noto Sans KR', sans-serif;		
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+#menuToggle
+{
+  display: block;
+  position: relative;
+  top: 18px;
+  left: 18px;
+  
+  z-index: 1;
+  
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuToggle a
+{
+  text-decoration: none;
+  color: black;
+  
+  transition: color 0.3s ease;
+}
+
+#menuToggle a:hover
+{
+  color: #227fec;
+}
+
+#menuToggle .log-box-1 {
+	float: left;
+}
+
+#menuToggle .login-a {
+    color: #fff;
+}
+
+#menuToggle .login-a:hover {
+	color: #fff;
+}
+
+#menuToggle .log-box-2 {
+	float: left
+}
+
+#menuToggle .mypage-a {
+	color: #999;
+}
+
+#menuToggle .mypage-a:hover {
+	color: #999;
+}
+
+#menuToggle input
+{
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  
+  cursor: pointer;
+  
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+  
+  -webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle span
+{
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  
+  background: #227fec;
+  border-radius: 3px;
+  
+  z-index: 1;
+  
+  transform-origin: 4px 0px;
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+#menuToggle span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #227fec;
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menuToggle input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+#menu
+{
+  position: absolute;
+  width: 300px;
+  margin: -100px 0 0 -50px;
+  padding: 50px;
+  padding-top: 125px;
+  
+  background: #f4f4f4;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu li
+{
+  padding: 10px 0;
+  font-size: 20px;
+}
+
+/*
+ * And let's slide it in from the left
+ */
+#menuToggle input:checked ~ ul
+{
+  transform: none;
+}
+
+.footer-back {
+	background-color: #f4f4f4;
+}
+
+.footer-wrap {
+	max-width: 1200px;
+    padding: 0px 10px;
+    margin: 0px auto;
+}
+
+.footer-center {
+	padding: 72px 0px 85px;
+}
+
+.footer-1 div {
+	display: inline-block;
+	margin-right: 42px;
+}
+
+.footer-1 a {
+	font-size: 17px;
+    text-align: left;
+    font-weight: normal;
+    color: rgb(61, 77, 98);
+    line-height: 1.56;
+    font-family: 'Spoqa Han Sans', Sans-serif;
+}
+
+.footer-1 a:hover {
+	text-decoration: none;
+	color: #8f92a8;
+}
+
+.footer-2 {
+	margin-top: 42px;
+    margin-bottom: 42px;
+}
+
+.footer-2 div {
+	width: 100%;
+    height: 1px;
+    background: rgb(170, 179, 189);
+}
+
+.footer-3 {
+	display: flex;
+	flex-direction: row;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: rgb(101, 121, 142);
+    font-family: 'Spoqa Han Sans', Sans-serif;
+}
+
+.footer-3-1 {
+	margin-bottom: 16px;
+	font-family: 'designhouseOTFLight00';
+	font-size: 21px;
+}
+
+.footer-3-2 {
+	margin-bottom: 10px;
+	font-size: 13px;
+    line-height: 1.65;
+    opacity: 0.74;
+}
+
+.footer-3-2-1 {
+	display: block;
+	margin-bottom: 16px;
+}
+
+.footer-3-3 {
+	padding-right: 60px;
+	font-size: 11px;
+    line-height: 1.56;
+    opacity: 0.5;
+}
+
+
+@media ( max-width: 1024px ) {
+	.header-nav-logo {
+		padding-right: 20px;
+		margin-right: 20px;
+    }
+	
+	.header-nav-ul ul>li {
+		padding: 0 15px;
+	}
+	
+	.header-nav-ul {
+		width: calc(100% - 118.813px);
+		text-align: center;
+	}
+}
+
+@media ( max-width: 768px ) {
+	.header-nav-hamburger {
+		display: block;
+	}
+	
+	.header-ribbon {
+		display: none;
+	}
+	
+	.header-nav-ul {
+		display: none;
+	}
+	
+	.header-nav-logo {
+		padding-right: 0px;
+		margin-right: 0px;
+		float: none;
+		display: inline-block;
+	}
+	
+	.header-nav-wrap {
+		text-align: center;
+	}
+	
+	.footer-center {
+		padding: 48px 20px 120px;
+	}
+	
+	.footer-1 div {
+		display: block;
+		margin-bottom: 24px;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+

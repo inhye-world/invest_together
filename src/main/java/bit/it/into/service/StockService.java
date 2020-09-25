@@ -11,31 +11,31 @@ import org.springframework.stereotype.Service;
 
 import bit.it.into.dto.BondDTO;
 import bit.it.into.dto.StockDTO;
-import bit.it.into.mapper.StockBondMapper;
+import bit.it.into.mapper.StockMapper;
 import lombok.extern.log4j.Log4j;
 
 @Service
 @Log4j
-public class StockBondService {
+public class StockService {
 
 	@Inject
-	private StockBondMapper mapper;
+	private StockMapper mapper;
 
 	
 	public List<StockDTO> getStockList(int member_num) {
-		log.info("StockBondService - getStockList()");
+		log.info("StockService - getStockList()");
 		
 		return mapper.selectStockList(member_num);
 	}
 
 	public List<BondDTO> getBondList(int member_num) {
-		log.info("StockBondService - getBondList()");
+		log.info("StockService - getBondList()");
 		
 		return mapper.selectBondList(member_num);
 	}
 
 	public boolean hasStock(StockDTO stockDTO) {
-		log.info("StockBondService - hasStock()");
+		log.info("StockService - hasStock()");
 		
 		Integer count = mapper.selectStockCount(stockDTO);
 		
@@ -47,7 +47,7 @@ public class StockBondService {
 	}
 
 	public void addStock(StockDTO stockDTO) {
-		log.info("StockBondService - addStock()");
+		log.info("StockService - addStock()");
 		
 		int count = mapper.insertStock(stockDTO);
 		
@@ -57,7 +57,7 @@ public class StockBondService {
 	}
 
 	public void modifyAddstock(StockDTO stockDTO) {
-		log.info("StockBondService - modifyAddstock()");
+		log.info("StockService - modifyAddstock()");
 		
 		StockDTO original = mapper.selectStock(stockDTO);
 		
@@ -77,7 +77,7 @@ public class StockBondService {
 	}
 
 	public void modifyRemoveStock(StockDTO stockDTO) {
-		log.info("StockBondService - modifyRemovestock()");
+		log.info("StockService - modifyRemovestock()");
 		
 		StockDTO original = mapper.selectStock(stockDTO);
 		
@@ -93,7 +93,7 @@ public class StockBondService {
 	}
 	
 	public void deleteStocks(int member_num, String[] stockSymbols) {
-		log.info("StockBondService - deleteStocks()");
+		log.info("StockService - deleteStocks()");
 		
 		int countSum = 0;
 		for(int i=0; i<stockSymbols.length; ++i) {
@@ -110,7 +110,7 @@ public class StockBondService {
 	
 	
 	public String getStockInfoXml(String strCode) {
-		log.info("StockBondService - getStockInfoXml()");
+		log.info("StockService - getStockInfoXml()");
 		
 		String url = "http://asp1.krx.co.kr/servlet/krx.asp.XMLSiseEng?code="+strCode;
 		
@@ -133,9 +133,21 @@ public class StockBondService {
 	}
 
 	public List<String> getAutocompleteList(String value) {
-		log.info("StockBondService - getAutocompleteList()");
+		log.info("StockService - getAutocompleteList()");
 		
 		return mapper.selectAutocompleteList(value);
+	}
+
+	public boolean hasStockInfoBySymbol(String symbol) {
+		log.info("StockService - hasStockBySymbol()");
+		
+		Integer count = mapper.selectStockInfoBySymbol(symbol);
+		
+		if(count==1) {
+			return true;
+		}
+		
+		return false;
 	}
 
 }
