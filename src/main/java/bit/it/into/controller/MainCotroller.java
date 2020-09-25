@@ -18,12 +18,12 @@ public class MainCotroller {
 	}
 
 	
-	 @RequestMapping("/accessDenied") public String accessDenied() {
+	 @RequestMapping("/accessDenied") 
+	 public String accessDenied() {
 		 log.info("MainController - accessDenied()");
 		 return "error/accessDenied"; 
 	 }
 	 
-	
-	
+
 
 }
