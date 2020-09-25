@@ -24,16 +24,6 @@ public class MainCotroller {
 		return "error/accessDenied";
 	}
 	
-	@RequestMapping("/header")
-	public String header() {
-		return "include/header";
-	}
-	
-	@RequestMapping("/footer")
-	public String footer() {
-		return "include/footer";
-	}
-	
 	@RequestMapping("/testmain")
 	public String testmain() {
 		return "include/testmain";

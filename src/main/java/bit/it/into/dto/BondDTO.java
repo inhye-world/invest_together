@@ -17,13 +17,11 @@ public class BondDTO {
 	
 	private String bond_num;
 	
+	private int member_num;
+	
 	@NotEmpty
 	//@Pattern(regexp="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[가-핳])")
 	private String bond_symbols;
-	
-	//@NotEmpty
-	//@Pattern(regexp="^[0-9]*$")
-	private String member_num;
 	
 	@NotEmpty
 	@Pattern(regexp="^[+]?(0|[1-9][0-9]*)(\\.[0-9]+)?$")

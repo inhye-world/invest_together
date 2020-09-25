@@ -1,6 +1,6 @@
 package bit.it.into.dto;
 
-import javax.validation.Valid;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,7 +28,7 @@ public class MemberDTO {
 	private String sns_token;
 	private String authkey;
 	
-	private AutheritiesDTO autheritiesDTO;
+	private AuthoritiesDTO authoritiesDTO;
 	
 	private RankDTO rankDTO;
 	

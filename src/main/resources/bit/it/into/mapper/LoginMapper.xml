@@ -6,9 +6,9 @@
   
 <mapper namespace="bit.it.into.mapper.LoginMapper">
 
-	<resultMap id="Autherities" type="bit.it.into.dto.AutheritiesDTO">
+	<resultMap id="Authorities" type="bit.it.into.dto.AuthoritiesDTO">
 		<id property="member_num" column="member_num"/>
-		<result property="autherity" column="autherity" />		
+		<result property="authority" column="authority" />		
 	</resultMap>
 	
 	<resultMap id="Rank" type="bit.it.into.dto.RankDTO">
@@ -31,7 +31,7 @@
 		<result property="sns_type" column="sns_type" />
 		<result property="sns_token" column="sns_token" />
 		<result property="authkey" column="authkey" />
-		<association property="autheritiesDTO" resultMap="Autherities" />
+		<association property="authoritiesDTO" resultMap="Authorities" />
 		<association property="rankDTO" resultMap="Rank" />
 	</resultMap>
 	
@@ -39,7 +39,7 @@
 		<![CDATA[
 			SELECT * 
 			FROM member m 
-				INNER JOIN autherities a ON m.member_num=a.member_num 
+				INNER JOIN authorities a ON m.member_num=a.member_num 
 				LEFT JOIN rank r ON m.member_num=r.member_num 
 			WHERE m.id=#{id} and m.authkey='1'
 		]]>
@@ -53,7 +53,7 @@
 	
 	<insert id="insertAuthorities">
 		<![CDATA[
-			INSERT INTO autherities VALUES(MEMBER_NUM_SEQ.currval, 'ROLE_USER')
+			INSERT INTO authorities VALUES(MEMBER_NUM_SEQ.currval, 'ROLE_USER')
 		]]>
 	</insert>
 	

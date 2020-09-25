@@ -9,7 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class AutheritiesDTO {
+public class AuthoritiesDTO {
 	private int member_num;
-	private String autherity;
+	private String authority;
 }

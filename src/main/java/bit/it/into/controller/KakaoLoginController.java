@@ -68,7 +68,7 @@ public class KakaoLoginController {
 			
 			CustomUser userDetails = (CustomUser)userDetailsService.loadUserByUsername(user.getId());
 		    Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, secret, Collections
-				    .singletonList(new SimpleGrantedAuthority(userDetails.getDto().getAutheritiesDTO().getAutherity())));
+				    .singletonList(new SimpleGrantedAuthority(userDetails.getDto().getAuthoritiesDTO().getAuthority())));
 
 		    SecurityContext securityContext = SecurityContextHolder.getContext();
 		    securityContext.setAuthentication(authentication);

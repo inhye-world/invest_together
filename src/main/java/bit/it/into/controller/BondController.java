@@ -47,6 +47,7 @@ public class BondController {
 		int user_num = user.getDto().getMember_num();
 		
 		model.addAttribute("list", bondService.getList(user_num));
+		
 		return "bond/list";
 	}
 
@@ -70,7 +71,7 @@ public class BondController {
 			return "redirect:bond";
 		}
 		
-		bondDTO.setMember_num(Integer.toString(user_num));
+		bondDTO.setMember_num(user_num);
 		bondService.writeBond(bondDTO);
 		
 		return "redirect:bond";
@@ -78,7 +79,7 @@ public class BondController {
 
 	@ResponseBody
 	@PostMapping("/deleteBond")
-	public int delete(@RequestParam(value = "checkRow[]") List<String> checkArr){
+	public int delete(@RequestParam(value = "checkRow[]") List<String> checkArr, Authentication authentication){
 		log.info("////////////////////delete///////////////////////");
 
 		int result = 1;
@@ -93,7 +94,7 @@ public class BondController {
 	
 
 	@PostMapping("/modifyBond")
-    private String modify(@Valid BondDTO bondDTO, BindingResult result) throws Exception{
+    private String modify(@Valid BondDTO bondDTO, BindingResult result, Authentication authentication) throws Exception{
 		log.info("////////////////////modify///////////////////////");
 		
 		if( result.hasErrors() ) {

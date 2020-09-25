@@ -25,7 +25,7 @@ public class CustomUser extends User{
 	public CustomUser(MemberDTO memberDTO) {	
 		
 		super(memberDTO.getId(), memberDTO.getPw(), Collections
-				    .singletonList(new SimpleGrantedAuthority(memberDTO.getAutheritiesDTO().getAutherity())));
+				    .singletonList(new SimpleGrantedAuthority(memberDTO.getAuthoritiesDTO().getAuthority())));
 
 		this.dto = memberDTO;
 	}
