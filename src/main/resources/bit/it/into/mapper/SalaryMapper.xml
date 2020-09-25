@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="bit.it.into.mapper.SalaryMapper">
+	
+	<select id="readAllSalary" resultType="bit.it.into.dto.AccountSalaryDTO">
+		<![CDATA[
+			Select * from salary_account where fintech_use_num = #{fintech_use_num}
+		]]>
+	</select>
+	
+	<select id="check" resultType="int">
+		<![CDATA[
+			Select count(*) from salary_account where fintech_use_num = #{fintech_use_num}
+		]]>
+	</select>
+	
+	<update id="modify">
+		<![CDATA[
+      		Update salary_account set category=#{category}, interest=#{interest}, maturity=#{maturity}, expected_amt=#{expected_amt} where fintech_use_num=#{fintech_use_num}
+   		]]>
+	</update>
+	
+	<insert id="insert">
+		<![CDATA[
+      		Insert into salary_account (fintech_use_num, category, interest, maturity, expected_amt) values (#{fintech_use_num}, #{category}, #{interest}, #{maturity}, #{expected_amt})
+   		]]>
+	</insert>
+</mapper>

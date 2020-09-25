@@ -41,7 +41,10 @@ public class UserController {
 		log.info("OpenBankingController - addAccount()");
 		
 		CustomUser user = (CustomUser)authentication.getPrincipal();
-		
+		String category = "적금";
+		String interest = "3.1%";
+		String maturity = "2020-09-23";
+		String expected_amt = "500000";
 		
 		JsonNode node = open.getAccessToken(code);
 		String access_token = node.get("access_token").asText();

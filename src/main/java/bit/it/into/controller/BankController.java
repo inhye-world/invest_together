@@ -37,7 +37,7 @@ public class BankController {
 	
 	
 	@RequestMapping(value = "/accountBalance", produces = "application/json", method = { RequestMethod.GET, RequestMethod.POST })
-	public String accountBalance(Authentication authentication, Model model) {
+	public String accountBalance(Authentication authentication, Model model, AccountDTO account) {
 		log.info("BankController - accountBalance()");
 		
 		if(authentication == null) {
@@ -74,7 +74,6 @@ public class BankController {
 			sum += Integer.valueOf(balance_amt);
 		}
 		
-		
 		model.addAttribute("accountBalanceList", accountBalanceList);
 		model.addAttribute("balanceSum", sum);
 		
@@ -84,8 +83,6 @@ public class BankController {
 		
 		return "bank/account_balance";
 	}
-	
-	
 	
 	@RequestMapping(value = "/accountTransaction-{year}-{month}", produces = "application/json", method = { RequestMethod.GET, RequestMethod.POST })
 	public String accountTransaction(Authentication authentication, @PathVariable String year, @PathVariable String month, Model model) throws ParseException {
@@ -172,5 +169,4 @@ public class BankController {
 		
 		return "bank/account_transaction";
 	}
-	
 }

@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import bit.it.into.dto.AccountBalanceDTO;
 import bit.it.into.dto.AccountDTO;
 import bit.it.into.mapper.BankMapper;
 import lombok.extern.log4j.Log4j;
@@ -22,4 +23,5 @@ public class BankService {
 		
 		return mapper.selectAccountList(member_num);
 	}
+
 }
