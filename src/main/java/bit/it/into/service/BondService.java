@@ -9,7 +9,7 @@ import bit.it.into.dto.BondDTO;
 
 public interface BondService {
 	
-	public List<BondDTO> getList() throws Exception;
+	public List<BondDTO> getList(int member_num) throws Exception;
 
 	public void writeBond(BondDTO bondDTO);
 

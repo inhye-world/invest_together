@@ -26,8 +26,8 @@ public class BondServiceImpl implements BondService {
 	private BondMapper mapper;
 
 	@Override
-	public List<BondDTO> getList() throws Exception {
-		return mapper.getList();
+	public List<BondDTO> getList(int member_num) throws Exception {
+		return mapper.getList(member_num);
 	}
 
 	@Override

@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.validation.Valid;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import bit.it.into.dto.BondDTO;
+import bit.it.into.security.CustomUser;
 import bit.it.into.service.BondService;
 
 import lombok.AllArgsConstructor;
@@ -33,15 +35,32 @@ public class BondController {
 	BondService bondService;
 	
 	@GetMapping("/bond")
-	public String list(Model model) throws Exception {	
+	public String list(Model model, Authentication authentication) throws Exception {	
 		log.info("////////////////////list/////////////////////");
-		model.addAttribute("list", bondService.getList());
+		
+		if(authentication == null) {
+			return "login/login_require";
+		}
+		
+		
+		CustomUser user = (CustomUser)authentication.getPrincipal();
+		int user_num = user.getDto().getMember_num();
+		
+		model.addAttribute("list", bondService.getList(user_num));
 		return "bond/list";
 	}
 
 	@PostMapping("/writeBond")
-	public String write(@Valid BondDTO bondDTO, BindingResult result) throws Exception {
+	public String write(@Valid BondDTO bondDTO, BindingResult result, Authentication authentication) throws Exception {
 		log.info("////////////////////write///////////////////////");
+		
+		if(authentication == null) {
+			return "login/login_require";
+		}
+		
+		
+		CustomUser user = (CustomUser)authentication.getPrincipal();
+		int user_num = user.getDto().getMember_num();
 		
 		if( result.hasErrors() ) {
 			List<ObjectError> list = result.getAllErrors();
@@ -50,7 +69,8 @@ public class BondController {
 			}
 			return "redirect:bond";
 		}
-
+		
+		bondDTO.setMember_num(Integer.toString(user_num));
 		bondService.writeBond(bondDTO);
 		
 		return "redirect:bond";

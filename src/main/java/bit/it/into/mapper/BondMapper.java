@@ -6,7 +6,7 @@ import bit.it.into.dto.BondDTO;
 
 public interface BondMapper {
 	
-	public List<BondDTO> getList() throws Exception;
+	public List<BondDTO> getList(int member_num) throws Exception;
 
 	public void writeBond(BondDTO bondDTO);
 
