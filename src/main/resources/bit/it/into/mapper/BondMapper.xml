@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bit.it.into.mapper.BondMapper">
+
+	<select id="getList" resultType="bit.it.into.dto.BondDTO">
+        SELECT * FROM BOND WHERE member_num=#{member_num} ORDER BY bond_num DESC
+    </select>
+	
+	<insert id="writeBond">
+        INSERT INTO BOND(bond_num, bond_symbols, member_num, total_interest, bond_company, bond_price, bond_date, coupon_interest_rate,
+							discount_rate, gross_price, maturity_date, grade) 
+					VALUES ((SELECT NVL( MAX(bond_num) , 1) + 1 FROM BOND), #{bond_symbols}, #{member_num}, #{total_interest}, #{bond_company}, #{bond_price}, 
+						#{bond_date}, #{coupon_interest_rate}, #{discount_rate}, 
+						#{gross_price}, #{maturity_date}, #{grade})
+    </insert>
+    <!-- SELECT NVL(MAX(bond_num), 1)+1 -->
+    
+    <delete id="delete">
+    	DELETE FROM BOND WHERE bond_num = #{bond_num}
+    </delete>
+    
+    <update id="update">
+    	UPDATE BOND SET bond_symbols = #{bond_symbols},
+    					total_interest = #{total_interest}, 
+    					bond_company = #{bond_company}, 
+    					bond_price = #{bond_price}, 
+						bond_date = #{bond_date}, 
+						coupon_interest_rate = #{coupon_interest_rate}, 
+						discount_rate = #{discount_rate}, 
+						gross_price = #{gross_price}, 
+						maturity_date = #{maturity_date}, 
+						grade = #{grade}
+					WHERE bond_num = #{bond_num}
+    </update>
+
+</mapper>
