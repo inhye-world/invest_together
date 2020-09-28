@@ -12,6 +12,7 @@
 	<body>
 		<div class="wrapper">
 			<jsp:include page="../include/header.jsp"/>
+			<jsp:include page="../include/footer.jsp"/>
 			
 			<div class="container modifyform">
 				<a class="mainA" href="/into"> 같이투자 API TEST</a>
@@ -27,7 +28,6 @@
 				</div>
 				
 				<form:form class="form" action="userModify" method="POST">
-					<input type="hidden" name="nickname" value="${principal.dto.nickname}">
 					<input type="password" name="pw" placeholder="비밀번호 (8~32자리)">
 					<input id="regi-submit" class="button5" type="submit" value="확인">
 				</form:form>		

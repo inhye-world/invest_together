@@ -9,7 +9,7 @@
 	<link href="../resources/temporary.css" rel="stylesheet" type="text/css">
 </head>
 	<body>
-		<c:url value="/user/modify" var="modify_url" />
+		<c:url value="/modify" var="modify_url" />
 		<div class="wrapper">
 			<jsp:include page="../include/header_temp.jsp"/>
 			

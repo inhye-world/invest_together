@@ -1,7 +1,17 @@
 package bit.it.into.controller;
 
 
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +33,9 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class UserController {
 	
+	@Inject
+	private BCryptPasswordEncoder passEncoder;
+	
 	private UserService service;
 	private OpenBankingService open;
 	
@@ -35,7 +48,7 @@ public class UserController {
 		return "user/myPage";
 	}
 	
-	@RequestMapping("/user/modify")
+	@RequestMapping("/modify")
 	public String modify(Model model) {
 		log.info("UserController - modify()");
 				
@@ -43,11 +56,25 @@ public class UserController {
 	}
 	
 	@RequestMapping("/userModify")
-	public String userModify(MemberDTO memberDTO) {
+	public String userModify(MemberDTO memberDTO, Authentication authentication, HttpServletResponse response) throws IOException {
 		log.info("UserController - userModify()");
 		
+		CustomUser user = (CustomUser)authentication.getPrincipal();
+		
+		String encodedPw = user.getDto().getPw();
+		String rawPw = memberDTO.getPw();
+				    
+		if(passEncoder.matches(rawPw, encodedPw)) {
+			return "user/userModifyInfo";
 			
-		return "userModifyInfo";
+		} else {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('비밀번호가 잘못되었습니다.'); </script>");
+			out.flush();
+			
+			return "user/userModify";
+		}
 	}
 	
 	

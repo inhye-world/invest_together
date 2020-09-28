@@ -22,4 +22,5 @@ public interface UserMapper {
 
 	List<MemberDTO> selectIdInfo(String email);
 
+
 }
