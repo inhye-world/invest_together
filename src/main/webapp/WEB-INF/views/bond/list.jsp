@@ -23,14 +23,14 @@
   <title>같이투자</title>
 
   <!-- Custom fonts for this template -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="resources/sb_admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="resources/sb_admin/css/sb-admin-2.min.css" rel="stylesheet">
 
   <!-- Custom styles for this page -->
-  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link href="resources/sb_admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 
 </head>
@@ -399,10 +399,7 @@
 		                    </tr>
                     </c:forEach>	
                   </tbody>
-                </table>
-                
-                <div>${valid_bond_symbols} </div>
-                
+                </table>                
                 </form:form>
               </div>
             </div>
@@ -910,26 +907,26 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="resources/sb_admin/vendor/jquery/jquery.min.js"></script>
+  <script src="resources/sb_admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="resources/sb_admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+  <script src="resources/sb_admin/js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
-  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  <script src="resources/sb_admin/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="resources/sb_admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="js/demo/datatables-demo.js"></script>
+  <script src="resources/sb_admin/js/demo/datatables-demo.js"></script>
   
 	 <!-- Exel Export -->
-	<script type="text/javascript" src="js/FileSaver/FileSaver.min.js"></script>
-	<script type="text/javascript" src="js/js-xlsx/xlsx.core.min.js"></script>
-	<script type="text/javascript" src="js/tableExport.min.js"></script>
+	<script type="text/javascript" src="resources/sb_admin/js/FileSaver/FileSaver.min.js"></script>
+	<script type="text/javascript" src="resources/sb_admin/js/js-xlsx/xlsx.core.min.js"></script>
+	<script type="text/javascript" src="resources/sb_admin/js/tableExport.min.js"></script>
 
 </body>
 

@@ -1,5 +1,7 @@
 package bit.it.into.dto;
 
+
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,8 +26,9 @@ public class MemberDTO {
 	private int set_price;
 	private String sns_type;
 	private String sns_token;
+	private String authkey;
 	
-	private AutheritiesDTO autheritiesDTO;
+	private AuthoritiesDTO authoritiesDTO;
 	
 	private RankDTO rankDTO;
 	
@@ -36,6 +39,7 @@ public class MemberDTO {
 		this.nickname = dto.getNickname();
 		this.email = dto.getEmail();
 		this.phone = dto.getPhone();
+		
 	}
 	
 }

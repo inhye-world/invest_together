@@ -9,7 +9,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class AutheritiesDTO {
-	private int member_num;
-	private String autherity;
+public class AccountBalanceDTO {
+	private AccountDTO accountDTO;
+	private String product_name;
+	private String balance_amt;
 }

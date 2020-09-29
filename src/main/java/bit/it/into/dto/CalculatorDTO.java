@@ -1,5 +1,7 @@
 package bit.it.into.dto;
 
+import javax.validation.constraints.NotEmpty;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,11 +20,21 @@ public class CalculatorDTO {
 //	ROE	NUMBER(3,0)
 //	KE	NUMBER(3,0)
 	
+	@NotEmpty
 	private String stockinfo_symbols;
+	
+	//@NotEmpty
 	private int member_num;
-	private int target_price;
-	private int ev;
-	private int share_issued;
-	private double roe;
-	private double ke;
+	
+	@NotEmpty
+	private String ev;
+	
+	@NotEmpty
+	private String share_issued;
+	
+	@NotEmpty
+	private String roe;
+	
+	@NotEmpty
+	private String ke;
 }

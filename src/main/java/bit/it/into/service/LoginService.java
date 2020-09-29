@@ -136,7 +136,7 @@ public class LoginService {
 
 	public boolean hasUserByNickname(String nickname) {
 		log.info("LoginService - hasUserByNickname()");
-		
+				
 		Integer count = mapper.selectUserByNickname(nickname);
 		
 		if(count==0) {
@@ -158,5 +158,18 @@ public class LoginService {
 		
 		return true;
 	}
+
+	public void updateAuthKey(String email) {
+		log.info("LoginService -updateAuthKey()");
+		
+		mapper.updateAuthKey(email);
+	}
+
+	public void updatePw(String id) {
+		log.info("LoginService -updatePw()");
+		
+		mapper.updatePw(id);
+	}
+	
 	
 }

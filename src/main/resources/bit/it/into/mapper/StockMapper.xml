@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="bit.it.into.mapper.StockMapper">
+	
+	<resultMap id="StockInfo" type="bit.it.into.dto.StockInfoDTO">
+		<id property="stockinfo_symbols" column="stockinfo_symbols"/>
+		<result property="code" column="code" />		
+	</resultMap>
+	
+	<resultMap id="Stock" type="bit.it.into.dto.StockDTO">
+		<id property="member_num" column="member_num" />
+		<id property="stockinfo_symbols" column="stockinfo_symbols" />
+		<result property="company" column="company" />
+		<result property="purchase_price" column="purchase_price" />
+		<result property="quantity" column="quantity" />
+		<result property="target_price" column="target_price" />
+		<result property="net_profit" column="net_profit" />
+		<association property="stockInfoDTO" resultMap="StockInfo" />
+	</resultMap>
+	
+	<select id="selectStockList" resultMap="Stock" >
+		<![CDATA[
+			SELECT * 
+			FROM stock s 
+				INNER JOIN stock_info si ON s.stockinfo_symbols = si.stockinfo_symbols 
+			WHERE member_num=#{member_num}
+		]]>
+	</select>
+	
+	<select id="selectBondList" resultType="BondDTO" >
+			SELECT * FROM bond WHERE member_num=#{member_num}
+	</select>
+	
+	<select id="selectStockCount" resultType="Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM stock WHERE member_num=#{member_num} AND stockinfo_symbols=#{stockinfo_symbols}
+		]]>
+	</select>
+	
+	<insert id="insertStock">
+		<![CDATA[
+			INSERT INTO stock(member_num, stockinfo_symbols, company, purchase_price, quantity) values(#{member_num}, #{stockinfo_symbols}, #{company}, #{purchase_price}, #{quantity})
+		]]>
+	</insert>
+	
+	<select id="selectStock" resultType="bit.it.into.dto.StockDTO">
+		<![CDATA[
+			SELECT * FROM stock WHERE member_num=#{member_num} AND stockinfo_symbols=#{stockinfo_symbols}
+		]]>
+	</select>
+	
+	<update id="updateAddStock">
+		<![CDATA[
+			UPDATE stock SET company=#{company}, purchase_price=#{purchase_price}, quantity=#{quantity} 
+			WHERE member_num=#{member_num} AND stockinfo_symbols=#{stockinfo_symbols}
+		]]>
+	</update>
+	
+	<update id="updateRemoveStock">
+		<![CDATA[
+			UPDATE stock SET quantity=#{quantity} 
+			WHERE member_num=#{member_num} AND stockinfo_symbols=#{stockinfo_symbols}
+		]]>
+	</update>
+	
+	<delete id="deleteStock">
+		<![CDATA[
+			DELETE stock WHERE member_num=#{member_num} AND stockinfo_symbols=#{stockinfo_symbols}
+		]]>
+	</delete>
+	
+	<select id="selectAutocompleteList" resultType="String">
+		<![CDATA[
+			SELECT stockinfo_symbols FROM stock_info 
+    		WHERE stockinfo_symbols LIKE concat(UPPER(#{value}), '%') OR stockinfo_symbols LIKE concat(LOWER(#{value}), '%')
+		]]>
+	</select>
+	
+	<select id="selectStockInfoBySymbol" resultType="Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM stock_info WHERE stockinfo_symbols=#{stockinfo_symbols}
+		]]>
+	</select>
+	
+</mapper>

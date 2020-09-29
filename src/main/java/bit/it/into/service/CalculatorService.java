@@ -18,7 +18,16 @@ public class CalculatorService {
 	private CalculatorMapper mapper;
 
 	public void writeCalculator(CalculatorDTO calculatorDTO) {
-		mapper.writeCalculator(calculatorDTO);
+		mapper.insert(calculatorDTO);
 	}
+
+	public void updateCalculator(CalculatorDTO calculatorDTO) {
+		mapper.update(calculatorDTO);
+	}
+
+	public int checkSymbols(CalculatorDTO calculatorDTO) {
+		return mapper.checkSymbols(calculatorDTO);
+	}
+
 
 }

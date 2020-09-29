@@ -23,14 +23,14 @@
   <title>같이투자</title>
 
   <!-- Custom fonts for this template -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="resources/sb_admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="resources/sb_admin/css/sb-admin-2.min.css" rel="stylesheet">
 
   <!-- Custom styles for this page -->
-  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link href="resources/sb_admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 
 </head>
@@ -40,7 +40,119 @@
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-    
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Interface
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Components</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Components:</h6>
+            <a class="collapse-item" href="buttons.html">Buttons</a>
+            <a class="collapse-item" href="cards.html">Cards</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-wrench"></i>
+          <span>Utilities</span>
+        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Utilities:</h6>
+            <a class="collapse-item" href="utilities-color.html">Colors</a>
+            <a class="collapse-item" href="utilities-border.html">Borders</a>
+            <a class="collapse-item" href="utilities-animation.html">Animations</a>
+            <a class="collapse-item" href="utilities-other.html">Other</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Addons
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Pages</span>
+        </a>
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Login Screens:</h6>
+            <a class="collapse-item" href="login.html">Login</a>
+            <a class="collapse-item" href="register.html">Register</a>
+            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+            <div class="collapse-divider"></div>
+            <h6 class="collapse-header">Other Pages:</h6>
+            <a class="collapse-item" href="404.html">404 Page</a>
+            <a class="collapse-item" href="blank.html">Blank Page</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Nav Item - Charts -->
+      <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Charts</span></a>
+      </li>
+
+      <!-- Nav Item - Tables -->
+      <li class="nav-item active">
+        <a class="nav-link" href="tables.html">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Tables</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -235,168 +347,168 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">링고님의 기업관리</h1>
+          <h1 class="h3 mb-2 text-gray-800">계산기</h1>
 
           <!-- DataTales -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">적정 주가 계산</h6>
+              <h6 class="m-0 font-weight-bold text-primary">나의 적정 주가</h6>
             </div>
             <div class="card-body">
-            	<div class="table-responsive">
-				
-
-          <!-- table script -->
-          <script type="text/javascript">
-	          
-	          function calculate(){
-	        	 
-	        	 	//null check
-	        		// form안의 모든 text type 조회
-			    	var txtEle = $("#inputInfo input[type=text]");
-			    	
-			    	for(var i = 0; i < txtEle.length; i ++){
-			    		if("" == $(txtEle[i]).val() || null == $(txtEle[i]).val()){
-				    		var ele_id = $(txtEle[i]).attr("id");
-				    		//console.log("id : " + ele_id);
-				    		showAlert(ele_id);
-				    		return true;
-			    		}
-			    	}
-			    	
-			    	
-	        	  var material0 = parseInt(document.getElementById("ev").value);	//지배주주지분(기업가치)
-	        	  var material1 = parseFloat(document.getElementById("roe").value);	//ROE
-	        	  var material2 = parseInt(document.getElementById("ke").value);	//주주요구수익률
-	        	  var material3 = parseInt(document.getElementById("shareIssued").value);	//발행주식수
-	        	  //초과이익 = 기업가치 * (주주요구수익률 - 8%)
-	        	  //기업가치 = 자기자본 + 초과이익 x w / (1+할인율-w)
-	        	  //8%: 임의의 무위험수익률
-	        	 
-	        	  //초과이익
-	        	  var material4 = material0*(material3 - 8);					
-	        	  
-	        	  //적정 주주가치
-	        	  var material5 = material0 + material4/0.08;						
-	        	  var material6 = material0 + material4*0.9/(1+0.08-0.9);
-	        	  var material7 = material0 + material4*0.8/(1+0.08-0.8);
-	        	  
-	              //적정주가
-	        	  var material8 = parseInt(material5/material3);								
-	        	  var material9 = parseInt(material6/material3);
-	        	  var material10 = parseInt(material7/material3);
-	        	  
-	        	  
-	        	  document.getElementsByTagName('p')[0].innerHTML =
-	                  '<div class="table-responsive">'+
-	               	  '<table class="table table-bordered" width="100%" cellspacing="0">'+          
-	                  '<thead>'+
-	               	  	  '<tr><th>초과이익 가정(w)</th>'+
-	                      '<th>지배주주지분</th>'+
-	                      '<th>ROE</th>'+
-	                      '<th>주주요구수익률</th>'+
-	                      '<th>적정주주가치</th>'+
-	                      '<th>발행주식수</th>'+
-	                      '<th>적정주가</th>'+
-	                      '<th>매수/매도 여부</th></tr></thead>'+
-	                  '<tbody>'+
-		                 '<tr><td>영원히 지속</td>'+
-	                      '<td>'+material0+'억 원</td>'+
-	                      '<td>'+material1+'%</td>'+
-	                      '<td>'+material2+'%</td>'+
-	                      '<td>'+material5+'억 원</td>'+
-	                      '<td>'+material3+'주</td>'+
-	                      '<td>'+material8+'원</td>'+
-	                      '<td>매도</td></tr>'+
-	                     '<tr><td>10%씩 감소</td>'+
-	                      '<td>'+material0+'억 원</td>'+
-	                      '<td>'+material1+'%</td>'+
-	                      '<td>'+material2+'%</td>'+
-	                      '<td>'+material6+'억 원</td>'+
-	                      '<td>'+material3+'주</td>'+
-	                      '<td>'+material9+'원</td>'+
-	                      '<td>적정</td></tr>'+
-	                    '<tr><td>20%씩 감소</td>'+
-		                   '<td>'+material0+'억 원</td>'+
-		                   '<td>'+material1+'%</td>'+
-		                   '<td>'+material2+'%</td>'+
-		                   '<td>'+material7+'억 원</td>'+
-		                   '<td>'+material3+'주</td>'+
-	                      '<td>'+material10+'원</td>'+
-	                      '<td>매수</td></tr></tbody>'+
-	                	'</table>'+
-	             		'</div>';
-	      		    } 
-		
-	        	//null값일 때 focus주기 
-			    function showAlert(ele_id){
-	
-			    	var ele_name = $("#" + ele_id).attr('name');
-			    	alert(ele_name + "을(를) 입력해주세요.");
-	
-			    	// 해당 id에 focus.
-			    	$("#" + ele_id).focus();
-			    }
-	          
-	          //숫자 validating 부동소수점 포함
-	          $(document).on("input","input[id=ev]",function(){
-					var ev_check = document.getElementById("ev").value;
-	
-		        	var num = /^[+]?\d+\.?\d*$/;
+              
+	          <!-- table script -->
+	          <script type="text/javascript">
 		          
-			        if(!num.test(ev)) {
-			        	alert("지배주주지분을 다시 입력해주세요");
-			        	document.getElementById("ev").value = "";
-		                return false;
-			        } 
-	      	    });
-	    	  
-	          $(document).on("input","input[id=roe]",function(){
-					var roe_check = document.getElementById("roe").value;
-	
-		        	var num = /^[+]?\d+\.?\d*$/;
-		          
-			        if(!num.test(roe_check)) {
-			        	alert("ROE를 다시 입력해주세요");
-			        	document.getElementById("roe").value = "";
-		                return false;
-			        } 
-	     		   });
-	     	     
-	          $(document).on("input","input[id=ke]",function(){
-					var ke_check = document.getElementById("ke").value;
-	
-		        	var num = /^[+]?\d+\.?\d*$/;
-		          
-			        if(!num.test(ke_check)) {
-			        	alert("주주요구수익률을 다시 입력해주세요");
-			        	document.getElementById("ke").value = "";
-		                return false;
-			        } 
-	       		 });
-	          
-	          $(document).on("input","input[id=shareIssued]",function(){
-					var shareIssued_check = document.getElementById("shareIssued").value;
-	
-		        	var num = /^[+]?\d+\.?\d*$/;
-		          
-			        if(!num.test(shareIssued_check)) {
-			        	alert("발행주식수를 다시 입력해주세요");
-			        	document.getElementById("shareIssued").value = "";
-		                return false;
-			        } 
-	       		 });
-	
-			function refresh(){
-				document.getElementById("ev").value = "";
-				document.getElementById("roe").value = "";
-				document.getElementById("ke").value = "";
-				document.getElementById("shareIssued").value = "";
-				
-				document.getElementsByTagName('p')[0].innerHTML = "";
-			}
+		          function calculate(){
+		        	 
+		        	 	//null check
+		        		// form안의 모든 text type 조회
+				    var txtEle = $("#inputInfo input[type=text]");
+				    	
+				    for(var i = 0; i < txtEle.length; i ++){
+				    	if("" == $(txtEle[i]).val() || null == $(txtEle[i]).val()){
+					    	var ele_id = $(txtEle[i]).attr("id");
+					    	//console.log("id : " + ele_id);
+					    	showAlert(ele_id);
+					    	return true;
+				    	}
+				    }
+				    	
+				    	
+		        	  var material0 = parseInt(document.getElementById("ev").value);	//지배주주지분(기업가치)
+		        	  var material1 = parseFloat(document.getElementById("roe").value);	//ROE
+		        	  var material2 = parseInt(document.getElementById("ke").value);	//주주요구수익률
+		        	  var material3 = parseInt(document.getElementById("shareIssued").value);	//발행주식수
+		        	  //초과이익 = 기업가치 * (주주요구수익률 - 8%)
+		        	  //기업가치 = 자기자본 + 초과이익 x w / (1+할인율-w)
+		        	  //8%: 임의의 무위험수익률
+		        	 
+		        	  //초과이익
+		        	  var material4 = material0*(material3 - 8);					
+		        	  
+		        	  //적정 주주가치
+		        	  var material5 = material0 + material4/0.08;						
+		        	  var material6 = material0 + material4*0.9/(1+0.08-0.9);
+		        	  var material7 = material0 + material4*0.8/(1+0.08-0.8);
+		        	  
+		              //적정주가
+		        	  var material8 = parseInt(material5/material3);								
+		        	  var material9 = parseInt(material6/material3);
+		        	  var material10 = parseInt(material7/material3);
+		        	  
+		        	  
+		        	  document.getElementsByTagName('p')[0].innerHTML =
+		                  '<div class="table-responsive">'+
+		               	  '<table class="table table-bordered" width="100%" cellspacing="0">'+          
+		                  '<thead>'+
+		               	  	  '<tr><th>초과이익 가정(w)</th>'+
+		                      '<th>지배주주지분</th>'+
+		                      '<th>ROE</th>'+
+		                      '<th>주주요구수익률</th>'+
+		                      '<th>적정주주가치</th>'+
+		                      '<th>발행주식수</th>'+
+		                      '<th>적정주가</th>'+
+		                      '<th>매수/매도 여부</th></tr></thead>'+
+		                  '<tbody>'+
+			                 '<tr><td>영원히 지속</td>'+
+		                      '<td>'+material0+'억 원</td>'+
+		                      '<td>'+material1+'%</td>'+
+		                      '<td>'+material2+'%</td>'+
+		                      '<td>'+material5+'억 원</td>'+
+		                      '<td>'+material3+'주</td>'+
+		                      '<td>'+material8+'원</td>'+
+		                      '<td>매도</td></tr>'+
+		                     '<tr><td>10%씩 감소</td>'+
+		                      '<td>'+material0+'억 원</td>'+
+		                      '<td>'+material1+'%</td>'+
+		                      '<td>'+material2+'%</td>'+
+		                      '<td>'+material6+'억 원</td>'+
+		                      '<td>'+material3+'주</td>'+
+		                      '<td>'+material9+'원</td>'+
+		                      '<td>적정</td></tr>'+
+		                    '<tr><td>20%씩 감소</td>'+
+			                   '<td>'+material0+'억 원</td>'+
+			                   '<td>'+material1+'%</td>'+
+			                   '<td>'+material2+'%</td>'+
+			                   '<td>'+material7+'억 원</td>'+
+			                   '<td>'+material3+'주</td>'+
+		                      '<td>'+material10+'원</td>'+
+		                      '<td>매수</td></tr></tbody>'+
+		                	'</table>'+
+		             		'</div>';
+		             		
+		             		alert("저장되었습니다.");
+		      		    } 
 			
-		</script>
+		        	//null값일 때 focus주기 
+				    function showAlert(ele_id){
+		
+				    	var ele_name = $("#" + ele_id).attr('name');
+				    	alert(ele_name + "을(를) 입력해주세요.");
+		
+				    	// 해당 id에 focus.
+				    	$("#" + ele_id).focus();
+				    }
+		          
+		          //숫자 validating 부동소수점 포함
+		          $(document).on("input","input[id=ev]",function(){
+						var ev_check = document.getElementById("ev").value;
+		
+			        	var num = /^[+]?\d+\.?\d*$/;
+			          
+				        if(!num.test(ev)) {
+				        	alert("지배주주지분을 다시 입력해주세요");
+				        	document.getElementById("ev").value = "";
+			                return false;
+				        } 
+		      	    });
+		    	  
+		          $(document).on("input","input[id=roe]",function(){
+						var roe_check = document.getElementById("roe").value;
+		
+			        	var num = /^[+]?\d+\.?\d*$/;
+			          
+				        if(!num.test(roe_check)) {
+				        	alert("ROE를 다시 입력해주세요");
+				        	document.getElementById("roe").value = "";
+			                return false;
+				        } 
+		     		   });
+		     	     
+		          $(document).on("input","input[id=ke]",function(){
+						var ke_check = document.getElementById("ke").value;
+		
+			        	var num = /^[+]?\d+\.?\d*$/;
+			          
+				        if(!num.test(ke_check)) {
+				        	alert("주주요구수익률을 다시 입력해주세요");
+				        	document.getElementById("ke").value = "";
+			                return false;
+				        } 
+		       		 });
+		          
+		          $(document).on("input","input[id=shareIssued]",function(){
+						var shareIssued_check = document.getElementById("shareIssued").value;
+		
+			        	var num = /^[+]?\d+\.?\d*$/;
+			          
+				        if(!num.test(shareIssued_check)) {
+				        	alert("발행주식수를 다시 입력해주세요");
+				        	document.getElementById("shareIssued").value = "";
+			                return false;
+				        } 
+		       		 });
+		
+				function refresh(){
+					document.getElementById("ev").value = "";
+					document.getElementById("roe").value = "";
+					document.getElementById("ke").value = "";
+					document.getElementById("shareIssued").value = "";
+					
+					document.getElementsByTagName('p')[0].innerHTML = "";
+				}
+				
+			</script>
 
         </div>
         <!-- /.container-fluid -->
@@ -445,21 +557,26 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="resources/sb_admin/vendor/jquery/jquery.min.js"></script>
+  <script src="resources/sb_admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="resources/sb_admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+  <script src="resources/sb_admin/js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
-  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  <script src="resources/sb_admin/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="resources/sb_admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="js/demo/datatables-demo.js"></script>
+  <script src="resources/sb_admin/js/demo/datatables-demo.js"></script>
+  
+	 <!-- Exel Export -->
+	<script type="text/javascript" src="resources/sb_admin/js/FileSaver/FileSaver.min.js"></script>
+	<script type="text/javascript" src="resources/sb_admin/js/js-xlsx/xlsx.core.min.js"></script>
+	<script type="text/javascript" src="resources/sb_admin/js/tableExport.min.js"></script>
 
 </body>
 

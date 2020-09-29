@@ -61,7 +61,10 @@
 					
 					<div class="loginForm-footer">
 						<span>
-							<a href="#">ID/PW 찾기</a>
+							<a href="idFind">아이디 찾기ㅣ</a>
+						</span>
+						<span>
+							<a href="pwFind">비밀번호 찾기</a>
 						</span>
 						<span>
 							<a href="registrationForm">회원가입</a>

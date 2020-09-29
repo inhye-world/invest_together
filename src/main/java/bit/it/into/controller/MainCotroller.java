@@ -10,20 +10,22 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @AllArgsConstructor
 public class MainCotroller {
-
+	
 	@RequestMapping("/")
 	public String home() {
 		log.info("MainController - home()");
 		return "index";
 	}
-
 	
-	 @RequestMapping("/accessDenied") 
-	 public String accessDenied() {
-		 log.info("MainController - accessDenied()");
-		 return "error/accessDenied"; 
-	 }
-	 
-
-
+	@RequestMapping("/accessDenied")
+	public String accessDenied() {
+		log.info("MainController - accessDenied()");
+		
+		return "error/accessDenied";
+	}
+	
+	@RequestMapping("/testmain")
+	public String testmain() {
+		return "include/testmain";
+	}
 }

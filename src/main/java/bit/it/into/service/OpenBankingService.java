@@ -1,15 +1,14 @@
 package bit.it.into.service; 
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
@@ -17,19 +16,18 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.springframework.stereotype.Service;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import lombok.extern.log4j.Log4j;
 
 @Service
+@Log4j
 public class OpenBankingService {
 	
-	private final static String O_CLIENT_ID = "TmlHvtfDp4g3a4KxAqPlexXCgmUz7V5xKd8hNnSd";
-	private final static String O_CLIENT_SECRET= "540RGNZttoNAaI3K1CvL36vlnPlltJsLL16I9X5z";
+	private final static String O_CLIENT_ID = "W9618Ccs1JZCOYPsVyT2XWzZB071pZLM7PpaRoyq";
+	private final static String O_CLIENT_SECRET= "5XOMFT67n8HpKS5DC5lHhwFNn6iVT1RvGN1vLQkc";
 	private final static String O_REDIRECT_URI = "http://localhost:8282/into/user/addAccount";
-	private final static String O_ORGANIZATION_CODE = "T991648810";
+	private final static String O_ORGANIZATION_CODE = "T991650270";
 	
 	public String getUrl() {
 		String openUrl = 	"https://testapi.openbanking.or.kr/oauth/2.0/authorize?"
@@ -48,6 +46,32 @@ public class OpenBankingService {
 		return bank_tran_id;
 	}
 	
+	public String getTranDtime() {
+		long nano = System.currentTimeMillis();
+		return new SimpleDateFormat("yyyyMMddHHmmss").format(nano);
+	}
+	
+	public String getFromDate(String year, String month) {
+		return year+month+"01";
+	}
+	
+	public String getToDate(String year, String month) {
+		
+		LocalDate now = LocalDate.now();
+		String nowYear = Integer.toString(now.getYear());
+		String nowMonth = String.format("%02d", now.getMonthValue());
+
+		if(nowYear.equals(year) && nowMonth.equals(month)) {
+			String nowDay = String.format("%02d", now.getDayOfMonth());
+			return year+month+nowDay;
+		}
+		
+		
+		YearMonth yearMonth = YearMonth.from(LocalDate.parse(year+month+"01", DateTimeFormatter.ofPattern("yyyyMMdd")));
+		
+		int lastday = yearMonth.lengthOfMonth();
+		return year+month+lastday;
+	}
 	
 	
 	public JsonNode getAccessToken(String autorize_code) {
@@ -87,6 +111,64 @@ public class OpenBankingService {
 		final HttpClient client = HttpClientBuilder.create().build();
 		
 		final HttpGet get = new HttpGet(RequestUrl+"?user_seq_no="+user_seq_no);
+		
+		get.addHeader("Authorization", "Bearer " + access_token);
+		
+		JsonNode returnNode = null;
+		
+		try {
+			final HttpResponse response = client.execute(get);
+			ObjectMapper mapper = new ObjectMapper();
+			returnNode = mapper.readTree(response.getEntity().getContent());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return returnNode;
+	}
+	
+	
+	public JsonNode getAccountBalance(String access_token, String fintech_use_num) {
+		final String RequestUrl = "https://testapi.openbanking.or.kr/v2.0/account/balance/fin_num";
+		
+		final HttpClient client = HttpClientBuilder.create().build();
+		
+		final HttpGet get = new HttpGet( RequestUrl
+											+"?fintech_use_num="+fintech_use_num
+											+"&bank_tran_id="+getBankTranId()
+											+"&tran_dtime="+getTranDtime() 
+										);
+		
+		get.addHeader("Authorization", "Bearer " + access_token);
+		
+		JsonNode returnNode = null;
+		
+		try {
+			final HttpResponse response = client.execute(get);
+			ObjectMapper mapper = new ObjectMapper();
+			returnNode = mapper.readTree(response.getEntity().getContent());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return returnNode;
+	}
+	
+	public JsonNode getAccountTransactionList(String access_token, String fintech_use_num, String year, String month) {
+		final String RequestUrl = "https://testapi.openbanking.or.kr/v2.0/account/transaction_list/fin_num";
+		
+		final HttpClient client = HttpClientBuilder.create().build();
+		
+		final HttpGet get = new HttpGet( RequestUrl
+											+"?fintech_use_num="+fintech_use_num
+											+"&bank_tran_id="+getBankTranId()
+											+"&tran_dtime="+getTranDtime() 
+											+"&inquiry_type="+"A"
+											+"&inquiry_base="+"D"
+											+"&from_date="+getFromDate(year, month)
+											+"&to_date="+getToDate(year, month)
+											+"&sort_order="+"D"
+										);
 		
 		get.addHeader("Authorization", "Bearer " + access_token);
 		

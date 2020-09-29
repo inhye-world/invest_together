@@ -2,16 +2,16 @@ package bit.it.into.mapper;
 
 import java.util.List;
 
-import bit.it.into.dto.BondDto;
+import bit.it.into.dto.BondDTO;
 
 public interface BondMapper {
 	
-	public List<BondDto> getList() throws Exception;
+	public List<BondDTO> getList(int member_num) throws Exception;
 
-	public void writeBond(BondDto bondDto);
+	public void writeBond(BondDTO bondDTO);
 
 	public void delete(String bond_num);
 	
-	public void update(BondDto bondDto) throws Exception;
+	public void update(BondDTO bondDTO) throws Exception;
 
 }

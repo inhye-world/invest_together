@@ -4,6 +4,10 @@ import bit.it.into.dto.CalculatorDTO;
 
 public interface CalculatorMapper {
 
-	public void writeCalculator(CalculatorDTO calculatorDTO);
+	public void insert(CalculatorDTO calculatorDTO);
+
+	public void update(CalculatorDTO calculatorDTO);
+
+	public int checkSymbols(CalculatorDTO calculatorDTO);
 
 }

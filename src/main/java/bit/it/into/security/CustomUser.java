@@ -8,11 +8,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
 import bit.it.into.dto.MemberDTO;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.extern.log4j.Log4j;
 
 
 @Getter
@@ -28,7 +25,7 @@ public class CustomUser extends User{
 	public CustomUser(MemberDTO memberDTO) {	
 		
 		super(memberDTO.getId(), memberDTO.getPw(), Collections
-				    .singletonList(new SimpleGrantedAuthority(memberDTO.getAutheritiesDTO().getAutherity())));
+				    .singletonList(new SimpleGrantedAuthority(memberDTO.getAuthoritiesDTO().getAuthority())));
 
 		this.dto = memberDTO;
 	}
