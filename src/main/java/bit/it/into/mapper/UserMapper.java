@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import bit.it.into.dto.AccountDTO;
 import bit.it.into.dto.MemberDTO;
+import bit.it.into.security.CustomUser;
 
 public interface UserMapper {
 
@@ -21,6 +22,12 @@ public interface UserMapper {
 	String selectIdEmail(String name);
 
 	List<MemberDTO> selectIdInfo(String email);
+
+	public void updateNickname(MemberDTO dto);
+
+	public void updatePhone(MemberDTO dto);
+
+	public void updateId(MemberDTO dto);
 
 
 }

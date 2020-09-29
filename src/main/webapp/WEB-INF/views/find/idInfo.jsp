@@ -47,11 +47,11 @@
                      </c:forEach>
                      </article>
                      <br>
-                     <button class="button button--base-m button--shape-a" style="top: 70px;" onclick="location.href='${pageContext.request.contextPath}/pwFind'">
+                     <button class="button button--base-m button--shape-a" style="top: 70px;" onclick="location.href='pwFind'">
                         <span class="button__text">비밀번호 찾기</span>
                      </button>
                      
-                     <button class="button button--base-m button--shape-a" style="top: 70px;" onclick="location.href='${pageContext.request.contextPath}/loginForm'">
+                     <button class="button button--base-m button--shape-a" style="top: 70px;" onclick="location.href='loginForm'">
                         <span class="button__text">로그인 페이지로 이동</span>
                      </button>
                      

@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>유저 정보 수정</title>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
@@ -33,7 +33,7 @@
 		.usermodify-title {
 		    margin: 0 0 10px;
 		    font-size: 30px;
-		    font-family: "맑은 고딕",malgun gothic,sans-serif;
+		    font-family: "맑은 고딕", "malgun gothic", sans-serif;
 		    font-weight: bold;
 		    color: #333;
 		    letter-spacing: -1px;
@@ -195,16 +195,12 @@
 
 </head>
 	<body>
-		<div class="wrapper">
-			
-			<jsp:include page="../include/header.jsp"/>
-			<div class="member-container  page-modify page-modify-decoupled-index is-email-change env-production">
-							
-				<h1 class="usermodify-title">회원정보 수정</h1>
-				
+		<jsp:include page="../include/header.jsp"/>
+		<div class="member-container  page-modify page-modify-decoupled-index is-email-change env-production">			
+			<h1 class="usermodify-title">회원정보 수정</h1>
+			<table class="usermodify-table">
 				<sec:authorize access="isAuthenticated()">
 				<sec:authentication var="principal" property="principal"/>
-				<table class="usermodify-table">
 				<tr>
 					<th scope="row">아이디</th>
 					<td>
@@ -212,9 +208,9 @@
 							<strong class="usermodify-id-current-mail">${principal.dto.id}</strong>
 							<button type="button" class="usermodify-id-change-btn" style="display: inline-block;">아이디 변경</button>
 							<button type="button" class="usermodify-id-change-cancel" style="display: none;">아이디 변경취소</button>
-						<form:form class="usermodify-id-change-auth" action="#" method="post" style="display: none;">
-							<input data-errmsg="이미 가입된 아이디입니다." data-target="usermodify-id-change-errmsg" class="usermodify-id-if" type="text" value="${principal.dto.id}">
-							<button type="submit" class="usermodify-id-change-auth-send">인증메일 전송</button>
+						<form:form class="usermodify-id-change-auth" action="alterId" method="post" style="display: none;">
+							<input data-errmsg="이미 가입된 아이디입니다." data-target="usermodify-id-change-errmsg" name="id" class="usermodify-id-if" type="text">
+							<button type="submit" class="usermodify-id-change-auth-send">변경</button>
 							<div class="form-err usermodify-id-change-errmsg" style="display: none;"></div>
 						</form:form>
 						</div>	
@@ -228,9 +224,9 @@
 							<strong class="usermodify-nickname-current-mail">${principal.dto.nickname}</strong>
 							<button type="button" class="usermodify-nickname-change-btn" style="display: inline-block;">닉네임 변경</button>
 							<button type="button" class="usermodify-nickname-change-cancel" style="display: none;">닉네임 변경취소</button>
-						<form:form class="usermodify-nickname-change-auth" action="#" method="post" style="display: none;">
-							<input data-errmsg="이미 가입된 닉네임입니다." data-target="usermodify-nickname-change-errmsg" class="usermodify-nickname-if" type="text" value="${principal.dto.nickname}">
-							<button type="submit" class="usermodify-nickname-change-auth-send">확인</button>
+						<form:form class="usermodify-nickname-change-auth" action="alterNickname" method="post" style="display: none;">
+							<input data-errmsg="이미 가입된 닉네임입니다." data-target="usermodify-nickname-change-errmsg" class="usermodify-nickname-if" type="text" name="nickname">
+							<button type="submit" class="usermodify-nickname-change-auth-send">변경</button>
 							<div class="form-err usermodify-nickname-change-errmsg" style="display: none;"></div>
 						</form:form>
 						</div>	
@@ -244,9 +240,9 @@
 							<strong class="usermodify-phone-current-mail">${principal.dto.phone}</strong>
 							<button type="button" class="usermodify-phone-change-btn" style="display: inline-block;">휴대폰 번호 변경</button>
 							<button type="button" class="usermodify-phone-change-cancel" style="display: none;">휴대폰 번호 변경취소</button>
-						<form:form class="usermodify-phone-change-auth" action="#" method="post" style="display: none;">
-							<input data-errmsg="이미 가입된 휴대폰번호입니다." data-target="usermodify-phone-change-errmsg" class="usermodify-phone-if" type="text" value="${principal.dto.phone}">
-							<button type="submit" class="usermodify-phone-change-auth-send">확인</button>
+						<form:form class="usermodify-phone-change-auth" action="alterPhone" method="post" style="display: none;">
+							<input data-errmsg="이미 가입된 휴대폰번호입니다." data-target="usermodify-phone-change-errmsg" class="usermodify-phone-if" type="text" name="phone">
+							<button type="submit" class="usermodify-phone-change-auth-send">변경</button>
 							<div class="form-err usermodify-phone-change-errmsg" style="display: none;"></div>
 						</form:form>
 						</div>	
@@ -261,7 +257,7 @@
 							<button type="button" class="usermodify-email-change-btn" style="display: inline-block;">이메일 변경</button>
 							<button type="button" class="usermodify-email-change-cancel" style="display: none;">이메일 변경취소</button>
 						<form:form class="usermodify-email-change-auth" action="#" method="post" style="display: none;">
-							<input data-errmsg="이미 가입된 이메일입니다." data-target="usermodify-email-change-errmsg" class="usermodify-email-if" type="text" value="${principal.dto.email}">
+							<input data-errmsg="이미 가입된 이메일입니다." data-target="usermodify-email-change-errmsg" class="usermodify-email-if" type="text" name="email">
 							<button type="submit" class="usermodify-email-change-auth-send">인증메일 전송</button>
 							<div class="form-err usermodify-email-change-errmsg" style="display: none;"></div>
 						</form:form>
@@ -285,7 +281,7 @@
 								<tr>
 									<th>새 비밀번호</th>
 									<td>
-										<input type="password" data-stronger-password-target="true" class="usermodify-pw-newpassword">
+										<input type="password" data-stronger-password-target="true" class="usermodify-pw-newpassword" name="pw">
 										<div class="member__input-guide-area"></div>
 									</td>
 								</tr>
@@ -313,18 +309,15 @@
 				 탈퇴를 원하시면 우측의 회원탈퇴 버튼을 눌러주세요.
 				<a class="usermodify-secession-btn" href="#">회원탈퇴</a>
 			</div>
-			
 			<div class="usermodify-foot">
-				<button type="button" class="usermodify-cancel">나가기</button>
-			</div>
-			
+				<button href="${pageContext.request.contextPath}" type="button" class="usermodify-cancel">나가기</button>
 			</div>
 		</div>
-		
 		<script type="text/javascript">
 			
 			$(document).ready(function (){
 				
+				//id버튼
 				$(".usermodify-id-change-btn").on("click", function() {
 					$(".usermodify-id-change-btn").attr({"style":"display:none"});
 					$(".usermodify-id-change-cancel").attr({"style":"display:inline-block"});
@@ -337,6 +330,7 @@
 					$(".usermodify-id-change-auth").attr({"style":"display:none"});
 				});
 				
+				//nickname버튼
 				$(".usermodify-nickname-change-btn").on("click", function() {
 					$(".usermodify-nickname-change-btn").attr({"style":"display:none"});
 					$(".usermodify-nickname-change-cancel").attr({"style":"display:inline-block"});
@@ -349,6 +343,7 @@
 					$(".usermodify-nickname-change-auth").attr({"style":"display:none"});
 				});
 				
+				//phone버튼
 				$(".usermodify-phone-change-btn").on("click", function() {
 					$(".usermodify-phone-change-btn").attr({"style":"display:none"});
 					$(".usermodify-phone-change-cancel").attr({"style":"display:inline-block"});
@@ -361,6 +356,7 @@
 					$(".usermodify-phone-change-auth").attr({"style":"display:none"});
 				});
 				
+				//email버튼
 				$(".usermodify-email-change-btn").on("click", function() {
 					$(".usermodify-email-change-btn").attr({"style":"display:none"});
 					$(".usermodify-email-change-cancel").attr({"style":"display:inline-block"});

@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import bit.it.into.dto.AccountDTO;
 import bit.it.into.dto.MemberDTO;
 import bit.it.into.mapper.UserMapper;
+import bit.it.into.security.CustomUser;
 import lombok.extern.log4j.Log4j;
 
 @Service
@@ -72,5 +73,25 @@ public class UserService {
 		return mapper.selectIdInfo(email);
 				
 	}
+
+	public void alterNickname(MemberDTO dto) {
+		log.info("UserService - alterNickname()");
+		
+		mapper.updateNickname(dto);
+	}
+
+	public void alterPhone(MemberDTO dto) {
+		log.info("UserService - alterPhone()");
+		
+		mapper.updatePhone(dto);
+	}
+
+	public void alterId(MemberDTO dto) {
+		log.info("UserService - alterId()");
+		
+		mapper.updateId(dto);
+		
+	}
+
 	
 }

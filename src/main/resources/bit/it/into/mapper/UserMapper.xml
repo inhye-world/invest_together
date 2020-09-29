@@ -41,4 +41,21 @@
 		]]>
 	</select>
 	
+	<update id="updateNickname">
+		<![CDATA[
+			update member set nickname = #{nickname} where id = #{id}
+		]]>
+	</update>
+	
+	<update id="updatePhone">
+		<![CDATA[
+			update member set phone = #{phone} where id = #{id}
+		]]>
+	</update>
+	
+	<update id="updateId">
+		<![CDATA[
+			update member set id = #{id} where nickname = #{nickname}
+		]]>
+	</update>
 </mapper>
