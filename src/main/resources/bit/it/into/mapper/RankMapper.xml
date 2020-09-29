@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="bit.it.into.mapper.RankMapper">
+	
+	<update id="updateRankDisabled">
+		<![CDATA[
+			UPDATE rank SET enabled=0 WHERE member_num=#{member_num}
+		]]>
+	</update>
+	
+	<update id="updateRankEnabled">
+		<![CDATA[
+			UPDATE rank SET investment_amount=#{investment_amount}, net_profit=#{net_profit}, net_profit_ratio=#{net_profit_ratio}, enabled=1 WHERE member_num=#{member_num}
+		]]>
+	</update>
+	
+</mapper>

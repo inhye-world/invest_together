@@ -81,7 +81,7 @@ public class BondController {
 	@PostMapping("/deleteBond")
 	public int delete(@RequestParam(value = "checkRow[]") List<String> checkArr, Authentication authentication){
 		log.info("////////////////////delete///////////////////////");
-
+		
 		int result = 1;
 		
 		 for(String i : checkArr) {

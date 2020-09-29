@@ -5,14 +5,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-public class RankDTO {
+public class RankingDTO {
+
 	private int member_num;
-	private int investment_amount;
-	private int net_profit;
+	private String nickname;
+	private String league;
+	private int place;
 	private double net_profit_ratio;
-	private int enabled;
+	private int net_profit;
+	private int investment_amount;
+	
+	private double percentile;
 }

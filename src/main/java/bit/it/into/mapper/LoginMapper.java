@@ -10,7 +10,9 @@ public interface LoginMapper {
 	public int insertUser(MemberDTO memberDTO);
 
 	public int insertAuthorities(MemberDTO memberDTO);
-
+	
+	public int insertRank(MemberDTO memberDTO);
+	
 	public MemberDTO selectUserByKakaoId(@Param("id")String id, @Param("sns_type")String sns_type);
 	
 	public MemberDTO selectUserByNaverId(@Param("id")String id, @Param("sns_type")String sns_type);

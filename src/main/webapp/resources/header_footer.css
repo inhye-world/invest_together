@@ -125,13 +125,16 @@
 .header-nav-logo {
 	float: left;
     display: block;
-    cursor: pointer;
     color: #227fec;
     font-family: 'designhouseOTFLight00';
     line-height: 60px;
     font-size: 25px;
     padding-right: 40px;
     margin-right: 40px;
+}
+
+.header-nav-logo b{
+	cursor: pointer;
 }
 
 .header-nav-ul {

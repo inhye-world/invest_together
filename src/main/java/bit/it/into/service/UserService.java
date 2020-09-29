@@ -40,6 +40,12 @@ public class UserService {
 	
 	}
 	
+	public List<Integer> readAllMemberNum() {
+		log.info("UserService -  readAllUserNum()");
+		
+		return mapper.selectAllMemberNum();
+	}
+	
 	public String idCheck(String id) {
 		log.info("UserService - idCheck()");
 		

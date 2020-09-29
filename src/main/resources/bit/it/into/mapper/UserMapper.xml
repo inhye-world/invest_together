@@ -17,6 +17,12 @@
 		]]>
 	</insert>
 	
+	<select id="selectAllMemberNum" resultType="Integer">
+		<![CDATA[
+			SELECT member_num FROM member
+		]]>
+	</select>
+	
 	<select id="selectPwdEmail" resultType="String">
 		<![CDATA[
 			select email from member where id = #{id}

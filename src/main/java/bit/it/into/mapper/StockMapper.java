@@ -14,7 +14,9 @@ public interface StockMapper {
 	public List<BondDTO> selectBondList(int member_num);
 
 	public Integer selectStockCount(StockDTO stockDTO);
-
+	
+	public Integer selectStockCountByMemberNum(Integer member_num);
+	
 	public int insertStock(StockDTO stockDTO);
 
 	public StockDTO selectStock(StockDTO stockDTO);
