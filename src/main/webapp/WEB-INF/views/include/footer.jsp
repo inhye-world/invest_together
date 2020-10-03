@@ -43,7 +43,7 @@
 									</div>
 									<p> 
 										같이투자 · 김태준, 류인혜, 김민주, 송재권, 양선영<br>
-										서비스 이용문의 example@naver.co.kr<br>
+										서비스 이용문의 example@google.com<br>
 									</p>
 								</div>
 								<div class="footer-3-3">

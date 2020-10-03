@@ -18,4 +18,41 @@
 		]]>
 	</update>
 	
+	<select id="selectWhaleReagueList" resultType="bit.it.into.dto.RankingDTO" >
+		<![CDATA[
+			SELECT ROWNUM as place, x.* 
+			FROM 
+      		  ( SELECT m.member_num, nickname, investment_amount, net_profit, net_profit_ratio 
+        		FROM member m 
+            	INNER JOIN rank r ON m.member_num=r.member_num 
+        		WHERE r.enabled=1 AND r.investment_amount>=50000000
+        		ORDER BY r.net_profit_ratio desc, r.investment_amount desc ) x
+		]]>
+	</select>
+	
+	<select id="selectMackerelReagueList" resultType="bit.it.into.dto.RankingDTO" >
+		<![CDATA[
+			SELECT ROWNUM as place, x.* 
+			FROM 
+      		  ( SELECT m.member_num, nickname, investment_amount, net_profit, net_profit_ratio 
+        		FROM member m 
+            	INNER JOIN rank r ON m.member_num=r.member_num 
+        		WHERE r.enabled=1 AND (r.investment_amount BETWEEN 10000000 AND 49999999) 
+        		ORDER BY r.net_profit_ratio desc, r.investment_amount desc ) x
+		]]>
+	</select>
+	
+	<select id="selectShrimpReagueList" resultType="bit.it.into.dto.RankingDTO" >
+		<![CDATA[
+			SELECT ROWNUM as place, x.* 
+			FROM 
+      		  ( SELECT m.member_num, nickname, investment_amount, net_profit, net_profit_ratio 
+        		FROM member m 
+            	INNER JOIN rank r ON m.member_num=r.member_num 
+        		WHERE r.enabled=1 AND (r.investment_amount BETWEEN 1000000 AND 9999999) 
+        		ORDER BY r.net_profit_ratio desc, r.investment_amount desc ) x
+		]]>
+	</select>
+	
+	
 </mapper>

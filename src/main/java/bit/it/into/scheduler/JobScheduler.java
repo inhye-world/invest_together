@@ -24,7 +24,7 @@ public class JobScheduler {
 	private StockService stock;
 	private RankService rank;
 	
-	@Scheduled(cron="30 28 15 * * *")
+	@Scheduled(cron="36 10 14 31 12 ?")
 	public void updateRanking() {
 		log.info("============================ 랭킹 업데이트 ============================");
 		

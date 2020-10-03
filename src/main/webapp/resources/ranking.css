@@ -1,0 +1,170 @@
+@charset "UTF-8";
+
+.ranking-individual {
+	width: 100%;
+	margin-bottom: 50px;
+}
+
+.ranking-individual div:nth-child(1) {
+	height: 42px;
+	padding-bottom: 5px;
+}
+
+.ranking-individual-myplace {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 28px;
+}
+
+.ranking-individual-searchbox {
+	position: relative;
+	top: 6px;
+	float: right;
+    padding-right: 34px;
+    border: 1px solid #363944;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.ranking-individual-searchbox input {
+	margin-left: 5px;
+	padding-right: 8px;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background-color: #fff;
+    font-size: 12px;
+    color: #333;
+    border: 0;
+    outline: none;
+    box-shadow: none;
+}
+
+.ranking-individual-searchbox button {
+	position: absolute;
+    top: 0;
+    right: 4px;
+    height: 30px;
+    line-height: 28px;
+    text-align: center;
+    border: none;
+    font-size: 12px;
+    color: #227fec;
+    background-color: #fff;
+    outline: none !important;
+}
+
+.leaderboards {
+	font-size: 12px;
+	display: table;
+	border-collapse: collapse;
+	border-right: 1px solid #e6e6e6;
+    border-left: 1px solid #e6e6e6;
+}
+
+.leaderboards thead tr{
+	background-color: #363944;
+    border-right: 1px solid #363944;
+    border-left: 1px solid #363944;
+}
+
+.leaderboards thead tr th {
+	color: #fff;
+    border-bottom: 0;
+    text-align: center;
+    border-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    font-weight: 400;
+}
+
+.leaderboards tbody tr td {
+	border-top: none;
+    border-bottom: 1px solid #e6e6e6;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.leaderboards tbody tr td p {
+	margin-bottom: 0;
+	font-size: 11px;
+}
+
+.ranking-individual-notice {
+	padding-top: 30px !important;
+	padding-bottom: 30px !important;
+	text-align: center;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 20px;
+}
+
+.ranking-individual-notice p {
+	font-size: 15px;
+}
+
+.ranking-reague {
+	width: 100%;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 28px;
+	border-bottom: 1px solid #e6e6e6;
+}
+
+.ranking-reague ul {
+	list-style-type: disc;
+	margin: 0px;
+    padding: 0px;
+}
+
+.ranking-reague ul>li {
+	display: inline-block;
+	padding-right: 20px;
+}
+
+.ranking-reague div {
+	cursor: pointer;
+	padding-bottom: 5px;
+}
+
+#whaleLeague:hover {
+	color: #227fec;
+}
+
+#mackerelLeague:hover {
+	color: #a593e0;
+}
+
+#shrimpLeague:hover {
+	color: #f7630c;
+}
+
+.whaleLeague-active {
+	color: #227fec;
+	font-weight: bold;
+	border-bottom: 3px solid #227fec;
+}
+
+.mackerelLeague-active {
+	color: #a593e0;
+	font-weight: bold;
+	border-bottom: 3px solid #a593e0;
+}
+
+.shrimpLeague-active {
+	color: #f7630c;
+	font-weight: bold;
+	border-bottom: 3px solid #f7630c;
+}
+
+.ranking-notice {
+	margin: 11px 0 12px 10px;
+	padding-left: 0;
+    font-size: 11px;
+	font-family: '돋움', sans-serif;
+}
+
+.ranking-notice li {
+	list-style: none;
+	background: url(http://i.gzcdn.net/images/v3/g_tournament/highschool/dotted_check.gif) no-repeat 0 5px;
+    padding-left: 12px;
+    line-height: 20px;
+    color: #666;
+}

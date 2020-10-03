@@ -1,10 +1,13 @@
 package bit.it.into.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
 import bit.it.into.dto.RankDTO;
+import bit.it.into.dto.RankingDTO;
 import bit.it.into.mapper.RankMapper;
 import lombok.extern.log4j.Log4j;
 
@@ -36,6 +39,22 @@ public class RankService {
 		}
 	}
 	
+	public List<RankingDTO> getWhaleReagueList() {
+		log.info("RankService - getWhaleReagueList()");
+		
+		return mapper.selectWhaleReagueList();
+	}
 	
+	public List<RankingDTO> getMackerelReagueList() {
+		log.info("RankService - getMackerelReagueList()");
+		
+		return mapper.selectMackerelReagueList();
+	}
+	
+	public List<RankingDTO> getShrimpReagueList() {
+		log.info("RankService - getShrimpReagueList()");
+		
+		return mapper.selectShrimpReagueList();
+	}
 	
 }

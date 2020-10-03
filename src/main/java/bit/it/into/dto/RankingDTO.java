@@ -19,5 +19,5 @@ public class RankingDTO {
 	private int net_profit;
 	private int investment_amount;
 	
-	private double percentile;
+	private String percentile;
 }
