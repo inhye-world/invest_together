@@ -117,7 +117,7 @@
 								</div>
 							</li>
 							<li>
-								<div onclick="location.href='/into/ranking'">
+								<div onclick="location.href='/into/leaderboards'">
 									<p>투자랭킹</p>
 								</div>
 							</li>

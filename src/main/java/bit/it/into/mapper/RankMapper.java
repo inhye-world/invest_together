@@ -4,6 +4,7 @@ import java.util.List;
 
 import bit.it.into.dto.RankDTO;
 import bit.it.into.dto.RankingDTO;
+import bit.it.into.page.RankCriteria;
 
 public interface RankMapper {
 
@@ -16,5 +17,17 @@ public interface RankMapper {
 	public List<RankingDTO> selectMackerelReagueList();
 
 	public List<RankingDTO> selectShrimpReagueList();
+
+	public int getShrimpLeagueTotalCount();
+
+	public int getMackerelLeagueTotalCount();
+
+	public int getWhaleLeagueTotalCount();
+
+	public List<RankingDTO> getShrimpLeaguePageList(RankCriteria cri);
+
+	public List<RankingDTO> getMackerelLeaguePageList(RankCriteria cri);
+
+	public List<RankingDTO> getWhaleLeaguePageList(RankCriteria cri);
 
 }

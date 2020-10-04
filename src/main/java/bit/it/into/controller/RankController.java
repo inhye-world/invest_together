@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -12,6 +13,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import bit.it.into.dto.RankingDTO;
+import bit.it.into.page.RankCriteria;
+import bit.it.into.page.RankPageDTO;
 import bit.it.into.service.RankService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -23,15 +26,17 @@ public class RankController {
 	
 	private RankService service;
 	
-	@RequestMapping("/ranking")
-	public String ranking() {
+	@RequestMapping("/leaderboards")
+	public String ranking(RankCriteria cri, Model model) {
 		log.info("RankController - ranking()");
 		
-		service.getMackerelReagueList();
-		service.getWhaleReagueList();
-		service.getShrimpReagueList();
+		int total = service.getLeagueTotal(cri);
+
+		model.addAttribute("list", service.getLeagueList(cri));
+		model.addAttribute("pageMaker", new RankPageDTO(cri, total));
 		
-		return "rank/table";
+		
+		return "rank/leaderboards";
 	}
 	
 	@ResponseBody

@@ -2,7 +2,7 @@
 
 .ranking-individual {
 	width: 100%;
-	margin-bottom: 50px;
+	margin: 50px 0;
 }
 
 .ranking-individual div:nth-child(1) {
@@ -77,6 +77,10 @@
     font-weight: 400;
 }
 
+.leaderboards tbody tr {
+	height: 60px;
+}
+
 .leaderboards tbody tr td {
 	border-top: none;
     border-bottom: 1px solid #e6e6e6;
@@ -87,6 +91,21 @@
 .leaderboards tbody tr td p {
 	margin-bottom: 0;
 	font-size: 11px;
+}
+
+.leaderboards tbody tr td a {
+	color: #212529;
+	font-weight: bold;
+}
+
+.profit-rise {
+	background-color: #fef7f7;
+	color: #ed6767;
+}
+
+.profit-fall {
+	background-color: #E6E8FF;
+	color: #5A67ED;
 }
 
 .ranking-individual-notice {
@@ -116,7 +135,14 @@
 
 .ranking-reague ul>li {
 	display: inline-block;
-	padding-right: 20px;
+}
+
+.ranking-reague ul>li:nth-child(2) {
+	padding-left: 17px;
+}
+
+.ranking-reague ul>li:nth-child(3) {
+	padding-left: 16px;
 }
 
 .ranking-reague div {
@@ -167,4 +193,34 @@
     padding-left: 12px;
     line-height: 20px;
     color: #666;
+}
+
+.ranking-table-empty {
+	padding-top: 200px !important;
+	padding-bottom: 200px !important;
+	text-align: center;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 20px;
+}
+
+.pagination {
+	justify-content: center;
+}
+
+.pagination .page-link {
+	color: #227fec;
+}
+
+.pagination .active .page-link {
+	background-color: #227fec !important;
+    border-color: #227fec !important;
+    color: #fff;
+}
+
+
+
+@media ( max-width: 768px ) {
+	.leaderboards tbody tr {
+		height: 48px;
+	}
 }

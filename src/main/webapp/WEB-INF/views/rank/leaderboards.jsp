@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>   
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
 <!DOCTYPE html>
 <html>
@@ -45,7 +46,7 @@
 						var str = "<tr>";
 						str += "<td><img src='resources/icon/"+result.league+".png' width='36px' height='36px'/></td>";
 						str += "<td>"+result.place.toLocaleString()+"<p>(상위 "+result.percentile+"%)</p></td>";
-						str += "<td>"+result.nickname+"</td>";
+						str += "<td><b>"+result.nickname+"</b></td>";
 						str += "<td>"+result.net_profit_ratio+"%</td>";
 						str += "<td>"+result.net_profit.toLocaleString()+"원</td>";
 						str += "<td>"+result.investment_amount.toLocaleString()+"원</td>";
@@ -54,11 +55,11 @@
 						$("#ranking-individual-table tbody").html(str);
 						
 						if(result.net_profit_ratio>0) {
-							$("#ranking-individual-table tbody tr td:nth-child(4)").css("background-color", "#fef7f7").css("color", "#ed6767");
-							$("#ranking-individual-table tbody tr td:nth-child(5)").css("background-color", "#fef7f7").css("color", "#ed6767");
-						}else if(result.net_profit_ratio<0) {
-							$("#ranking-individual-table tbody tr td:nth-child(4)").css("background-color", "#E6E8FF").css("color", "#5A67ED");
-							$("#ranking-individual-table tbody tr td:nth-child(5)").css("background-color", "#E6E8FF").css("color", "#5A67ED");
+							$("#ranking-individual-table tbody tr td:nth-child(4)").addClass("profit-rise");
+							$("#ranking-individual-table tbody tr td:nth-child(5)").addClass("profit-rise");
+						}else {
+							$("#ranking-individual-table tbody tr td:nth-child(4)").addClass("profit-fall");
+							$("#ranking-individual-table tbody tr td:nth-child(5)").addClass("profit-fall");
 						}
 					}
 				}
@@ -156,17 +157,17 @@
 				<div class="ranking-reague">
 					<ul>
 						<li>
-							<div id="whaleLeague" class="whaleLeague-active">
+							<div id="whaleLeague" class="${pageMaker.cri.league == 'whale'?'whaleLeague-active':''}" onclick="location.href='leaderboards?league=whale'">
 								고래리그
 							</div>
 						</li>
 						<li>
-							<div id="mackerelLeague">
+							<div id="mackerelLeague" class="${pageMaker.cri.league == 'mackerel'?'mackerelLeague-active':''}" onclick="location.href='leaderboards?league=mackerel'">
 								고등어리그
 							</div>
 						</li>
 						<li>
-							<div id="shrimpLeague">
+							<div id="shrimpLeague" class="${pageMaker.cri.league == 'shrimp'?'shrimpLeague-active':''}" onclick="location.href='leaderboards?league=shrimp'">
 								새우리그
 							</div>
 						</li>
@@ -181,7 +182,7 @@
 				</ul>
 			</div>
 			
-			<table class="table leaderboards">
+			<table id="ranking-table" class="table leaderboards">
 				<thead>
 					<tr>
 						<th>순위</th>
@@ -192,8 +193,58 @@
 					</tr>
 				</thead>
 				<tbody>
+					<c:if test="${empty list}">
+						<tr>
+							<td class="ranking-table-empty" colspan="5">
+								<img src="resources/icon/${pageMaker.cri.league}.png" width="48px" height="48px"/><br><br>
+								아직 해당리그에 등록된 회원이 없습니다
+							</td>
+						</tr>
+					</c:if>
+					
+					<c:forEach var="dto" items="${list}">
+						<tr>
+							<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.place}" /></td>
+							<td><a href="#">${dto.nickname}</a></td>
+							<td class="${dto.net_profit > 0?'profit-rise':'profit-fall'}">${dto.net_profit_ratio}%</td>
+							<td class="${dto.net_profit > 0?'profit-rise':'profit-fall'}"><fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.net_profit}" />원</td>
+							<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.investment_amount}" />원</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
+			
+			
+			
+			<div class="w-100 pt-2 text-center">
+				<c:set var="league" value="${pageMaker.cri.league}" />
+				
+				<c:if test="${!empty list}">
+					<ul class="pagination pagination-sm">
+						<c:if test="${pageMaker.prev}">
+							<li class="page-item">
+						      	<a class="page-link" href="leaderboards${pageMaker.makeQuery(league, pageMaker.startPage-1)}" aria-label="Previous">
+							        <span aria-hidden="true">&laquo;</span>
+							        <span class="sr-only">Previous</span>
+						    	</a>
+						    </li>
+						</c:if>
+						
+						<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+							<li class="page-item ${pageMaker.cri.page == idx?'active':''}"><a class="page-link" href="leaderboards${pageMaker.makeQuery(league, idx)}">${idx}</a></li>
+						</c:forEach>
+						
+						<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+							<li class="page-item">
+							    <a class="page-link" href="leaderboards${pageMaker.makeQuery(league, pageMaker.endPage+1)}" aria-label="Next">
+								    <span aria-hidden="true">&raquo;</span>
+								    <span class="sr-only">Next</span>
+							    </a>
+							</li>
+						</c:if>
+					</ul>
+				</c:if>
+			</div>
 		</div>
 		
 		<jsp:include page="../include/footer.jsp"/>	

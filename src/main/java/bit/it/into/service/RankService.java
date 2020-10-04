@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import bit.it.into.dto.RankDTO;
 import bit.it.into.dto.RankingDTO;
 import bit.it.into.mapper.RankMapper;
+import bit.it.into.page.RankCriteria;
 import lombok.extern.log4j.Log4j;
 
 @Service
@@ -55,6 +56,32 @@ public class RankService {
 		log.info("RankService - getShrimpReagueList()");
 		
 		return mapper.selectShrimpReagueList();
+	}
+
+	public int getLeagueTotal(RankCriteria cri) {
+		log.info("RankService - getShrimpReagueList()");
+		
+		if(cri.getLeague().equals("shrimp")) {
+			return mapper.getShrimpLeagueTotalCount();
+		}
+		if(cri.getLeague().equals("mackerel")) {
+			return mapper.getMackerelLeagueTotalCount();
+		}
+		
+		return mapper.getWhaleLeagueTotalCount();	
+	}
+
+	public List<RankingDTO> getLeagueList(RankCriteria cri) {
+		log.info("RankService - getShrimpReagueList()");
+
+		if(cri.getLeague().equals("shrimp")) {
+			return mapper.getShrimpLeaguePageList(cri);
+		}
+		if(cri.getLeague().equals("mackerel")) {
+			return mapper.getMackerelLeaguePageList(cri);
+		}
+		
+		return mapper.getWhaleLeaguePageList(cri);	
 	}
 	
 }
