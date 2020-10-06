@@ -357,14 +357,17 @@
             <div class="card-body">
             	
             	<div id="inputInfo">
-            		종목명: 	<select id="stockinfo_symbols" name="종목명">
+            		종목명: 	<select id="stockinfo_symbols" name="종목명" onchange="getInfo(this.value)">
 	            				<option value="" disabled selected>종목명</option>
-				           		<option value="NAVER">NAVER</option>
-			           		</select><br>
+	            				<c:forEach var = "list" items= "${stockinfo}">
+				           		<option id="listCode" value="${list.code}">${list.stockinfo_symbols}</option>
+				           		</c:forEach>
+			           		</select> <span id="currentPrice"></span>
+			           		<br>
 					지배주주 지분 : <input type="text" id="ev" name="지배주주 지분" /> 억 원 <br>
 					ROE : <input type="text" id="roe" name="ROE" /> % <br>
 					주주요구수익률 : <input type="text" id="ke" name="주주요구수익률 " placeholder="8" value="8" /> % <br>
-					발행주식수 : <input type="text" id="shareIssued" name="발행주식수" /> 주 <br>
+					발행주식수 : <span id="amount"><input type="text" id="shareIssued" name="발행주식수" /> 주 <br></span>
 				</div>
 				
 				<button type="button" class="btn btn-outline btn-primary pull-right" onclick="calculate();">계산</button>   	
@@ -401,7 +404,7 @@
 		        	  var material0 = parseInt(document.getElementById("ev").value);	//지배주주지분(기업가치)
 		        	  var material1 = parseFloat(document.getElementById("roe").value);	//ROE
 		        	  var material2 = parseFloat(document.getElementById("ke").value);	//주주요구수익률
-		        	  var material3 = parseInt(document.getElementById("shareIssued").value);	//발행주식수
+		        	  var material3 = parseInt(document.getElementById("shareIssued").value.replace(/,/g, ''));	//발행주식수
 		        	  //초과이익 = 기업가치 * (주주요구수익률 - 8%)
 		        	  //기업가치 = 자기자본 + 초과이익 x w / (1+할인율-w)
 		        	  //8%: 임의의 무위험수익률
@@ -433,34 +436,35 @@
 		                      '<th>매수/매도 여부</th></tr></thead>'+
 		                  '<tbody>'+
 			                 '<tr><td>영원히 지속</td>'+
-		                      '<td>'+material0+'억 원</td>'+
+		                      '<td>'+material0.toLocaleString()+'억 원</td>'+
 		                      '<td>'+material1+'%</td>'+
 		                      '<td>'+material2+'%</td>'+
-		                      '<td>'+material5+'억 원</td>'+
-		                      '<td>'+material3+'주</td>'+
-		                      '<td>'+material8+'원</td>'+
+		                      '<td>'+material5.toLocaleString()+'억 원</td>'+
+		                      '<td>'+material3.toLocaleString()+'주</td>'+
+		                      '<td>'+material8.toLocaleString()+'원</td>'+
 		                      '<td>매도</td></tr>'+
 		                     '<tr><td>10%씩 감소</td>'+
-		                      '<td>'+material0+'억 원</td>'+
+		                      '<td>'+material0.toLocaleString()+'억 원</td>'+
 		                      '<td>'+material1+'%</td>'+
 		                      '<td>'+material2+'%</td>'+
-		                      '<td>'+material6+'억 원</td>'+
-		                      '<td>'+material3+'주</td>'+
-		                      '<td>'+material9+'원</td>'+
+		                      '<td>'+material6.toLocaleString()+'억 원</td>'+
+		                      '<td>'+material3.toLocaleString()+'주</td>'+
+		                      '<td>'+material9.toLocaleString()+'원</td>'+
 		                      '<td>적정</td></tr>'+
 		                    '<tr><td>20%씩 감소</td>'+
-			                   '<td>'+material0+'억 원</td>'+
+			                   '<td>'+material0.toLocaleString()+'억 원</td>'+
 			                   '<td>'+material1+'%</td>'+
 			                   '<td>'+material2+'%</td>'+
-			                   '<td>'+material7+'억 원</td>'+
-			                   '<td>'+material3+'주</td>'+
-		                      '<td>'+material10+'원</td>'+
+			                   '<td>'+material7.toLocaleString()+'억 원</td>'+
+			                   '<td>'+material3.toLocaleString()+'주</td>'+
+		                      '<td>'+material10.toLocaleString()+'원</td>'+
 		                      '<td>매수</td></tr></tbody>'+
 		                	'</table>'+
 		             		'</div>';
 		             		
 		             		var frm = 
 				        	  '<form id="frm" action="writeCalculator" method="post">'+
+				        	  '<input type="hidden" name="member_num" value="1">'+
 				        	  '<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />'+
 		             		  '<input type="hidden" name="stockinfo_symbols" value='+symbols+'>'+
 		             		  '<input type="hidden" name="ev" value='+material0+'>'+
@@ -547,6 +551,28 @@
 					
 					document.getElementsByTagName('p')[0].innerHTML = "";
 				}
+		        
+		        //krx api
+		        function getInfo(){
+		        	var code = document.getElementById("stockinfo_symbols").value;
+		        	var url = 'stockInfo/'+code+'.json';
+					
+					$.ajax({
+						url: url,
+						type: 'GET',
+						dataType: 'json',
+						success: function(result) {
+							
+							var curJuka = result.stockprice.TBL_StockInfo.CurJuka;
+							var amount = result.stockprice.TBL_StockInfo.Amount;
+
+							document.getElementById("amount").innerHTML 
+								= '<input type="text" id="shareIssued" name="발행주식수" placeholder='+amount+' value='+amount+' /> 주 <br>'	
+
+							$("#currentPrice").text("현재가: "+curJuka.toLocaleString()+"원").css("color", "red");
+						}
+					});
+		        }
 			
 			</script>
 

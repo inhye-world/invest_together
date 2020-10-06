@@ -355,166 +355,104 @@
               <h6 class="m-0 font-weight-bold text-primary">나의 적정 주가</h6>
             </div>
             <div class="card-body">
-              
-	          <!-- table script -->
-	          <script type="text/javascript">
-		          
-		          function calculate(){
-		        	 
-		        	 	//null check
-		        		// form안의 모든 text type 조회
-				    var txtEle = $("#inputInfo input[type=text]");
-				    	
-				    for(var i = 0; i < txtEle.length; i ++){
-				    	if("" == $(txtEle[i]).val() || null == $(txtEle[i]).val()){
-					    	var ele_id = $(txtEle[i]).attr("id");
-					    	//console.log("id : " + ele_id);
-					    	showAlert(ele_id);
-					    	return true;
-				    	}
-				    }
-				    	
-				    	
-		        	  var material0 = parseInt(document.getElementById("ev").value);	//지배주주지분(기업가치)
-		        	  var material1 = parseFloat(document.getElementById("roe").value);	//ROE
-		        	  var material2 = parseInt(document.getElementById("ke").value);	//주주요구수익률
-		        	  var material3 = parseInt(document.getElementById("shareIssued").value);	//발행주식수
-		        	  //초과이익 = 기업가치 * (주주요구수익률 - 8%)
-		        	  //기업가치 = 자기자본 + 초과이익 x w / (1+할인율-w)
-		        	  //8%: 임의의 무위험수익률
-		        	 
-		        	  //초과이익
-		        	  var material4 = material0*(material3 - 8);					
-		        	  
-		        	  //적정 주주가치
-		        	  var material5 = material0 + material4/0.08;						
-		        	  var material6 = material0 + material4*0.9/(1+0.08-0.9);
-		        	  var material7 = material0 + material4*0.8/(1+0.08-0.8);
-		        	  
-		              //적정주가
-		        	  var material8 = parseInt(material5/material3);								
-		        	  var material9 = parseInt(material6/material3);
-		        	  var material10 = parseInt(material7/material3);
-		        	  
-		        	  
-		        	  document.getElementsByTagName('p')[0].innerHTML =
-		                  '<div class="table-responsive">'+
-		               	  '<table class="table table-bordered" width="100%" cellspacing="0">'+          
-		                  '<thead>'+
-		               	  	  '<tr><th>초과이익 가정(w)</th>'+
-		                      '<th>지배주주지분</th>'+
-		                      '<th>ROE</th>'+
-		                      '<th>주주요구수익률</th>'+
-		                      '<th>적정주주가치</th>'+
-		                      '<th>발행주식수</th>'+
-		                      '<th>적정주가</th>'+
-		                      '<th>매수/매도 여부</th></tr></thead>'+
-		                  '<tbody>'+
-			                 '<tr><td>영원히 지속</td>'+
-		                      '<td>'+material0+'억 원</td>'+
-		                      '<td>'+material1+'%</td>'+
-		                      '<td>'+material2+'%</td>'+
-		                      '<td>'+material5+'억 원</td>'+
-		                      '<td>'+material3+'주</td>'+
-		                      '<td>'+material8+'원</td>'+
-		                      '<td>매도</td></tr>'+
-		                     '<tr><td>10%씩 감소</td>'+
-		                      '<td>'+material0+'억 원</td>'+
-		                      '<td>'+material1+'%</td>'+
-		                      '<td>'+material2+'%</td>'+
-		                      '<td>'+material6+'억 원</td>'+
-		                      '<td>'+material3+'주</td>'+
-		                      '<td>'+material9+'원</td>'+
-		                      '<td>적정</td></tr>'+
-		                    '<tr><td>20%씩 감소</td>'+
-			                   '<td>'+material0+'억 원</td>'+
-			                   '<td>'+material1+'%</td>'+
-			                   '<td>'+material2+'%</td>'+
-			                   '<td>'+material7+'억 원</td>'+
-			                   '<td>'+material3+'주</td>'+
-		                      '<td>'+material10+'원</td>'+
-		                      '<td>매수</td></tr></tbody>'+
-		                	'</table>'+
-		             		'</div>';
-		             		
-		             		alert("저장되었습니다.");
-		      		    } 
-			
-		        	//null값일 때 focus주기 
-				    function showAlert(ele_id){
-		
-				    	var ele_name = $("#" + ele_id).attr('name');
-				    	alert(ele_name + "을(를) 입력해주세요.");
-		
-				    	// 해당 id에 focus.
-				    	$("#" + ele_id).focus();
-				    }
-		          
-		          //숫자 validating 부동소수점 포함
-		          $(document).on("input","input[id=ev]",function(){
-						var ev_check = document.getElementById("ev").value;
-		
-			        	var num = /^[+]?\d+\.?\d*$/;
-			          
-				        if(!num.test(ev)) {
-				        	alert("지배주주지분을 다시 입력해주세요");
-				        	document.getElementById("ev").value = "";
-			                return false;
-				        } 
-		      	    });
-		    	  
-		          $(document).on("input","input[id=roe]",function(){
-						var roe_check = document.getElementById("roe").value;
-		
-			        	var num = /^[+]?\d+\.?\d*$/;
-			          
-				        if(!num.test(roe_check)) {
-				        	alert("ROE를 다시 입력해주세요");
-				        	document.getElementById("roe").value = "";
-			                return false;
-				        } 
-		     		   });
-		     	     
-		          $(document).on("input","input[id=ke]",function(){
-						var ke_check = document.getElementById("ke").value;
-		
-			        	var num = /^[+]?\d+\.?\d*$/;
-			          
-				        if(!num.test(ke_check)) {
-				        	alert("주주요구수익률을 다시 입력해주세요");
-				        	document.getElementById("ke").value = "";
-			                return false;
-				        } 
-		       		 });
-		          
-		          $(document).on("input","input[id=shareIssued]",function(){
-						var shareIssued_check = document.getElementById("shareIssued").value;
-		
-			        	var num = /^[+]?\d+\.?\d*$/;
-			          
-				        if(!num.test(shareIssued_check)) {
-				        	alert("발행주식수를 다시 입력해주세요");
-				        	document.getElementById("shareIssued").value = "";
-			                return false;
-				        } 
-		       		 });
-		
-				function refresh(){
-					document.getElementById("ev").value = "";
-					document.getElementById("roe").value = "";
-					document.getElementById("ke").value = "";
-					document.getElementById("shareIssued").value = "";
-					
-					document.getElementsByTagName('p')[0].innerHTML = "";
-				}
-				
-			</script>
-
+            		종목명: 	<select id="symbols" onchange="selectSymbols(this.value)">
+            					<c:forEach var = "dto" items= "${symbolsList}">
+				           			<option value="${dto.stockinfo_symbols}">${dto.stockinfo_symbols}</option>
+				           		</c:forEach>
+			           		</select><br>
+			        <div class="table-responsive">
+		               	  <table class="table table-bordered" width="100%" cellspacing="0">    
+			                  <thead>
+			               	  	  <tr><th>초과이익 가정(w)</th>
+			                      <th>지배주주지분</th>
+			                      <th>ROE</th>
+			                      <th>주주요구수익률</th>
+			                      <th>적정주주가치</th>
+			                      <th>발행주식수</th>
+			                      <th>적정주가</th>
+			                      <th>매수/매도 여부</th></tr>
+			                  </thead>
+			                  <tbody id="ajaxTable">
+			                  </tbody>
+		                	</table>
+		             	</div>	
         </div>
         <!-- /.container-fluid -->
 
       </div>
       <!-- End of Main Content -->
+      
+      <!-- script table -->
+      <script>
+      		
+      		function selectSymbols() {
+      			var optVal = $("#symbols option:selected").val();
+      			$.ajax({
+		    	    url : "list",
+		    	    type : "get",
+		    	    data : {"stockinfo_symbols" : optVal},
+		    	    dataType : "json",
+		    	    success: function(data){
+		    	    	console.log(data);
+		    	    	
+		    	    	  var material0 = parseInt(data.ev);	//지배주주지분(기업가치)
+			        	  var material1 = parseFloat(data.roe);	//ROE
+			        	  var material2 = parseFloat(data.ke);	//주주요구수익률
+			        	  var material3 = parseInt(data.share_issued);	//발행주식수
+			        	  //초과이익 = 기업가치 * (주주요구수익률 - 8%)
+			        	  //기업가치 = 자기자본 + 초과이익 x w / (1+할인율-w)
+			        	  //8%: 임의의 무위험수익률
+			        	 
+			        	  //초과이익
+			        	  var material4 = material0*(material3 - 8);					
+			        	  
+			        	  //적정 주주가치
+			        	  var material5 = material0 + material4/0.08;						
+			        	  var material6 = material0 + material4*0.9/(1+0.08-0.9);
+			        	  var material7 = material0 + material4*0.8/(1+0.08-0.8);
+			        	  
+			              //적정주가
+			        	  var material8 = parseInt(material5/material3);								
+			        	  var material9 = parseInt(material6/material3);
+			        	  var material10 = parseInt(material7/material3);
+		    	    	
+		    	    	document.getElementById("ajaxTable").innerHTML = '<tr><td>영원히 지속</td>'+
+													                      '<td>'+material0+'억 원</td>'+
+													                      '<td>'+material1+'%</td>'+
+													                      '<td>'+material2+'%</td>'+
+													                      '<td>'+material5+'억 원</td>'+
+													                      '<td>'+material3+'주</td>'+
+													                      '<td>'+material8+'원</td>'+
+													                      '<td>매도</td></tr>'+
+													                     '<tr><td>10%씩 감소</td>'+
+													                      '<td>'+material0+'억 원</td>'+
+													                      '<td>'+material1+'%</td>'+
+													                      '<td>'+material2+'%</td>'+
+													                      '<td>'+material6+'억 원</td>'+
+													                      '<td>'+material3+'주</td>'+
+													                      '<td>'+material9+'원</td>'+
+													                      '<td>적정</td></tr>'+
+													                    '<tr><td>20%씩 감소</td>'+
+														                   '<td>'+material0+'억 원</td>'+
+														                   '<td>'+material1+'%</td>'+
+														                   '<td>'+material2+'%</td>'+
+														                   '<td>'+material7+'억 원</td>'+
+														                   '<td>'+material3+'주</td>'+
+													                      '<td>'+material10+'원</td>'+
+													                      '<td>매수</td></tr>;'
+		    	    	
+		    	    },
+		    	    error: function(request, status, error){
+		    	    	alert("error");
+		    	    }
+		    	 });
+      		}
+      		
+      		window.onload = function(){
+	      		selectSymbols();
+      		}
+      		
+      </script>
 
       <!-- Footer -->
       <footer class="sticky-footer bg-white">

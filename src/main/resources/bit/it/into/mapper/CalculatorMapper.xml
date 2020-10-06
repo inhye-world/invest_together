@@ -19,5 +19,17 @@
     <select id="checkSymbols" resultType="int" >
     	SELECT COUNT(*) FROM CALCULATOR WHERE stockinfo_symbols = #{stockinfo_symbols} AND member_num = #{member_num}
     </select>
+    
+    <select id="getSymbolsList" resultType="CalculatorDTO">
+			SELECT stockinfo_symbols FROM CALCULATOR WHERE member_num = #{member_num}
+	</select>
+	
+	<select id="getList" resultType="CalculatorDTO">
+			SELECT * FROM CALCULATOR WHERE stockinfo_symbols = #{stockinfo_symbols} AND member_num = #{member_num}
+	</select>
+	
+	<select id="getStockinfo" resultType="StockInfoDTO">
+			SELECT * FROM STOCK_INFO
+	</select>
 
 </mapper>
