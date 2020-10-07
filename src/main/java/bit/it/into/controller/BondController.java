@@ -83,7 +83,7 @@ public class BondController {
 		
 		 for(String i : checkArr) {
 			  System.out.println(i);
-			   bondService.remove(i);
+			  bondService.remove(i);
 		 }   
 		 
 		 return result;  

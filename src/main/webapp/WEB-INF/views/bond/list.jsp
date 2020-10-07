@@ -7,14 +7,18 @@
 
 <head>
 
-	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 	
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  
+  <!-- alert -->
+  <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
+  <script src="resources/sb_admin/js/ast-notif.js"></script>
   
   <!-- ajax사용 위해 csrf설정 -->
   <meta id="_csrf" name="_csrf" content="${_csrf.token}" />
@@ -39,120 +43,6 @@
 
   <!-- Page Wrapper -->
   <div id="wrapper">
-
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
-      </a>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Interface
-      </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Components</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="buttons.html">Buttons</a>
-            <a class="collapse-item" href="cards.html">Cards</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Utilities</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">Colors</a>
-            <a class="collapse-item" href="utilities-border.html">Borders</a>
-            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Addons
-      </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="login.html">Login</a>
-            <a class="collapse-item" href="register.html">Register</a>
-            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item" href="blank.html">Blank Page</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
-      </li>
-
-      <!-- Nav Item - Tables -->
-      <li class="nav-item active">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
-
-    </ul>
-    <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -410,13 +300,25 @@
           <!-- table script -->
           <script type="text/javascript">
           
+          function alerting(content){
+        		AstNotif.dialog('알림', content, {
+            	  theme: 'default',
+            	});
+        	}
+          
+          function confirming(content){
+	      		AstNotif.snackbar(content, {
+	          	  theme: 'default',
+	          	});
+      		}
+          
           //날짜 validating
           $(document).on("input","input[name=maturity_date]",function(){
 				    var startDate = document.getElementById("bond_date").value;
 				    var endDate = document.getElementById("maturity_date").value;
 				    
 				    if ((Date.parse(startDate) >= Date.parse(endDate))) {
-				        alert("만기일이 매수일자보다 빠른 날짜를 선택하셨습니다.");
+				        alerting("만기일이 매수일자보다 빠른 날짜를 선택하셨습니다.");
 				        document.getElementById("maturity_date").value = "";
 				    }
 			}); 
@@ -429,7 +331,7 @@
 	        	  var pattern2 = /[._+=-`~!@#$%^&*|\\\'\";:\/?]/gi;
 	        	  
 	         	  if(bond_symbols.search(pattern1) != -1 || bond_symbols.search(pattern2) != -1) {
-	                  alert("종목명을 다시 입력해주세요. 공백 및 특수문자는 사용할 수 없습니다.");
+	                  alerting("종목명을 다시 입력해주세요. 공백 및 특수문자는 사용할 수 없습니다.");
 	                  document.getElementById("bond_symbols").value = "";
 	                  return false;
 	               }
@@ -443,7 +345,7 @@
 	        	var num = /^[+]?\d+\.?\d*$/;
 	          
 		        if(!num.test(total_interest)) {
-		        	alert("세후보유기간이자를 다시 입력해주세요");
+		        	alerting("세후보유기간이자를 다시 입력해주세요");
 		        	document.getElementById("total_interest").value = "";
 	                return false;
 		        } 
@@ -455,7 +357,7 @@
 	        	var num = /^[+]?\d+\.?\d*$/;     
 		        
 		        if(!num.test(coupon_interest_rate)) {
-	                alert("발행이자율을 다시 입력해주세요");
+	                alerting("발행이자율을 다시 입력해주세요");
 	                document.getElementById("coupon_interest_rate").value = "";
 	                return false;
 	             }
@@ -467,7 +369,7 @@
 	        	var num = /^[+]?\d+\.?\d*$/;     
 
 		        if(!num.test(discount_rate)) {
-	                alert("할인이자율을 다시 입력해주세요");
+	                alerting("할인이자율을 다시 입력해주세요");
 	                document.getElementById("discount_rate").value = "";
 	                return false;
 	             }
@@ -482,7 +384,7 @@
 	        	var num = /^\d+\.?\d*$/;
 	          
 		        if(!num.test(bond_price)) {
-	                alert("매수금액을 다시 입력해주세요");
+	                alerting("매수금액을 다시 입력해주세요");
 	                document.getElementById("bond_price").value = "";
 	                return false;
 	             }
@@ -494,7 +396,7 @@
 	        	var num = /^\d+\.?\d*$/;
 
 		        if(!num.test(gross_price)) {
-	                alert("총상환금액을 다시 입력해주세요");
+	                alerting("총상환금액을 다시 입력해주세요");
 	                document.getElementById("gross_price").value = "";
 	                return false;
 	             }
@@ -651,7 +553,7 @@
 		    function showAlert(ele_id){
 
 		    	var ele_name = $("#" + ele_id).attr('placeholder');
-		    	alert(ele_name + "을 입력해주세요.");
+		    	alerting(ele_name + "을 입력해주세요.");
 
 		    	// 해당 id에 focus.
 		    	$("#" + ele_id).focus();
@@ -660,9 +562,9 @@
 		    
 		    //삭제 버튼
 		    $(document).on("click","button[name=delRow]",function(){
-		    	var confirm_val = confirm("정말 삭제하시겠습니까?");
+		    	//var confirm_val = confirming("정말 삭제하시겠습니까?");
 		    	  
-		    	  if(confirm_val) {
+		    	  //if(confirm_val) {
 		    	   var checkArr = [];
 		    	   
 		    	   $("input[class='checkRow']:checked").each(function(){
@@ -675,11 +577,16 @@
 		    	    data : {"checkRow" : checkArr},
 		    	    dataType : "json",
 		    	    success : function(result){
-		    	    		if(result == 1)
-		    	    		window.location.href = "bond";
+		    	    		if(result == 1){
+		    	    			confirming("삭제했습니다.");
+			    	    		setTimeout(function() {
+			    	    			window.location.href = "bond";
+			    	    			}, 1000);
+		    	    		}
+		    	    			
 		    	    	}
 		    	    });
-		    	   }
+		    	   //}
 
  	        });
 		    
@@ -778,85 +685,6 @@
 
                 });
 		  	});
-
-		  
-		  
-		    //추가 저장 버튼 
-/*   		    function createRow(){
-		    	var bond_symbols = $("#bond_symbols").val();
-				var total_interest = $("#total_interest").val();
-				var bond_company = $("#bond_company").val();
-				var bond_price = $("#bond_price").val();
-				var bond_date = $("#bond_date").val();
-				var coupon_interest_rate = $("#coupon_interest_rate").val();
-				var discount_rate = $("#discount_rate").val();
-				var gross_price = $("#gross_price").val();
-				var maturity_date = $("#maturity_date").val();
-				var grade = $("#grade").val();
-	            var markup = "<tr><td><input type='checkbox' name='checkbox'></td>" +
-		       		"		<td>" + bond_symbols + "</td>" +
-		       		"		<td>" + total_interest + "</td>" +
-		       		"		<td>" + bond_company + "</td>" +
-		       		"		<td>" + bond_price + "</td>" +
-		       		"		<td>" + bond_date + "</td>" +
-		       		"		<td>" + coupon_interest_rate + "</td>" +
-		       		"		<td>" + discount_rate + "</td>" +
-		       		"		<td>" + gross_price + "</td>" +
-		       		"		<td>" + maturity_date + "</td>" +
-		       		"		<td>" + grade + "</td></tr>";
-		    	$("#bond_tbody").prepend(markup);
-		    	
-		    	$("#bond_symbols").val('');
-				$("#total_interest").val('');
-				$("#bond_company").val('');
-				$("#bond_price").val('');
-				$("#bond_date").val('');
-				$("#coupon_interest_rate").val('');
-				$("#discount_rate").val('');
-				$("#gross_price").val('');
-				$("#maturity_date").val('');
-				$("#grade").val('');
-		    	
-		    } */
-		    
-		    
-		    //db에 저장 
-/* 			function insertAjax(){
-		    	var url="${pageContext.request.contextPath}/restful/insert.json";
-		    	
-		    	$(document).on("click","button[name=insertAjax]",function(e){
-					e.preventDefault();
-					
-					var insertData={	
-						'bond_symbols' : $("#bond_symbols").val(),
-						'total_interest' : $("#total_interest").val(),
-						'bond_company' : $("#bond_company").val(),
-						'bond_price' : $("#bond_price").val(),
-						'bond_date' : $("#bond_date").val(),
-						'coupon_interest_rate' : $("#coupon_interest_rate").val(),
-						'discount_rate' : $("#discount_rate").val(),
-						'gross_price' : $("#gross_price").val(),
-						'maturity_date' : $("#maturity_date").val(),
-						'grade' : $("#grade").val()
-					};
-					
-					$.ajax({
-						url: url,
-						type: 'POST',
-						data: insertData,
-						cache: false,
-						success: function(data){
-							var jsonObj = JSON.parse(data);
-							$("#bond_tbody").html(""); //초기화 하고
-							$("#bond_tbody").append(jsonObj);//데이터를 띄운다.
-						},
-						error: function (xhr, status){     
-				             alert(xhr + " : " + status);
-				          }
-					});
-		    	
-		   	 });
-		    } */
 		    
 		</script>
 

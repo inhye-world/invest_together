@@ -3,14 +3,12 @@ package bit.it.into.service;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import bit.it.into.dto.BondDTO;
 import bit.it.into.dto.CalculatorDTO;
 import bit.it.into.dto.StockInfoDTO;
 import bit.it.into.mapper.CalculatorMapper;
@@ -50,7 +48,7 @@ public class CalculatorService {
 	}
 
 	public String getStockInfoXml(String strCode) {
-		//log.info("StockService - getStockInfoXml()");
+		log.info("CalculatorService - getStockInfoXml()");
 		
 		String url = "http://asp1.krx.co.kr/servlet/krx.asp.XMLSiseEng?code="+strCode;
 		
@@ -70,6 +68,10 @@ public class CalculatorService {
 	    }	 
 		
 		return null;
+	}
+
+	public void delete(CalculatorDTO calculatorDTO) {
+		mapper.delete(calculatorDTO);	
 	}
 
 }

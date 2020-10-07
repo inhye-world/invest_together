@@ -1,6 +1,5 @@
 package bit.it.into.mapper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import bit.it.into.dto.CalculatorDTO;
@@ -19,6 +18,8 @@ public interface CalculatorMapper {
 	public CalculatorDTO getList(CalculatorDTO calculatorDTO);
 
 	public List<StockInfoDTO> getStockinfo();
+
+	public void delete(CalculatorDTO calculatorDTO);
 	
 
 }

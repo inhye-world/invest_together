@@ -21,15 +21,19 @@
     </select>
     
     <select id="getSymbolsList" resultType="CalculatorDTO">
-			SELECT stockinfo_symbols FROM CALCULATOR WHERE member_num = #{member_num}
+			SELECT stockinfo_symbols FROM CALCULATOR WHERE member_num = #{member_num} ORDER BY stockinfo_symbols ASC
 	</select>
 	
 	<select id="getList" resultType="CalculatorDTO">
-			SELECT * FROM CALCULATOR WHERE stockinfo_symbols = #{stockinfo_symbols} AND member_num = #{member_num}
+			SELECT * FROM CALCULATOR WHERE stockinfo_symbols = #{stockinfo_symbols} AND member_num = #{member_num} ORDER BY stockinfo_symbols ASC
 	</select>
 	
 	<select id="getStockinfo" resultType="StockInfoDTO">
 			SELECT * FROM STOCK_INFO
 	</select>
+	
+	<delete id="delete">
+		DELETE FROM CALCULATOR WHERE stockinfo_symbols = #{stockinfo_symbols} AND member_num = #{member_num}
+	</delete>
 
 </mapper>
