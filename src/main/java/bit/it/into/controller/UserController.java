@@ -59,7 +59,6 @@ public class UserController {
 		
 		service.addUserAccountInfo(accountDTO, user_num, access_token, refresh_token, user_seq_no);
 		
-		
 		return "user/addAccount_clear";
 	}
 }

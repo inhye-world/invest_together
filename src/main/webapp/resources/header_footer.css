@@ -185,6 +185,60 @@
   float: left;
 }
 
+.tran-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.tran-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  max-height: 200px;
+  overflow-y: auto; /* prevent horizontal scrollbar */
+  overflow-x: hidden;
+  min-width: 100%;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.tran-dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  font-family: 'MapoDPPA';
+  display: block;
+}
+
+.tran-dropdown-content a:hover {
+	background-color: #ddd;
+	text-decoration: none;
+}
+
+.tran-dropdown:hover .tran-dropdown-content {display: block;}
+
+.tran-dropdown:hover .section {background-color: #E7E7E7;}
+
+.expenseTable{
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+#account_analyze
+{
+  font-family: 'Noto Sans KR', sans-serif;
+  text-decoration: none;
+  color: #000000;
+  float: right;
+  margin:10px 30px 5px;		
+}
+
+#account_analyze:hover
+{
+  font-family: 'Noto Sans KR', sans-serif;
+  text-decoration: none;
+  color: #227fec;		
+}
+
 #menuToggle
 {
   display: block;
@@ -348,6 +402,35 @@
 #menuToggle input:checked ~ ul
 {
   transform: none;
+}
+
+#sec1 {
+	width: 100px;
+	height: 100px;
+	float: left;
+	line-height: 100px;
+	font-size: 30px;
+}
+#sec2 {
+	width: 40px;
+	height: 100px;
+	float: right;
+	font-size: 20px;
+	text-align: left;
+	line-height: 100px;
+}
+#sec3 {
+	width: 230px;
+	height: 100px;
+	float: right;
+	display: table;
+	font-size: 20px;
+	text-align: left;
+}
+
+#sec4 {
+	display: table-cell;
+	vertical-align: middle;
 }
 
 .footer-back {

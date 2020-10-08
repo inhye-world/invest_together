@@ -9,7 +9,7 @@
 </head>
 	<body>
 		<div class="wrapper">
-		<jsp:include page="../include/header_temp.jsp"/>
+		<jsp:include page="../include/header.jsp"/>
 		
 			<div class="container">
 				<a class="mainA" href="/into"> 같이투자 API TEST</a>
@@ -39,7 +39,8 @@
 				<br><br><br><br><br><br>
 				
 				
-			</div>	
+			</div>
+			<jsp:include page="../include/footer.jsp"/>	
 		</div>
 		
 		<script>
