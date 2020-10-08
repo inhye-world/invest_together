@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.databind.JsonNode;
+
 import bit.it.into.dto.SubscribeDTO;
+import bit.it.into.service.IamportService;
 import bit.it.into.service.SubscribeService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -19,6 +22,7 @@ import lombok.extern.log4j.Log4j;
 public class SubscribeController {
 
 	private SubscribeService service;
+	private IamportService imp;
 	
 	@ResponseBody
 	@RequestMapping(value="/rest/getMerchantSeq", produces="application/text; charset=utf8")
@@ -73,6 +77,12 @@ public class SubscribeController {
 		String reason = request.getParameter("reason");
 		String merchant_uid = request.getParameter("merchant_uid");
 		
+		JsonNode node = imp.getAccessToken();
+		log.info(node.asText());
+		
+		String test = node.get("response").get("access_token").asText();
+		
+		log.info(test);
 		
 		return "";
 	}
