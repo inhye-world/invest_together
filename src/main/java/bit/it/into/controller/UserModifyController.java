@@ -45,7 +45,7 @@ public class UserModifyController {
 		
 		if(snsType.equals("normal")) {
 			
-			return "user/userModifyInfo";	
+			return "user/userModify";	
 			
 		} else {
 			

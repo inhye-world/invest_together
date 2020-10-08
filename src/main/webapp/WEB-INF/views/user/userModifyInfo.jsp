@@ -21,6 +21,7 @@
 		<div class="member-container page-modify">			
 			<h1 class="usermodify-title">회원정보 수정</h1>
 			<table class="usermodify-table">
+			
 				<sec:authorize access="isAuthenticated()">
 				<sec:authentication var="principal" property="principal"/>
 				<tr>
