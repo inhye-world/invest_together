@@ -53,6 +53,7 @@
   	#card-total{
   		width: 90%;
   		margin: auto;
+  		margin-top: 50px;
   	}
   </style>
 </head>

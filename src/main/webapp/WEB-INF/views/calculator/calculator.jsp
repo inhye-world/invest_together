@@ -43,6 +43,7 @@
   	#card-total{
   		width: 90%;
   		margin: auto;
+  		margin-top: 50px;
   	}
 
   </style>
@@ -52,7 +53,6 @@
 
 <body id="page-top">
 <jsp:include page="../include/header.jsp"/>
-
 
 		<div id="wrapper">
 		

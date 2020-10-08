@@ -35,6 +35,7 @@
   	#card-total{
   		width: 90%;
   		margin: auto;
+  		margin-top: 50px;
   	}
 
   </style>
@@ -216,14 +217,9 @@
 			                  '<input type="hidden" name="roe" value='+material1+'>'+
 			                  '<input type="hidden" name="ke" value='+material2+'>'+
 			                  '<input type="hidden" name="share_issued" value='+material3+'>'+
-			                  '<button type="button" class="btn btn-outline btn-primary pull-right" onclick="send();">저장</button>'+
+			                  '<input type="submit" class="btn btn-outline btn-primary pull-right" id="save" value="저장" />'+
 			                  '</form>';	
 			  		    } 
-				
-				   function send(){	  
-					   $(frm).submit();
-				   }
-			      	
 			      
 				//null값일 때 focus주기 
 			     function showAlert(ele_id){

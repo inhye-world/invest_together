@@ -38,7 +38,6 @@ public class CalculateController {
 	 public String calculator() {
 		 
 		 return "calculator/calculator";
-		 //return "include/testmain";
 	 }
 	
 	 @RequestMapping("/target")
