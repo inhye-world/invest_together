@@ -45,13 +45,13 @@
 							<article class="user-area">
 								<div class="user-area_content">
 									<span class="input-state input-state--success is-block" id="user_id_box">
-										<form:form class="id_form" action="${pageContext.request.contextPath}/pwdEmailSend" method="POST">
+										<form:form class="id_form" action="pwdEmailSend" method="POST">
 											<input type="text" class="form-control--base-c" name="id" placeholder="아이디 (대소문자 구분)" maxlength="12"><br><br>
 											<input id="pwFind-submit" type="submit" value="인증번호전송">
 										</form:form>
 										<br>
 									</span>
-										<form:form class="auth_form" action="${pageContext.request.contextPath}/verifyPwd" method="POST">
+										<form:form class="auth_form" action="verifyPwd" method="POST">
 											<input type="hidden" name="id" value="${memberDTO.id}">
 											<input type="hidden" id="authKey" value="${authKey}" />
 											<input type="password" id="verifyNumber" name="verifyNumber" placeholder="이메일 인증 번호" maxlength="50"><br><br>
@@ -62,7 +62,7 @@
 									<span class="list-bul">
 										아이디를 찾으시나요?			
 									</span>
-									<button class="button button--base-m button--shape-a" style="top: 70px;" onclick="location.href='${pageContext.request.contextPath}/idFind'">
+									<button class="button button--base-m button--shape-a" style="top: 70px;" onclick="location.href='idFind'">
 										<span class="button__text">아이디 찾기</span>
 									</button>			
 								</div>
@@ -123,6 +123,6 @@
 				});
 			});
 	
-	</script> 	
+	</script>
 	</body>
 </html>

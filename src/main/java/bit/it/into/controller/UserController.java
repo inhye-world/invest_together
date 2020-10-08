@@ -1,6 +1,7 @@
 package bit.it.into.controller;
 
 
+
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import bit.it.into.dto.AccountDTO;
-import bit.it.into.dto.MemberDTO;
 import bit.it.into.security.CustomUser;
 import bit.it.into.service.OpenBankingService;
 import bit.it.into.service.UserService;
@@ -34,22 +34,6 @@ public class UserController {
 			
 		return "user/myPage";
 	}
-	
-	@RequestMapping("/user/modify")
-	public String modify(Model model) {
-		log.info("UserController - modify()");
-				
-		return "user/userModify";
-	}
-	
-	@RequestMapping("/userModify")
-	public String userModify(MemberDTO memberDTO) {
-		log.info("UserController - userModify()");
-		
-			
-		return "userModifyInfo";
-	}
-	
 	
 	@RequestMapping(value = "/user/addAccount", produces = "application/json", method = { RequestMethod.GET, RequestMethod.POST })
 	public String addAccount(@RequestParam("code") String code, Authentication authentication) {

@@ -47,12 +47,12 @@
 							<article class="user-area">
 								<div class="user-area_content">
 									<span class="input-state input-state--success is-block" id="user_id_box">
-										<form:form class="auth_form" action="${pageContext.request.contextPath}/idEmailSend" method="POST">
+										<form:form class="auth_form" action="idEmailSend" method="POST">
 											이름: <input type="text" id="name" name="name" maxlength="40"><br><br>
 											이메일 주소: <input type="text" id="email" name="email" maxlength="100"><br><br>
 											</span><input id="authKey-submit" type="submit" value="인증번호 받기"><br><br>
 										</form:form>
-										<form:form class="verify_form" action="${pageContext.request.contextPath}/verifyId" method="POST">
+										<form:form class="verify_form" action="verifyId" method="POST">
 											<input type="hidden" name="email" value="${memberDTO.email}">
 											<input type="hidden" id="authKey" value="${authKey}" />
 											<input type="password" name="verifyNumber" placeholder="인증번호 6자리 숫자 입력" maxlength="6"><br><br>

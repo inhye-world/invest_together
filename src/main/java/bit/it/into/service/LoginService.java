@@ -159,6 +159,18 @@ public class LoginService {
 		return true;
 	}
 
+	public boolean hasUserByPhone(String phone) {
+		log.info("LoginService - hasUserByPhone()");
+		
+		Integer count = mapper.selectUserByPhone(phone);
+		
+		if(count==0) {
+			return false;
+		}
+		
+		return true;
+	}
+	
 	public void updateAuthKey(String email) {
 		log.info("LoginService -updateAuthKey()");
 		
@@ -170,6 +182,22 @@ public class LoginService {
 		
 		mapper.updatePw(id);
 	}
-	
+
+
+	public boolean authKeyCheck(String parameter) {
+		log.info("LoginService -authKeyCheck()");
+					
+		if(mapper.selectUserById(parameter)==0) {
+			return false;
+			
+		} else if(mapper.selectAuthKey(parameter).equals("1")) {
+			return false;
+		
+		} else if(mapper.selectAuthKey(parameter).equals("0")) {
+			return true;
+		
+		} else 
+			return false;
+	}	
 	
 }

@@ -5,35 +5,63 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>유저 정보 수정</title>
 	
-	<link href="../resources/temporary.css" rel="stylesheet" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
+	<link href="resources/user_modify.css" rel="stylesheet" type="text/css">
+	
+	
 </head>
 	<body>
-		<div class="wrapper">
-			<jsp:include page="../include/header.jsp"/>
-			
-			<div class="container modifyform">
-				<a class="mainA" href="/into"> 같이투자 API TEST</a>
-				<br><br>
-				
-				<h2>-회원정보수정-</h2>
-				<br><br><br><br>
-				
+	<jsp:include page="../include/header.jsp"/>
+		<div class="member-web-adapter member-web-adapter--desktop">
+			<div class="member-container">
+				<section class="usermodify-auth">
 				<sec:authorize access="isAuthenticated()">
 				<sec:authentication var="principal" property="principal"/>
-				<div>
-					<p>${principal.dto.nickname} 님 &nbsp;</p>
-				</div>
-				
-				<form:form class="form" action="userModify" method="POST">
-					<input type="hidden" name="nickname" value="${principal.dto.nickname}">
-					<input type="password" name="pw" placeholder="비밀번호 (8~32자리)">
-					<input id="regi-submit" class="button5" type="submit" value="확인">
-				</form:form>		
-						
+				<form:form class="passwordConfirmForm" action="userModify" method="post">
+				<h1 class="usermodify-auth-title">회원정보확인</h1>			
+
+				<p class="usermodify-auth-msg">
+				<strong class="usermodify-auth-nickname">${principal.dto.nickname}</strong>
+				님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.
+				</p>
+				<table class="usermodify-table">
+					<tbody>
+						<tr>
+							<th scope="row">닉네임<th>
+							<td>${principal.dto.nickname}</td>
+						</tr>
+						<tr>
+						 	<th scope="row">비밀번호<th>
+							<td>
+							<input type="password" name="pw" placeholder="비밀번호 (8~32자리)">
+							<span class="form-err">${pw_error}</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="usermodify-auth-foot">
+					<button type="submit" class="usermodify-auth-submit">확인</button>
+					<button type="submit" class="usermodify-auth-cancel">취소</button>
+				</div>	
+				</form:form>				
 			</sec:authorize>
+			</section>
 			</div>
 		</div>
+		<jsp:include page="../include/footer.jsp"/>
+		
+		<script type="text/javascript">
+		
+		$(document).ready(function (){
+			$(".usermodify-auth-cancel").on("click",function() {
+				$(".passwordConfirmForm").attr("action", "${pageContext.request.contextPath}").submit();
+			});			
+		});
+		
+		</script>
+		
 	</body>
 </html>

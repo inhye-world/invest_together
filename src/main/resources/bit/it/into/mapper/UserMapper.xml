@@ -41,4 +41,95 @@
 		]]>
 	</select>
 	
+	<update id="updateNickname">
+		<![CDATA[
+			update member set nickname = #{nickname} where id = #{id}
+		]]>
+	</update>
+	
+	<update id="updatePhone">
+		<![CDATA[
+			update member set phone = #{phone} where id = #{id}
+		]]>
+	</update>
+	
+	<update id="updateId">
+		<![CDATA[
+			update member set id = #{id} where nickname = #{nickname}
+		]]>
+	</update>
+	
+	<update id="updateEmail">
+		<![CDATA[
+			update member set email = #{email}
+		]]>
+	</update>
+	
+	<update id="updatePw">
+		<![CDATA[
+			update member set pw = #{pw} where nickname = #{nickname}
+		]]>
+	</update>
+	
+	<delete id="deleteAuthorities">
+		<![CDATA[
+			delete from authorities where member_num = #{member_num}
+		]]>
+	</delete>
+	
+	<delete id="deleteStock">
+		<![CDATA[
+			delete from stock where member_num = #{member_num}
+		]]>
+	</delete>
+	
+	<delete id="deleteCalculator">
+		<![CDATA[
+			delete from calculator where member_num = #{member_num}
+		]]>
+	</delete>
+	
+	<delete id="deleteBond">
+		<![CDATA[
+			delete from bond where member_num = #{member_num}
+		]]>
+	</delete>
+	
+	<delete id="deleteRank">
+		<![CDATA[
+			delete from rank where member_num = #{member_num}
+		]]>
+	</delete>
+	
+	<delete id="deleteAccount">
+		<![CDATA[
+			delete from account where member_num = #{member_num}
+		]]>
+	</delete>
+
+	<delete id="deleteOrders">
+		<![CDATA[
+			delete from orders where member_num = #{member_num}
+		]]>
+	</delete>
+	
+	<delete id="deleteComments">
+		<![CDATA[
+			delete from comments where member_num = #{member_num}
+		]]>
+	</delete>
+	
+	<delete id="deleteBoard">
+		<![CDATA[
+			delete from board where member_num = #{member_num}
+		]]>
+	</delete>
+	
+	<delete id="deleteMember">
+		<![CDATA[
+			delete from member where member_num = #{member_num}
+		]]>
+	</delete>
+	
+	
 </mapper>

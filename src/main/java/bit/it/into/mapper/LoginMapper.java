@@ -25,7 +25,11 @@ public interface LoginMapper {
 
 	public Integer selectUserByEmail(String email); 
 
+	public Integer selectUserByPhone(String phone);
+	
 	public void updateAuthKey(String email);
 
 	public void updatePw(String id);
+
+	public String selectAuthKey(String parameter);
 }

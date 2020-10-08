@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,27 +15,22 @@
   	<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
   	<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
 	
-
 </head>
 	<body>
 	<jsp:include page="../include/header.jsp"/>
 		<div class="member-container page-modify">			
 			<h1 class="usermodify-title">회원정보 수정</h1>
 			<table class="usermodify-table">
-			
 				<sec:authorize access="isAuthenticated()">
 				<sec:authentication var="principal" property="principal"/>
 				<tr>
 					<th scope="row">아이디</th>
 					<td>
 						<div class="usermodify-id">
-							<strong class="usermodify-id-current-mail">${principal.dto.id}</strong>
-							<button type="button" class="usermodify-id-change-btn" style="display: inline-block;">아이디 변경</button>
-							<button type="button" class="usermodify-id-change-cancel" style="display: none;">아이디 변경취소</button>
-						<form:form class="usermodify-id-change-auth" action="alterId" method="post" style="display: none;">
-							<input name="id" class="usermodify-id-if" type="text" placeholder="아이디 입력">	
-							<button type="submit" class="usermodify-id-change-auth-send">변경</button>
-						</form:form>
+							<strong> 
+							<c:if test="${principal.dto.sns_type eq 'kakao'}">카카오 계정</c:if>
+							<c:if test="${principal.dto.sns_type eq 'naver'}">네이버 계정</c:if>
+							</strong>
 						</div>	
 					</td>
 				</tr>
@@ -48,7 +44,7 @@
 							<button type="button" class="usermodify-nickname-change-cancel" style="display: none;">닉네임 변경취소</button>
 						<form:form  class="usermodify-nickname-change-auth" action="alterNickname" method="post" style="display: none;">
 							<input class="usermodify-nickname-if" type="text" name="nickname" placeholder="닉네임 입력">
-							<button type="submit" class="usermodify-nickname-change-auth-send">변경</button>		
+							<button type="submit" class="usermodify-nickname-change-auth-send">변경</button>
 						</form:form>
 						</div>	
 					</td>
@@ -70,52 +66,23 @@
 				</tr>
 				<br>
 				<tr>
-					<th scope="row">이메일</th>
+					<th scope="row">이름</th>
 					<td>
-						<div class="usermodify-email">
-							<strong class="usermodify-email-current-mail">${principal.dto.email}</strong>
-							<button type="button" class="usermodify-email-change-btn" style="display: inline-block;">이메일 변경</button>
-							<button type="button" class="usermodify-email-change-cancel" style="display: none;">이메일 변경취소</button>
-						<form:form class="usermodify-email-change-auth" action="emailChange" method="post" style="display: none;">
-							<input class="usermodify-email-if" type="text" name="email" placeholder="이메일 입력">
-							<button type="submit" class="usermodify-email-change-auth-send">인증메일 전송</button>
-						</form:form>
+						<div class="usermodify-name">
+							<strong>${principal.dto.name}</strong>	
 						</div>	
 					</td>
 				</tr>
 				<br>
 				<tr>
-					<th scope="row">비밀번호변경</th>
+					<th scope="row">이메일</th>
 					<td>
-						<div class="usermodify-pw">
-						<form:form class="usermodify-password-change" action="alterPw" method="post">
-							<table class="usermodify-input-table">
-								<tbody>
-								<tr>
-									<th>새 비밀번호</th>
-									<td>
-										<input type="password" id="pw1" name="pw" class="usermodify-pw-newpassword" placeholder="비밀번호 (8~32자리)">
-									</td>
-								</tr>
-								<tr>
-									<th>비밀번호 재입력</th>
-									<td>
-										<input type="password" id="pw2" class="usermodify-pw-newpassword-confirm" placeholder="비밀번호 (8~32자리)">
-										<div id="pw-correct"></div>	
-									</td>
-								</tr>
-								<tr>
-									<td></td>
-									<td>
-										<button type="submit" class="usermodify-password-submit">비밀번호 변경</button>
-									</td>
-								</tr>
-								</tbody>		
-							</table>
-							</form:form>
+						<div class="usermodify-email">
+							<strong>${principal.dto.email}</strong>
 						</div>	
 					</td>
-				</tr>	
+				</tr>
+				<br>	
 			</sec:authorize>
 			</table>
 			<div class="usermodify-secession">
@@ -129,43 +96,7 @@
 		<script>
 			
 			$(document).ready(function (){
-				
-				$.validator.addMethod("idRegex", function(value, element) {
-					return this.optional(element) || value.match(/^[a-z0-9]+$/);   
-				});
-				
-				$(".usermodify-id-change-auth").validate({
-					//규칙
-					rules:{
-						id:{
-							required : true, //필수입력여부
-							minlength : 4, 	//최소 입력 글자수
-							maxlength : 12,  //최대 입력 글자수
-							idRegex : true,
-							remote:{
-								type:"post",
-								url:"checkId"
-							},
-						},
-					},
-
-					//메시지
-					messages:{
-						id:{
-							required : "아이디를 입력해주세요.",
-							minlength : "최소 4글자 이상 입력해주세요.",
-							maxlength : "최대 12글자까지 입력가능합니다.",
-							idRegex : "영문과 숫자만 입력가능합니다.",
-							remote :  "중복된 아이디 입니다."
-						},
-					},
-
-					//메시지 태그
-					errorElement : 'span', 	//태그
-					errorClass: 'error',	//클래스 이름
-					validClass:'vaild' 
-				});
-				
+								
 				$.validator.addMethod("nicknameRegex", function(value, element) {
 					return this.optional(element) || value.match(/^[가-힣a-zA-Z0-9]+$/);   
 				});
@@ -234,67 +165,6 @@
 					validClass:'vaild' 
 				});
 				
-				$(".usermodify-email-change-auth").validate({
-					//규칙
-					rules:{
-						email:{
-							required : true, //필수입력여부
-							email : true, 	//이메일형식
-							remote:{
-								type:"post",
-								url:"checkEmail"
-							},
-						},
-					},
-
-					//메시지
-					messages:{
-						email:{
-							required : "이메일을 입력해주세요.",
-							email : "이메일 형식에 맞지 않습니다.",
-							remote :  "중복된 이메일 입니다."
-						},
-					},
-
-					//메시지 태그
-					errorElement : 'span', 	//태그
-					errorClass: 'error',	//클래스 이름
-					validClass:'vaild' 
-
-				});	
-
-				$.validator.addMethod("pwRegex", function(value, element) {
-					return this.optional(element) || value.match(/^(?=.*[a-z])(?=.*[0-9])[0-9A-Za-z$&+,:;=?@#|'<>.^*()%!-]{8,32}$/);   
-				});
-				
-				$(".usermodify-password-change").validate({
-					//규칙
-					rules:{
-						pw:{
-							required : true, //필수입력여부
-							minlength : 8,	//최소 입력 글자수
-							maxlength : 32,	//최대 입력 글자수
-							pwRegex : true
-						},
-					},
-
-					//메시지
-					messages:{
-						pw:{
-							required : "비밀번호를 입력해주세요.",
-							minlength : "최소 8글자 이상 입력해주세요.",	
-							maxlength : "최대 32글자까지 입력가능합니다.",
-							pwRegex : "영문과 숫자가 포함된 비밀번호를 입력해 주세요."
-						},	
-					},
-
-					//메시지 태그
-					errorElement : 'span', 	//태그
-					errorClass: 'error',	//클래스 이름
-					validClass:'vaild' 
-
-				});	
-				
 			});	
 		
 		    //ajax csrf
@@ -308,19 +178,6 @@
 			
 			
 			$(document).ready(function (){
-				
-				//id버튼
-				$(".usermodify-id-change-btn").on("click", function() {
-					$(".usermodify-id-change-btn").attr({"style":"display:none"});
-					$(".usermodify-id-change-cancel").attr({"style":"display:inline-block"});
-					$(".usermodify-id-change-auth").attr({"style":"display:block"});
-				});
-				
-				$(".usermodify-id-change-cancel").on("click", function() {
-					$(".usermodify-id-change-btn").attr({"style":"display:inline-block"});
-					$(".usermodify-id-change-cancel").attr({"style":"display:none"});
-					$(".usermodify-id-change-auth").attr({"style":"display:none"});
-				});
 				
 				//nickname버튼
 				$(".usermodify-nickname-change-btn").on("click", function() {
@@ -348,19 +205,6 @@
 					$(".usermodify-phone-change-auth").attr({"style":"display:none"});
 				});
 				
-				//email버튼
-				$(".usermodify-email-change-btn").on("click", function() {
-					$(".usermodify-email-change-btn").attr({"style":"display:none"});
-					$(".usermodify-email-change-cancel").attr({"style":"display:inline-block"});
-					$(".usermodify-email-change-auth").attr({"style":"display:block"});
-				});
-				
-				$(".usermodify-email-change-cancel").on("click", function() {
-					$(".usermodify-email-change-btn").attr({"style":"display:inline-block"});
-					$(".usermodify-email-change-cancel").attr({"style":"display:none"});
-					$(".usermodify-email-change-auth").attr({"style":"display:none"});
-				});
-				
 				$(".usermodify-secession-btn").on("click", function() {
 					var result = confirm("회원정보를 탈퇴 하시겠습니까?")
 					if(result){
@@ -370,31 +214,7 @@
 				});
 								
 			});
-			
-			
-			$("input[type=password]").keyup(function() {
-				var pw1 = $("#pw1").val();
-				var pw2 = $("#pw2").val();
-				if(pw1 != "" || pw2 != "") {
-					if(pw1 == pw2) {
-						$("#pw-correct").text("비밀번호가 일치합니다.");
-						$("#pw-correct").css("color", "green");
-					}else {
-						$("#pw-correct").text("비밀번호가 일치하지 않습니다.");
-						$("#pw-correct").css("color", "red");
-					}
-				}
-			});
-			
-			$(".usermodify-password-submit").click(function(e) {
-				var pw1 = $("#pw1").val();
-				var pw2 = $("#pw2").val();
-				if(pw1 != pw2) {
-					alert("비밀번호와 비밀번호 재확인이 일치해야 합니다");
-					e.preventDefault();
-				}
-			});
-			
+
 		</script>
 		<jsp:include page="../include/footer.jsp"/>
 	</body>

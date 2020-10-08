@@ -13,25 +13,32 @@
       	
         <form-login login-page="/loginForm"
                     default-target-url="/"
-                    authentication-failure-url="/loginForm?error"
                     username-parameter="id"
-                    password-parameter="password" />
- 
-        
+                    password-parameter="password" 
+                    authentication-failure-handler-ref="userLoginFailHandler"/>
+         <!-- authentication-failure-url="/loginForm?error" -->
          <logout logout-url="/logout"
                 logout-success-url="/" /> 
                 
         <access-denied-handler error-page="/accessDenied" />
         
 	</http>    
-    
-    
+     
     <beans:bean id="bcryptPasswordEncoder"
           class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
     
     <beans:bean id="customUserDetailsService"
     	class="bit.it.into.security.CustomUserDetailsService" />
     
+    <beans:bean id="loginService"
+    	class="bit.it.into.service.LoginService" />
+    
+    <beans:bean id="userLoginFailHandler"
+    	class="bit.it.into.security.UserLoginFailHandler" >
+    	<beans:property name="loginService" ref="loginService"/>
+    </beans:bean>
+    	
+    	
 <!--      <jdbc-user-service 
             data-source-ref="dataSource"
             role-prefix=""
