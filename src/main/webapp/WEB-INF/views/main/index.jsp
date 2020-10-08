@@ -41,6 +41,7 @@
             </div>
         </div>
     </div>
+    
     <!-- Preloader Start -->
     <header>
         <!-- Header Start -->
@@ -89,6 +90,7 @@
         </div>
         <!-- Header End -->
     </header>
+    
     <!-- header end -->
     
     <main>
@@ -258,33 +260,33 @@
                             <div class="col-lg-3 col-md-6 col-sm-6">
                                 <!-- Counter Up -->
                                 <div class="single-counter text-center">
-                                    <span class="counter color-green">6,200</span>
+                                    <span class="counter color-green">6,200,000</span>
                                     <span class="plus">+</span>
-                                    <p class="color-green">Donation</p>
+                                    <p class="color-green">총 가입자 수</p>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-6">
                                 <!-- Counter Up -->
                                 <div class="single-counter text-center">
-                                    <span class="counter color-green">80</span>
+                                    <span class="counter color-green">8,000</span>
                                     <span class="plus">+</span>
-                                    <p class="color-green">Fund Raised</p>
+                                    <p class="color-green">신규 가입자 수</p>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-6">
                                 <!-- Counter Up -->
                                 <div class="single-counter text-center">
-                                    <span class="counter color-green">256</span>
+                                    <span class="counter color-green">2,540,000</span>
                                     <span class="plus">+</span>
-                                    <p class="color-green">Donation</p>
+                                    <p class="color-green">누적 접속자 수</p>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-6">
                                 <!-- Counter Up -->
                                 <div class="single-counter text-center">
-                                    <span class="counter color-green">256</span>
+                                    <span class="counter color-green">2,560</span>
                                     <span class="plus">+</span>
-                                    <p class="color-green">Donation</p>
+                                    <p class="color-green">오늘 접속자 수</p>
                                 </div>
                             </div>
                         </div>
@@ -307,7 +309,7 @@
                             <div class="single-footer-caption mb-30">
                                 <div class="footer-tittle">
                                     <div class="footer-logo mb-20">
-                                        <a href="index.html"><img src="resources/main/assets/img/logo/logo2_footer.png" alt=""></a>
+                                        <a href="/into"><img src="resources/main/assets/img/logo/logo2_footer.png" alt=""></a>
                                     </div>
                                 </div>
                             </div>
@@ -319,10 +321,10 @@
                                     <h4>Contact Info</h4>
                                     <ul>
                                         <li>
-                                            <p>Address :Your address goes here, your demo address.</p>
+                                            <p>주소 : 서울특별시 서대분구 신촌로32길 14-4 대박빌딩 23층 235호</p>
                                         </li>
-                                        <li><a href="#">Phone : +8880 44338899</a></li>
-                                        <li><a href="#">Email : info@colorlib.com</a></li>
+                                        <li><a href="#">전화번호 : +82 02 5555 5555</a></li>
+                                        <li><a href="#">이메일 : info@investogether.com</a></li>
                                     </ul>
                                 </div>
 
@@ -333,10 +335,8 @@
                                 <div class="footer-tittle">
                                     <h4>Important Link</h4>
                                     <ul>
-                                        <li><a href="#"> View Project</a></li>
+                                        <li><a href="#">About Us</a></li>
                                         <li><a href="#">Contact Us</a></li>
-                                        <li><a href="#">Testimonial</a></li>
-                                        <li><a href="#">Proparties</a></li>
                                         <li><a href="#">Support</a></li>
                                     </ul>
                                 </div>
@@ -347,7 +347,7 @@
                                 <div class="footer-tittle">
                                     <h4>Newsletter</h4>
                                     <div class="footer-pera footer-pera2">
-                                    <p>Heaven fruitful doesn't over lesser in days. Appear creeping.</p>
+                                    <p>자산관리에 유용한 정보를 받아보세요!</p>
                                 </div>
                                 <!-- Form -->
                                 <div class="footer-form" >
