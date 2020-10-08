@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="bit.it.into.mapper.RankMapper">
+	
+	<update id="updateRankDisabled">
+		<![CDATA[
+			UPDATE rank SET enabled=0 WHERE member_num=#{member_num}
+		]]>
+	</update>
+	
+	<update id="updateRankEnabled">
+		<![CDATA[
+			UPDATE rank SET investment_amount=#{investment_amount}, net_profit=#{net_profit}, net_profit_ratio=#{net_profit_ratio}, enabled=1 WHERE member_num=#{member_num}
+		]]>
+	</update>
+	
+	<update id="insertRankDetailsEnabled">
+		<![CDATA[
+			INSERT INTO rank_details(rank_date, member_num, net_profit, net_profit_ratio) VALUES(sysdate, #{member_num}, #{net_profit}, #{net_profit_ratio})
+		]]>
+	</update>
+	
+	<select id="selectWhaleReagueList" resultType="bit.it.into.dto.RankingDTO" >
+		<![CDATA[
+			SELECT ROWNUM as place, x.* 
+			FROM 
+      		  ( SELECT m.member_num, nickname, investment_amount, net_profit, net_profit_ratio 
+        		FROM member m 
+            		INNER JOIN rank r ON m.member_num=r.member_num 
+        		WHERE r.enabled=1 AND r.investment_amount>=50000000
+        		ORDER BY r.net_profit_ratio DESC, r.investment_amount DESC ) x
+		]]>
+	</select>
+	
+	<select id="selectMackerelReagueList" resultType="bit.it.into.dto.RankingDTO" >
+		<![CDATA[
+			SELECT ROWNUM as place, x.* 
+			FROM 
+      		  ( SELECT m.member_num, nickname, investment_amount, net_profit, net_profit_ratio 
+        		FROM member m 
+            		INNER JOIN rank r ON m.member_num=r.member_num 
+        		WHERE r.enabled=1 AND (r.investment_amount BETWEEN 10000000 AND 49999999) 
+        		ORDER BY r.net_profit_ratio DESC, r.investment_amount DESC ) x
+		]]>
+	</select>
+	
+	<select id="selectShrimpReagueList" resultType="bit.it.into.dto.RankingDTO" >
+		<![CDATA[
+			SELECT ROWNUM as place, x.* 
+			FROM 
+      		  ( SELECT m.member_num, nickname, investment_amount, net_profit, net_profit_ratio 
+        		FROM member m 
+            		INNER JOIN rank r ON m.member_num=r.member_num 
+        		WHERE r.enabled=1 AND (r.investment_amount BETWEEN 1000000 AND 9999999) 
+        		ORDER BY r.net_profit_ratio DESC, r.investment_amount DESC ) x
+		]]>
+	</select>
+	
+	<select id="getShrimpLeagueTotalCount" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM rank WHERE enabled=1 AND (investment_amount BETWEEN 1000000 AND 9999999)
+		]]>
+	</select>
+	
+	<select id="getMackerelLeagueTotalCount" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM rank WHERE enabled=1 AND (investment_amount BETWEEN 10000000 AND 49999999)
+		]]>
+	</select>
+	
+	<select id="getWhaleLeagueTotalCount" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM rank WHERE enabled=1 AND investment_amount>=50000000
+		]]>
+	</select>
+	
+	<select id="getShrimpLeaguePageList" resultType="bit.it.into.dto.RankingDTO" >
+		<![CDATA[
+			SELECT *
+			FROM 
+			  ( SELECT ROWNUM as place, x.* 
+				FROM 
+	      		  ( SELECT m.member_num, nickname, investment_amount, net_profit, net_profit_ratio 
+	        		FROM member m 
+	            		INNER JOIN rank r ON m.member_num=r.member_num 
+	        		WHERE r.enabled=1 AND (r.investment_amount BETWEEN 1000000 AND 9999999) 
+	        		ORDER BY r.net_profit_ratio DESC, r.investment_amount DESC ) x
+	        	WHERE ROWNUM <= #{page} * #{amount} )
+	        WHERE place > (#{page}-1) * #{amount}
+        ]]>
+	</select>
+	
+	<select id="getMackerelLeaguePageList" resultType="bit.it.into.dto.RankingDTO" >
+		<![CDATA[
+			SELECT *
+			FROM 
+			  ( SELECT ROWNUM as place, x.* 
+				FROM 
+	      		  ( SELECT m.member_num, nickname, investment_amount, net_profit, net_profit_ratio 
+	        		FROM member m 
+	            		INNER JOIN rank r ON m.member_num=r.member_num 
+	        		WHERE r.enabled=1 AND (r.investment_amount BETWEEN 10000000 AND 49999999) 
+	        		ORDER BY r.net_profit_ratio DESC, r.investment_amount DESC ) x
+	        	WHERE ROWNUM <= #{page} * #{amount} )
+	        WHERE place > (#{page}-1) * #{amount}
+        ]]>
+	</select>
+	
+	<select id="getWhaleLeaguePageList" resultType="bit.it.into.dto.RankingDTO" >
+		<![CDATA[
+			SELECT *
+			FROM 
+			  ( SELECT ROWNUM as place, x.* 
+				FROM 
+	      		  ( SELECT m.member_num, nickname, investment_amount, net_profit, net_profit_ratio 
+	        		FROM member m 
+	            		INNER JOIN rank r ON m.member_num=r.member_num 
+	        		WHERE r.enabled=1 AND r.investment_amount>=50000000
+	        		ORDER BY r.net_profit_ratio DESC, r.investment_amount DESC ) x
+	        	WHERE ROWNUM <= #{page} * #{amount} )
+	        WHERE place > (#{page}-1) * #{amount}
+        ]]>
+	</select>
+	
+	<select id="selectRankDetails" resultType="bit.it.into.dto.RankDetailsDTO" >
+		<![CDATA[
+			SELECT x.* FROM(SELECT * FROM rank_details WHERE member_num=#{member_num} ORDER BY rank_date DESC ) x WHERE ROWNUM<50 ORDER BY ROWNUM DESC
+        ]]>
+	</select>
+	
+	<select id="selectSetPrice" resultType="Integer">
+		<![CDATA[
+			SELECT set_price FROM member WHERE member_num=#{member_num}
+		]]>
+	</select>
+	
+</mapper>

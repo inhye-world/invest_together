@@ -11,5 +11,8 @@ import lombok.Setter;
 @Setter
 public class RankDTO {
 	private int member_num;
-	private int score;
+	private int investment_amount;
+	private int net_profit;
+	private double net_profit_ratio;
+	private int enabled;
 }

@@ -124,7 +124,7 @@
 					</div>
 					</form:form>
 				</div>
-				
+<!--				
 				<div class="bond-list">
 					<h2>-채권-</h2>
 					<div class="btn-list">
@@ -169,12 +169,12 @@
 								<td>${bond.bond_symbols}</td>
 								<td>${bond.bond_company}</td>
 								<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${bond.bond_price}" />원</td>
-								<td><fmt:formatDate value="${bond.bond_date}" type="both" pattern="yyyy-MM-dd"/></td>
+								<td>${bond.bond_date}</td>
 								<td>${bond.coupon_interest_rate}%</td>
 								<td>${bond.discount_rate}%</td>
 								<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${bond.total_interest}" />원</td>
 								<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${bond.gross_price}" />원</td>
-								<td><fmt:formatDate value="${bond.maturity_date}" type="both" pattern="yyyy-MM-dd"/></td>
+								<td>${bond.maturity_date}</td>
 								<td>${bond.grade}</td>
 							</tr>
 							
@@ -183,7 +183,7 @@
 								bondSum += bond_price;
 							</script>	
 						</c:forEach>
-<!--						
+						
 						<tr>
 							<td></td>
 							<td><input type="text" name="add_bond_symbols" placeholder="종목명" size="10" /></td>
@@ -197,10 +197,11 @@
 							<td><input type="date" name="add_maturity_date" /></td>
 							<td><input type="text" name="add_maturity_date" placeholder="신용등급" size="4" /></td>
 						</tr>
--->						
+						
 						</tbody>
 					</table>
 				</div>
+-->				
 		
 			</div>
 		

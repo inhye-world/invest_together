@@ -31,15 +31,19 @@
 		]]>
 	</select>
 	
-	<select id="selectBondList" resultType="bit.it.into.dto.BondDTO" >
-		<![CDATA[
+	<select id="selectBondList" resultType="BondDTO" >
 			SELECT * FROM bond WHERE member_num=#{member_num}
-		]]>
 	</select>
 	
 	<select id="selectStockCount" resultType="Integer">
 		<![CDATA[
 			SELECT COUNT(*) FROM stock WHERE member_num=#{member_num} AND stockinfo_symbols=#{stockinfo_symbols}
+		]]>
+	</select>
+	
+	<select id="selectStockCountByMemberNum" resultType="Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM stock WHERE member_num=#{member_num}
 		]]>
 	</select>
 	

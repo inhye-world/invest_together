@@ -29,4 +29,5 @@ public class CustomUser extends User{
 
 		this.dto = memberDTO;
 	}
+
 }

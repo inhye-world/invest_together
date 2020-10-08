@@ -37,6 +37,7 @@ public class LoginService {
 		
 		int countInsertUser = mapper.insertUser(memberDTO);
 		int countInsertAuthorities = mapper.insertAuthorities(memberDTO);
+		int countInsertRank = mapper.insertRank(memberDTO);
 		
 		if(countInsertUser != 1) {
 			log.info("유저 INSERT 오류");
@@ -44,6 +45,10 @@ public class LoginService {
 		
 		if(countInsertAuthorities != 1) {
 			log.info("유저 권한 INSERT 오류");
+		}
+		
+		if(countInsertRank != 1) {
+			log.info("유저 랭크 INSERT 오류");
 		}
 	}
 
@@ -74,6 +79,7 @@ public class LoginService {
 		
 		int countInsertKakaoUser = mapper.insertKakaoUser(memberDTO);
 		int countInsertAuthorities = mapper.insertAuthorities(memberDTO);
+		int countInsertRank = mapper.insertRank(memberDTO);
 		
 		if(countInsertKakaoUser != 1) {
 			log.info("카카오 유저 INSERT 오류");
@@ -81,6 +87,10 @@ public class LoginService {
 		
 		if(countInsertAuthorities != 1) {
 			log.info("유저 권한 INSERT 오류");
+		}
+		
+		if(countInsertRank != 1) {
+			log.info("유저 랭크 INSERT 오류");
 		}
 	}
 	
@@ -96,6 +106,7 @@ public class LoginService {
 		
 		int countInsertNaverUser = mapper.insertNaverUser(memberDTO);
 		int countInsertAuthorities = mapper.insertAuthorities(memberDTO);
+		int countInsertRank = mapper.insertRank(memberDTO);
 		
 		if(countInsertNaverUser != 1) {
 			log.info("네이버 유저 INSERT 오류");
@@ -103,6 +114,10 @@ public class LoginService {
 		
 		if(countInsertAuthorities != 1) {
 			log.info("유저 권한 INSERT 오류");
+		}
+
+		if(countInsertRank != 1) {
+			log.info("유저 랭크 INSERT 오류");
 		}
 	}
 
@@ -159,6 +174,18 @@ public class LoginService {
 		return true;
 	}
 
+	public boolean hasUserByPhone(String phone) {
+		log.info("LoginService - hasUserByPhone()");
+		
+		Integer count = mapper.selectUserByPhone(phone);
+		
+		if(count==0) {
+			return false;
+		}
+		
+		return true;
+	}
+	
 	public void updateAuthKey(String email) {
 		log.info("LoginService -updateAuthKey()");
 		
@@ -170,6 +197,22 @@ public class LoginService {
 		
 		mapper.updatePw(id);
 	}
-	
+
+
+	public boolean authKeyCheck(String parameter) {
+		log.info("LoginService -authKeyCheck()");
+					
+		if(mapper.selectUserById(parameter)==0) {
+			return false;
+			
+		} else if(mapper.selectAuthKey(parameter).equals("1")) {
+			return false;
+		
+		} else if(mapper.selectAuthKey(parameter).equals("0")) {
+			return true;
+		
+		} else 
+			return false;
+	}	
 	
 }

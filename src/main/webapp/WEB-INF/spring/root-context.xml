@@ -9,8 +9,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
-	<!-- Root Context: defines shared resources visible to all other web components -->
-	
+	<!-- Root Context: defines shared resources visible to all other web components -->	
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName"
 			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
@@ -35,9 +34,25 @@
         <property name="dataSource" ref="dataSource" />
     </bean>
     
-    
     <mybatis-spring:scan base-package="bit.it.into.mapper" />
 
 	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<!-- HandlerMapping -->
+	<!-- .do 요청이 들어오면 urlController가 요청을 처리함 -->
+    <bean id="simpleUrlHandlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/calculator/debtRatio.do">urlController</prop>
+                <prop key="/calculator/roe.do">urlController</prop>
+                <prop key="/calculator/nwc.do">urlController</prop>
+                <prop key="/calculator/atr.do">urlController</prop>
+                <prop key="/calculator/itr.do">urlController</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <!-- URL로 뷰로 이동할 뷰를 추출 -->
+    <bean id="urlController" class="org.springframework.web.servlet.mvc.UrlFilenameViewController"></bean>
 
 </beans>

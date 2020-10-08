@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import bit.it.into.mail.MailUtils;
 
-@Service()
+@Service
 public class MailSendService {
 	
 	private int size;
@@ -103,8 +103,8 @@ public class MailSendService {
 	            MailUtils sendMail = new MailUtils(mailSender);
 	            sendMail.setSubject("아이디 찾기 인증번호 전송");
 	            sendMail.setText(new StringBuffer().append("<h1>[인증번호 안내]</h1>")
-	            .append("<p>아래의 인증번호를 복사하신 후 이메일 인증번호 입력란에 입력해 주시기 바랍니다.</p>")
-	            .append("인증번호 : " + authKey)
+	    	    .append("<p>아래의 인증번호를 복사하신 후 아이디 인증번호 입력란에 입력해 주시기 바랍니다.</p>")
+	    	    .append("인증번호 : " + authKey)
 	            .toString());
 	            sendMail.setFrom("hanrnj22@gmail.com", "같이투자");
 	            sendMail.setTo(email);
@@ -116,5 +116,29 @@ public class MailSendService {
 	        }
 	          return authKey;
 	    }
+	    
+	    //email변경할때 메일 전송
+	    @Transactional
+	    public void emailChangeMail(String email) {
+
+	        //인증메일 보내기
+	        try {
+	            MailUtils sendMail = new MailUtils(mailSender);
+	            sendMail.setSubject("email 변경확인 메일");
+	            sendMail.setText(new StringBuffer().append("<h1>[email 변경]</h1>")
+	    	    .append("<p>아래 링크를 클릭하시면 이메일 변경이 완료됩니다.</p>")
+	    	    .append("<a href='http://localhost:8282/into/alterEmail?email=")
+	            .append(email)
+	            .append("' target='_blenk'>이메일 변경</a>")
+	            .toString());
+	            sendMail.setFrom("hanrnj22@gmail.com", "같이투자");
+	            sendMail.setTo(email);
+	            sendMail.send();
+	        } catch (MessagingException e) {
+	            e.printStackTrace();
+	        } catch (UnsupportedEncodingException e) {
+	            e.printStackTrace();
+	        }
+	    }	    
 	    
 }

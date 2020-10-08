@@ -28,5 +28,4 @@ public class MainCotroller {
 	public String testmain() {
 		return "include/testmain";
 	}
-
 }

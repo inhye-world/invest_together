@@ -454,6 +454,14 @@ table tr td:nth-child(1), table tr th:nth-child(1) {
   display: block;
 }
 
+.login-form div{
+	color:red;
+}
+
+.form div.error {color:red;} 
+
+.form div{color:red;}
+
 .tran-dropdown-content a:hover {background-color: #ddd;}
 
 .tran-dropdown:hover .tran-dropdown-content {display: block;}
