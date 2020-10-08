@@ -7,7 +7,7 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-	<link href="resources/header_footer.css" rel="stylesheet" type="text/css">
+	<link href="../resources/header_footer.css" rel="stylesheet" type="text/css">
 	
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
 	<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>

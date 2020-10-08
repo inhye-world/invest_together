@@ -47,6 +47,7 @@
                 <prop key="/calculator/roe.do">urlController</prop>
                 <prop key="/calculator/nwc.do">urlController</prop>
                 <prop key="/calculator/atr.do">urlController</prop>
+                <prop key="/calculator/itr.do">urlController</prop>
             </props>
         </property>
     </bean>

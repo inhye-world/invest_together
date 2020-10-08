@@ -6,8 +6,6 @@
 <html>
 
 <head>
-
-
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 	
@@ -56,8 +54,6 @@
   		margin: auto;
   	}
   </style>
-
-
 </head>
 
 <body id="page-top">
@@ -65,27 +61,26 @@
 
   <!-- Page Wrapper -->
   <div id="wrapper">
-  
+
           <!-- DataTales -->
           <div class="card shadow mb-4" id="card-total">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">부채 비율</h6>
+              <h6 class="m-0 font-weight-bold text-primary">재고자산회전율</h6>
             </div>
             <div class="card-body">
+            
               <div class="table-responsive">
-                  
                 <table id="inputInfo">
-
             			<tr>
-            				<td>총 부채 :</td>
+            				<td>매출액 :</td>
             				<td>
-            					<input type="text" id="debt" name="총 부채" /> 원
+            					<input type="text" id="revenue" name="매출액" /> 원
             				</td>
             			</tr>
             			<tr>
-            				<td>총 자산 :</td>
+            				<td>평균재고자산 :</td>
             				<td>
-            					<input type="text" id="asset" name="총 자산" /> 원
+            					<input type="text" id="asset" name="평균재고자산" /> 원
             				</td>
             			</tr>
             		</table>
@@ -93,22 +88,20 @@
             			<tr>
             				<td><button type="button" class="btn btn-outline btn-primary pull-right" onclick="calculate();">계산</button></td>
             				<td><button type="button" class="btn btn-outline btn-primary pull-right" onclick="refresh();">초기화</button></td>
-            				<td><span id="submitButton"></span></td>
             			</tr>
             		</table>               
-
               </div>
+              
             </div>
           </div>
-          <!-- End of DataTales -->
+          <!-- End of Table -->
           
           <div id="outcome"></div>
 
         </div>
-       <!-- End of Page Wrapper -->
+        <!-- wrapper -->
         
-         <script>
-
+        <script>
         	function calculate(){
         		//null check
 	    		// form안의 모든 text type 조회
@@ -122,9 +115,9 @@
 		    		}
 		    	}
 		    	
+		    	 var revenue = parseInt(document.getElementById("revenue").value);	
 		    	 var asset = parseInt(document.getElementById("asset").value);	
-		    	 var debt = parseInt(document.getElementById("debt").value);	
-		    	 var result = debt/asset;
+		    	 var result = revenue/asset;
 		    	 
 		    	 document.getElementById("outcome").innerHTML =  '<div class="card shadow mb-4" id="card-total">'+
 																 '<div class="card-header py-3">'+
@@ -132,8 +125,8 @@
 																 '</div>'+
 																 '<div class="card-body">'+
 																 '<div class="table-responsive">'+
-																 '<table><tr><td>부채비율</td></tr>'+
-																 '<tr><td>= 총 부채 / 총 자산</td></tr>'+
+																 '<table><tr><td>재고자산회전율</td></tr>'+
+																 '<tr><td>= 매출액 / 평균재고자산</td></tr>'+
 																 '<tr><td>'+result.toFixed(2)+'</td></tr></table>';
         	}
         	
@@ -147,27 +140,27 @@
         	
         	//숫자 validating 부동소수점 포함
 			$(document).on("input","input[id=revenue]",function(){
-					var check = document.getElementById("asset").value;
+					var check = document.getElementById("revenue").value;
 		
 		        	var num = /^[+]?\d+\.?\d*$/;
 		          
 			        if(!num.test(check)) {
-			        	alerting('총 자산을 다시 입력해주세요.');
-						document.getElementById("asset").value = "";
-						$("#asset").focus();
+			        	alerting('매출액을 다시 입력해주세요.');
+						document.getElementById("revenue").value = "";
+						$("#revenue").focus();
 		            	return false;
 			        } 
 			});
         	
 			$(document).on("input","input[id=asset]",function(){
-				var check = document.getElementById("debt").value;
+				var check = document.getElementById("asset").value;
 	
 	        	var num = /^[+]?\d+\.?\d*$/;
 	          
 		        if(!num.test(check)) {
-		        	alerting('총 부채를 다시 입력해주세요.');
-					document.getElementById("debt").value = "";
-					$("#debt").focus();
+		        	alerting('평균재고자산을 다시 입력해주세요.');
+					document.getElementById("asset").value = "";
+					$("#asset").focus();
 	            	return false;
 		        } 
 			});
@@ -181,14 +174,14 @@
 			
 			//새로고침 
 		    function refresh(){
-				document.getElementById("asset").value = "";
-				document.getElementById("debt").value = "";			
+				document.getElementById("revenue").value = "";
+				document.getElementById("asset").value = "";			
 				document.getElementById("outcome").innerHTML = "";
 			}
 	
         </script>
-        
-    <!-- footer -->
+
+	<!-- footer -->
 	<jsp:include page="../include/footer2.jsp"/>
 
   <!-- Page level plugins -->

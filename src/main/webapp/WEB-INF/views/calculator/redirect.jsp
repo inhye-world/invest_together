@@ -31,12 +31,12 @@
 			
 			  if(msg == 1) {
 					alerting('입력에 성공했습니다.');
-					window.location.href = "calculator";
+					window.location.href = "target";
 				}
 			  
 			  if(msg == 2) {
 					alerting('입력에 실패했습니다.');
-					window.location.href = "calculator";
+					window.location.href = "target";
 				}
 
 		</script>
