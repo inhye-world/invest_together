@@ -10,10 +10,11 @@
 	<script>
 		let countDay = 0;
 	</script>
+	
 </head>
 	<body>
 		<div class="wrapper">
-		<jsp:include page="../include/header_temp.jsp"/>
+		<jsp:include page="../include/header.jsp"/>
 		
 			<div class="container">
 				<a class="mainA" href="/into"> 같이투자 API TEST</a>
@@ -81,7 +82,9 @@
 					</c:forEach>
 				</div>
 				
-			</div>	
+				<button id="expense_analyze" class="button5">분석내역 보기</button>
+			</div>
+			<jsp:include page="../include/footer.jsp"/>	
 		</div>
 		
 		<script>
@@ -121,5 +124,20 @@
 				}
 			});
 		</script>
+		<script>
+			function numberPad(n, width) {
+			    n = n + '';
+			    return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;
+			}	
+		
+			var date = new Date();
+			var year = date.getFullYear();
+			var month = numberPad((date.getMonth()+1), 2);
+			
+			$(function() {
+				$("#expense_analyze").attr("onclick", "location.href='expenseAnalyze-"+year+"-"+month+"'");
+			})
+		</script>
+		
 	</body>
 </html>
