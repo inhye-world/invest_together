@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bit.it.into.mapper.CalculatorMapper">
+	
+	<insert id="insert">
+		INSERT INTO CALCULATOR VALUES (#{stockinfo_symbols}, #{member_num}, #{ev}, #{share_issued}, #{roe}, #{ke})
+    </insert>
+    
+    <update id="update">
+    	UPDATE CALCULATOR SET ev = #{ev},
+							  share_issued = #{share_issued}, 
+    						  roe = #{roe}, 
+    						  ke = #{ke}
+						  WHERE stockinfo_symbols = #{stockinfo_symbols} AND member_num = #{member_num}
+    </update>
+    
+    <select id="checkSymbols" resultType="int" >
+    	SELECT COUNT(*) FROM CALCULATOR WHERE stockinfo_symbols = #{stockinfo_symbols} AND member_num = #{member_num}
+    </select>
+    
+    <select id="getSymbolsList" resultType="CalculatorDTO">
+			SELECT stockinfo_symbols FROM CALCULATOR WHERE member_num = #{member_num} ORDER BY stockinfo_symbols ASC
+	</select>
+	
+	<select id="getList" resultType="CalculatorDTO">
+			SELECT * FROM CALCULATOR WHERE stockinfo_symbols = #{stockinfo_symbols} AND member_num = #{member_num} ORDER BY stockinfo_symbols ASC
+	</select>
+	
+	<select id="getStockinfo" resultType="StockInfoDTO">
+			SELECT * FROM STOCK_INFO
+	</select>
+	
+	<delete id="delete">
+		DELETE FROM CALCULATOR WHERE stockinfo_symbols = #{stockinfo_symbols} AND member_num = #{member_num}
+	</delete>
+
+</mapper>

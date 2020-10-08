@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import bit.it.into.dto.AccountDTO;
 import bit.it.into.dto.MemberDTO;
 import bit.it.into.mapper.UserMapper;
+import bit.it.into.security.CustomUser;
 import lombok.extern.log4j.Log4j;
 
 @Service
@@ -38,6 +39,12 @@ public class UserService {
 			log.info("insertAccountCount 오류");
 		}
 	
+	}
+	
+	public List<Integer> readAllMemberNum() {
+		log.info("UserService -  readAllUserNum()");
+		
+		return mapper.selectAllMemberNum();
 	}
 	
 	public String idCheck(String id) {
@@ -72,5 +79,56 @@ public class UserService {
 		return mapper.selectIdInfo(email);
 				
 	}
+
+	public void alterNickname(MemberDTO dto) {
+		log.info("UserService - alterNickname()");
+		
+		mapper.updateNickname(dto);
+	}
+
+	public void alterPhone(MemberDTO dto) {
+		log.info("UserService - alterPhone()");
+		
+		mapper.updatePhone(dto);
+	}
+
+	public void alterId(MemberDTO dto) {
+		log.info("UserService - alterId()");
+		
+		mapper.updateId(dto);
+		
+	}
 	
+	public void changeEmail(String email) {
+		log.info("UserService - changeEmail()");
+		
+		mapper.updateEmail(email);
+	}
+	
+	public void alterPw(MemberDTO dto) {
+		log.info("UserService - alterPw()");
+	
+		String encode = passEncoder.encode(dto.getPw());
+		
+		dto.setPw(encode);
+		
+		mapper.updatePw(dto);
+	}
+	
+	@Transactional
+	public void secession(int member_num) {
+		log.info("UserService - secession()");
+		
+		mapper.deleteAuthorities(member_num);
+		mapper.deleteStock(member_num);
+		mapper.deleteCalculator(member_num);
+		mapper.deleteBond(member_num);
+		mapper.deleteRank(member_num);
+		mapper.deleteAccount(member_num);
+		mapper.deleteOrders(member_num);
+		mapper.deleteComments(member_num);
+		mapper.deleteBoard(member_num);
+		mapper.deleteMember(member_num);
+	}
+
 }

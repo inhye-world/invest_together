@@ -25,6 +25,12 @@ public class AccountSalaryDTO {
 	private String strMaturity;
 	private String expected_amt;
 	private String tran_amt;
+
+	private int sum1;
+	private int sum2;
+	private int sum3;
+	
+
 	
 	public void setStrMaturity(String strMaturity) {
 		this.strMaturity = strMaturity;

@@ -36,7 +36,7 @@ public class UserFindCotroller {
 	//id찾기
 	@RequestMapping("/idFind")
 	public String idFind() {
-		log.info("LoginController - idFind()");
+		log.info("UserFindCotroller - idFind()");
 		
 		return "find/idFind";
 	}
@@ -44,14 +44,14 @@ public class UserFindCotroller {
 	//pw찾기
 	@RequestMapping("/pwFind")
 	public String pwFind() {
-		log.info("LoginController - pwFind()");
+		log.info("UserFindCotroller - pwFind()");
 		
 		return "find/pwFind";
 	}
 	
 	@RequestMapping("/idEmailSend")
 	public String idEmailSend(MemberDTO memberDTO, Model model, HttpServletResponse response) throws Exception {
-		log.info("LoginController - idEmailSend()");
+		log.info("UserFindCotroller - idEmailSend()");
 		
 		//name와 매칭되는 이메일 호출
 		String email = userService.nameCheck(memberDTO.getName());

@@ -20,5 +20,6 @@ public class AccountTransactionDTO {
 	private String tran_amt;
 	private String branch_name;
 	private String product_name;
+	private String after_balance_amt;
 	private int day;
 }

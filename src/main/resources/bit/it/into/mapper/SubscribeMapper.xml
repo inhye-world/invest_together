@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="bit.it.into.mapper.SubscribeMapper">
+	<select id="selectMerchantUidSeq" resultType="int">
+		<![CDATA[
+			SELECT merchant_uid_seq.nextval FROM dual
+		]]>
+	</select>
+	
+	<select id="selectSetPrice" resultType="Integer">
+		<![CDATA[
+			SELECT set_price FROM member WHERE member_num=#{member_num}		
+		]]>
+	</select>
+	
+	<insert id="insertSubscribe">
+		<![CDATA[
+			INSERT INTO subscribe(merchant_uid, member_num, name, phone, seller_num, sub_price, sub_date) VALUES(#{merchant_uid}, #{member_num}, #{name}, #{phone}, #{seller_num}, #{sub_price}, sysdate)
+		]]>
+	</insert>
+</mapper>

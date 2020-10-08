@@ -10,10 +10,7 @@
 	<link href="resources/temporary.css" rel="stylesheet" type="text/css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
-	<style type="text/css">
-		.form div.error {color:red;} 
-		.form div{color:red;}
-	</style>
+
 </head>
 	<body>
 		<div class="wrapper">
@@ -34,7 +31,7 @@
 					<div>${valid_nickname} </div>
 					<input type="text" name="email" placeholder="이메일" value="${dto.email}" />
 					<div>${valid_email} </div>
-					<input type="text" name="phone" placeholder="핸드폰" value="${dto.phone}" />
+					<input type="text" name="phone" placeholder="핸드폰" value="${dto.phone}" maxlength="11"/>
 					<div>${valid_phone} </div>
 					<input id="regi-submit" class="button5" type="submit" value="가입">
 				</form:form>
@@ -117,7 +114,6 @@
 						
 						phone:{
 							required : true, //필수입력여부
-							maxlength : 11	//최대 입력 글자수
 						},
 
 					},
@@ -155,7 +151,6 @@
 						
 						phone:{
 							required : "핸드폰번호를 입력해주세요.",
-							maxlength : "최대 11글자까지 입력가능합니다."
 						},
 					},
 					

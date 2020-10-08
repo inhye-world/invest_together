@@ -83,13 +83,7 @@ public class KakaoLoginController {
 	
 	@PostMapping("/addKakaoUser")
 	public String addKakaoUser(MemberDTO memberDTO, Model model) {				
-		
-		if(loginService.hasUserByNickname(memberDTO.getNickname())) {
-			model.addAttribute("valid_nickname", "닉네임이 중복 되었습니다.");
-			
-			return "login/kakaoAddInfo";
-		}
-					
+						
 		memberDTO.setPw(secret);
 		loginService.addKakaoUser(memberDTO);
 		

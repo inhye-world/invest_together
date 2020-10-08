@@ -9,6 +9,10 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>  
 	<link href="resources/temporary.css" rel="stylesheet" type="text/css">
 	
+	<!-- ajax사용 위해 csrf설정 -->
+  	<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
+  	<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
+	
 	<style type="text/css">
 		.form div.error {color:red;}
 		.form div{color:red;}
@@ -26,15 +30,24 @@
 					<input type="hidden" name="name" value="${dto.name}" />
 					<input type="hidden" name="sns_type" value="${dto.sns_type}" />
 					<input type="hidden" name="sns_token" value="${dto.sns_token}" />
-					<h2>닉네임을 입력해주세요</h2>
-					<br><br><br><br>
+					<br><br>
+					<h1>닉네임</h1>
 					<input type="text" name="nickname" />
-					<div>${valid_nickname} </div>
+					<h1>핸드폰 번호</h1>
+					<input type="text" name="phone" maxlength="11">
 					<input type="submit" value="확인" />
 				</form:form>
 			</div>
 		</div>
 		<script type="text/javascript">	
+		
+		$.validator.addMethod("nicknameRegex", function(value, element) {
+			return this.optional(element) || value.match(/^[가-힣a-zA-Z0-9]+$/);   
+		});
+		
+		$.validator.addMethod("phoneRegex", function(value, element) {
+			return this.optional(element) || value.match(/^01(?:0|1|[6-9])(?:\d{4})\d{4}$/);   
+		});
 		
 			$(document).ready(function (){
 				$(".form").validate({
@@ -43,26 +56,57 @@
 						nickname:{
 							required : true, //필수입력여부
 							minlength : 2,	//최소 입력 글자수
-							maxlength : 8
+							maxlength : 8,	//최대 입력 글자수
+							nicknameRegex : true,
+							remote:{
+								type:"post",
+								url:"checkNickname"
+							},
 						},
+						
+						phone:{
+							required : true, //필수입력여부
+							phoneRegex : true,
+							remote:{
+								type:"post",
+								url:"checkPhone"
+							},
+						},	
 					},
 
 					//메시지
 					messages:{
 						nickname:{
-							required : "닉네임은 필수 입력입니다.",
-							minlength : "최소 2글자 이상 입력해주세요.",
-							maxlength : "최대 8글자까지 입력가능합니다."
+							required : "닉네임을 입력해주세요.",
+							minlength : "최소 2글자 이상 입력해주세요.",	
+							maxlength : "최대 8글자까지 입력가능합니다.",
+							nicknameRegex : "한글,영문,숫자만 입력가능합니다.",
+							remote :  "중복된 닉네임 입니다."
+						},
+						
+						phone:{
+							required : "핸드폰번호를 입력해주세요.",
+							phoneRegex : "형식에 맞지 않습니다.",
+							remote :  "중복된 핸드폰 번호입니다."
 						},
 					},
-					
+
 					//메시지 태그
 					errorElement : 'div', 	//태그
-					errorClass: 'error',	//클레스 이름
+					errorClass: 'error',	//클래스 이름
 					validClass:'vaild' 
 				});
 			});
 
+		    //ajax csrf
+		    $(document).ready(function(){
+			    var token = $("meta[name='_csrf']").attr("content");
+			    var header = $("meta[name='_csrf_header']").attr("content");
+			    $(document).ajaxSend(function(e, xhr, options) {
+			        xhr.setRequestHeader(header, token);
+			    });
+			});
+			
 		</script> 
 	</body>
 </html>

@@ -1,7 +1,6 @@
 package bit.it.into.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -10,10 +9,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -81,12 +78,12 @@ public class BondController {
 	@PostMapping("/deleteBond")
 	public int delete(@RequestParam(value = "checkRow[]") List<String> checkArr, Authentication authentication){
 		log.info("////////////////////delete///////////////////////");
-
+		
 		int result = 1;
 		
 		 for(String i : checkArr) {
 			  System.out.println(i);
-			   bondService.remove(i);
+			  bondService.remove(i);
 		 }   
 		 
 		 return result;  
@@ -110,7 +107,4 @@ public class BondController {
 		return "redirect:bond";
     }
 
-
-	
-	
 }
