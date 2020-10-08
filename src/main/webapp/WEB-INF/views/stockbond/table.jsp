@@ -124,7 +124,84 @@
 					</div>
 					</form:form>
 				</div>
-
+<!--				
+				<div class="bond-list">
+					<h2>-채권-</h2>
+					<div class="btn-list">
+						<button id="bondAllSelect" class="button4">전체선택</button>
+						<button id="addBond" class="button4">추가</button>
+						<button id="modifyBond" class="button4">수정</button>
+						<button id="deleteBond" class="button4">삭제</button>
+						<span class="bond-right-btn">
+							<button class="button4">엑셀파일로 다운</button>
+						</span>
+					</div>
+					<table id="bond-table" class="table">
+						<thead>
+							<tr>
+								<th></th> 
+								<th>종목명</th>
+								<th>증권사</th>
+								<th>매수금액</th>
+								<th>매수일자</th>
+								<th>발행이자율</th>
+								<th>할인발행율</th>
+								<th>세후보유기간이자</th>
+								<th>총 상환금액</th>
+								<th>만기일</th>
+								<th>신용등급</th>
+							</tr>
+						</thead>
+						
+						<tbody>
+						<c:if test="${empty bondList}">
+							<tr>
+								<td class="empty_stock_bond" colspan="11">
+									<h2></h2>
+									채권을 추가해 주세요
+									<h2></h2>
+								</td>
+							</tr>
+						</c:if>
+						<c:forEach var="bond" items="${bondList}" varStatus="status">
+							<tr>
+								<td><input type="checkbox" id="bond-check-${status.index}" name="deleteBondSymbol" value="${bond.bond_symbols}"/> </td>
+								<td>${bond.bond_symbols}</td>
+								<td>${bond.bond_company}</td>
+								<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${bond.bond_price}" />원</td>
+								<td>${bond.bond_date}</td>
+								<td>${bond.coupon_interest_rate}%</td>
+								<td>${bond.discount_rate}%</td>
+								<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${bond.total_interest}" />원</td>
+								<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${bond.gross_price}" />원</td>
+								<td>${bond.maturity_date}</td>
+								<td>${bond.grade}</td>
+							</tr>
+							
+							<script>
+								var bond_price = ${bond.bond_price}
+								bondSum += bond_price;
+							</script>	
+						</c:forEach>
+						
+						<tr>
+							<td></td>
+							<td><input type="text" name="add_bond_symbols" placeholder="종목명" size="10" /></td>
+							<td><input type="text" name="add_bond_company" placeholder="증권사" size="5" /></td>
+							<td><input type="text" name="add_bond_price" placeholder="매수금액" size="7" /></td>
+							<td><input type="date" name="add_bond_date" /></td>
+							<td><input type="text" name="add_coupon_interest_rate" placeholder="발행이자율" size="5" /></td>
+							<td><input type="text" name="add_discount_rate" placeholder="할인발행율" size="5" /></td>
+							<td><input type="text" name="add_total_interest" placeholder="세후보유기간이자" size="11" /></td>
+							<td><input type="text" name="add_gross_price" placeholder="총 상환금액" size="7" /></td>
+							<td><input type="date" name="add_maturity_date" /></td>
+							<td><input type="text" name="add_maturity_date" placeholder="신용등급" size="4" /></td>
+						</tr>
+						
+						</tbody>
+					</table>
+				</div>
+-->				
 		
 			</div>
 		

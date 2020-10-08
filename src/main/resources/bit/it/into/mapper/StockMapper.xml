@@ -41,6 +41,12 @@
 		]]>
 	</select>
 	
+	<select id="selectStockCountByMemberNum" resultType="Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM stock WHERE member_num=#{member_num}
+		]]>
+	</select>
+	
 	<insert id="insertStock">
 		<![CDATA[
 			INSERT INTO stock(member_num, stockinfo_symbols, company, purchase_price, quantity) values(#{member_num}, #{stockinfo_symbols}, #{company}, #{purchase_price}, #{quantity})

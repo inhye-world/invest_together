@@ -32,6 +32,7 @@
 </head>
 	<body>
 		<form:form id="logout-form" action="${pageContext.request.contextPath}/logout" method="POST"></form:form>
+		
 		<header>
 			<div class="header-ribbon">
 				<sec:authorize access="isAnonymous()">
@@ -79,15 +80,16 @@
 						      	<a href="#"><li>주식·채권</li></a>
 						      	<a href="#"><li>계산기</li></a>
 						      	<a href="#"><li>구독목록</li></a>
-						      	<a href="#"><li>투자랭킹</li></a>
+						      	<a href="/into/ranking"><li>투자랭킹</li></a>
 						      	<a href="boardList"><li>게시판</li></a>
+
 						    </ul>
 					  	</div>
 					</nav>
 				</div>
 				<div class="header-nav-wrap">
 					<div class="header-nav-logo">
-						<b>같이투자</b>
+						<b onclick="location.href='/into/testmain'">같이투자</b>
 					</div>
 					<div class="header-nav-ul">
 						<ul>
@@ -117,7 +119,7 @@
 								</div>
 							</li>
 							<li>
-								<div>
+								<div onclick="location.href='/into/leaderboards'">
 									<p>투자랭킹</p>
 								</div>
 							</li>

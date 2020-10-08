@@ -45,7 +45,19 @@ public class StockService {
 		
 		return true;
 	}
-
+	
+	public boolean hasStockByMemberNum(Integer member_num) {
+		log.info("StockService - hasStockByMemberNum()");
+		
+		Integer count = mapper.selectStockCountByMemberNum(member_num);
+		
+		if(count == 0) {
+			return false;
+		}
+		
+		return true;
+	}
+	
 	public void addStock(StockDTO stockDTO) {
 		log.info("StockService - addStock()");
 		
