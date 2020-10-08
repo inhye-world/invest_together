@@ -127,11 +127,11 @@ public class BankController {
 				String tran_amt = node.get("res_list").get(count).get("tran_amt").asText();
 				String branch_name = node.get("res_list").get(count).get("branch_name").asText();
 				LocalDateTime tran_date_time = LocalDateTime.parse(tran_date+tran_time, DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
-				
+				String after_balance_amt = node.get("res_list").get(count).get("after_balance_amt").asText();
 				if(startDate.isBefore(tran_date_time) && endDate.isAfter(tran_date_time)) {
 					int day = tran_date_time.getDayOfMonth();
 					
-					AccountTransactionDTO transactionDTO = new AccountTransactionDTO(tran_date_time, inout_type, tran_type, print_content, tran_amt, branch_name, product_name, day);
+					AccountTransactionDTO transactionDTO = new AccountTransactionDTO(tran_date_time, inout_type, tran_type, print_content, tran_amt, branch_name, product_name,after_balance_amt, day);
 					accountTransactionList.add(transactionDTO);
 					
 					if(inout_type.equals("입금")) {

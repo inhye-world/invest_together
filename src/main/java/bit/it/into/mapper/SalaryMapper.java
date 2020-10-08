@@ -10,5 +10,5 @@ public interface SalaryMapper {
 	void insert(AccountSalaryDTO accountSalary);
 	int check(AccountSalaryDTO accountSalary);
 	AccountSalaryDTO readAllSalary(String fintech_use_num);
-	
+	int hasSalary(String fintech_use_num);
 }
