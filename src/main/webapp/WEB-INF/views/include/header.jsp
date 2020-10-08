@@ -81,7 +81,7 @@
 						      	<a href="#"><li>계산기</li></a>
 						      	<a href="#"><li>구독목록</li></a>
 						      	<a href="/into/ranking"><li>투자랭킹</li></a>
-						      	<a href="boardList"><li>게시판</li></a>
+						      	<a href=""><li>게시판</li></a>
 
 						    </ul>
 					  	</div>
@@ -89,7 +89,7 @@
 				</div>
 				<div class="header-nav-wrap">
 					<div class="header-nav-logo">
-						<b onclick="location.href='/into/testmain'">같이투자</b>
+						<b onclick="location.href='${pageContext.request.contextPath}/testmain'">같이투자</b>
 					</div>
 					<div class="header-nav-ul">
 						<ul>
@@ -119,12 +119,12 @@
 								</div>
 							</li>
 							<li>
-								<div onclick="location.href='/into/leaderboards'">
+								<div onclick="location.href='${pageContext.request.contextPath}/leaderboards'">
 									<p>투자랭킹</p>
 								</div>
 							</li>
 							<li>
-								<div>
+								<div onclick="location.href='${pageContext.request.contextPath}/boardList'">
 									<p>게시판</p>
 								</div>
 							</li>
