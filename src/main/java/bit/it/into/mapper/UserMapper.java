@@ -15,13 +15,15 @@ public interface UserMapper {
 
 	public int insertAccount(AccountDTO accountDTO);
 
-	String selectPwdEmail(String id);
+	public List<Integer> selectAllMemberNum();
+	
+	public String selectPwdEmail(String id);
 
-	void updatePwd(Map<String, String> userInfo);
+	public void updatePwd(Map<String, String> userInfo);
 
-	String selectIdEmail(String name);
+	public String selectIdEmail(String name);
 
-	List<MemberDTO> selectIdInfo(String email);
+	public List<MemberDTO> selectIdInfo(String email);
 
 	public void updateNickname(MemberDTO dto);
 

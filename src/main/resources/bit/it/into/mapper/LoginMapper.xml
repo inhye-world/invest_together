@@ -13,7 +13,10 @@
 	
 	<resultMap id="Rank" type="bit.it.into.dto.RankDTO">
 		<id property="member_num" column="member_num"/>
-		<result property="score" column="score" />		
+		<result property="investment_amount" column="investment_amount" />		
+		<result property="net_profit" column="net_profit" />		
+		<result property="net_profit_ratio" column="net_profit_ratio" />		
+		<result property="enabled" column="enabled" />		
 	</resultMap>
 	
 	<resultMap id="Member" type="bit.it.into.dto.MemberDTO">
@@ -54,6 +57,12 @@
 	<insert id="insertAuthorities">
 		<![CDATA[
 			INSERT INTO authorities VALUES(MEMBER_NUM_SEQ.currval, 'ROLE_USER')
+		]]>
+	</insert>
+	
+	<insert id="insertRank">
+		<![CDATA[
+			INSERT INTO rank(member_num, enabled) VALUES(MEMBER_NUM_SEQ.currval, 0)
 		]]>
 	</insert>
 	

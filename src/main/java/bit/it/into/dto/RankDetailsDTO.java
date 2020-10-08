@@ -1,5 +1,8 @@
 package bit.it.into.dto;
 
+
+import java.sql.Timestamp;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,10 +12,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class RankDTO {
+public class RankDetailsDTO {
+	private Timestamp rank_date;
 	private int member_num;
-	private int investment_amount;
 	private int net_profit;
 	private double net_profit_ratio;
-	private int enabled;
 }
