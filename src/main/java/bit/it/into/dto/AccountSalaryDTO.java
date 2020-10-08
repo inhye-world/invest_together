@@ -1,6 +1,7 @@
 package bit.it.into.dto;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import lombok.AllArgsConstructor;
@@ -13,18 +14,22 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AccountSalaryDTO {
-	AccountSalaryDTO accountSalaryDTO;
+	AccountDTO accountDTO;
 	private String fintech_use_num;
 	private String account_alias;
 	private String bank_name;
-	//private String product_name;
 	private String balance_amt;
 	private String category;
 	private float interest;
 	private Timestamp maturity;
 	private String strMaturity;
 	private String expected_amt;
-	//private String tran_amt;
+	private String tran_amt;
+	private int sum1;
+	private int sum2;
+	private int sum3;
+	
+	
 	
 	public void setStrMaturity(String strMaturity) {
 		this.strMaturity = strMaturity;
@@ -34,8 +39,7 @@ public class AccountSalaryDTO {
 	public void setMaturity(Timestamp maturity) {
 		this.maturity = maturity;
 		
-		SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
 		this.strMaturity = dateformat.format(maturity);
 	}
-	
 }

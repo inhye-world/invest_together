@@ -1,5 +1,12 @@
 package bit.it.into.service; 
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -7,6 +14,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -15,19 +24,24 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import lombok.extern.log4j.Log4j;
 
 @Service
 @Log4j
 public class OpenBankingService {
 	
+
 	private final static String O_CLIENT_ID = "TmlHvtfDp4g3a4KxAqPlexXCgmUz7V5xKd8hNnSd";
 	private final static String O_CLIENT_SECRET= "540RGNZttoNAaI3K1CvL36vlnPlltJsLL16I9X5z";
 	private final static String O_REDIRECT_URI = "http://localhost:8282/into/user/addAccount";
 	private final static String O_ORGANIZATION_CODE = "T991648810";
+
 	
 	public String getUrl() {
 		String openUrl = 	"https://testapi.openbanking.or.kr/oauth/2.0/authorize?"
@@ -185,7 +199,39 @@ public class OpenBankingService {
 		return returnNode;
 	}
 	
+	//////////////////////////////////실질입금내역시험용/////////////////////////////////////////////
+	public String getBreakdown(String access_token, String fintech_use_num,  String year, String month) throws UnsupportedEncodingException, IOException, ParseException {
+		String param = "?bank_tran_id=" + getBankTranId() + "&fintech_use_num="
+				+ fintech_use_num + "&inquiry_type=A" + "&inquiry_base=D" + "&from_date=" +getFromDate(year, month)+ "&to_date="+getToDate(year, month)
+				+ "&sort_order=D" + "&tran_dtime="+getTranDtime();
+
+		final String RequestUrl = "https://testapi.openbanking.or.kr/v2.0/account/transaction_list/fin_num" + param;
+		
+		URL url = new URL(RequestUrl);
+		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		conn.setRequestMethod("GET");
+		
+		conn.setRequestProperty("Authorization", "Bearer " + access_token);
+		conn.setDoOutput(true);
+		
+		int responseCode = conn.getResponseCode();
+		System.out.println("responseCode4 : " + responseCode);
+		
+		InputStream is = conn.getInputStream();
+		BufferedReader in = new BufferedReader(new InputStreamReader(is), 8 * 1024);
+		
+		String line = null;
+		StringBuffer buff = new StringBuffer();
+		
+		while ((line = in.readLine()) != null) {
+			buff.append(line + "\n");
+		}
+		
+		String result = buff.toString().trim();
+		return result;
+	}
 	
+	///////////////////////////////////////////////////////////////////////////////////////////
 	
 	public String randomCode(int length){
 		char[] charaters = 	{

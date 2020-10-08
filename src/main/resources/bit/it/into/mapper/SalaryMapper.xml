@@ -29,4 +29,10 @@
       		Insert into salary_account (fintech_use_num, category, interest, maturity, expected_amt) values (#{fintech_use_num}, #{category}, #{interest}, #{maturity}, #{expected_amt})
    		]]>
 	</insert>
+	
+	<select id="hasSalary" resultType="int">
+		<![CDATA[
+			Select COUNT(*) from salary_account where fintech_use_num=#{fintech_use_num}
+		]]>
+	</select>
 </mapper>

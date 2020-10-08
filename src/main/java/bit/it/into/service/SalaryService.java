@@ -6,6 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import bit.it.into.dto.AccountSalaryDTO;
 import bit.it.into.mapper.SalaryMapper;
@@ -17,7 +18,8 @@ public class SalaryService {
 
 	@Inject
 	private SalaryMapper mapper;
-
+	
+	@Transactional
 	public void modify(AccountSalaryDTO accountSalary) {
 		if(mapper.check(accountSalary) == 1) {
 			mapper.modify(accountSalary);
@@ -27,8 +29,16 @@ public class SalaryService {
 	}
 
 	public AccountSalaryDTO getSalaryList(String fintech_use_num) {
-		// TODO Auto-generated method stub
 		return mapper.readAllSalary(fintech_use_num);
 	}
 	
+	public boolean hasSalary(String fintech_use_num) {
+		int count = mapper.hasSalary(fintech_use_num);
+		
+		if(count==0) {
+			return false;
+		} 
+		
+		return true;
+	}
 }
