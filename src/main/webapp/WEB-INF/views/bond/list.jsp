@@ -33,12 +33,6 @@
   	#card-total{
   		width: 90%;
 		margin: auto;
-		margin-top: 50px;
-  	}
-  	
-  	#dataTable{
-  		text-align: center;
-  		margin-top: 10px;
   	}
   	
   </style>
@@ -110,11 +104,6 @@
           
           <!-- table script -->
           <script type="text/javascript">
-          $(document).ready(function(){
-        	  if(${list.size()} == 0){
-        		  document.getElementById("bond_tbody").innerHTML = '<tr><td colspan="11">채권 정보가 없습니다.</td></tr>';
-        	  }
-        	});
           
           function alerting(content){
         		AstNotif.dialog('알림', content, {
@@ -140,7 +129,7 @@
 			}); 
           
           //특수문자, 공백 validating
-          /*  $(document).on("input","input[name=bond_symbols]",function(){
+           $(document).on("input","input[name=bond_symbols]",function(){
 	        	  var bond_symbols = document.getElementById("bond_symbols").value;
 
  	        	  var pattern1 = /\s/;
@@ -152,7 +141,7 @@
 	                  return false;
 	               }
 
-          	});  */
+          	}); 
           
           //숫자 validating 부동소수점 포함
           $(document).on("input","input[name=total_interest]",function(){
