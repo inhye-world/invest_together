@@ -29,5 +29,28 @@ public interface UserMapper {
 
 	public void updateId(MemberDTO dto);
 
+	public void updateEmail(String email);
+	
+	public void updatePw(MemberDTO dto);
+	
+	public void deleteAuthorities(int member_num);
+
+	public void deleteStock(int member_num);
+
+	public void deleteCalculator(int member_num);
+
+	public void deleteBond(int member_num);
+
+	public void deleteRank(int member_num);
+
+	public void deleteAccount(int member_num);
+
+	public void deleteOrders(int member_num);
+
+	public void deleteComments(int member_num);
+
+	public void deleteBoard(int member_num);
+
+	public void deleteMember(int member_num);
 
 }

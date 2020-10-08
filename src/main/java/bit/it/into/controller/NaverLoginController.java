@@ -90,14 +90,8 @@ public class NaverLoginController {
 	}	
 	
 	@PostMapping("/addNaverUser")
-	public String addNaverUser(MemberDTO memberDTO, Model model) {
-		
-		if(loginService.hasUserByNickname(memberDTO.getNickname())) {
-			model.addAttribute("valid_nickname", "닉네임이 중복 되었습니다.");
+	public String addNaverUser(MemberDTO memberDTO) {
 			
-			return "login/naverAddInfo";
-		}
-		
 		memberDTO.setPw(secret);
 		loginService.addNaverUser(memberDTO);
 		

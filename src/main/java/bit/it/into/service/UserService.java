@@ -92,6 +92,37 @@ public class UserService {
 		mapper.updateId(dto);
 		
 	}
-
 	
+	public void changeEmail(String email) {
+		log.info("UserService - changeEmail()");
+		
+		mapper.updateEmail(email);
+	}
+	
+	public void alterPw(MemberDTO dto) {
+		log.info("UserService - alterPw()");
+	
+		String encode = passEncoder.encode(dto.getPw());
+		
+		dto.setPw(encode);
+		
+		mapper.updatePw(dto);
+	}
+	
+	@Transactional
+	public void secession(int member_num) {
+		log.info("UserService - secession()");
+		
+		mapper.deleteAuthorities(member_num);
+		mapper.deleteStock(member_num);
+		mapper.deleteCalculator(member_num);
+		mapper.deleteBond(member_num);
+		mapper.deleteRank(member_num);
+		mapper.deleteAccount(member_num);
+		mapper.deleteOrders(member_num);
+		mapper.deleteComments(member_num);
+		mapper.deleteBoard(member_num);
+		mapper.deleteMember(member_num);
+	}
+
 }

@@ -1,0 +1,312 @@
+@charset "UTF-8";
+
+		tbody {
+		    display: table-row-group;
+		    vertical-align: middle;
+		    border-color: inherit;
+		}
+		
+		body, input, textarea, select, button, table {
+		    font-family: 돋움, Dotum, sans-serif;
+		    font-size: 100%;
+		}
+		
+		div.member-container {
+		    min-height: 900px;
+		    padding: 50px;
+		    background-color: #fff;
+		    width: 980px;
+		    height: 600px;
+   	 		display: table-cell;
+		}
+		
+		.usermodify-title {
+		    margin: 0 0 10px;
+		    font-size: 30px;
+		    font-family: "맑은 고딕", "malgun gothic", sans-serif;
+		    font-weight: bold;
+		    color: #333;
+		    letter-spacing: -1px;
+		    position: relative;
+		}
+		
+		.usermodify-table th {
+			width: 100px;
+		    background-color: #eef1f8;
+		    text-align: left;
+		    white-space: nowrap;
+		    padding: 14px 30px;
+    		border-bottom: 1px solid #ddd;
+		}
+		
+		.usermodify-table {
+			width: 100%;
+		    border-top: 2px solid #969696;
+		    border-collapse: collapse;
+		    position: relative;
+		}
+		
+		.usermodify-table td {
+			border-left: 1px solid #ddd;
+			padding: 14px 30px;
+    		border-bottom: 1px solid #ddd;
+		}
+				
+		.usermodify-table .usermodify-pw th{
+			border-collapse: collapse;
+			font-weight: normal;
+		    padding: 5px 6px 11px 0;
+		    background-color: #fff;
+		    white-space: nowrap;
+		    width: 1%;
+		    border-bottom: 0;
+		}
+		
+		.usermodify-id-change-btn, .usermodify-nickname-change-btn, .usermodify-phone-change-btn, .usermodify-email-change-btn, .usermodify-password-submit, .usermodify-cancel, .usermodify-id-change-cancel, .usermodify-id-change-auth-send, .usermodify-nickname-change-cancel, .usermodify-nickname-change-auth-send, .usermodify-phone-change-cancel, .usermodify-phone-change-auth-send, .usermodify-email-change-cancel, .usermodify-email-change-auth-send {
+		    border-color: #bcbfc6;
+		    color: #777;
+		    background-color: #fafbf6;
+		    background-image: linear-gradient(#fff,#f1f1f1);
+		    
+		}
+		
+		.usermodify-id-change-btn, .usermodify-nickname-change-btn, .usermodify-phone-change-btn, .usermodify-email-change-btn, .usermodify-password-submit, .usermodify-cancel, .usermodify-id-change-cancel, .usermodify-id-change-auth-send, .usermodify-nickname-change-cancel, .usermodify-nickname-change-auth-send, .usermodify-phone-change-cancel, .usermodify-phone-change-auth-send, .usermodify-email-change-cancel, .usermodify-email-change-auth-send {
+		    display: inline-block;
+		    box-sizing: border-box;
+		    border: 1px solid #898989;
+		    text-decoration: none;
+		    vertical-align: middle;
+		    text-align: center;
+		}
+		
+		.usermodify-table{
+			border-collapse: collapse;
+			border-left: 0;
+			width: 100%;
+		    border-top: 2px solid #969696;
+		    border-collapse: collapse;
+		}
+		
+		.usermodify-pw td{
+			border-bottom: 0;
+			border-left: 0;
+		}
+		
+		.usermodify-input-table th{
+			vertical-align: top;
+		}
+		
+		.usermodify-pw-submit {
+		    margin-top: 10px;
+		}
+		
+		.usermodify-foot {
+		    text-align: center;
+		    margin-top: 30px;
+		}	
+		
+		.usermodify-input-table th, .usermodify-input-table td {
+		    vertical-align: top;
+		    padding: 0 0 11px 0;
+		}
+		
+		.usermodify-secession {
+		    margin-top: 10px;
+		    text-align: right;
+		    color: #97979f;
+		}
+		
+		.usermodify-secession-btn {
+		    border-color: #898989;
+		    color: #fff;
+		    background-color: #a8a8a8;
+		}
+		
+		.usermodify-secession-btn {
+		    display: inline-block;
+		    padding: 3px 6px;
+		    border-radius: 2px;
+		    font-size: 11px;
+		    line-height: 13px;
+		    letter-spacing: -1px;
+		}
+		
+		.usermodify-secession-btn{
+			box-sizing: border-box;
+		    border: 1px solid #898989;
+		    text-decoration: none;
+		    vertical-align: middle;
+		    text-align: center;
+		}
+		
+		tr {
+		    display: table-row;
+		    vertical-align: inherit;
+		    border-color: inherit;
+		}
+		
+		td {
+		    display: table-cell;
+		    vertical-align: inherit;
+		    margin: 0;
+		    font-weight: bolder;
+		}
+		
+		th {
+		    display: table-cell;
+		    vertical-align: inherit;
+		    font-weight: bold;
+		    margin: 0;
+		}
+		
+		body {
+		    -webkit-text-size-adjust: none;
+		    font-family: dotum,sans-serif;
+		    font-size: 12px;
+		    line-height: 1.6;
+		    color: #666;
+		    margin: 0;
+		}
+		
+		tbody {
+		    display: table-row-group;
+		    vertical-align: middle;
+		    border-color: inherit;
+		}
+		
+		table {
+		    border-collapse: collapse;
+		    border-spacing: 0;
+		    border-color: grey;
+		    box-sizing: border-box;
+		    display: table;
+		}
+		
+		
+		div {
+		    display: block;
+		    clean:both;
+		    
+		}
+		
+		section {
+			display: block;
+		}
+		
+		span {
+			display: table-row;
+		    vertical-align: inherit;
+		    border-color: inherit;
+		}
+		
+		.usermodify-auth-mail {
+		    font-weight: bold;
+		}
+				
+		p {
+		    display: block;
+		    margin-block-start: 1em;
+		    margin-block-end: 1em;
+		    margin-inline-start: 0px;
+		    margin-inline-end: 0px;
+		}
+		
+		.usermodify-id-change-auth span, .usermodify-nickname-change-auth span, .usermodify-phone-change-auth span, .usermodify-email-change-auth span, .usermodify-password-change span{
+			color:red;
+		}
+
+		.usermodify-nickname-change-auth, .usermodify-phone-change-auth, .usermodify-id-change-auth, .usermodify-email-change-auth{
+			margin-top: 14px;
+			padding: 10px;
+    		border: 1px solid #dadde4;
+    		background-color: #f0f0f0;
+    		color: #555;
+    		font-size: 14px;
+		}
+		
+		.usermodify-nickname-change-auth-send, .usermodify-phone-change-auth-send, .usermodify-id-change-auth-send, .usermodify-email-change-auth-send{
+			border-color: #0185da;
+    		color: #fff;
+    		background-color: #0e9ae9;
+    		background-image: linear-gradient(#20b3f8,#0185d8);
+    		display: block;
+		    margin-top: 7px;
+		}		
+		
+		.usermodify-nickname-if, .usermodify-phone-if, .usermodify-id-if, .usermodify-email-if {
+			margin-right: 5px;
+			margin-bottom: 5px;
+		}
+		
+		.usermodify-auth-submit {
+			border-color: #0185da;
+		    color: #fff;
+		    background-color: #0e9ae9;
+		    background-image: linear-gradient(#20b3f8,#0185d8);
+		    display: inline-block;
+			box-sizing: border-box;
+			border: 1px solid #0185da;
+			text-decoration: none;
+			vertical-align: middle;
+			text-align: center;
+		}
+		
+		.usermodify-auth-cancel {
+			border-color: #828282;
+		    color: #fff;
+		    background-color: #999ca5;
+		    background-image: linear-gradient(#a8abba,#8c8f98);
+			display: inline-block;
+		    box-sizing: border-box;
+		    border: 1px solid #828282;
+		    text-decoration: none;
+		    vertical-align: middle;
+		    text-align: center;
+		}
+		
+		.usermodify-auth-title {
+		    margin: 0 0 10px;
+		    font-size: 30px;
+		    font-family: "맑은 고딕", "malgun gothic", sans-serif;
+		    font-weight: bold;
+		    color: rgb(51, 51, 51);
+		    letter-spacing: -1px;
+		}
+		
+		.usermodify-auth-msg {
+		    margin-bottom: 6px;
+		    font-weight: bold;
+		}
+		
+		.usermodify-table {
+			width: 100%;
+		    border-top: 2px solid #969696;
+		    border-collapse: collapse;
+		}
+		
+		.usermodify-table th {
+		    width: 100px;
+		    background-color: #eef1f8;
+		    text-align: left;
+		    white-space: nowrap;
+		    padding: 14px 30px;
+   			border-bottom: 1px solid #ddd;
+		}
+		
+		.usermodify-auth-foot {
+		    margin-top: 30px;
+		    text-align: center;
+		}
+		
+		.usermodify-auth-nickname {
+		    color: #0185da;
+		}
+		
+		.form-err {
+		    padding-left: 1.6em;
+		    font-style: normal;
+		    font-size: 12px;
+		    color: #fb0005;
+		    display: inline;
+		}
+		

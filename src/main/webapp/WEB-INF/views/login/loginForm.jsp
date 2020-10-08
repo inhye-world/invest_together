@@ -8,7 +8,7 @@
     <title>로그인 페이지</title>
     
     <link href="resources/temporary.css" rel="stylesheet" type="text/css">
-    
+       
 </head>
 
 	<body>
@@ -21,14 +21,12 @@
 				
 				<c:url value="/login" var="loginUrl" />
 				
-				<form:form name="f" action="${loginUrl}" method="POST">
-				    
-				    <c:if test="${param.error != null}">
-				        <p style="color: red">잘못 입력하셨습니다</p>
-				    </c:if>
-				    
+				<form:form class="login-form" name="f" action="${loginUrl}" method="POST">
+				    			    
 				    <input type="text" name="id" placeholder="아이디"/><br>
 				    <input type="password" name="password" placeholder="비밀번호"/><br>
+				    
+				    <div>${requestScope.loginFailMsg}</div>
 				    
 				    <%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
 				    

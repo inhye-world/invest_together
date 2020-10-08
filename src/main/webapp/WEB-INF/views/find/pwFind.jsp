@@ -123,6 +123,6 @@
 				});
 			});
 	
-	</script> 	
+	</script>
 	</body>
 </html>
