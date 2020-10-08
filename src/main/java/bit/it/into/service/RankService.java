@@ -5,8 +5,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import bit.it.into.dto.RankDTO;
+import bit.it.into.dto.RankDetailsDTO;
 import bit.it.into.dto.RankingDTO;
 import bit.it.into.mapper.RankMapper;
 import bit.it.into.page.RankCriteria;
@@ -19,14 +21,18 @@ public class RankService {
 	@Inject
 	private RankMapper mapper;
 	
-	
+	@Transactional
 	public void rankEnabled(RankDTO rankDTO) {
 		log.info("RankService - rankEnabled()");
 		
-		int count = mapper.updateRankEnabled(rankDTO);
+		int count1 = mapper.updateRankEnabled(rankDTO);
+		int count2 = mapper.insertRankDetailsEnabled(rankDTO);
 		
-		if(count != 1) {
+		if(count1 != 1) {
 			log.info("유저 랭크 UPDATE ENABLED 오류");
+		}
+		if(count2 != 1) {
+			log.info("유저 랭킹내역 INSERT ENABLED 오류");
 		}
 	}
 	
@@ -83,5 +89,12 @@ public class RankService {
 		
 		return mapper.getWhaleLeaguePageList(cri);	
 	}
+
+	public List<RankDetailsDTO> getRankDetails(int member_num) {
+		return mapper.selectRankDetails(member_num);
+	}
 	
+	public Integer getSetPrice(int member_num) {
+		return mapper.selectSetPrice(member_num);
+	}
 }

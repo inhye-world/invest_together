@@ -3,6 +3,7 @@ package bit.it.into.mapper;
 import java.util.List;
 
 import bit.it.into.dto.RankDTO;
+import bit.it.into.dto.RankDetailsDTO;
 import bit.it.into.dto.RankingDTO;
 import bit.it.into.page.RankCriteria;
 
@@ -12,6 +13,8 @@ public interface RankMapper {
 
 	public int updateRankEnabled(RankDTO rankDTO);
 
+	public int insertRankDetailsEnabled(RankDTO rankDTO);
+	
 	public List<RankingDTO> selectWhaleReagueList();
 
 	public List<RankingDTO> selectMackerelReagueList();
@@ -29,5 +32,9 @@ public interface RankMapper {
 	public List<RankingDTO> getMackerelLeaguePageList(RankCriteria cri);
 
 	public List<RankingDTO> getWhaleLeaguePageList(RankCriteria cri);
+
+	public List<RankDetailsDTO> selectRankDetails(int member_num);
+
+	public Integer selectSetPrice(int member_num);
 
 }

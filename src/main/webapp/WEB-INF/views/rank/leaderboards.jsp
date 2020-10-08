@@ -13,10 +13,17 @@
 	<title>같이투자 투자랭킹</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
+	<meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
+ 	<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
+	
 	<link href="resources/ranking.css" rel="stylesheet" type="text/css">
 	
 	<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
 	<script src="https://kit.fontawesome.com/80d121b39f.js" crossorigin="anonymous"></script>
+	
+	<script src="resources/sb_admin/vendor/chart.js/Chart.min.js"></script>
+	
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -24,7 +31,8 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>	
 	
 	<script>
-		
+		var chart;
+	
 		function getIndividualRank(nickname) {
 			$.ajax({
 				type: "GET",
@@ -46,7 +54,7 @@
 						var str = "<tr>";
 						str += "<td><img src='resources/icon/"+result.league+".png' width='36px' height='36px'/></td>";
 						str += "<td>"+result.place.toLocaleString()+"<p>(상위 "+result.percentile+"%)</p></td>";
-						str += "<td><b>"+result.nickname+"</b></td>";
+						str += "<td><a href='javascript:driveBackscreen(`"+result.nickname+"`)'>"+result.nickname+"</a></td>";
 						str += "<td>"+result.net_profit_ratio+"%</td>";
 						str += "<td>"+result.net_profit.toLocaleString()+"원</td>";
 						str += "<td>"+result.investment_amount.toLocaleString()+"원</td>";
@@ -65,7 +73,263 @@
 				}
 			});
 		}
-	
+		
+		function driveBackscreen(nickname) {
+			$.ajax({
+				type: "GET",
+				url: "rest/getRankDetails",
+				dataType: "json",
+				data: {"nickname": nickname},
+				success: function(result) {
+					console.log(result)
+					
+					if(result.ranking.league=="empty") {
+						return;
+					}
+					
+					$(".black-model-section-title u").text(nickname);
+					$("#backscreen-1 .black-model-section-place img").attr("src", "resources/icon/"+result.ranking.league+".png");
+					$("#backscreen-1 .black-model-section-place span:nth-child(2)").addClass("color-place-"+result.ranking.league).text(result.ranking.place+"위");
+					$("#backscreen-1 .black-model-section-place span:nth-child(3)").text("(상위 "+result.ranking.percentile+"%)");
+					
+					if(!result.valid.isLogin) {
+						$("#backscreen-1 #subscribe-btn").addClass("black-model-bottom-btn-enabled").text("구독하기").attr("onclick", "location.href='/into/loginForm'").prop("disabled", false);
+					}else {
+						if(result.valid.isMe) {
+							$("#backscreen-1 #subscribe-btn").addClass("black-model-bottom-btn-disabled").text("자기 자신은 구독할수 없습니다").prop("disabled", true);
+						}else {
+							$("#backscreen-1 #subscribe-btn").addClass("black-model-bottom-btn-enabled").text("구독하기").attr("onclick", "driveBackscreen2()").prop("disabled", false);
+							
+							if(!result.valid.hasSetPrice) {
+								$("#backscreen-2 #payment-btn").addClass("black-model-bottom-btn-disabled").text("설정금액을 설정하지 않았습니다").prop("disabled", true);
+							}else {
+								$("#backscreen-2 #payment-btn").addClass("black-model-bottom-btn-enabled").text(result.valid.setPrice.toLocaleString()+"원 결제").attr("onclick", "drivePayment("+result.ranking.member_num+","+result.valid.setPrice+")").prop("disabled", false);
+							}
+						}
+					}
+					
+					chart = new Chart($('#black-model-section-canvas')[0].getContext('2d'), {
+		            	type: 'line',
+		            	data: {
+		                	labels: result.labels,
+			           	 	datasets: [{
+			                	data: result.data,
+			                    backgroundColor: '#227FEC',
+			                    borderColor: '#227FEC',
+			                    fill: false,
+			                    borderWidth: 1,
+			                    pointRadius: 2,
+			                }]
+		            	},
+		           		options: {
+		           			responsive: false,
+			                animation: {
+			                    duration: 200
+			                },
+			                layout: {
+			                    padding: {
+			                        left: 15,
+			                        right: 15,
+			                        top: 20,
+			                        bottom: 5
+			                    }
+			                },
+			                legend: {
+			                    display: false
+			                },
+			                maintainAspectRatio: false,
+			                title: {
+			                    display: false
+			                },
+			                tooltips: {
+			                    mode: 'index',
+			                    intersect: false,
+			                    callbacks: {
+			                    	title: function (tooltipItems, data) {
+			                            var tooltipItem = tooltipItems[0];
+			                            return data.labels[tooltipItem.index].date;
+			                        },
+			                        label: function (tooltipItem, data) {
+			                            return ' '+data.labels[tooltipItem.index].net_profit_ratio+'%';
+			                        },
+			                        afterLabel: function (tooltipItem, data) {
+			                            return ' '+data.labels[tooltipItem.index].net_profit.toLocaleString()+'원';
+			                        }
+			                        
+			                    }
+			                },
+			                scales: {
+			                    xAxes: [{
+			                        display: true,
+			                        scaleLabel: {
+			                            display: false
+			                        },
+			                        ticks: {
+			                            fontColor: "#a0a0a0",
+			                            callback: function (value, index, values) {
+			                                return value.date;
+			                            }
+			                        },
+			                        gridLines:{
+			                        	zeroLineColor: "#393939",
+			    						color: "#393939",
+			    						lineWidth: 1
+			    					 }
+			                    }],
+			                    yAxes: [{
+			                        display: true,
+			                        scaleLabel: {
+			                            display: false
+			                        },
+			                        ticks: {
+			                       		fontColor: "#a0a0a0",
+				                       	stepSize: 100
+			                        },
+			                        gridLines:{
+			                       	 	color: "transparent",
+			                            display: true,
+			                            drawBorder: false,
+			                            zeroLineColor: "#393939",
+			                            zeroLineWidth: 1
+			     					 }
+			                    }]
+			                }
+		            	}
+		            });
+					
+					
+					$("#backscreen-1").css("display", "block");
+				}
+			});
+		}
+		
+		function driveBackscreen2() {
+			$("#backscreen-1").css("display", "none");
+			$("#backscreen-2").css("display", "block");
+		}
+		
+		function getMerchantSeq() {
+			var seq;
+			
+			(function() {
+				$.ajax({
+					type: "GET",
+					url: "rest/getMerchantSeq",
+					dataType: "json",
+					async: false,
+					success: function(result) {
+						seq = result.seq;
+					}
+				});
+			})();
+			
+			return seq;
+		}
+		
+		function drivePayment(seller_num, set_price) {
+			var seq = getMerchantSeq();
+			
+			var today = new Date();
+			var yyyy = today.getFullYear();
+			var mm = today.getMonth()+1;
+			var dd = today.getDate();
+			if(dd<10) {
+			    dd='0'+dd;
+			} 
+
+			if(mm<10) {
+			    mm='0'+mm;
+			} 
+			
+			<sec:authorize access="isAnonymous()">
+				location.href = "/into/loginForm";
+			</sec:authorize>	
+		
+			<sec:authorize access="isAuthenticated()">
+				<sec:authentication var="principal" property="principal"/>
+				
+				var memnum = ${principal.dto.member_num};
+				var memname = "${principal.dto.name}";
+				var memphone = "${principal.dto.phone}";
+				var mememail = "${principal.dto.email}";
+				var merchantid = "INV"+yyyy+mm+dd+seq;
+				
+				var token = $("meta[name='_csrf']").attr("content");
+				var header = $("meta[name='_csrf_header']").attr("content");
+				
+				IMP.init("imp85973823");
+				
+				IMP.request_pay({ 
+				    pg: "html5_inicis",
+				    pay_method: "card",
+				    merchant_uid: merchantid,
+				    name: "같이투자 구독상품",
+				    amount: set_price,
+				    buyer_email: mememail,
+				    buyer_name: memname,
+				    buyer_tel: memphone,
+				    }, 
+				 	function(rsp) { 
+				    	
+				    	if(rsp.success) {
+				        
+				        	$.ajax({
+				        		url: "rest/completePayment",
+				        		type: 'POST',
+				        		dataType: 'json',
+				        		data: {
+				        			merchant_uid: merchantid,
+				        			member_num: memnum,
+				        			name: memname,
+				        			phone: memphone,
+				        			seller_num: seller_num,
+				        			sub_price: set_price
+				        		},
+				        		beforeSend: function(xhr){
+				        			xhr.setRequestHeader(header, token);
+				        		}
+				        	}).done(function(result){
+				        		if(result.successPayment) {
+				        			alert("결제 성공");
+				        			// 결제성공페이지로 이동하게 만들기
+				        		}else {
+				        			if(result.hasSetPrice) {
+				        				alert("결제하신 금액과 판매자가 설정한 금액이 다릅니다.");
+				        				var reason = "결제금액 과 설정금액이 다름";
+				        			}else {
+				        				alert("판매자가 구독을 비활성화 했습니다.");
+				        				var reason = "설정금액 존재하지 않음";
+				        			}
+				        			
+				        		//	$.ajax({
+				        		//		url: "rest/cancelPayment",
+				        		//		type: 'POST',
+				        		//		data: {
+				        		//			merchant_uid: merchantid,
+				        		//			reason: reason
+				        		//		},
+				        		//		beforeSend: function(xhr){
+						        //			xhr.setRequestHeader(header, token);
+						        //		}
+				        		//	})
+				        			
+				        			// 여기서 환불하는 로직
+				        			alert("자동으로 결제가 취소되었습니다.")
+				        		}
+				        	});
+				        
+				    	}else {
+				        
+				        	alert("결제에 실패하셨습니다.");
+				        
+				    	}
+			  		}
+				);
+			</sec:authorize>
+			
+		}
+		
+		
 		$(function() {
 			$(".header-nav ul li").removeClass("header-li-active");
 			$(".header-nav ul li:nth-child(6)").addClass("header-li-active");
@@ -82,6 +346,37 @@
 					$("#ranking-individual-find").click();
 				}
 			});
+			
+			$(".black-model-close-btn").click(function() {
+				$(".ranking-backscreen").css("display","none");
+				
+				$(".black-model-section-place span:nth-child(2)").removeClass();
+				$("#subscribe-btn").removeClass();
+				$("#subscribe-btn").removeAttr("onclick");
+				$("#payment-btn").removeClass();
+				$("#payment-btn").removeAttr("onclick");
+				
+				chart.destroy();
+			});
+			
+			$(".ranking-backscreen").mouseup(function(e){ 
+		 		var blackmodel = $(".ranking-black-model");
+		 		
+		 		if (!blackmodel.is(e.target) && blackmodel.has(e.target).length === 0){
+		 			$(".ranking-backscreen").css("display","none");
+		 			
+		 			$(".black-model-section-place span:nth-child(2)").removeClass();
+					$("#subscribe-btn").removeClass();
+					$("#subscribe-btn").removeAttr("onclick");
+					$("#payment-btn").removeClass();
+					$("#payment-btn").removeAttr("onclick");
+					
+					chart.destroy();
+				}	
+			});
+
+
+			
 		});
 	</script>
 </head>
@@ -177,7 +472,7 @@
 					<li>리그 구분은 투자금액(매수가)을 기준으로 고래리그는 5000만원 이상, 고등어리그는 1000만원 이상, 새우리그는 100만원 이상 주식을 보유한 회원이 배정됩니다.</li>
 					<li>투자금액 100만원 미만의 순위는 집계되지 않습니다.</li>
 					<li>랭킹은 수익률순으로 산정하며 수익률이 동일한경우, 투자금액순으로 순위가 결정됩니다.</li>
-					<li>3시간 주기로 랭킹 정보를 업데이트 합니다.</li>
+					<li>4시간 주기로 랭킹 정보를 업데이트 합니다.</li>
 					<li>리더보드의 닉네임을 클릭해서 해당 회원을 구독할 수 있습니다.</li>
 				</ul>
 			</div>
@@ -205,7 +500,7 @@
 					<c:forEach var="dto" items="${list}">
 						<tr>
 							<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.place}" /></td>
-							<td><a href="#">${dto.nickname}</a></td>
+							<td><a href="javascript:driveBackscreen('${dto.nickname}')">${dto.nickname}</a></td>
 							<td class="${dto.net_profit > 0?'profit-rise':'profit-fall'}">${dto.net_profit_ratio}%</td>
 							<td class="${dto.net_profit > 0?'profit-rise':'profit-fall'}"><fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.net_profit}" />원</td>
 							<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.investment_amount}" />원</td>
@@ -245,6 +540,65 @@
 					</ul>
 				</c:if>
 			</div>
+		</div>
+		
+		<div id="backscreen-1" class="ranking-backscreen">
+			<div class="ranking-model-container">
+				<div class="ranking-black-model">
+					<button class="black-model-close-btn">
+					</button>
+					<div class="black-model-section">
+						<h2 class="black-model-section-title"><u></u></h2>
+						<div class="black-model-section-place">
+							<span><img width="28px" height="28px" /></span>
+							<span></span>
+							<span class="color-place-grey"></span>
+						</div>
+						<div class="black-model-section-chart">
+							<p>수익률 그래프</p>
+							<canvas id="black-model-section-canvas" width="590" height="311"></canvas>
+						</div>
+					</div>
+					<div class="black-model-bottom-btn-container">
+						<button id="subscribe-btn"></button>
+					</div>
+				</div>
+			</div>	
+		</div>
+		
+		<div id="backscreen-2" class="ranking-backscreen">
+			<div class="ranking-model-container">
+				<div class="ranking-black-model">
+					<button class="black-model-close-btn">
+					</button>
+					<div class="black-model-section">
+						<h2 class="black-model-section-title"><u></u> 구독</h2>
+						<div class="black-model-section-info">
+							<p>혜택</p>
+							<ul>
+								<li>구독한 회원의 실시간 보유 주식정보 확인</li>
+								<li>구독한 회원의 보유 채권정보 확인</li>
+								<li>구독한 회원의 현금·주식·채권 보유 비율 확인</li>
+								<li>구독한 회원의 보유주식별 적정주가 확인</li>
+							</ul>
+						</div>
+						<div class="black-model-section-notice">
+							<ul>
+								<li>결제금액에는 VAT가 포함되어 있습니다.</li>
+								<li>이용기간은 결제일로부터 30일 입니다.</li>
+								<li>이용기간이 종료되도 정기결제 되지 않습니다.</li>
+								<li>상품 특성상 환불이 불가능합니다.</li>
+								<li>적정주가는 해당 회원이 산정한 금액입니다.</li>
+								<li>서비스로 인한 금전적 손해 또는 손실에 대해서는 회사는 책임지지 않습니다.</li>
+							</ul>
+						</div>
+					</div>
+					<div class="black-model-bottom-btn-container">
+						<button id="payment-btn"></button>
+					</div>
+					
+				</div>
+			</div>	
 		</div>
 		
 		<jsp:include page="../include/footer.jsp"/>	
