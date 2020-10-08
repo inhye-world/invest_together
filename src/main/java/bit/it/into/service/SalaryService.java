@@ -31,6 +31,7 @@ public class SalaryService {
 	public AccountSalaryDTO getSalaryList(String fintech_use_num) {
 		return mapper.readAllSalary(fintech_use_num);
 	}
+
 	
 	public boolean hasSalary(String fintech_use_num) {
 		int count = mapper.hasSalary(fintech_use_num);
@@ -41,4 +42,5 @@ public class SalaryService {
 		
 		return true;
 	}
+
 }

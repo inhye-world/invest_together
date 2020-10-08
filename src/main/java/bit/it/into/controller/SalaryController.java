@@ -5,6 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -46,8 +47,10 @@ public class SalaryController {
 	private BankService service;
 
 	@RequestMapping(value = "/salaryList-{year}-{month}")
+
 	public String accountSalary(Authentication authentication, @PathVariable String year, @PathVariable String month,String category,
 			Model model) throws UnsupportedEncodingException, IOException, ParseException, JSONException {
+
 		log.info("SalaryController - accountTransaction()");
 
 		if (authentication == null) {
@@ -61,6 +64,7 @@ public class SalaryController {
 		List<AccountDTO> accountList = service.getAccountList(user_num);
 		List<AccountSalaryDTO> accountSalaryList = new ArrayList<AccountSalaryDTO>();
 		
+
 		int sum1 = 0;
 		int sum2 = 0;
 		int sum3 = 0;
@@ -88,13 +92,14 @@ public class SalaryController {
 			salaryDTO.setBank_name(bank_name);
 			salaryDTO.setBalance_amt(balance_amt);
 
-			for (int i = brArr.size() - 1; i >= 0; i--) {
+			
+			for (int i = brArr.size()-1; i>=0; i--) {
 				String inout_type = brArr.getJSONObject(i).getString("inout_type");
 				String tran_amt = brArr.getJSONObject(i).getString("tran_amt");
-
-				if (inout_type.equals("입금")) {
+				
+				if(inout_type.equals("입금")) {
 					salaryDTO.setTran_amt(tran_amt);
-				} else if (inout_type.equals("출금")) {
+				}else if(inout_type.equals("출금")) {
 					continue;
 				}
 			}
@@ -124,7 +129,6 @@ public class SalaryController {
 			if (accountSalaryList.isEmpty()) {
 				return "bank/account_transaction_empty";
 			}
-			
 		}
 
 		model.addAttribute("accountSalaryList", accountSalaryList);
@@ -149,6 +153,7 @@ public class SalaryController {
 		salary.modify(accountSalaryDTO);
 
 		return "redirect:salaryList";
+
 	}
 
 	// ---------------------------------------
@@ -233,6 +238,7 @@ public class SalaryController {
 		}
 
 		return "bank/account_salary_list";
+
 	}
 
 }
