@@ -248,9 +248,9 @@ public class BankController {
 						}else if(tran_type.equals("커피")){
 							coffeeSum += Integer.valueOf(tran_amt);
 						}else if(tran_type.equals("식사")){
-							hobbySum += Integer.valueOf(tran_amt);
-						}else if(tran_type.equals("취미생활")){
 							mealSum += Integer.valueOf(tran_amt);
+						}else if(tran_type.equals("취미")){
+							hobbySum += Integer.valueOf(tran_amt);
 						}else{
 							etcSum += Integer.valueOf(tran_amt);
 						}

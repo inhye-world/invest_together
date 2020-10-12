@@ -8,6 +8,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Insert title here</title>
 	
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -45,6 +46,8 @@
 	<style>
 		#graphs{
 			display:flex;
+			left:50%
+			margin-left:-150px;
 		}
 		
 		#expenseList{
@@ -66,6 +69,26 @@
 			text-align: center;
 			margin-bottom: 50px;
 		}
+		
+		@media ( max-width: 768px ) {
+			#graphs{
+				flex-wrap:wrap;
+				width:auto;
+			}
+		
+  			#expenseList{
+  				font-size:0.5em;
+				width:auto;
+				text-align: center;
+			}
+			
+			#dailyExpense{
+				width:auto;
+				text-align: center;
+				padding-top:50px;
+			}
+		}
+		
 	</style>
 	
 </head>	
@@ -104,7 +127,7 @@
 			                    	<i class="fas fa-circle" style="color:#72675D"></i> 식사 &nbsp;
 			                    </span>
 			                    <span>
-			                    	<i class="fas fa-circle" style="color:#B7AEBF"></i> 취미생활 &nbsp;
+			                    	<i class="fas fa-circle" style="color:#B7AEBF"></i> 취미 &nbsp;
 			                    </span>
 			                    <span>
 			                    	<i class="fas fa-circle" style="color:#A6949C"></i> 미분류 &nbsp;
@@ -172,7 +195,7 @@
 								<td>${mealSum}</td>
 							</tr>
 							<tr>
-								<td>취미생활</td>
+								<td>취미</td>
 								<td>${hobbySum}</td>
 							</tr>
 							<tr>
@@ -199,7 +222,7 @@
 				var myDoughnutChart = new Chart(ctx, {
 				  type: 'doughnut',
 				  data: {
-				    labels: ["쇼핑", "생활", "교통", "커피", "식사", "취미생활", "미분류"],
+				    labels: ["쇼핑", "생활", "교통", "커피", "식사", "취미", "미분류"],
 				    datasets: [{
 				      data: [shoppingSum, livingExpense, transportSum, coffeeSum, mealSum, hobbySum, etcSum],
 				      backgroundColor: ['#2C4459', '#465E73', '#C1CED9', '#3D2D35','#72675D','#B7AEBF','#A6949C'],
