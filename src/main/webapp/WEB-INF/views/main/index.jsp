@@ -66,7 +66,7 @@
                                                 <li><a href="about.html">가계부</a></li>
                                                 <li><a href="program.html">월급관리</a></li>
                                                 <li><a href="events.html">주식/채권</a></li>
-                                                <li><a href="blog.html">계산기</a></li>
+                                                <li><a href="calculator">계산기</a></li>
                                                 <li><a href="blog.html">구독목록</a></li>
                                                 <li><a href="blog.html">투자랭킹</a></li>
                                                 <li><a href="blog.html">게시판</a></li>
@@ -154,8 +154,8 @@
                             <span class="flaticon-null-1"></span>
                         </div>
                         <div class="cat-cap">
-                            <h5><a href="services.html">Clean Water</a></h5>
-                            <p>The sea freight service has grown conside rably in recent years. We spend timetting to know your processes to.</p>
+                            <h5><a href="services.html">가계부</a></h5>
+                            <p>계좌를 연동해서 지출 내역을 관리하세요. </p>
                         </div>
                     </div>
                 </div>
@@ -165,8 +165,8 @@
                             <span class="flaticon-think"></span>
                         </div>
                         <div class="cat-cap">
-                            <h5><a href="services.html">Clean Water</a></h5>
-                            <p>The sea freight service has grown conside rably in recent years. We spend timetting to know your processes to.</p>
+                            <h5><a href="calculator">계산기</a></h5>
+                            <p>같이투자에서 제공하는 적정 주가 계산기로 편리하게 주식을 관리하세요.</p>
                         </div>
                     </div>
                 </div>
@@ -176,8 +176,8 @@
                             <span class="flaticon-gear"></span>
                         </div>
                         <div class="cat-cap">
-                            <h5><a href="services.html">Clean Water</a></h5>
-                            <p>The sea freight service has grown conside rably in recent years. We spend timetting to know your processes to.</p>
+                            <h5><a href="services.html">투자 랭킹</a></h5>
+                            <p>같이투자의 다양한 고객들은 어떻게 자산관리를 하고 있는지 구독을 통해 확인해보세요.</p>
                         </div>
                     </div>
                 </div>
@@ -251,7 +251,7 @@
 
     
     <!--? Count Down Start -->
-    <div class="count-down-area pt-25 section-bg" data-background="resources/main/assets/img/gallery/section_bg02.png">
+    <div class="count-down-area pt-25 section-bg" data-background="resources/main/assets/img/gallery/background.png">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-12 col-md-12">
@@ -260,7 +260,7 @@
                             <div class="col-lg-3 col-md-6 col-sm-6">
                                 <!-- Counter Up -->
                                 <div class="single-counter text-center">
-                                    <span class="counter color-green">6,200,000</span>
+                                    <span class="counter color-green">200,000</span>
                                     <span class="plus">+</span>
                                     <p class="color-green">총 가입자 수</p>
                                 </div>
@@ -268,7 +268,7 @@
                             <div class="col-lg-3 col-md-6 col-sm-6">
                                 <!-- Counter Up -->
                                 <div class="single-counter text-center">
-                                    <span class="counter color-green">8,000</span>
+                                    <span class="counter color-green">1,000</span>
                                     <span class="plus">+</span>
                                     <p class="color-green">신규 가입자 수</p>
                                 </div>
