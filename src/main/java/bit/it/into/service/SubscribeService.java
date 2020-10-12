@@ -36,4 +36,16 @@ public class SubscribeService {
 			log.info("insertSubscribe 오류");
 		}
 	}
+
+	public boolean isSubscribe(int member_num, int seller_num) {
+		log.info("SubscribeService - isSubscribe()");
+		
+		Integer count = mapper.selectCountSubscribe(member_num, seller_num);
+		
+		if(count==0) {
+			return false;
+		}
+		
+		return true;
+	}
 }

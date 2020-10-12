@@ -22,4 +22,10 @@
 			INSERT INTO subscribe(merchant_uid, member_num, name, phone, seller_num, sub_price, sub_date) VALUES(#{merchant_uid}, #{member_num}, #{name}, #{phone}, #{seller_num}, #{sub_price}, sysdate)
 		]]>
 	</insert>
+	
+	<select id="selectCountSubscribe" resultType="Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM subscribe WHERE member_num=#{member_num} AND seller_num=#{seller_num} AND (sysdate BETWEEN sub_date AND sub_date+30)	
+		]]>
+	</select>
 </mapper>

@@ -30,355 +30,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>	
 	
-	<script>
-		var chart;
-	
-		function getIndividualRank(nickname) {
-			$.ajax({
-				type: "GET",
-				url: "rest/findRanking",
-				dataType: "json",
-				data: {"nickname": nickname},
-				
-				success: function(result) {
-					
-					if(result.league == "empty") {
-						var str = "<tr>";
-						str += "<td class='ranking-individual-notice' colspan='6'>";
-						str += "검색 결과가 없습니다";
-						str += "<p>랭킹에서 "+nickname+" 님을 찾을 수 없습니다.</p>";
-						str += "</td></tr>";
-						
-						$("#ranking-individual-table tbody").html(str);
-					}else {
-						var str = "<tr>";
-						str += "<td><img src='resources/icon/"+result.league+".png' width='36px' height='36px'/></td>";
-						str += "<td>"+result.place.toLocaleString()+"<p>(상위 "+result.percentile+"%)</p></td>";
-						str += "<td><a href='javascript:driveBackscreen(`"+result.nickname+"`)'>"+result.nickname+"</a></td>";
-						str += "<td>"+result.net_profit_ratio+"%</td>";
-						str += "<td>"+result.net_profit.toLocaleString()+"원</td>";
-						str += "<td>"+result.investment_amount.toLocaleString()+"원</td>";
-						str += "</tr>";
-						
-						$("#ranking-individual-table tbody").html(str);
-						
-						if(result.net_profit_ratio>0) {
-							$("#ranking-individual-table tbody tr td:nth-child(4)").addClass("profit-rise");
-							$("#ranking-individual-table tbody tr td:nth-child(5)").addClass("profit-rise");
-						}else {
-							$("#ranking-individual-table tbody tr td:nth-child(4)").addClass("profit-fall");
-							$("#ranking-individual-table tbody tr td:nth-child(5)").addClass("profit-fall");
-						}
-					}
-				}
-			});
-		}
-		
-		function driveBackscreen(nickname) {
-			$.ajax({
-				type: "GET",
-				url: "rest/getRankDetails",
-				dataType: "json",
-				data: {"nickname": nickname},
-				success: function(result) {
-					console.log(result)
-					
-					if(result.ranking.league=="empty") {
-						return;
-					}
-					
-					$(".black-model-section-title u").text(nickname);
-					$("#backscreen-1 .black-model-section-place img").attr("src", "resources/icon/"+result.ranking.league+".png");
-					$("#backscreen-1 .black-model-section-place span:nth-child(2)").addClass("color-place-"+result.ranking.league).text(result.ranking.place+"위");
-					$("#backscreen-1 .black-model-section-place span:nth-child(3)").text("(상위 "+result.ranking.percentile+"%)");
-					
-					if(!result.valid.isLogin) {
-						$("#backscreen-1 #subscribe-btn").addClass("black-model-bottom-btn-enabled").text("구독하기").attr("onclick", "location.href='/into/loginForm'").prop("disabled", false);
-					}else {
-						if(result.valid.isMe) {
-							$("#backscreen-1 #subscribe-btn").addClass("black-model-bottom-btn-disabled").text("자기 자신은 구독할수 없습니다").prop("disabled", true);
-						}else {
-							$("#backscreen-1 #subscribe-btn").addClass("black-model-bottom-btn-enabled").text("구독하기").attr("onclick", "driveBackscreen2()").prop("disabled", false);
-							
-							if(!result.valid.hasSetPrice) {
-								$("#backscreen-2 #payment-btn").addClass("black-model-bottom-btn-disabled").text("설정금액을 설정하지 않았습니다").prop("disabled", true);
-							}else {
-								$("#backscreen-2 #payment-btn").addClass("black-model-bottom-btn-enabled").text(result.valid.setPrice.toLocaleString()+"원 결제").attr("onclick", "drivePayment("+result.ranking.member_num+","+result.valid.setPrice+")").prop("disabled", false);
-							}
-						}
-					}
-					
-					chart = new Chart($('#black-model-section-canvas')[0].getContext('2d'), {
-		            	type: 'line',
-		            	data: {
-		                	labels: result.labels,
-			           	 	datasets: [{
-			                	data: result.data,
-			                    backgroundColor: '#227FEC',
-			                    borderColor: '#227FEC',
-			                    fill: false,
-			                    borderWidth: 1,
-			                    pointRadius: 2,
-			                }]
-		            	},
-		           		options: {
-		           			responsive: false,
-			                animation: {
-			                    duration: 200
-			                },
-			                layout: {
-			                    padding: {
-			                        left: 15,
-			                        right: 15,
-			                        top: 20,
-			                        bottom: 5
-			                    }
-			                },
-			                legend: {
-			                    display: false
-			                },
-			                maintainAspectRatio: false,
-			                title: {
-			                    display: false
-			                },
-			                tooltips: {
-			                    mode: 'index',
-			                    intersect: false,
-			                    callbacks: {
-			                    	title: function (tooltipItems, data) {
-			                            var tooltipItem = tooltipItems[0];
-			                            return data.labels[tooltipItem.index].date;
-			                        },
-			                        label: function (tooltipItem, data) {
-			                            return ' '+data.labels[tooltipItem.index].net_profit_ratio+'%';
-			                        },
-			                        afterLabel: function (tooltipItem, data) {
-			                            return ' '+data.labels[tooltipItem.index].net_profit.toLocaleString()+'원';
-			                        }
-			                        
-			                    }
-			                },
-			                scales: {
-			                    xAxes: [{
-			                        display: true,
-			                        scaleLabel: {
-			                            display: false
-			                        },
-			                        ticks: {
-			                            fontColor: "#a0a0a0",
-			                            callback: function (value, index, values) {
-			                                return value.date;
-			                            }
-			                        },
-			                        gridLines:{
-			                        	zeroLineColor: "#393939",
-			    						color: "#393939",
-			    						lineWidth: 1
-			    					 }
-			                    }],
-			                    yAxes: [{
-			                        display: true,
-			                        scaleLabel: {
-			                            display: false
-			                        },
-			                        ticks: {
-			                       		fontColor: "#a0a0a0",
-				                       	stepSize: 100
-			                        },
-			                        gridLines:{
-			                       	 	color: "transparent",
-			                            display: true,
-			                            drawBorder: false,
-			                            zeroLineColor: "#393939",
-			                            zeroLineWidth: 1
-			     					 }
-			                    }]
-			                }
-		            	}
-		            });
-					
-					
-					$("#backscreen-1").css("display", "block");
-				}
-			});
-		}
-		
-		function driveBackscreen2() {
-			$("#backscreen-1").css("display", "none");
-			$("#backscreen-2").css("display", "block");
-		}
-		
-		function getMerchantSeq() {
-			var seq;
-			
-			(function() {
-				$.ajax({
-					type: "GET",
-					url: "rest/getMerchantSeq",
-					dataType: "json",
-					async: false,
-					success: function(result) {
-						seq = result.seq;
-					}
-				});
-			})();
-			
-			return seq;
-		}
-		
-		function drivePayment(seller_num, set_price) {
-			var seq = getMerchantSeq();
-			
-			var today = new Date();
-			var yyyy = today.getFullYear();
-			var mm = today.getMonth()+1;
-			var dd = today.getDate();
-			if(dd<10) {
-			    dd='0'+dd;
-			} 
-
-			if(mm<10) {
-			    mm='0'+mm;
-			} 
-			
-			<sec:authorize access="isAnonymous()">
-				location.href = "/into/loginForm";
-			</sec:authorize>	
-		
-			<sec:authorize access="isAuthenticated()">
-				<sec:authentication var="principal" property="principal"/>
-				
-				var memnum = ${principal.dto.member_num};
-				var memname = "${principal.dto.name}";
-				var memphone = "${principal.dto.phone}";
-				var mememail = "${principal.dto.email}";
-				var merchantid = "INV"+yyyy+mm+dd+seq;
-				
-				var token = $("meta[name='_csrf']").attr("content");
-				var header = $("meta[name='_csrf_header']").attr("content");
-				
-				IMP.init("imp85973823");
-				
-				IMP.request_pay({ 
-				    pg: "html5_inicis",
-				    pay_method: "card",
-				    merchant_uid: merchantid,
-				    name: "같이투자 구독상품",
-				    amount: set_price,
-				    buyer_email: mememail,
-				    buyer_name: memname,
-				    buyer_tel: memphone,
-				    }, 
-				 	function(rsp) { 
-				    	
-				    	if(rsp.success) {
-				        
-				        	$.ajax({
-				        		url: "rest/completePayment",
-				        		type: 'POST',
-				        		dataType: 'json',
-				        		data: {
-				        			merchant_uid: merchantid,
-				        			member_num: memnum,
-				        			name: memname,
-				        			phone: memphone,
-				        			seller_num: seller_num,
-				        			sub_price: set_price
-				        		},
-				        		beforeSend: function(xhr){
-				        			xhr.setRequestHeader(header, token);
-				        		}
-				        	}).done(function(result){
-				        		if(result.successPayment) {
-				        			alert("결제 성공");
-				        			// 결제성공페이지로 이동하게 만들기
-				        		}else {
-				        			if(result.hasSetPrice) {
-				        				alert("결제하신 금액과 판매자가 설정한 금액이 다릅니다.");
-				        				var reason = "결제금액 과 설정금액이 다름";
-				        			}else {
-				        				alert("판매자가 구독을 비활성화 했습니다.");
-				        				var reason = "설정금액 존재하지 않음";
-				        			}
-				        			
-				        		//	$.ajax({
-				        		//		url: "rest/cancelPayment",
-				        		//		type: 'POST',
-				        		//		data: {
-				        		//			merchant_uid: merchantid,
-				        		//			reason: reason
-				        		//		},
-				        		//		beforeSend: function(xhr){
-						        //			xhr.setRequestHeader(header, token);
-						        //		}
-				        		//	})
-				        			
-				        			// 여기서 환불하는 로직
-				        			alert("자동으로 결제가 취소되었습니다.")
-				        		}
-				        	});
-				        
-				    	}else {
-				        
-				        	alert("결제에 실패하셨습니다.");
-				        
-				    	}
-			  		}
-				);
-			</sec:authorize>
-			
-		}
-		
-		
-		$(function() {
-			$(".header-nav ul li").removeClass("header-li-active");
-			$(".header-nav ul li:nth-child(6)").addClass("header-li-active");
-			
-			$("#ranking-individual-find").click(function() {
-				$(".ranking-individual-myplace").css("display", "none");
-				
-				var nickname = $("#ranking-individual-search-nickname").val();
-				getIndividualRank(nickname);
-			});
-			
-			$("#ranking-individual-search-nickname").keyup(function() {
-				if(event.keyCode === 13) {
-					$("#ranking-individual-find").click();
-				}
-			});
-			
-			$(".black-model-close-btn").click(function() {
-				$(".ranking-backscreen").css("display","none");
-				
-				$(".black-model-section-place span:nth-child(2)").removeClass();
-				$("#subscribe-btn").removeClass();
-				$("#subscribe-btn").removeAttr("onclick");
-				$("#payment-btn").removeClass();
-				$("#payment-btn").removeAttr("onclick");
-				
-				chart.destroy();
-			});
-			
-			$(".ranking-backscreen").mouseup(function(e){ 
-		 		var blackmodel = $(".ranking-black-model");
-		 		
-		 		if (!blackmodel.is(e.target) && blackmodel.has(e.target).length === 0){
-		 			$(".ranking-backscreen").css("display","none");
-		 			
-		 			$(".black-model-section-place span:nth-child(2)").removeClass();
-					$("#subscribe-btn").removeClass();
-					$("#subscribe-btn").removeAttr("onclick");
-					$("#payment-btn").removeClass();
-					$("#payment-btn").removeAttr("onclick");
-					
-					chart.destroy();
-				}	
-			});
-
-
-			
-		});
-	</script>
 </head>
 	<body>
 		<jsp:include page="../include/header.jsp"/>
@@ -601,6 +252,363 @@
 			</div>	
 		</div>
 		
-		<jsp:include page="../include/footer.jsp"/>	
+		<jsp:include page="../include/footer.jsp"/>
+		
+		<script>
+			var chart;
+		
+			function getIndividualRank(nickname) {
+				$.ajax({
+					type: "GET",
+					url: "rest/findRanking",
+					dataType: "json",
+					data: {"nickname": nickname},
+					
+					success: function(result) {
+						
+						if(result.league == "empty") {
+							var str = "<tr>";
+							str += "<td class='ranking-individual-notice' colspan='6'>";
+							str += "검색 결과가 없습니다";
+							str += "<p>랭킹에서 "+nickname+" 님을 찾을 수 없습니다.</p>";
+							str += "</td></tr>";
+							
+							$("#ranking-individual-table tbody").html(str);
+						}else {
+							var str = "<tr>";
+							str += "<td><img src='resources/icon/"+result.league+".png' width='36px' height='36px'/></td>";
+							str += "<td>"+result.place.toLocaleString()+"<p>(상위 "+result.percentile+"%)</p></td>";
+							str += "<td><a href='javascript:driveBackscreen(`"+result.nickname+"`)'>"+result.nickname+"</a></td>";
+							str += "<td>"+result.net_profit_ratio+"%</td>";
+							str += "<td>"+result.net_profit.toLocaleString()+"원</td>";
+							str += "<td>"+result.investment_amount.toLocaleString()+"원</td>";
+							str += "</tr>";
+							
+							$("#ranking-individual-table tbody").html(str);
+							
+							if(result.net_profit_ratio>0) {
+								$("#ranking-individual-table tbody tr td:nth-child(4)").addClass("profit-rise");
+								$("#ranking-individual-table tbody tr td:nth-child(5)").addClass("profit-rise");
+							}else {
+								$("#ranking-individual-table tbody tr td:nth-child(4)").addClass("profit-fall");
+								$("#ranking-individual-table tbody tr td:nth-child(5)").addClass("profit-fall");
+							}
+						}
+					}
+				});
+			}
+			
+			function driveBackscreen(nickname) {
+				$.ajax({
+					type: "GET",
+					url: "rest/getRankDetails",
+					dataType: "json",
+					data: {"nickname": nickname},
+					success: function(result) {
+						console.log(result)
+						
+						if(result.ranking.league=="empty") {
+							return;
+						}
+						
+						$(".black-model-section-title u").text(nickname);
+						$("#backscreen-1 .black-model-section-place img").attr("src", "resources/icon/"+result.ranking.league+".png");
+						$("#backscreen-1 .black-model-section-place span:nth-child(2)").addClass("color-place-"+result.ranking.league).text(result.ranking.place+"위");
+						$("#backscreen-1 .black-model-section-place span:nth-child(3)").text("(상위 "+result.ranking.percentile+"%)");
+						
+						if(!result.valid.isLogin) {
+							$("#backscreen-1 #subscribe-btn").addClass("black-model-bottom-btn-enabled").text("구독하기").attr("onclick", "location.href='/into/loginForm'").prop("disabled", false);
+						}else {
+							if(result.valid.isMe) {
+								$("#backscreen-1 #subscribe-btn").addClass("black-model-bottom-btn-disabled").text("자기 자신은 구독할수 없습니다").prop("disabled", true);
+							}else if(result.valid.isSubscribe) {
+								$("#backscreen-1 #subscribe-btn").addClass("black-model-bottom-btn-disabled").text("이미 구독한 회원입니다").prop("disabled", true);
+							}else {
+								$("#backscreen-1 #subscribe-btn").addClass("black-model-bottom-btn-enabled").text("구독하기").attr("onclick", "driveBackscreen2()").prop("disabled", false);
+								
+								if(!result.valid.hasSetPrice) {
+									$("#backscreen-2 #payment-btn").addClass("black-model-bottom-btn-disabled").text("설정금액을 설정하지 않았습니다").prop("disabled", true);
+								}else {
+									$("#backscreen-2 #payment-btn").addClass("black-model-bottom-btn-enabled").text(result.valid.setPrice.toLocaleString()+"원 결제").attr("onclick", "drivePayment("+result.ranking.member_num+","+result.valid.setPrice+")").prop("disabled", false);
+								}
+							}
+						}
+						
+						chart = new Chart($('#black-model-section-canvas')[0].getContext('2d'), {
+			            	type: 'line',
+			            	data: {
+			                	labels: result.labels,
+				           	 	datasets: [{
+				                	data: result.data,
+				                    backgroundColor: '#227FEC',
+				                    borderColor: '#227FEC',
+				                    fill: false,
+				                    borderWidth: 1,
+				                    pointRadius: 2,
+				                }]
+			            	},
+			           		options: {
+			           			responsive: false,
+				                animation: {
+				                    duration: 200
+				                },
+				                layout: {
+				                    padding: {
+				                        left: 15,
+				                        right: 15,
+				                        top: 20,
+				                        bottom: 5
+				                    }
+				                },
+				                legend: {
+				                    display: false
+				                },
+				                maintainAspectRatio: false,
+				                title: {
+				                    display: false
+				                },
+				                tooltips: {
+				                    mode: 'index',
+				                    intersect: false,
+				                    callbacks: {
+				                    	title: function (tooltipItems, data) {
+				                            var tooltipItem = tooltipItems[0];
+				                            return data.labels[tooltipItem.index].date;
+				                        },
+				                        label: function (tooltipItem, data) {
+				                            return ' '+data.labels[tooltipItem.index].net_profit_ratio+'%';
+				                        },
+				                        afterLabel: function (tooltipItem, data) {
+				                            return ' '+data.labels[tooltipItem.index].net_profit.toLocaleString()+'원';
+				                        }
+				                        
+				                    }
+				                },
+				                scales: {
+				                    xAxes: [{
+				                        display: true,
+				                        scaleLabel: {
+				                            display: false
+				                        },
+				                        ticks: {
+				                            fontColor: "#a0a0a0",
+				                            callback: function (value, index, values) {
+				                                return value.date;
+				                            }
+				                        },
+				                        gridLines:{
+				                        	zeroLineColor: "#393939",
+				    						color: "#393939",
+				    						lineWidth: 1
+				    					 }
+				                    }],
+				                    yAxes: [{
+				                        display: true,
+				                        scaleLabel: {
+				                            display: false
+				                        },
+				                        ticks: {
+				                       		fontColor: "#a0a0a0",
+					                       	stepSize: 100
+				                        },
+				                        gridLines:{
+				                       	 	color: "transparent",
+				                            display: true,
+				                            drawBorder: false,
+				                            zeroLineColor: "#393939",
+				                            zeroLineWidth: 1
+				     					 }
+				                    }]
+				                }
+			            	}
+			            });
+						
+						
+						$("#backscreen-1").css("display", "block");
+					}
+				});
+			}
+			
+			function driveBackscreen2() {
+				$("#backscreen-1").css("display", "none");
+				$("#backscreen-2").css("display", "block");
+			}
+			
+			function getMerchantSeq() {
+				var seq;
+				
+				(function() {
+					$.ajax({
+						type: "GET",
+						url: "rest/getMerchantSeq",
+						dataType: "json",
+						async: false,
+						success: function(result) {
+							seq = result.seq;
+						}
+					});
+				})();
+				
+				return seq;
+			}
+			
+			function drivePayment(seller_num, set_price) {
+				var seq = getMerchantSeq();
+				
+				var today = new Date();
+				var yyyy = today.getFullYear();
+				var mm = today.getMonth()+1;
+				var dd = today.getDate();
+				if(dd<10) {
+				    dd='0'+dd;
+				} 
+	
+				if(mm<10) {
+				    mm='0'+mm;
+				} 
+				
+				<sec:authorize access="isAnonymous()">
+					location.href = "/into/loginForm";
+				</sec:authorize>	
+			
+				<sec:authorize access="isAuthenticated()">
+					<sec:authentication var="principal" property="principal"/>
+					
+					var memnum = ${principal.dto.member_num};
+					var memname = "${principal.dto.name}";
+					var memphone = "${principal.dto.phone}";
+					var mememail = "${principal.dto.email}";
+					var merchantid = "INV"+yyyy+mm+dd+seq;
+					
+					var token = $("meta[name='_csrf']").attr("content");
+					var header = $("meta[name='_csrf_header']").attr("content");
+					
+					IMP.init("imp85973823");
+					
+					IMP.request_pay({ 
+					    pg: "html5_inicis",
+					    pay_method: "card",
+					    merchant_uid: merchantid,
+					    name: "같이투자 구독상품",
+					    amount: set_price,
+					    buyer_email: mememail,
+					    buyer_name: memname,
+					    buyer_tel: memphone,
+					    }, 
+					 	function(rsp) { 
+					    	
+					    	if(rsp.success) {
+					        
+					        	$.ajax({
+					        		url: "rest/completePayment",
+					        		type: 'POST',
+					        		dataType: 'json',
+					        		data: {
+					        			merchant_uid: merchantid,
+					        			member_num: memnum,
+					        			name: memname,
+					        			phone: memphone,
+					        			seller_num: seller_num,
+					        			sub_price: set_price
+					        		},
+					        		beforeSend: function(xhr){
+					        			xhr.setRequestHeader(header, token);
+					        		}
+					        	}).done(function(result){
+					        		if(result.successPayment) {
+					        			alert("결제 성공");
+					        			// 결제성공페이지로 이동하게 만들기
+					        		}else {
+					        			if(result.hasSetPrice) {
+					        				alert("결제하신 금액과 판매자가 설정한 금액이 다릅니다.");
+					        				var reason = "price not equals";
+					        			}else {
+					        				alert("판매자가 구독을 비활성화 했습니다.");
+					        				var reason = "price null";
+					        			}
+					        			
+					        			(function() {
+						        			$.ajax({
+						        				url: "rest/cancelPayment",
+						        				type: 'POST',
+						        				dataType: 'json',
+						        				data: {
+						        					merchant_uid: merchantid,
+						        					reason: reason
+						        				},
+						        				beforeSend: function(xhr){
+								        			xhr.setRequestHeader(header, token);
+								        		}
+						        			}).done(function(result2){
+						        				if(result2.code==0) {
+						        					alert("자동으로 결제가 취소되었습니다.");
+						        				}else {
+						        					alert("결제가 취소되지 않았습니다.\n관리자에게 문의해주세요.")
+						        				}
+						        			});
+					        			})();
+					        		}
+					        	});
+					        
+					    	}else {
+					        
+					        	alert("결제에 실패하셨습니다.");
+					        
+					    	}
+				  		}
+					);
+				</sec:authorize>
+				
+			}
+			
+			
+			$(function() {
+				$(".header-nav ul li").removeClass("header-li-active");
+				$(".header-nav ul li:nth-child(6)").addClass("header-li-active");
+				
+				$("#ranking-individual-find").click(function() {
+					$(".ranking-individual-myplace").css("display", "none");
+					
+					var nickname = $("#ranking-individual-search-nickname").val();
+					getIndividualRank(nickname);
+				});
+				
+				$("#ranking-individual-search-nickname").keyup(function() {
+					if(event.keyCode === 13) {
+						$("#ranking-individual-find").click();
+					}
+				});
+				
+				$(".black-model-close-btn").click(function() {
+					$(".ranking-backscreen").css("display","none");
+					
+					$(".black-model-section-place span:nth-child(2)").removeClass();
+					$("#subscribe-btn").removeClass();
+					$("#subscribe-btn").removeAttr("onclick");
+					$("#payment-btn").removeClass();
+					$("#payment-btn").removeAttr("onclick");
+					
+					chart.destroy();
+				});
+				
+				$(".ranking-backscreen").mouseup(function(e){ 
+			 		var blackmodel = $(".ranking-black-model");
+			 		
+			 		if (!blackmodel.is(e.target) && blackmodel.has(e.target).length === 0){
+			 			$(".ranking-backscreen").css("display","none");
+			 			
+			 			$(".black-model-section-place span:nth-child(2)").removeClass();
+						$("#subscribe-btn").removeClass();
+						$("#subscribe-btn").removeAttr("onclick");
+						$("#payment-btn").removeClass();
+						$("#payment-btn").removeAttr("onclick");
+						
+						chart.destroy();
+					}	
+				});
+				
+				
+			});
+		</script>	
 	</body>
 </html>
