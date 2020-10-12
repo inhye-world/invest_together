@@ -1,5 +1,7 @@
 package bit.it.into.controller;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.json.JSONObject;
@@ -70,20 +72,19 @@ public class SubscribeController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/rest/cancelPayment", method=RequestMethod.POST)
-	public String cancelPayment(HttpServletRequest request) {
+	@RequestMapping(value="/rest/cancelPayment", produces="application/text; charset=utf8", method=RequestMethod.POST)
+	public String cancelPayment(HttpServletRequest request) throws UnsupportedEncodingException {
 		log.info("SubscribeController - cancelPayment()");
 		
-		String reason = request.getParameter("reason");
 		String merchant_uid = request.getParameter("merchant_uid");
+		String reason = request.getParameter("reason");
 		
 		JsonNode node = imp.getAccessToken();
-		log.info(node.asText());
+		String access_token = node.get("response").get("access_token").asText();
 		
-		String test = node.get("response").get("access_token").asText();
+		JsonNode result = imp.cancelPayment(merchant_uid, reason, access_token);
 		
-		log.info(test);
 		
-		return "";
+		return result.toString();
 	}
 }

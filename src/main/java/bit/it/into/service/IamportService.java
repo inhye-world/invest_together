@@ -46,5 +46,34 @@ public class IamportService {
 		return returnNode;
 	}
 
+	
+	public JsonNode cancelPayment(String merchant_uid, String reason, String access_token) {
+		final String RequestUrl = "https://api.iamport.kr/payments/cancel";
+		
+		final List<NameValuePair> postParams = new ArrayList<NameValuePair>();
+		postParams.add(new BasicNameValuePair("merchant_uid", merchant_uid));
+		postParams.add(new BasicNameValuePair("reason", reason));
+		
+		final HttpClient client = HttpClientBuilder.create().build();
+		
+		final HttpPost post = new HttpPost(RequestUrl);
+		post.setHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+		post.addHeader("Authorization", access_token);
+		
+		JsonNode returnNode = null;
+		
+		try {
+			post.setEntity(new UrlEncodedFormEntity(postParams));
+			final HttpResponse response = client.execute(post);
+			ObjectMapper mapper = new ObjectMapper();
+			returnNode = mapper.readTree(response.getEntity().getContent());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return returnNode;
+		
+	}
+
 
 }
