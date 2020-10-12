@@ -14,7 +14,7 @@ public class MainCotroller {
 	@RequestMapping("/")
 	public String home() {
 		log.info("MainController - home()");
-		return "main/index";
+		return "index";
 	}
 	
 	@RequestMapping("/accessDenied")

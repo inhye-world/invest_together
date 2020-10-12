@@ -69,7 +69,7 @@
                                                 <li><a href="blog.html">계산기</a></li>
                                                 <li><a href="blog.html">구독목록</a></li>
                                                 <li><a href="blog.html">투자랭킹</a></li>
-                                                <li><a href="blog.html">게시판</a></li>
+                                                <li><a onclick="location.href='${pageContext.request.contextPath}/boardList'">게시판</a></li>
                                             </ul>
                                         </nav>
                                     </div>

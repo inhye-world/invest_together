@@ -80,9 +80,8 @@
 						      	<a href="#"><li>주식·채권</li></a>
 						      	<a href="#"><li>계산기</li></a>
 						      	<a href="#"><li>구독목록</li></a>
-						      	<a href="/into/ranking"><li>투자랭킹</li></a>
-						      	<a href=""><li>게시판</li></a>
-
+						      	<a href="${pageContext.request.contextPath}/ranking"><li>투자랭킹</li></a>
+						      	<a href="#"><li>게시판</li></a>
 						    </ul>
 					  	</div>
 					</nav>
