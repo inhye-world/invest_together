@@ -43,6 +43,11 @@
 }
 
 
+.sub-list {
+	margin-top: 50px;
+	margin-bottom: 200px;
+}
+
 .sub-list div:nth-child(1) {
 	height: 42px;
 	padding-bottom: 5px;
@@ -51,4 +56,16 @@
 .sub-list-mylist {
 	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 28px;
+}
+
+.sub-list-empty {
+	padding-top: 150px !important;
+	padding-bottom: 150px !important;
+	text-align: center;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 20px;
+}
+
+#backscreen-3 .black-model-section{
+	padding-bottom: 30px;
 }

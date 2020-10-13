@@ -65,13 +65,13 @@ public class BondController {
 			for( ObjectError error : list ) {
 				System.out.println(error);
 			}
-			return "redirect:bond";
+			return "redirect:/assets";
 		}
 		
 		bondDTO.setMember_num(user_num);
 		bondService.writeBond(bondDTO);
 		
-		return "redirect:bond";
+		return "redirect:/assets";
 	}
 
 	@ResponseBody
@@ -99,12 +99,12 @@ public class BondController {
 			for( ObjectError error : list ) {
 				System.out.println(error);
 			}
-			return "redirect:bond";
+			return "redirect:/assets";
 		}
 		
 		bondService.update(bondDTO);
         
-		return "redirect:bond";
+		return "redirect:/assets";
     }
 
 }

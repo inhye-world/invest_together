@@ -10,7 +10,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>같이투자 투자랭킹</title>
+	<title>같이투자 - 투자랭킹</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
@@ -18,6 +18,7 @@
 	
 	<link href="resources/ranking.css" rel="stylesheet" type="text/css">
 	
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
 	<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
 	<script src="https://kit.fontawesome.com/80d121b39f.js" crossorigin="anonymous"></script>
 	
@@ -38,15 +39,15 @@
 		
 		function alerting(content){
        		AstNotif.dialog('알림', content, {
-           	  theme: 'default',
+           		theme: 'default',
            	});
        	}
          
-         	function confirming(content){
+        function confirming(content){
       		AstNotif.snackbar(content, {
-          	  theme: 'default',
+          		theme: 'default',
           	});
-     		}
+     	}
 		
 		function getIndividualRank(nickname) {
 			$.ajax({
@@ -440,7 +441,7 @@
 							<c:if test="${principal.dto.rankDTO.enabled eq 0}">
 								<tr>
 									<td class="ranking-individual-notice" colspan="6">
-										주식·채권 탭에서 주식을 추가해주세요
+										자산 탭에서 주식을 추가해주세요
 										<p>(랭킹 업데이트시 반영됩니다)</p>
 									</td>
 								</tr>

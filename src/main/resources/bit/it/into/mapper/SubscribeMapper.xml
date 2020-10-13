@@ -37,7 +37,7 @@
 	
 	<select id="selectSubscribeListByMemberNum" resultType="bit.it.into.dto.SubscribeDTO">
 		<![CDATA[
-			SELECT * FROM subscribe WHERE member_num=#{member_num} AND (sysdate BETWEEN sub_date AND sub_date+30)
+			SELECT * FROM subscribe WHERE member_num=#{member_num} AND (sysdate BETWEEN sub_date AND sub_date+30) ORDER BY sub_date DESC
 		]]>
 	</select>
 	
