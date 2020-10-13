@@ -1,137 +1,149 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html>
 
 <head>
-
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
-	
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
-  <!-- alert -->
-  <link rel="stylesheet" href="../resources/sb_admin/css/ast-notif.css" />
-  <script src="../resources/sb_admin/js/ast-notif.js"></script>
-  
-  <!-- ajax사용 위해 csrf설정 -->
-  <meta id="_csrf" name="_csrf" content="${_csrf.token}" />
-  <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
-
-  <title>같이투자</title>
-
-  <!-- Custom styles for this page -->
-  <link href="../resources/sb_admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  
-  <style>
-  	tr {
-  		height: 40px;
-  	}
-  	
-  	#inputTable, #inputButton{
-  		margin: 10px;
-  		
-  	}
-  	
-  	.table-responsive{
-  		margin: auto;
-  	}
-  	
-	#resultTap{
-		width: 50%;
-	}
-	
-	#wrapper{
-  		width: 100%;
-  		height: 600px;
-  	}
-  	
-  	#card-total{
-  		width: 90%;
-  		margin: auto;
-  	}
-  </style>
-
 </head>
 
-<body id="page-top">
-<jsp:include page="../include/header2.jsp"/>
-
-  <!-- Page Wrapper -->
-  <div id="wrapper">
-
-          <!-- DataTales -->
-          <div class="card shadow mb-4" id="card-total">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">자산회전율</h6>
-            </div>
-            <div class="card-body">
-            
-              <div class="table-responsive">
-                <table id="inputInfo">
-            			<tr>
-            				<td>매출액 :</td>
-            				<td>
-            					<input type="text" id="revenue" name="매출액" /> 원
-            				</td>
-            			</tr>
-            			<tr>
-            				<td>자산총계 :</td>
-            				<td>
-            					<input type="text" id="asset" name="자산총계" /> 원
-            				</td>
-            			</tr>
-            		</table>
-            		<table id="inputButton">
-            			<tr>
-            				<td><button type="button" class="btn btn-outline btn-primary pull-right" onclick="calculate();">계산</button></td>
-            				<td><button type="button" class="btn btn-outline btn-primary pull-right" onclick="refresh();">초기화</button></td>
-            			</tr>
-            		</table>               
-              </div>
-              
-            </div>
-          </div>
-          <!-- End of DataTales -->
-          
-          <div id="outcome"></div>
-
-        </div>
-        <!-- End of Page Wrapper -->
-
-        
+<body>
+     
         <script>
-        	function calculate(){
-        		//null check
-	    		// form안의 모든 text type 조회
-		    	var txtEle = $("#inputInfo input[type=text]");
-		    	
-		    	for(var i = 0; i < txtEle.length; i ++){
-		    		if("" == $(txtEle[i]).val() || null == $(txtEle[i]).val()){
-			    		var ele_id = $(txtEle[i]).attr("id");
-			    		showAlert(ele_id);
-			    		return true;
-		    		}
-		    	}
-		    	
-		    	 var revenue = parseInt(document.getElementById("revenue").value);	
-		    	 var asset = parseInt(document.getElementById("asset").value);	
-		    	 var result = revenue/asset;
-		    	 
-		    	 document.getElementById("outcome").innerHTML =  '<div class="card shadow mb-4" id="card-total">'+
-																 '<div class="card-header py-3">'+
-															     '<h6 class="m-0 font-weight-bold text-primary">결과</h6>'+
+     	 //Begin of 순운전자본
+        function nwc(){
+    		document.getElementById("calculator").innerHTML = "";
+    		document.getElementById("calculator").innerHTML = '<div class="card shadow">'+
+    														  '<div class="single-cases mb-40">'+
+           													  '<div class="cases-caption">'+
+             											      '<h1>순운전자본</h1>'+
+             											      '<table id="inputInfo">'+
+             							            		  '<tr><td class="inputName">유동자산 :</td>'+
+             							            		  '<td><input type="text" id="currentAssets" name="유동자산" class="inputHere" /> 원</td></tr>'+
+             							            		  '<tr><td class="inputName">유동부채 :</td>'+
+             							            		  '<td><input type="text" id="currentDebts" name="유동부채" class="inputHere" /> 원</td></tr>'+
+             							            		  '</table>'+
+             							            		  '<button type="button" class="genric-btn info" onclick="calculateNwc();">계산</button>&nbsp;'+
+             							            		  '<button type="button" class="genric-btn info" onclick="refresh();">초기화</button>'+
+            												  '</div>'+
+            												  '</div>'+
+       														  '</div>';
+    		document.getElementById("outcome").innerHTML = "";
+    	}
+
+    	function calculateNwc(){
+    		//null check
+    		// form안의 모든 text type 조회
+	    	var txtEle = $("#inputInfo input[type=text]");
+	    	
+	    	for(var i = 0; i < txtEle.length; i ++){
+	    		if("" == $(txtEle[i]).val() || null == $(txtEle[i]).val()){
+		    		var ele_id = $(txtEle[i]).attr("id");
+		    		showAlert(ele_id);
+		    		return true;
+	    		}
+	    	}
+	    	
+	    	 var currentAssets = parseInt(document.getElementById("currentAssets").value);	
+	    	 var currentDebts = parseInt(document.getElementById("currentDebts").value);	
+	    	 var result = currentAssets/currentDebts;
+	    	 
+	    	 document.getElementById("outcome").innerHTML = '<div class="card shadow">'+
+		    		 											'<div class="single-cases mb-40">'+
+																  '<div class="cases-caption">'+
+																      '<h1>결과</h1>'+
+																      '<table id="resultTable"><tr><td>순운전자본</td></tr>'+
+																		 '<tr><td>= 유동자산 / 유동부채</td></tr>'+
+																		 '<tr><td>= <span class="red" style="color:red">'+result.toFixed(2)+'</span></td></tr></table>'+
+																  '</div>'+
 																 '</div>'+
-																 '<div class="card-body">'+
-																 '<div class="table-responsive">'+
-																 '<table><tr><td>자산회전율</td></tr>'+
-																 '<tr><td>= 매출액 / 자산총계</td></tr>'+
-																 '<tr><td>'+result.toFixed(2)+'</td></tr></table>';
+															'</div>';
+    	}
+        	
+        	function showAlert(ele_id){
+        		var ele_name = $("#" + ele_id).attr('name');	
+		    	alerting(ele_name + '을(를) 입력해주세요.');
+			
+				// 해당 id에 focus.
+				$("#" + ele_id).focus();
         	}
+        	
+        	//숫자 validating 부동소수점 포함
+			$(document).on("input","input[id=currentAssets]",function(){
+					var check = document.getElementById("currentAssets").value;
+		
+		        	var num = /^[+]?\d+\.?\d*$/;
+		          
+			        if(!num.test(check)) {
+			        	alerting('유동자산을 다시 입력해주세요.');
+						document.getElementById("currentAssets").value = "";
+						$("#currentAssets").focus();
+		            	return false;
+			        } 
+			});
+        	
+			$(document).on("input","input[id=currentDebts]",function(){
+				var check = document.getElementById("currentDebts").value;
+	
+	        	var num = /^[+]?\d+\.?\d*$/;
+	          
+		        if(!num.test(check)) {
+		        	alerting('유동부채를 다시 입력해주세요.');
+					document.getElementById("currentDebts").value = "";
+					$("#currentDebts").focus();
+	            	return false;
+		        } 
+			});
+			//End of 순운전자본
+        
+        /////////////////////////////////////Begin of 자산회전율///////////////////////////////////////////////////////////////////////
+    	function atr(){
+    		document.getElementById("calculator").innerHTML = "";
+    		document.getElementById("calculator").innerHTML = '<div class="card shadow">'+
+    														  '<div class="single-cases mb-40">'+
+           													  '<div class="cases-caption">'+
+             											      '<h1>자산회전율</h1>'+
+             											      '<table id="inputInfo">'+
+             							            		  '<tr><td class="inputName">매출액 :</td>'+
+             							            		  '<td><input type="text" id="revenue" name="매출액" class="inputHere" /> 원</td></tr>'+
+             							            		  '<tr><td class="inputName">자산총계 :</td>'+
+             							            		  '<td><input type="text" id="assetTotal" name="자산총계" class="inputHere" /> 원</td></tr>'+
+             							            		  '</table>'+
+             							            		  '<button type="button" class="genric-btn info" onclick="calculateAtr();">계산</button>&nbsp;'+
+             							            		  '<button type="button" class="genric-btn info" onclick="refresh();">초기화</button>'+
+            												  '</div>'+
+            												  '</div>'+
+       														  '</div>';
+    		document.getElementById("outcome").innerHTML = "";
+    	}
+
+    	function calculateAtr(){
+    		//null check
+    		// form안의 모든 text type 조회
+	    	var txtEle = $("#inputInfo input[type=text]");
+	    	
+	    	for(var i = 0; i < txtEle.length; i ++){
+	    		if("" == $(txtEle[i]).val() || null == $(txtEle[i]).val()){
+		    		var ele_id = $(txtEle[i]).attr("id");
+		    		showAlert(ele_id);
+		    		return true;
+	    		}
+	    	}
+	    	
+	    	 var revenue = parseInt(document.getElementById("revenue").value);	
+	    	 var assetTotal = parseInt(document.getElementById("assetTotal").value);	
+	    	 var result = revenue/assetTotal;
+	    	 
+	    	 document.getElementById("outcome").innerHTML = '<div class="card shadow">'+
+		    		 											'<div class="single-cases mb-40">'+
+																  '<div class="cases-caption">'+
+																      '<h1>결과</h1>'+
+																      '<table id="resultTable"><tr><td>자산회전율</td></tr>'+
+																		 '<tr><td>= 매출액 / 자산총계</td></tr>'+
+																		 '<tr><td>= <span class="red" style="color:red">'+result.toFixed(2)+'</span></td></tr></table>'+
+																  '</div>'+
+																 '</div>'+
+															 '</div>';
+    	}
         	
         	function showAlert(ele_id){
         		var ele_name = $("#" + ele_id).attr('name');	
@@ -155,45 +167,279 @@
 			        } 
 			});
         	
-			$(document).on("input","input[id=asset]",function(){
-				var check = document.getElementById("asset").value;
+			$(document).on("input","input[id=assetTotal]",function(){
+				var check = document.getElementById("assetTotal").value;
 	
 	        	var num = /^[+]?\d+\.?\d*$/;
 	          
 		        if(!num.test(check)) {
 		        	alerting('자산총계를 다시 입력해주세요.');
-					document.getElementById("asset").value = "";
-					$("#asset").focus();
+					document.getElementById("assetTotal").value = "";
+					$("#assetTotal").focus();
 	            	return false;
 		        } 
 			});
+			//End of 자산회전율
 			
-			function alerting(content){
-          		AstNotif.dialog('알림', content, {
-              	  theme: 'default',
-              	  imgIcon: "../resources/sb_admin/img/error_hitam_garis.png",
-              	});
-          	}
-			
-			//새로고침 
-		    function refresh(){
-				document.getElementById("revenue").value = "";
-				document.getElementById("asset").value = "";			
-				document.getElementById("outcome").innerHTML = "";
-			}
+		 	///////////////////////////////////////////////Begin of 부채비율/////////////////////////////////////////////////////////////
+		    function debtRatio(){
+		    	document.getElementById("calculator").innerHTML = "";
+		  		document.getElementById("calculator").innerHTML = '<div class="card shadow">'+
+		  														  '<div class="single-cases mb-40">'+
+		         												  '<div class="cases-caption">'+
+		           											      '<h1>부채비율</h1>'+
+		           											      '<table id="inputInfo">'+
+		           							            		  '<tr><td class="inputName">총 부채 :</td>'+
+		           							            		  '<td><input type="text" id="debtT" name="총 부채" class="inputHere" /> 원</td></tr>'+
+		           							            		  '<tr><td class="inputName">총 자산 :</td>'+
+		           							            		  '<td><input type="text" id="assetT" name="총 자산" class="inputHere" /> 원</td></tr>'+
+		           							            		  '</table>'+
+		           							            		  '<button type="button" class="genric-btn info" onclick="calculateDebtRatio();">계산</button>&nbsp;'+
+		           							            		  '<button type="button" class="genric-btn info" onclick="refresh();">초기화</button>'+
+		          												  '</div>'+
+		          												  '</div>'+
+		     													  '</div>';
+		  		document.getElementById("outcome").innerHTML = "";
+		  		}
+
+		     	function calculateDebtRatio(){
+		     		//null check
+		  			// form안의 모든 text type 조회
+				   	var txtEle = $("#inputInfo input[type=text]");
+				   	
+				   	for(var i = 0; i < txtEle.length; i ++){
+				   		if("" == $(txtEle[i]).val() || null == $(txtEle[i]).val()){
+				    		var ele_id = $(txtEle[i]).attr("id");
+				    		showAlert(ele_id);
+				    		return true;
+				   		}
+				   	}
+				   	
+				   	 var assetT = parseInt(document.getElementById("assetT").value);	
+				   	 var debtT = parseInt(document.getElementById("debtT").value);	
+				   	 var result = debtT/assetT;
+				   	 
+				   	 document.getElementById("outcome").innerHTML = '<div class="card shadow">'+
+				   		 												'<div class="single-cases mb-40">'+
+																		 '<div class="cases-caption">'+
+																	     '<h1>결과</h1>'+
+																	     '<table id="resultTable"><tr><td>부채비율</td></tr>'+
+																		 '<tr><td>= 총 부채 / 총 자산</td></tr>'+
+																		 '<tr><td>= <span class="red" style="color:red">'+result.toFixed(2)+'</span></td></tr></table>'+
+																	  	 '</div>'+
+																	  	 '</div>'+
+																	'</div>';
+				     	}
+				     	
+				     function showAlert(ele_id){
+				     	var ele_name = $("#" + ele_id).attr('name');	
+					   	alerting(ele_name + '을(를) 입력해주세요.');
+					
+						// 해당 id에 focus.
+						$("#" + ele_id).focus();
+				     }
+		     	
+			     	//숫자 validating 부동소수점 포함
+					$(document).on("input","input[id=assetT]",function(){
+						var check = document.getElementById("assetT").value;
+				
+				       	var num = /^[+]?\d+\.?\d*$/;
+				         
+				        if(!num.test(check)) {
+				        	alerting('총 자산을 다시 입력해주세요.');
+							document.getElementById("assetT").value = "";
+							$("#assetT").focus();
+				           	return false;
+			        	} 
+					});
+			     	
+					$(document).on("input","input[id=debtT]",function(){
+						var check = document.getElementById("debtT").value;
+					
+					      	var num = /^[+]?\d+\.?\d*$/;
+					        
+					       if(!num.test(check)) {
+					       	alerting('총 부채를 다시 입력해주세요.');
+							document.getElementById("debtT").value = "";
+							$("#debtT").focus();
+					          	return false;
+					       } 
+					});	
+					//End of 부채비율
+					
+			///////////////////////////////////////////////Begin of ROE/////////////////////////////////////////////////////////////
+		    function roe(){
+		    	document.getElementById("calculator").innerHTML = "";
+		  		document.getElementById("calculator").innerHTML = '<div class="card shadow">'+
+		  														  '<div class="single-cases mb-40">'+
+		         												  '<div class="cases-caption">'+
+		           											      '<h1>ROE</h1>'+
+		           											      '<table id="inputInfo">'+
+		           							            		  '<tr><td class="inputName">당기순이익 :</td>'+
+		           							            		  '<td><input type="text" id="ni" name="당기순이익" class="inputHere" /> 원</td></tr>'+
+		           							            		  '<tr><td class="inputName">평균주주자본 :</td>'+
+		           							            		  '<td><input type="text" id="avgEquity" name="평균주주자본" class="inputHere" /> 원</td></tr>'+
+		           							            		  '</table>'+
+		           							            		  '<button type="button" class="genric-btn info" onclick="calculateROE();">계산</button>&nbsp;'+
+		           							            		  '<button type="button" class="genric-btn info" onclick="refresh();">초기화</button>'+
+		          												  '</div>'+
+		          												  '</div>'+
+		     													  '</div>';
+		  		document.getElementById("outcome").innerHTML = "";
+		  		}
+
+		     	function calculateROE(){
+		     		//null check
+		  			// form안의 모든 text type 조회
+				   	var txtEle = $("#inputInfo input[type=text]");
+				   	
+				   	for(var i = 0; i < txtEle.length; i ++){
+				   		if("" == $(txtEle[i]).val() || null == $(txtEle[i]).val()){
+				    		var ele_id = $(txtEle[i]).attr("id");
+				    		showAlert(ele_id);
+				    		return true;
+				   		}
+				   	}
+				   	
+				   	 var ni = parseInt(document.getElementById("ni").value);	
+				   	 var avgEquity = parseInt(document.getElementById("avgEquity").value);	
+				   	 var result = ni/avgEquity;
+				   	 
+				   	 document.getElementById("outcome").innerHTML =  '<div class="card shadow">'+
+				   		 												'<div class="single-cases mb-40">'+
+																		  '<div class="cases-caption">'+
+																	      '<h1>결과</h1>'+
+																	      '<table id="resultTable"><tr><td>ROE</td></tr>'+
+																			 '<tr><td>= 당기순이익 / 평균주주자본</td></tr>'+
+																			 '<tr><td>= <span class="red" style="color:red">'+result.toFixed(2)+'</span></td></tr></table>'+
+																	  	'</div>'+
+																	  	'</div>'+
+																		'</div>';
+				     	}
+				     	
+				     function showAlert(ele_id){
+				     	var ele_name = $("#" + ele_id).attr('name');	
+					   	alerting(ele_name + '을(를) 입력해주세요.');
+					
+						// 해당 id에 focus.
+						$("#" + ele_id).focus();
+				     }
+		     	
+			     	//숫자 validating 부동소수점 포함
+					$(document).on("input","input[id=ni]",function(){
+						var check = document.getElementById("ni").value;
+				
+				       	var num = /^[+]?\d+\.?\d*$/;
+				         
+				        if(!num.test(check)) {
+				        	alerting('당기순이익을 다시 입력해주세요.');
+							document.getElementById("ni").value = "";
+							$("#ni").focus();
+				           	return false;
+			        	} 
+					});
+			     	
+					$(document).on("input","input[id=avgEquity]",function(){
+						var check = document.getElementById("avgEquity").value;
+					
+					      	var num = /^[+]?\d+\.?\d*$/;
+					        
+					       if(!num.test(check)) {
+					       	alerting('평균주주자본을 다시 입력해주세요.');
+							document.getElementById("avgEquity").value = "";
+							$("#avgEquity").focus();
+					          	return false;
+					       } 
+					});	
+					//End of ROE
+					
+			///////////////////////////////////////////////Begin of 재고자산회전율/////////////////////////////////////////////////////////////
+		    function itr(){
+		    	document.getElementById("calculator").innerHTML = "";
+		  		document.getElementById("calculator").innerHTML = '<div class="card shadow">'+
+		  														  '<div class="single-cases mb-40">'+
+		         												  '<div class="cases-caption">'+
+		           											      '<h1>재고자산회전율</h1>'+
+		           											      '<table id="inputInfo">'+
+		           							            		  '<tr><td class="inputName">매출액 :</td>'+
+		           							            		  '<td><input type="text" id="revenue" name="매출액" class="inputHere" /> 원</td></tr>'+
+		           							            		  '<tr><td class="inputName">평균재고자산 :</td>'+
+		           							            		  '<td><input type="text" id="avgInventory" name="평균재고자산" class="inputHere" /> 원</td></tr>'+
+		           							            		  '</table>'+
+		           							            		  '<button type="button" class="genric-btn info" onclick="calculateITR();">계산</button>&nbsp;'+
+		           							            		  '<button type="button" class="genric-btn info" onclick="refresh();">초기화</button>'+
+		          												  '</div>'+
+		          												  '</div>'+
+		     													  '</div>';
+		  		document.getElementById("outcome").innerHTML = "";
+		  		}
+
+		     	function calculateITR(){
+		     		//null check
+		  			// form안의 모든 text type 조회
+				   	var txtEle = $("#inputInfo input[type=text]");
+				   	
+				   	for(var i = 0; i < txtEle.length; i ++){
+				   		if("" == $(txtEle[i]).val() || null == $(txtEle[i]).val()){
+				    		var ele_id = $(txtEle[i]).attr("id");
+				    		showAlert(ele_id);
+				    		return true;
+				   		}
+				   	}
+				   	
+				   	 var revenue = parseInt(document.getElementById("revenue").value);	
+				   	 var avgInventory = parseInt(document.getElementById("avgInventory").value);	
+				   	 var result = revenue/avgInventory;
+				   	 
+				   	 document.getElementById("outcome").innerHTML =  '<div class="card shadow">'+
+				   		 												'<div class="single-cases mb-40">'+
+																		  '<div class="cases-caption">'+
+																	      '<h1>결과</h1>'+
+																	      '<table id="resultTable"><tr><td>재고자산회전율</td></tr>'+
+																			 '<tr><td>= 매출액 / 평균재고자산</td></tr>'+
+																			 '<tr><td>= <span class="red" style="color:red">'+result.toFixed(2)+'</span></td></tr></table>'+
+																		  '</div>'+
+																		  '</div>'+
+																	'</div>';
+				     	}
+				     	
+				     function showAlert(ele_id){
+				     	var ele_name = $("#" + ele_id).attr('name');	
+					   	alerting(ele_name + '을(를) 입력해주세요.');
+					
+						// 해당 id에 focus.
+						$("#" + ele_id).focus();
+				     }
+		     	
+			     	//숫자 validating 부동소수점 포함
+					$(document).on("input","input[id=revenue]",function(){
+						var check = document.getElementById("revenue").value;
+				
+				       	var num = /^[+]?\d+\.?\d*$/;
+				         
+				        if(!num.test(check)) {
+				        	alerting('매출액을 다시 입력해주세요.');
+							document.getElementById("revenue").value = "";
+							$("#revenue").focus();
+				           	return false;
+			        	} 
+					});
+			     	
+					$(document).on("input","input[id=avgInventory]",function(){
+						var check = document.getElementById("avgInventory").value;
+					
+					      	var num = /^[+]?\d+\.?\d*$/;
+					        
+					       if(!num.test(check)) {
+					       	alerting('평균재고자산을 다시 입력해주세요.');
+							document.getElementById("avgInventory").value = "";
+							$("#avgInventory").focus();
+					          	return false;
+					       } 
+					});	
+					//End of 재고자산회전율
 	
         </script>
-
-
-	<!-- footer -->
-	<jsp:include page="../include/footer2.jsp"/>
-
-  <!-- Page level plugins -->
-  <script src="../resources/sb_admin/vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="../resources/sb_admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="../resources/sb_admin/js/demo/datatables-demo.js"></script>
 
 </body>
 

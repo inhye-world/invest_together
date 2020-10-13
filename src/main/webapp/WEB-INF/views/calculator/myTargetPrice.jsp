@@ -22,12 +22,20 @@
   <meta id="_csrf" name="_csrf" content="${_csrf.token}" />
   <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
 
-  <title>같이투자</title>
+  <title>같이투자 : 나의적정주가</title>
 
   <!-- Custom styles for this page -->
   <link href="resources/sb_admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   
+  <!-- CSS here -->
+  <link rel="stylesheet" href="resources/main/assets/css/backbutton.css">
+  
   <style>
+  
+    .ctn {
+  		padding: 100px;
+  	}
+  
   	#myTable{
   		margin: auto;
   		margin-top: 20px;
@@ -35,18 +43,16 @@
   		text-align: center;
   	}
   	
-  	.td1 {
-  		width: 80px;
+  	#symbolTable{
+  		margin-left: 80px;
   	}
   	
-  	#wrapper{
-  		width: 100%;
-  		height: 700px;
+  	#headTitle{
+  		margin-left: 40px;
   	}
   	
-  	#card-total{
-  		width: 90%;
-		margin: auto;
+  	.back-btn{
+  		float: right;
   	}
   	
   </style>
@@ -55,20 +61,27 @@
 </head>
 
 <body id="page-top">
-<jsp:include page="../include/header.jsp"/>
+<jsp:include page="../main/header.jsp"/>
 
-  <!-- Page Wrapper -->
-  <div id="wrapper">
-
-          <!-- DataTales -->
-          <div class="card shadow mb-4" id="card-total">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">나의 적정 주가</h6>
-            </div>
-            <div class="card-body">
-           		<table>
+<main>
+<div class="our-cases-area">
+        <div class="ctn">
+        	<div class="row">
+        		<div class="col-xl-10 col-lg-10 col-md-10 col-sm-10">
+        			<h1 id="headTitle">나의 적정 주가</h1>
+        		</div>
+        		<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+        			<button class="back-btn" onclick="location.href='calculator'"><span>계산기</span></button>
+        		</div>
+        	</div>
+            <div class="row">
+              	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+              	<div class="card shadow">
+			  	<div class="single-cases mb-40">
+				<div class="cases-caption">
+           		<table id="symbolTable">
            			<tr>
-           				<td class="td1">종목명:</td>
+           				<td>종목명:</td>
            				<td><select id="symbols" onchange="selectSymbols(this.value)">
             						<option value="" disabled selected>종목명</option>
             					<c:forEach var = "dto" items= "${symbolsList}">
@@ -95,13 +108,18 @@
 	                  <tbody id="ajaxTable">
 	                  </tbody>
                 	</table>
-	             </div>	
-        	</div>
-          </div>
-          <!-- End of DataTable -->
+	             </div>
+	             </div>
+	             </div>
+	             </div>
+	             </div>
+	             
+	            </div>
+	           </div>
+	          </div>
 
-  </div>
-  <!-- End of Page Wrapper -->
+
+</main>
   
   
       
@@ -172,7 +190,7 @@
     													                      '<td>'+material10.toLocaleString()+'원</td>'+
     													                      '<td>매수</td></tr>;'
     													                      
-    						document.getElementById("deleteButton").innerHTML = '<button type="button" id="delete" class="btn btn-outline btn-primary pull-right">삭제</button>';
+    						document.getElementById("deleteButton").innerHTML = '<button type="button" id="delete" class="genric-btn primary radius">삭제</button>';
     													                      
     		    	    },
     		    	    error: function(request, status, error){
@@ -215,7 +233,7 @@
       </script>
       
     <!-- footer -->
-	<jsp:include page="../include/footer.jsp"/>
+	<jsp:include page="../main/footer.jsp"/>
 
   <!-- Page level plugins -->
   <script src="resources/sb_admin/vendor/datatables/jquery.dataTables.min.js"></script>

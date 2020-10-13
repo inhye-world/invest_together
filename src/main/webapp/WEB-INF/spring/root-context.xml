@@ -37,22 +37,5 @@
     <mybatis-spring:scan base-package="bit.it.into.mapper" />
 
 	<tx:annotation-driven transaction-manager="transactionManager" />
-	
-	<!-- HandlerMapping -->
-	<!-- .do 요청이 들어오면 urlController가 요청을 처리함 -->
-    <bean id="simpleUrlHandlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-        <property name="mappings">
-            <props>
-                <prop key="/calculator/debtRatio.do">urlController</prop>
-                <prop key="/calculator/roe.do">urlController</prop>
-                <prop key="/calculator/nwc.do">urlController</prop>
-                <prop key="/calculator/atr.do">urlController</prop>
-                <prop key="/calculator/itr.do">urlController</prop>
-            </props>
-        </property>
-    </bean>
-    
-    <!-- URL로 뷰로 이동할 뷰를 추출 -->
-    <bean id="urlController" class="org.springframework.web.servlet.mvc.UrlFilenameViewController"></bean>
 
 </beans>

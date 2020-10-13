@@ -21,9 +21,6 @@
 			  var msg = ${msg};
 			  
 			  function alerting(content){
-            		/* AstNotif.dialog('알림', content, {
-                	  theme: 'default',
-                	}); */
 				  AstNotif.snackbar(content, {
 					  theme: 'default',
 					});
@@ -31,12 +28,13 @@
 			
 			  if(msg == 1) {
 					alerting('입력에 성공했습니다.');
-					window.location.href = "target";
+					setTimeout(() => {  window.location.href = "target"; }, 1000);
+					
 				}
 			  
 			  if(msg == 2) {
 					alerting('입력에 실패했습니다.');
-					window.location.href = "target";
+					setTimeout(() => {  window.location.href = "target"; }, 1000);
 				}
 
 		</script>
