@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+.payment-complete {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.payment-complete-container {
+	width: 480px;
+	margin: 0 auto;
+	padding: 30px 5px 80px;
+}
+
+.payment-complete-wrap {
+	margin: 20px 0;
+	font-size: 16px;
+}
+
+.payment-complete-wrap div:nth-child(1) {
+	display: inline-block;
+	width: 200px;
+	text-align: right;
+}
+
+.payment-complete-wrap div:nth-child(2) {
+	display: inline-block;
+	text-align: left;
+	font-weight: bold;
+}
+
+.payment-complete h2 {
+	font-size: 28px;
+	text-decoration: none;
+}
+
+.payment-complete h4 {
+	font-size: 15px;
+	text-decoration: none;
+}
+
+.payment-complete-btn {
+	padding-top: 10px;
+	text-align: center;
+}
+
+
+.sub-list div:nth-child(1) {
+	height: 42px;
+	padding-bottom: 5px;
+}
+
+.sub-list-mylist {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 28px;
+}

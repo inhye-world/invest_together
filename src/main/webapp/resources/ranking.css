@@ -416,9 +416,21 @@
     margin: 0px 7px 0px 0px;
 }
 
+#black-model-section-canvas {
+	height: 311px;
+	max-height: 311px;
+}
 
 @media ( max-width: 768px ) {
 	.leaderboards tbody tr {
 		height: 48px;
+	}
+	
+	.ranking-black-model {
+		width: 450px;
+	}
+	
+	.black-model-section {
+		padding: 30px 27px 0;
 	}
 }

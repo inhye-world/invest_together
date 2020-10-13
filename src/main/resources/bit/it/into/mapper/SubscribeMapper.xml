@@ -28,4 +28,22 @@
 			SELECT COUNT(*) FROM subscribe WHERE member_num=#{member_num} AND seller_num=#{seller_num} AND (sysdate BETWEEN sub_date AND sub_date+30)	
 		]]>
 	</select>
+	
+	<select id="selectSubscribeByMerchantUid" resultType="bit.it.into.dto.SubscribeDTO">
+		<![CDATA[
+			SELECT * FROM subscribe WHERE merchant_uid=#{merchant_uid}
+		]]>
+	</select>
+	
+	<select id="selectSubscribeListByMemberNum" resultType="bit.it.into.dto.SubscribeDTO">
+		<![CDATA[
+			SELECT * FROM subscribe WHERE member_num=#{member_num} AND (sysdate BETWEEN sub_date AND sub_date+30)
+		]]>
+	</select>
+	
+	<select id="selectNicknameByMemberNum" resultType="String">
+		<![CDATA[
+			SELECT nickname FROM member WHERE member_num=#{member_num}
+		]]>
+	</select>
 </mapper>
