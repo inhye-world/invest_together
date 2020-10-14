@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -29,6 +30,7 @@
 	<link rel="stylesheet" href="resources/main/assets/css/nice-select.css">
 	<link rel="stylesheet" href="resources/main/assets/css/style.css">
 </head>
+
 <body>
     <!-- ? Preloader Start -->
     <div id="preloader-active">
@@ -63,12 +65,14 @@
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">                                                                                          
-                                                <li><a href="about.html">가계부</a></li>
-                                                <li><a href="program.html">월급관리</a></li>
-                                                <li><a href="events.html">주식/채권</a></li>
-                                                <li><a href="blog.html">계산기</a></li>
+                                                <li><a href="accountBalance">자산</a></li>
+                                                <li><a href="#" id="accountTransaction">가계부</a></li>
+                                                <li><a href="#" id="salaryList">월급관리</a></li>
+                                                <li><a href="stockBondTable">주식</a></li>
+                                                <li><a href="bond">채권</a></li>
+                                                <li><a href="calculator">계산기</a></li>
                                                 <li><a href="blog.html">구독목록</a></li>
-                                                <li><a href="blog.html">투자랭킹</a></li>
+                                                <li><a href="leaderboards">투자랭킹</a></li>
                                                 <li><a href="blog.html">게시판</a></li>
                                             </ul>
                                         </nav>
@@ -446,5 +450,23 @@
     <script src="./resources/main/assets/js/plugins.js"></script>
     <script src="./resources/main/assets/js/main.js"></script>
     
+    <script>
+			function numberPad(n, width) {
+			    n = n + '';
+			    return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;
+			}	
+		
+			var date = new Date();
+			var year = date.getFullYear();
+			var month = numberPad((date.getMonth()+1), 2);
+			
+			$(function() {
+				$("#accountTransaction").attr("onclick", "location.href='accountTransaction-"+year+"-"+month+"'");
+			});
+		
+			$(function() {
+				$("#salaryList").attr("onclick", "location.href='salaryList-"+year+"-"+month+"'");
+			});
+	</script>
     </body>
 </html>
