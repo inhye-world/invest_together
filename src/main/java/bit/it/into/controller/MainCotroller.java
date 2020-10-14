@@ -24,8 +24,8 @@ public class MainCotroller {
 		return "error/accessDenied";
 	}
 	
-	@RequestMapping("/testmain")
+	@RequestMapping("/index")
 	public String testmain() {
-		return "include/testmain";
+		return "main/index";
 	}
 }

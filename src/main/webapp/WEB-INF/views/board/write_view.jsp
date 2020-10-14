@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 	<head>
 	    <meta charset="utf-8">
 	    <meta http-equiv="x-ua-compatible" content="ie=edge">
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	    <title> 같이투자 | 메인</title>
+	    <meta name="description" content="">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <link rel="manifest" href="site.webmanifest">
 	    <link rel="shortcut icon" type="image/x-icon" href="resources/main/assets/img/favicon.ico">
@@ -76,52 +75,33 @@
             </div>
         </div>
         <!-- Header End -->
-    	</header> 
-		    <div class="container">     
-				<table class="table">
-					<tr>
-						<td>글번호</td>
-						<td>제목</td>
-						<td>작성자</td>
-						<td>작성일</td>
-						<td>조회수</td>
-					</tr>
-					<c:forEach items="${list}" var="dto">
-					<tr id="content" onmouseover="this.style.backgroundColor='#09CC7F'" onmouseout="this.style.backgroundColor='white'" onclick="location.href='content_view?board_num=${dto.board_num}'">
-						<td>${dto.board_num}</td>
-						<td>${dto.board_title}</td>
-						<td>${dto.board_name}</td>
-						<td><fmt:formatDate value="${dto.board_date}" dateStyle="full" /></td>
-						<td>${dto.board_hit}</td>
-					</tr>
-					</c:forEach>
-					<tr>
-						<td colspan="5"> <input class="button button-contactForm btn_1 boxed-btn" onclick="location.href='write_view'" type="button" value="글작성"/> </td>
-					</tr>
-				</table>
-			</div>			
-			<ul class="pagination">
-				<c:if test="${pageMaker.prev}">
-					<li class="page-item">
-				      	<a class="page-link" href="boardList${pageMaker.makeQuery(pageMaker.startPage - 1) }" aria-label="Previous">
-					        <span aria-hidden="true">&laquo;</span>
-					        <span class="sr-only">Previous</span>
-				    	</a>
-				    </li>
-				</c:if>
-				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-					<li><c:out value="${pageMaker.cri.page_num == idx?'':''}" /><a class="page-link" href="boardList${pageMaker.makeQuery(idx)}">${idx}</a></li>
-				</c:forEach>
-				
-				<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-					<li class="page-item">
-					    <a class="page-link" href="boardList${pageMaker.makeQuery(pageMaker.endPage +1) }" aria-label="Next">
-						    <span aria-hidden="true">&raquo;</span>
-						    <span class="sr-only">Next</span>
-					    </a>
-					</li>
-				</c:if>
-			</ul>
+    </header>
+	   
+         
+	<table class="table">
+		<form:form action="boardWrite" method="post">
+			<tr>
+				<td> 이름 </td>
+				<td> <input type="text" name="board_name" size = "50"> </td>
+			</tr>
+			<tr>
+				<td> 제목 </td>
+				<td> <input type="text" name="board_title" size = "50"> </td>
+			</tr>
+			<tr>
+				<td> 내용 </td>
+				<td> <textarea name="board_content" rows="10" ></textarea> </td>
+			</tr>
+			<tr >
+				<td colspan="2"> 
+					<input class="genric-btn info circle" type="submit" value="입력"> &nbsp;&nbsp; 
+					<a class="genric-btn info circle" href="boardList">목록보기</a></td>
+			</tr>
+		</form:form>
+	</table>
+
+
+		
 		<footer>
 	        <div class="footer-wrapper section-bg2" data-background="resources/main/assets/img/gallery/footer_bg.png">
 	            <!-- Footer Top-->
@@ -262,17 +242,5 @@
     <!-- Jquery Plugins, main Jquery -->	
     <script src="./resources/main/assets/js/plugins.js"></script>
     <script src="./resources/main/assets/js/main.js"></script>
-	
-		
-	<script type="text/javascript">
-		$(document).ready(function (){
-
-			
-		});
-	
-		
-		
-	</script>	
-		
 	</body>
 </html>

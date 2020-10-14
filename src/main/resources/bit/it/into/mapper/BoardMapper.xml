@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bit.it.into.mapper.BoardMapper">
+
+	<select id="getList" resultType="bit.it.into.dto.BoardDTO">
+	<![CDATA[
+		select board_num, board_name, board_title, board_content, board_date, board_hit, board_group, board_step, board_indent from board order by board_group desc, board_step asc
+	]]>
+	</select>
+	
+	<select id="read" resultType="bit.it.into.dto.BoardDTO">
+	<![CDATA[
+		select * from board where board_num = #{board_num}
+	]]>
+	</select>
+	
+	<delete id="commentsDelete" >
+	<![CDATA[
+		delete from comments where board_num = #{board_num}
+	]]>
+	</delete>
+	
+	<delete id="boardDelete" >
+	<![CDATA[
+		delete from board where board_num = #{board_num}
+	]]>
+	</delete>
+	
+	<insert id="insertBoard" >
+	<![CDATA[
+		insert into board (board_num, board_name, board_title, board_content, board_hit, board_group, board_step, board_indent, board_date) values (board_seq.nextval, #{board_name}, #{board_title}, #{board_content}, 0, board_seq.currval, 0, 0, sysdate)
+	]]>
+	</insert>
+	
+	<update id="modify" >
+	<![CDATA[
+		update board set board_content = #{board_content} where board_num = #{board_num}
+	]]>
+	</update>
+	
+	<select id="getListWithPaging" resultType="bit.it.into.dto.BoardDTO">
+		<![CDATA[
+			SELECT * FROM (
+			     SELECT ROWNUM AS RNUM, A.* FROM (
+			        		SELECT
+			                    *
+			                FROM
+			                    board 
+			                order by board_group desc, board_step asc   
+			    ) A WHERE ROWNUM <= #{page_num} * #{amount}
+			) WHERE RNUM > (#{page_num}-1) * #{amount}
+		]]>
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+	<![CDATA[
+		select count(*)	from board
+	]]>
+	</select>
+
+	<update id="updateHit">
+	<![CDATA[
+		update board set board_hit = board_hit + 1 where board_num = #{board_num}
+	]]>
+	</update>
+
+	<insert id="insertComment" >
+	<![CDATA[
+		insert into comments (comment_num, comment_content, comment_date, comment_group, comment_step, comment_indent, board_num) values (comments_seq.nextval, #{comment_content}, sysdate, comments_seq.currval, 0, 0, #{board_num})
+	]]>
+	</insert>
+	
+	<select id="getCommnetsList" resultType="bit.it.into.dto.CommentsDTO">
+		<![CDATA[
+			SELECT * FROM (
+			     SELECT ROWNUM AS RNUM, A.* FROM (
+			        		SELECT
+			                    *
+			                FROM
+			                    comments 
+			                order by comment_group desc, comment_step asc   
+			    ) A WHERE ROWNUM <= #{page_num} * #{amount}
+			) WHERE RNUM > (#{page_num}-1) * #{amount} and board_num = #{board_num}
+		]]>
+	</select>
+	
+	<select id="getCommentsTotalCount" resultType="int">
+	<![CDATA[
+		select count(*)	from comments where board_num = #{board_num}
+	]]>
+	</select>
+	
+	
+	<update id="modifyComments" >
+	<![CDATA[
+		update comments set comment_content = #{comment_content} where comment_num = #{comment_num}
+	]]>
+	</update>
+	
+	<delete id="deleteComments" >
+	<![CDATA[
+		delete from comments where comment_num = #{comment_num} and board_num = #{board_num}
+	]]>
+	</delete>
+	
+</mapper>
