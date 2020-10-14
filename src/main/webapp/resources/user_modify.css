@@ -18,6 +18,7 @@
 		    width: 980px;
 		    height: 600px;
    	 		display: table-cell;
+   	 		margin: auto;
 		}
 		
 		.usermodify-title {

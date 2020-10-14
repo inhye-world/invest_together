@@ -10,11 +10,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
 	<link href="resources/user_modify.css" rel="stylesheet" type="text/css">
-	
-	
+
 </head>
 	<body>
-	<jsp:include page="../include/header.jsp"/>
+	<jsp:include page="../main/header.jsp"/>
 		<div class="member-web-adapter member-web-adapter--desktop">
 			<div class="member-container">
 				<section class="usermodify-auth">
@@ -51,7 +50,7 @@
 			</section>
 			</div>
 		</div>
-		<jsp:include page="../include/footer.jsp"/>
+		<jsp:include page="../main/footer.jsp"/>
 		
 		<script type="text/javascript">
 		

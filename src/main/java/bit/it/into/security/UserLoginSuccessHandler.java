@@ -29,13 +29,6 @@ public class UserLoginSuccessHandler implements AuthenticationSuccessHandler {
     public void setLoginid(String loginid) {
         this.loginid = loginid;
     }
- 
-    public String getDefaultUrl() {
-        return defaultUrl;
-    }
- 
-    public void setDefaultUrl(String defaultUrl) {
-        this.defaultUrl = defaultUrl;
-    }
+
 
 }

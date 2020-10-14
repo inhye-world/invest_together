@@ -78,7 +78,7 @@
 					    		<a href="#"><li>가계부</li></a>
 						      	<a href="#"><li>월급관리</li></a>
 						      	<a href="#"><li>주식·채권</li></a>
-						      	<a href="#"><li>계산기</li></a>
+						      	<a href="calculator"><li>계산기</li></a>
 						      	<a href="#"><li>구독목록</li></a>
 						      	<a href="/into/ranking"><li>투자랭킹</li></a>
 						      	<a href="boardList"><li>게시판</li></a>

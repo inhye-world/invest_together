@@ -15,8 +15,8 @@
                     default-target-url="/"
                     username-parameter="id"
                     password-parameter="password" 
-                    authentication-failure-handler-ref="userLoginFailHandler"/>
-         <!-- authentication-failure-url="/loginForm?error" -->
+                    authentication-failure-handler-ref="userLoginFailHandler"
+                    authentication-success-handler-ref="userLoginSuccessHandler"/>
          <logout logout-url="/logout"
                 logout-success-url="/" /> 
                 
@@ -36,6 +36,11 @@
     <beans:bean id="userLoginFailHandler"
     	class="bit.it.into.security.UserLoginFailHandler" >
     	<beans:property name="loginService" ref="loginService"/>
+    </beans:bean>
+    
+    <beans:bean id="userLoginSuccessHandler"
+    	class="bit.it.into.security.UserLoginSuccessHandler" >
+    	<beans:property name="loginid" value="id"/>
     </beans:bean>
     	
     	
