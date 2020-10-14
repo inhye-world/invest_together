@@ -6,23 +6,26 @@
 <html>
 
 <head>
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
-  
-  <!-- alert -->
-  <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css?v=<%=System.currentTimeMillis() %>" />
-  <script src="resources/sb_admin/js/ast-notif.js?v=<%=System.currentTimeMillis() %>"></script>
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
   <!-- ajax사용 위해 csrf설정 -->
   <meta id="_csrf" name="_csrf" content="${_csrf.token}" />	
   <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
-
+  
   <title>같이투자 : 적정주가계산</title>
   
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+  <!-- Custom styles for this page -->
+  <link href="resources/sb_admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  
+ <!-- alert -->
+  <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css?v=<%=System.currentTimeMillis() %>" />
+  <script src="resources/sb_admin/js/ast-notif.js?v=<%=System.currentTimeMillis() %>"></script>
+
   <style>
 
   	.ctn {
@@ -47,6 +50,7 @@
   		padding: 20px;
   	}
 
+
   </style>
 
 </head>
@@ -55,72 +59,70 @@
 <jsp:include page="../main/header.jsp"/>
 
 	<main>
-
-    <div class="our-cases-area">
-        <div class="ctn">
-            <div class="row">
-                <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
-                    <div class="single-cases mb-40">
-                    	<div class="card shadow">
-                       	 	<div class="cases-caption">
-                       	 		<h1>적정 주가 계산</h1>
-			            		<table id="inputTable">
-			            			<tr>
-			            				<td>종목명:</td>
-			            				<td>
-			            					<select id="stockinfo_symbols" name="종목명" onchange="getInfo(this.value)">
-				            				<option value="" disabled selected>종목명</option>
-				            				<c:forEach var = "list" items= "${stockinfo}">
-							           		<option id="listCode" value="${list.stockinfo_symbols}" value2="${list.code}">${list.stockinfo_symbols}</option>
-							           		</c:forEach>
-						           			</select> <span id="currentPrice"></span>
-			            				</td>
-			            			</tr>
-			            			<tr>
-			            				<td>지배주주 지분 :</td>
-			            				<td>
-			            					<input type="text" id="ev" name="지배주주 지분" /> 억 원
-			            				</td>
-			            			</tr>
-			            			<tr>
-			            				<td>ROE :</td>
-			            				<td>
-			            					<input type="text" id="roe" name="ROE" /> %
-			            				</td>
-			            			</tr>
-			            			<tr>
-			            				<td>주주요구수익률 :</td>
-			            				<td>
-			            					<input type="text" id="ke" name="주주요구수익률 " placeholder="8" value="8" /> %
-			            				</td>
-			            			</tr>
-			            			<tr>
-			            				<td>발행주식수 :</td>
-			            				<td>
-			            					<span id="amount"><input type="text" id="shareIssued" name="발행주식수" /> 주</span>
-			            				</td>		
-			            			</tr>
-			            		</table>
-			            		<table id="inputButton">
-			            			<tr>
-			            				<td><button type="button" class="genric-btn info" onclick="calculate();">계산</button></td>
-			            				<td><button type="button" class="genric-btn info" onclick="refresh();">초기화</button></td>
-			            				<sec:authorize access="isAuthenticated()">
-											<td><button type="button" class="genric-btn info" onclick="location.href='myCalculator'">나의 기업 관리</button></td>
-										</sec:authorize>
-			            				<td><span id="submitButton"></span></td>
-			            			</tr>
-			            		</table>
-                        	</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12" id="myTable">
-                </div>
-            </div>
-        </div>
-    </div>
-
+	    <div class="our-cases-area">
+	        <div class="ctn">
+	            <div class="row">
+	                <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
+	                    <div class="single-cases mb-40">
+	                    	<div class="card shadow">
+	                       	 	<div class="cases-caption">
+	                       	 		<h1>적정 주가 계산</h1>
+				            		<table id="inputTable">
+				            			<tr>
+				            				<td>종목명:</td>
+				            				<td>
+				            					<select id="stockinfo_symbols" name="종목명" onchange="getInfo(this.value)">
+					            				<option value="" disabled selected>종목명</option>
+					            				<c:forEach var = "list" items= "${stockinfo}">
+								           		<option id="listCode" value="${list.stockinfo_symbols}" value2="${list.code}">${list.stockinfo_symbols}</option>
+								           		</c:forEach>
+							           			</select> <span id="currentPrice"></span>
+				            				</td>
+				            			</tr>
+				            			<tr>
+				            				<td>지배주주 지분 :</td>
+				            				<td>
+				            					<input type="text" id="ev" name="지배주주 지분" /> 억 원
+				            				</td>
+				            			</tr>
+				            			<tr>
+				            				<td>ROE :</td>
+				            				<td>
+				            					<input type="text" id="roe" name="ROE" /> %
+				            				</td>
+				            			</tr>
+				            			<tr>
+				            				<td>주주요구수익률 :</td>
+				            				<td>
+				            					<input type="text" id="ke" name="주주요구수익률 " placeholder="8" value="8" /> %
+				            				</td>
+				            			</tr>
+				            			<tr>
+				            				<td>발행주식수 :</td>
+				            				<td>
+				            					<span id="amount"><input type="text" id="shareIssued" name="발행주식수" /> 주</span>
+				            				</td>		
+				            			</tr>
+				            		</table>
+				            		<table id="inputButton">
+				            			<tr>
+				            				<td><button type="button" class="genric-btn info" onclick="calculate();">계산</button></td>
+				            				<td><button type="button" class="genric-btn info" onclick="refresh();">초기화</button></td>
+				            				<sec:authorize access="isAuthenticated()">
+												<td><button type="button" class="genric-btn info" onclick="location.href='myCalculator'">나의 기업 관리</button></td>
+											</sec:authorize>
+				            				<td><span id="submitButton"></span></td>
+				            			</tr>
+				            		</table>
+	                        	</div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12" id="myTable">
+	                </div>
+	            </div>
+	        </div>
+	    </div>
     </main>
    	
   	<script>
@@ -304,7 +306,7 @@
 		var saveButton = document.getElementById("save");
 	   	saveButton.type = "hidden";
 		
-	   	document.getElementById("myTable").value = "";
+	   	document.getElementById("myTable").innerHTML = "";
 	}
    
    //krx api
@@ -332,7 +334,7 @@
    </script>
   
    <!-- Footer -->
-	<jsp:include page="../main/footer.jsp"/>
+   <jsp:include page="../main/footer.jsp"/>
 
 
   <!-- Page level plugins -->

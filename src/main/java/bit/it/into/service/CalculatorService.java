@@ -73,5 +73,11 @@ public class CalculatorService {
 	public void delete(CalculatorDTO calculatorDTO) {
 		mapper.delete(calculatorDTO);	
 	}
+	
+	public List<String> getAutocompleteList(String value) {
+		log.info("StockService - getAutocompleteList()");
+		
+		return mapper.selectAutocompleteList(value);
+	}
 
 }

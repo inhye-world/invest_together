@@ -5,17 +5,27 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>같이투자 : 회원가입</title>
 	
 	<link href="resources/temporary.css" rel="stylesheet" type="text/css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
 
+	<style>
+		.contain{
+			margin: auto;
+			margin-top: 100px;
+			margin-bottom: 100px;
+		}
+	</style>
+	
 </head>
 	<body>
+	<jsp:include page="../main/header.jsp"/>
+	
 		<div class="wrapper">
-			<div class="container registrationForm">
-				<a class="mainA" href="/into"> 같이투자 API TEST</a>
+			<div class="contain registrationForm col-xl-5 col-lg-5">
+				<h1 class="mainA">회원가입</h1>
 				<br><br><br><br>
 				
 				<form:form class="form" action="registration" method="POST">
@@ -162,5 +172,10 @@
 			});
 			
 		</script>
+		
+				
+		<!-- footer -->
+		<jsp:include page="../main/footer.jsp"/>
+		
 	</body>
 </html>

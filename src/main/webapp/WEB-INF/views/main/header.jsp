@@ -12,6 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="resources/main/assets/img/favicon.ico">
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 
 	<!-- CSS here -->
 	<link rel="stylesheet" href="resources/main/assets/css/bootstrap.min.css">
@@ -31,7 +34,7 @@
 	
 	<script>
 		$(function() {
-			$(".logout-btn").click(function(){
+			$("#logout-btn").click(function(){
 				$("#logout-form").submit();
 			});
 		});
@@ -98,7 +101,7 @@
 										<sec:authorize access="isAuthenticated()">
 											<sec:authentication var="principal" property="principal"/>
 											<div class="log-box-2"> 
-										    		<button class="btn header-btn">로그아웃 </button>
+										    		<button class="btn header-btn" id="logout-btn">로그아웃 </button>
 										    </div>
 										</sec:authorize>
                                     </div>

@@ -25,14 +25,14 @@
 	<link rel="stylesheet" href="resources/main/assets/css/fontawesome-all.min.css">
 	<link rel="stylesheet" href="resources/main/assets/css/themify-icons.css">
 	<link rel="stylesheet" href="resources/main/assets/css/slick.css">
-	<link rel="stylesheet" href="resources/main/assets/css/nice-select.css">
-	<link rel="stylesheet" href="resources/main/assets/css/style.css">
+	<link rel="stylesheet" href="resources/style.css">
+	
 </head>
 <body>
 
     
     <footer>
-        <div class="footer-wrapper section-bg2" data-background="resources/main/assets/img/gallery/footer_bg.png">
+        <div class="footer-wrapper section-bg2">
             <!-- Footer Top-->
             <div class="footer-area footer-padding">
                 <div class="container">
@@ -104,30 +104,7 @@
                     </div>
                 </div>
             </div>
-            <!-- footer-bottom -->
-            <div class="footer-bottom-area">
-                <div class="container">
-                    <div class="footer-border">
-                        <div class="row d-flex justify-content-between align-items-center">
-                            <div class="col-xl-10 col-lg-9 ">
-                                <div class="footer-copy-right">
-                                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-3">
-                                <div class="footer-social f-right">
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a  href="https://www.facebook.com/sai4ull"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fas fa-globe"></i></a>
-                                    <a href="#"><i class="fab fa-behance"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </footer>
 
@@ -157,7 +134,7 @@
     <!-- Date Picker -->
     <script src="./resources/main/assets/js/gijgo.min.js"></script>
     <!-- Nice-select, sticky -->
-    <script src="./resources/main/assets/js/jquery.nice-select.min.js"></script>
+
     <script src="./resources/main/assets/js/jquery.sticky.js"></script>
     <!-- Progress -->
     <script src="./resources/main/assets/js/jquery.barfiller.js"></script>

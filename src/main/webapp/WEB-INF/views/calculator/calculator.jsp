@@ -59,11 +59,10 @@
 
 </head>
 
-<body id="page-top">
+<body>
 <jsp:include page="../main/header.jsp"/>
 
 	<main>
-    <!-- Our Cases Start -->
     <div class="our-cases-area">
         <div class="ctn">
             <div class="row">

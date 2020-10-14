@@ -9,7 +9,6 @@
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
-  
   display: inline-block;
   outline: none;
   line-height: 40px;
@@ -42,3 +41,4 @@
 .back-btn:hover span:after {
   opacity: 1;
   right: 0;
+}
