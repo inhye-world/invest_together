@@ -21,5 +21,5 @@ public interface CalculatorMapper {
 
 	public void delete(CalculatorDTO calculatorDTO);
 	
-
+	public List<String> selectAutocompleteList(String value);
 }

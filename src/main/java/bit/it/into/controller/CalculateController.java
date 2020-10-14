@@ -3,8 +3,10 @@ package bit.it.into.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
 import org.springframework.security.core.Authentication;
@@ -38,7 +40,6 @@ public class CalculateController {
 	 public String calculator() {
 		 
 		 return "calculator/calculator";
-		 //return "include/testmain";
 	 }
 	
 	 @RequestMapping("/target")
@@ -65,7 +66,7 @@ public class CalculateController {
 	 public String myTargetPrice(Model model, Authentication authentication, CalculatorDTO calculatorDTO) {
 		 
 		 if(authentication == null) {
-			return "login/login_require";
+			return "login/loginForm";
 	 	 }
 		 
 		 CustomUser user = (CustomUser)authentication.getPrincipal();
@@ -126,7 +127,7 @@ public class CalculateController {
 		}
 		
 		 if(authentication == null) {
-			return "login/login_require";
+			return "login/loginForm";
 	 	 }
 		 
 		 CustomUser user = (CustomUser)authentication.getPrincipal();
@@ -145,6 +146,28 @@ public class CalculateController {
 		 model.addAttribute("msg", 1);
 		 
 		 return "calculator/redirect";
+	}
+ 	
+ 	@ResponseBody
+	@RequestMapping(value="/stockAutocomplete", produces="application/text; charset=utf8")
+	public String stockAutocomplete(HttpServletRequest request) {
+		log.info("CalculatorController - stockAutocomplete()");
+		
+		String value = request.getParameter("value");
+		
+		List<String> autocompleteList = calculatorService.getAutocompleteList(value);
+		
+		JSONArray jarr = new JSONArray();
+		
+		for(String str : autocompleteList) {
+			JSONObject object = new JSONObject();
+			object.put("label", str);
+			object.put("value", str);
+			
+			jarr.put(object);
+		}
+		
+		return jarr.toString();
 	}
 	
 }

@@ -28,4 +28,30 @@ public class MainCotroller {
 	public String testmain() {
 		return "main/index";
 	}
+	
+	@RequestMapping("/blog_details")
+	public String blog_details() {
+		return "main/blog_details";
+	}
+	
+	@RequestMapping("/blog")
+	public String blog() {
+		return "main/blog";
+	}
+	
+	@RequestMapping("/contact")
+	public String contact() {
+		return "main/contact";
+	}
+	
+	@RequestMapping("/elements")
+	public String elements() {
+		return "main/elements";
+	}
+
+	@RequestMapping("/program")
+	public String program() {
+		return "main/program";
+
+	}
 }

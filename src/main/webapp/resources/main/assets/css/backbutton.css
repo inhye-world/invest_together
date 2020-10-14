@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+.back-btn {
+  border-radius: 3px;
+  background-color: #1f2b7b;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  display: inline-block;
+  outline: none;
+  line-height: 40px;
+  padding: 0 30px;
+  font-size: .8em;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.back-btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.back-btn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.back-btn:hover span {
+  padding-right: 25px;
+}
+
+.back-btn:hover span:after {
+  opacity: 1;
+  right: 0;
+}

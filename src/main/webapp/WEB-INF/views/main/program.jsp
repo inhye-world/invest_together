@@ -129,7 +129,9 @@
         <!-- Header End -->
     </header>
     <!-- header end -->
+    
     <main>
+    
     <!--? Hero Start -->
     <div class="slider-area2">
         <div class="slider-height2 d-flex align-items-center">
@@ -145,6 +147,7 @@
         </div>
     </div>
     <!-- Hero End -->
+    
     <!-- Our Cases Start -->
     <div class="our-cases-area section-padding30">
         <div class="container">
@@ -310,6 +313,7 @@
     </div>
     <!-- Our Cases End -->
     </main>
+    
     <footer>
         <div class="footer-wrapper section-bg2" data-background="resources/main/assets/img/gallery/footer_bg.png">
             <!-- Footer Top-->

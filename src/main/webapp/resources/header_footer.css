@@ -434,7 +434,8 @@
 }
 
 .footer-back {
-	background-color: #f4f4f4;
+	background: url('main/assets/img/gallery/footer_bg.png');
+	background-repeat: no-repeat;
 }
 
 .footer-wrap {

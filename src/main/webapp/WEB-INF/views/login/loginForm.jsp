@@ -6,18 +6,28 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>로그인 페이지</title>
-    
+
     <link href="resources/temporary.css" rel="stylesheet" type="text/css">
+    
+    <style>
+    	.contain{
+    		margin: auto;
+			margin-top: 100px;
+			margin-bottom: 100px;
+    	}
+    </style>
        
 </head>
 
 	<body>
+	<jsp:include page="../main/header.jsp"/>
+	
 		<div class="wrapper">
-			<div class="container loginForm">
-				<a class="mainA" href="/into"> 같이투자 API TEST</a>
-				<br><br><br><br>
+				<div class="contain loginForm col-xl-4 col-lg-4">
+				
 				
 				<h2>아이디와 비밀번호를 입력해주세요</h2> 
+				<br><br>
 				
 				<c:url value="/login" var="loginUrl" />
 				
@@ -68,8 +78,11 @@
 							<a href="registrationForm">회원가입</a>
 						</span>
 					</div>
-					
+	
 			</div>
 		</div>
+		
+	<!-- footer -->
+	<jsp:include page="../main/footer.jsp"/>
 	</body>
 </html>

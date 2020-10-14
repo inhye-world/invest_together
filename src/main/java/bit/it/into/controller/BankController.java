@@ -48,7 +48,7 @@ public class BankController {
 		log.info("BankController - accountBalance()");
 		
 		if(authentication == null) {
-			return "login/login_require";
+			return "login/loginForm";
 		}
 		
 		
@@ -99,7 +99,7 @@ public class BankController {
 		log.info("BankController - accountTransaction()");
 		
 		if(authentication == null) {
-			return "login/login_require";
+			return "login/loginForm";
 		}
 		
 		
@@ -187,7 +187,7 @@ public class BankController {
 		log.info("BankController - expenseAnalyze()");
 		
 		if(authentication == null) {
-			return "login/login_require";
+			return "login/loginForm";
 		}
 		
 		int shoppingSum = 0;
