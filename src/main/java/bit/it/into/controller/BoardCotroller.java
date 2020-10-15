@@ -1,6 +1,8 @@
 package bit.it.into.controller;
 
 import javax.inject.Inject;
+
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,7 @@ import bit.it.into.page.BoardCriteria;
 import bit.it.into.page.BoardPageDTO;
 import bit.it.into.page.CommentsCriteria;
 import bit.it.into.page.CommentsPageDTO;
+import bit.it.into.security.CustomUser;
 import bit.it.into.service.BoardService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -23,25 +26,37 @@ public class BoardCotroller {
 	BoardService boardService;
 	
 	 @RequestMapping("/boardList")
-	 public String list(BoardCriteria cri, Model model) {	
+	 public String list(BoardCriteria cri, Model model, Authentication authentication) {	
 		 log.info("list");
-
-		 model.addAttribute("list", boardService.getList(cri));	
 		 
-		 int total = boardService.getTotal(cri);
-		 log.info("total" + total);
+		if(authentication == null) {
+			return "login/loginForm";
+		}	
+		
+		model.addAttribute("list", boardService.getList(cri));	
 		 
-		 BoardPageDTO dto = new BoardPageDTO(cri,total);
+		int total = boardService.getTotal(cri);
+		log.info("total" + total);
 		 
-		 model.addAttribute("pageMaker", dto);
+		BoardPageDTO dto = new BoardPageDTO(cri,total);
 		 
-		 return "board/list";	
-	 	}
+		model.addAttribute("pageMaker", dto);
+		 
+		return "board/list";	
+	 }
 	
 	 	@RequestMapping("/content_view")
-		public String content_view(BoardDTO boardDTO, CommentsCriteria cri, Model model) {
+		public String content_view(BoardDTO boardDTO, CommentsCriteria cri, Model model, Authentication authentication) {
 			log.info("content_view()");
+			
+			if(authentication == null) {
+				return "login/loginForm";
+			}
 						
+			CustomUser user = (CustomUser)authentication.getPrincipal();
+						
+			model.addAttribute("dto", user);
+			
 			model.addAttribute("content_view", boardService.get(boardDTO.getBoard_num()));
 			
 			model.addAttribute("comments", boardService.getComment(cri));
@@ -67,8 +82,12 @@ public class BoardCotroller {
 		}
 		
 		@RequestMapping("/write_view")
-		public String write_view() {
+		public String write_view(Model model, Authentication authentication) {
 			log.info("write_view()");
+			
+			CustomUser user = (CustomUser)authentication.getPrincipal();
+			
+			model.addAttribute("dto", user);
 			
 			return "board/write_view";	
 		}
@@ -92,8 +111,12 @@ public class BoardCotroller {
 		}
 		
 		@RequestMapping("/modify_view")
-		public String modify_view(BoardDTO boardDTO, Model model) throws Exception{
+		public String modify_view(BoardDTO boardDTO, Model model, Authentication authentication) throws Exception{
 			log.info("modify_view()");
+			
+			CustomUser user = (CustomUser)authentication.getPrincipal();
+			
+			model.addAttribute("dto", user);
 			
 			model.addAttribute("modify_view", boardService.get(boardDTO.getBoard_num()));
 			

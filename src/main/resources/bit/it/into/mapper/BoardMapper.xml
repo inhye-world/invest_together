@@ -68,7 +68,7 @@
 
 	<insert id="insertComment" >
 	<![CDATA[
-		insert into comments (comment_num, comment_content, comment_date, comment_group, comment_step, comment_indent, board_num) values (comments_seq.nextval, #{comment_content}, sysdate, comments_seq.currval, 0, 0, #{board_num})
+		insert into comments (comment_num, comment_name, comment_content, comment_date, comment_group, comment_step, comment_indent, board_num) values (comments_seq.nextval, #{comment_name}, #{comment_content}, sysdate, comments_seq.currval, 0, 0, #{board_num})
 	]]>
 	</insert>
 	

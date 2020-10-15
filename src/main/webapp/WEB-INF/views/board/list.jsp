@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>  
 <!DOCTYPE html>
 <html>
 	<head>
@@ -29,8 +30,51 @@
 		<link rel="stylesheet" href="resources/main/assets/css/nice-select.css">
 		<link rel="stylesheet" href="resources/main/assets/css/style.css">
 	</head>
+
+	<style>
+	
+		.table .title{
+			font-weight: bold;
+		    background-color: whitesmoke;
+		}
+	
+		.container{
+			padding-top: 100px;
+		}
+	
+		.pagination {
+	    	justify-content: center;
+	    	padding-bottom: 100px;
+		}
+		
+		.hero-cap h2 {
+		    color: #072366;
+		    font-size: 35px;
+		    font-weight: 600;
+		    text-transform: capitalize;
+		    line-height: 1;
+		    padding-bottom: 30px;
+		}
+		
+		
+	</style>
+	
 	<body>
-		<header>
+	<!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="resources/main/assets/img/logo/loder.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <form:form id="logout-form" action="${pageContext.request.contextPath}/logout" method="POST"></form:form>
+    <!-- Preloader Start -->
+    <header>
         <!-- Header Start -->
         <div class="header-area">
             <div class="main-header ">
@@ -50,19 +94,35 @@
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">                                                                                          
-                                                <li><a href="about.html">가계부</a></li>
+                                                <li><a href="accountBalance">가계부</a></li>
                                                 <li><a href="program.html">월급관리</a></li>
-                                                <li><a href="events.html">주식/채권</a></li>
-                                                <li><a href="blog.html">계산기</a></li>
+                                                <li><a href="stockBondTable">주식</a></li>
+                                                <li><a href="bond">채권</a></li>
+                                                <li><a href="calculator">계산기</a></li>
                                                 <li><a href="blog.html">구독목록</a></li>
-                                                <li><a href="blog.html">투자랭킹</a></li>
-                                                <li><a onclick="location.href='${pageContext.request.contextPath}/boardList'">게시판</a></li>
+                                                <li><a href="leaderboards">투자랭킹</a></li>
+                                                <li><a href="boardList">게시판</a></li>
+                                                <sec:authorize access="isAuthenticated()">
+												    <li><a href="user/myPage">마이페이지</a></li>
+												</sec:authorize>
+
                                             </ul>
                                         </nav>
                                     </div>
                                     <!-- Header-btn -->
                                     <div class="header-right-btn d-none d-lg-block ml-20">
-                                        <a href="loginForm" class="btn header-btn">로그인</a>
+                                    	<sec:authorize access="isAnonymous()">
+											<c:url value="/loginForm" var="loginForm" />
+											<div class="log-box-1">
+												<a class="btn header-btn" href="${loginForm}">로그인</a>
+											</div>
+										</sec:authorize>
+										<sec:authorize access="isAuthenticated()">
+											<sec:authentication var="principal" property="principal"/>
+											<div class="log-box-2"> 
+										    		<button type="button" class="btn header-btn" id="logoutBtn">로그아웃 </button>
+										    </div>
+										</sec:authorize>
                                     </div>
                                 </div>
                             </div> 
@@ -76,10 +136,13 @@
             </div>
         </div>
         <!-- Header End -->
-    	</header> 
-		    <div class="container">     
+    </header> 
+		    <div class="container">
+		    <div class="hero-cap">
+                 <h2>자유게시판</h2>
+            </div>     
 				<table class="table">
-					<tr>
+					<tr class="title">
 						<td>글번호</td>
 						<td>제목</td>
 						<td>작성자</td>
@@ -87,7 +150,7 @@
 						<td>조회수</td>
 					</tr>
 					<c:forEach items="${list}" var="dto">
-					<tr id="content" onmouseover="this.style.backgroundColor='#09CC7F'" onmouseout="this.style.backgroundColor='white'" onclick="location.href='content_view?board_num=${dto.board_num}'">
+					<tr id="content" onmouseover="this.style.backgroundColor='rgba(9, 204, 127, 0.4)'" onmouseout="this.style.backgroundColor='white'" onclick="location.href='content_view?board_num=${dto.board_num}'">
 						<td>${dto.board_num}</td>
 						<td>${dto.board_title}</td>
 						<td>${dto.board_name}</td>
@@ -95,10 +158,10 @@
 						<td>${dto.board_hit}</td>
 					</tr>
 					</c:forEach>
-					<tr>
-						<td colspan="5"> <input class="button button-contactForm btn_1 boxed-btn" onclick="location.href='write_view'" type="button" value="글작성"/> </td>
-					</tr>
 				</table>
+				<tr>
+					<td colspan="5"> <input class="button button-contactForm btn_1 boxed-btn" onclick="location.href='write_view'" type="button" value="글작성"/> </td>
+				</tr>
 			</div>			
 			<ul class="pagination">
 				<c:if test="${pageMaker.prev}">
@@ -264,14 +327,12 @@
     <script src="./resources/main/assets/js/main.js"></script>
 	
 		
-	<script type="text/javascript">
-		$(document).ready(function (){
-
-			
+    <script>
+	$(function() {
+		$("#logoutBtn").click(function(){
+			$("#logout-form").submit();
 		});
-	
-		
-		
+	});
 	</script>	
 		
 	</body>

@@ -14,6 +14,7 @@ import lombok.Setter;
 public class CommentsDTO {
 	
 	private int comment_num;
+	private String comment_name;
 	private String comment_content;
 	private Timestamp comment_date;
 	private int comment_group;

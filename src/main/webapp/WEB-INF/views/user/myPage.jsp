@@ -10,7 +10,7 @@
 	<body>
 	<jsp:include page="../include/header_temp.jsp"/>
 		<c:url value="/modify" var="modify_url" />
-		<c:url value="/#" var="purchase_details_url" />
+		<c:url value="/purchaseDetails" var="purchase_details_url" />
 		<div class="wrapper">
 			
 			<div class="container">
@@ -22,7 +22,7 @@
 				
 				<button class="button5" onclick="location.href='${open_url}'">계좌 추가하기</button><br>
 				<button class="button5" onclick="location.href='${modify_url}'">회원 정보 수정</button><br>
-				<button class="button5" onclick="location.href='${purchase_details_url}'">구매 및 입금내역 조회</button><br>
+				<button class="button5" onclick="location.href='${purchase_details_url}'">구독내역 조회</button><br>
 			</div>
 		</div>
 	</body>

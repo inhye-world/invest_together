@@ -47,11 +47,11 @@ public interface UserMapper {
 
 	public void deleteAccount(int member_num);
 
-	public void deleteOrders(int member_num);
+	//public void deleteOrders(int member_num);
 
-	public void deleteComments(int member_num);
+	//public void deleteComments(int member_num);
 
-	public void deleteBoard(int member_num);
+	//public void deleteBoard(int member_num);
 
 	public void deleteMember(int member_num);
 

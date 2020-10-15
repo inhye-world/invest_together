@@ -113,23 +113,23 @@
 		]]>
 	</delete>
 
-	<delete id="deleteOrders">
+<!-- 	<delete id="deleteOrders">
 		<![CDATA[
 			delete from orders where member_num = #{member_num}
 		]]>
-	</delete>
+	</delete> -->
 	
-	<delete id="deleteComments">
+<!-- 	<delete id="deleteComments">
 		<![CDATA[
 			delete from comments where member_num = #{member_num}
 		]]>
-	</delete>
+	</delete> -->
 	
-	<delete id="deleteBoard">
+<!-- 	<delete id="deleteBoard">
 		<![CDATA[
 			delete from board where member_num = #{member_num}
 		]]>
-	</delete>
+	</delete> -->
 	
 	<delete id="deleteMember">
 		<![CDATA[

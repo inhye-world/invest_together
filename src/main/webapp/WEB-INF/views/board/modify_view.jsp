@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %> 
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -25,21 +26,44 @@
    <link rel="stylesheet" href="resources/main/assets/css/nice-select.css">
    <link rel="stylesheet" href="resources/main/assets/css/style.css">
 </head>
-
+	
+	<style>
+		
+		.container{
+			padding-top: 100px;
+		}
+		
+		.modify_button{
+			padding-bottom: 100px;
+		}
+		
+		.hero-cap h2 {
+		    color: #072366;
+		    font-size: 35px;
+		    font-weight: 600;
+		    text-transform: capitalize;
+		    line-height: 1;
+		    padding-bottom: 30px;
+		}
+		
+	</style>
+	
 <body>
-   <!--? Preloader Start -->
-   <div id="preloader-active">
-      <div class="preloader d-flex align-items-center justify-content-center">
-          <div class="preloader-inner position-relative">
-              <div class="preloader-circle"></div>
-              <div class="preloader-img pere-text">
-                  <img src="resources/main/assets/img/logo/loder.png" alt="">
-              </div>
-          </div>
-      </div>
-   </div>
-   <!-- Preloader Start -->
-<header>
+   <!-- ? Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="resources/main/assets/img/logo/loder.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <form:form id="logout-form" action="${pageContext.request.contextPath}/logout" method="POST"></form:form>
+    <!-- Preloader Start -->
+    <header>
         <!-- Header Start -->
         <div class="header-area">
             <div class="main-header ">
@@ -59,19 +83,35 @@
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">                                                                                          
-                                                <li><a href="about.html">가계부</a></li>
+                                                <li><a href="accountBalance">가계부</a></li>
                                                 <li><a href="program.html">월급관리</a></li>
-                                                <li><a href="events.html">주식/채권</a></li>
-                                                <li><a href="blog.html">계산기</a></li>
+                                                <li><a href="stockBondTable">주식</a></li>
+                                                <li><a href="bond">채권</a></li>
+                                                <li><a href="calculator">계산기</a></li>
                                                 <li><a href="blog.html">구독목록</a></li>
-                                                <li><a href="blog.html">투자랭킹</a></li>
-                                                <li><a onclick="location.href='${pageContext.request.contextPath}/boardList'">게시판</a></li>
+                                                <li><a href="leaderboards">투자랭킹</a></li>
+                                                <li><a href="boardList">게시판</a></li>
+                                                <sec:authorize access="isAuthenticated()">
+												    <li><a href="user/myPage">마이페이지</a></li>
+												</sec:authorize>
+
                                             </ul>
                                         </nav>
                                     </div>
                                     <!-- Header-btn -->
                                     <div class="header-right-btn d-none d-lg-block ml-20">
-                                        <a href="loginForm" class="btn header-btn">로그인</a>
+                                    	<sec:authorize access="isAnonymous()">
+											<c:url value="/loginForm" var="loginForm" />
+											<div class="log-box-1">
+												<a class="btn header-btn" href="${loginForm}">로그인</a>
+											</div>
+										</sec:authorize>
+										<sec:authorize access="isAuthenticated()">
+											<sec:authentication var="principal" property="principal"/>
+											<div class="log-box-2"> 
+										    		<button type="button" class="btn header-btn" id="logoutBtn">로그아웃 </button>
+										    </div>
+										</sec:authorize>
                                     </div>
                                 </div>
                             </div> 
@@ -89,24 +129,29 @@
    <main>
       <!--? Blog Area Start -->
          <div class="container">
+            <div class="hero-cap">
+               <h2>글수정</h2>
+            </div>
                <div class="col-lg-11 posts-list">
                   <div class="single-post">       
                      <div class="blog_details">
                         <h2 style="color: #2d2d2d;">${modify_view.board_title}</h2>
                         <ul class="blog-info-link mt-3 mb-4">
-                           <li><a href="#"><i>작성자:</i>${modify_view.board_name}</a></li>
-                           <li><a href="#"><i>작성일:</i><fmt:formatDate value="${modify_view.board_date}"/></a></li>
-                           <li><a href="#"><i>조회수:</i>${modify_view.board_hit}</a></li>
+                           <li><i>작성자:</i>${principal.dto.nickname}</a></li>
+                           <li><i>작성일:</i><fmt:formatDate value="${modify_view.board_date}"/></a></li>
+                           <li><i>조회수:</i>${modify_view.board_hit}</a></li>
                         </ul>
                         <form:form action="boardModify">
                         <textarea class="form-control w-100" name="board_content" rows="15" cols="9">${modify_view.board_content}</textarea>             
                      </div>
                   </div>
 				  <br>
+				  <div class="modify_button">
 				  <input type="hidden" name="board_num" value=${modify_view.board_num}>
                   <button type="submit" class="button button-contactForm btn_1 boxed-btn">확인</button> &nbsp;&nbsp; 
                   <a class="button button-contactForm btn_1 boxed-btn" onclick="location.href='boardDelete?board_num=${modify_view.board_num}'">삭제</a> &nbsp;&nbsp; 
 				  <a class="button button-contactForm btn_1 boxed-btn" onclick="location.href='${pageContext.request.contextPath}/boardList'">목록보기</a>                
+                  </div>
                   </form:form>
             </div>
         </div>
@@ -259,6 +304,14 @@
       <!-- Jquery Plugins, main Jquery -->	
       <script src="./resources/main/assets/js/plugins.js"></script>
       <script src="./resources/main/assets/js/main.js"></script>
+      
+    <script>
+	$(function() {
+		$("#logoutBtn").click(function(){
+			$("#logout-form").submit();
+		});
+	});
+	</script>
       
    </body>
 </html>
