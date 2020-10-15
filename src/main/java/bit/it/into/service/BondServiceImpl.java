@@ -22,7 +22,7 @@ public class BondServiceImpl implements BondService {
 	private BondMapper mapper;
 
 	@Override
-	public List<BondDTO> getList(int member_num) throws Exception {
+	public List<BondDTO> getList(int member_num) {
 		return mapper.getList(member_num);
 	}
 
@@ -38,7 +38,7 @@ public class BondServiceImpl implements BondService {
 	}
 
 	@Override
-	public void update(BondDTO bondDTO) throws Exception{        
+	public void update(BondDTO bondDTO) {        
         mapper.update(bondDTO);
     }
 

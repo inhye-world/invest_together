@@ -72,8 +72,7 @@
                                             <ul id="navigation">                                                                                          
                                                 <li><a href="accountBalance">가계부</a></li>
                                                 <li><a href="program.html">월급관리</a></li>
-                                                <li><a href="stockBondTable">주식</a></li>
-                                                <li><a href="bond">채권</a></li>
+                                                <li><a href="assets">자산</a></li>
                                                 <li><a href="calculator">계산기</a></li>
                                                 <li><a href="blog.html">구독목록</a></li>
                                                 <li><a href="leaderboards">투자랭킹</a></li>

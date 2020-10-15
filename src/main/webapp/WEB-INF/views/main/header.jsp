@@ -78,8 +78,7 @@
                                             <ul id="navigation">                                                                                          
                                                 <li><a href="accountBalance" id="accountBalance">가계부</a></li>
                                                 <li><a href="#" id="salary">월급관리</a></li>
-                                                <li><a href="stockBondTable" id="stockBondTable">주식</a></li>
-                                                <li><a href="bond" id="bond">채권</a></li>
+                                                <li><a href="assets" id="assets">자산</a></li>
                                                 <li><a href="calculator" id="calculator">계산기</a></li>
                                                 <li><a href="#" id="sub">구독목록</a></li>
                                                 <li><a href="#" id="rank">투자랭킹</a></li>
@@ -130,7 +129,7 @@
 	 	var page = href.substring(href.lastIndexOf('/') + 1);
 	 	console.log(page);
 	 	
-	 	let hrefArr = ['accountBalance', 'salary', 'stockBondTable', 'bond', 'calculator', 'sub', 'rank', 'boardList', 'myPage'];
+	 	let hrefArr = ['accountBalance', 'salary', 'assets', 'calculator', 'sub', 'rank', 'boardList', 'myPage'];
 	 	console.log(hrefArr);
 	 	
 	 	//nav바 하이라이트
@@ -152,7 +151,7 @@
 	 		}
 	 	} 
 	 	
-	 	if(page == 'modify' || (page == 'userModify'){
+	 	if(page == 'modify' || page == 'userModify'){
 	 		$('#myPage').addClass('activated');
 	 	} else {
 	 		$('#myPage').removeClass('myPage');

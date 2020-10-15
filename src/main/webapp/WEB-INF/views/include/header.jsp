@@ -77,12 +77,10 @@
 					    		<hr>
 					    		<a href="#"><li>가계부</li></a>
 						      	<a href="#"><li>월급관리</li></a>
-						      	<a href="#"><li>주식·채권</li></a>
-						      	<a href="calculator"><li>계산기</li></a>
-						      	<a href="#"><li>구독목록</li></a>
-						      	<a href="/into/ranking"><li>투자랭킹</li></a>
+						      	<a href="/into/assets"><li>자산</li></a>
+						      	<a href="#"><li>계산기</li></a>
+						      	<a href="/into/subList"><li>구독목록</li></a>
 						      	<a href="boardList"><li>게시판</li></a>
-
 						    </ul>
 					  	</div>
 					</nav>
@@ -104,8 +102,8 @@
 								</div>
 							</li>
 							<li>
-								<div>
-									<p>주식·채권</p>
+								<div onclick="location.href='/into/assets'">
+									<p>자산</p>
 								</div>
 							</li>
 							<li>
@@ -114,7 +112,7 @@
 								</div>
 							</li>
 							<li>
-								<div>
+								<div onclick="location.href='/into/subList'">
 									<p>구독목록</p>
 								</div>
 							</li>
