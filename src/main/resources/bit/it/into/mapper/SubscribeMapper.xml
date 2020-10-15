@@ -46,4 +46,11 @@
 			SELECT nickname FROM member WHERE member_num=#{member_num}
 		]]>
 	</select>
+	
+	<update id="updateSetPrice">
+		<![CDATA[
+			update member set set_price = #{set_price} where member_num = #{member_num} 
+		]]>
+	</update>
+	
 </mapper>

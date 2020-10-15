@@ -24,7 +24,7 @@
 				<button class="button5" class="button5" onclick="location.href='calculator'">계산기</button><br>
 				<button class="button5" onclick="location.href='stockBondTable'">주식</button><br>
 				<button class="button5" onclick="location.href='bond'">채권</button><br>
-				<button class="button5" onclick="location.href='testmain'">메인</button><br>
+				<button class="button5" onclick="location.href='index'">메인</button><br>
 			</div>
 		</div>
 		

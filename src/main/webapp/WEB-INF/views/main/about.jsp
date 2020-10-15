@@ -1,18 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>  
-
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="zxx">
 <head>
-
-	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
-	
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title> 같이투자 | 메인</title>
+    <title> Charity | Teamplate</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
@@ -33,7 +24,6 @@
 	<link rel="stylesheet" href="resources/main/assets/css/slick.css">
 	<link rel="stylesheet" href="resources/main/assets/css/nice-select.css">
 	<link rel="stylesheet" href="resources/main/assets/css/style.css">
-	
 </head>
 <body>
     <!-- ? Preloader Start -->
@@ -47,76 +37,83 @@
             </div>
         </div>
     </div>
-    
-    <form:form id="logout-form" action="${pageContext.request.contextPath}/logout" method="POST"></form:form>
     <!-- Preloader Start -->
     <header>
         <!-- Header Start -->
         <div class="header-area">
             <div class="main-header ">
+                <div class="header-top d-none d-lg-block">
+                    <div class="container-fluid">
+                        <div class="col-xl-12">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <div class="header-info-left d-flex">
+                                    <ul>     
+                                        <li>Phone: +99 (0) 101 0000 888</li>
+                                        <li>Email: noreply@yourdomain.com</li>
+                                    </ul>
+                                    <div class="header-social">    
+                                        <ul>
+                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a  href="https://www.facebook.com/sai4ull"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li> <a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="header-info-right d-flex align-items-center">
+                                    <div class="select-this">
+                                        <form action="#">
+                                            <div class="select-itms">
+                                                <select name="select" id="select1">
+                                                    <option value="">English</option>
+                                                    <option value="">Bangla</option>
+                                                    <option value="">Arabic</option>
+                                                    <option value="">Hindi</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <ul class="contact-now">     
+                                        <li><a href="#">Subscribe Now</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="header-bottom  header-sticky">
                     <div class="container-fluid">
                         <div class="row align-items-center">
                             <!-- Logo -->
                             <div class="col-xl-2 col-lg-2">
                                 <div class="logo">
-                                    <a href="/into"><img src="resources/main/assets/img/logo/logo.png" alt=""></a>
+                                    <a href="index.html"><img src="resources/main/assets/img/logo/logo.png" alt=""></a>
                                 </div>
                             </div>
-                            <!-- Logo End -->
                             <div class="col-xl-10 col-lg-10">
                                 <div class="menu-wrapper  d-flex align-items-center justify-content-end">
                                     <!-- Main-menu -->
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">                                                                                          
-                                                <li><a href="accountBalance">가계부</a></li>
-                                                <li><a href="program.html">월급관리</a></li>
-                                                <li><a href="assets">자산</a></li>
-                                                <li><a href="calculator">계산기</a>
-                                                	<ul class="submenu">
-                                                        <li><a href="myCalculator">나의 기업관리</a></li>
-                                                        <li><a href="target">적정주가계산</a></li>
-                                                        <li><a href="calculator">계산기</a></li>
+                                                <li><a href="index.html">Home</a></li>
+                                                <li><a href="about.html">About</a></li>
+                                                <li><a href="program.html">latest causes</a></li>
+                                                <li><a href="events.html">social events </a></li>
+                                                <li><a href="blog.html">Blog</a>
+                                                    <ul class="submenu">
+                                                        <li><a href="blog.html">Blog</a></li>
+                                                        <li><a href="blog_details.html">Blog Details</a></li>
+                                                        <li><a href="elements.html">Element</a></li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="blog.html">구독목록</a></li>
-                                                <li><a href="leaderboards">투자랭킹</a></li>
-                                                <li><a href="boardList">게시판</a></li>
-                                                <sec:authorize access="hasRole('ROLE_USER')">
-												    <li><a id="modify">마이페이지</a>
-												    	<ul class="submenu">
-	                                                        <li><a href="addAccount">계좌 추가</a></li>
-	                                                        <li><a href="modify">회원정보수정</a></li>
-	                                                        <li><a href="#">구매/입금내역</a></li>
-                                                    	</ul>
-												    </li>
-												</sec:authorize>
-												<sec:authorize access="hasRole('ROLE_ADMIN')">
-												    <li><a href="profits-admin" id="profits-admin">관리자모드</a>
-												    	<ul class="submenu">
-	                                                        <li><a href="profits-admin">매출관리</a></li>
-                                                    	</ul>
-												    </li>
-												</sec:authorize>
-
+                                                <li><a href="contact.html">Contact</a></li>
                                             </ul>
                                         </nav>
                                     </div>
                                     <!-- Header-btn -->
                                     <div class="header-right-btn d-none d-lg-block ml-20">
-                                    	<sec:authorize access="isAnonymous()">
-											<c:url value="/loginForm" var="loginForm" />
-											<div class="log-box-1">
-												<a class="btn header-btn" href="${loginForm}">로그인</a>
-											</div>
-										</sec:authorize>
-										<sec:authorize access="isAuthenticated()">
-											<sec:authentication var="principal" property="principal"/>
-											<div class="log-box-2"> 
-										    		<button type="button" class="btn header-btn" id="logoutBtn">로그아웃 </button>
-										    </div>
-										</sec:authorize>
+                                        <a href="contact.html" class="btn header-btn">Donate</a>
                                     </div>
                                 </div>
                             </div> 
@@ -131,58 +128,23 @@
         </div>
         <!-- Header End -->
     </header>
-    
     <!-- header end -->
-    
     <main>
-    <!-- slider Area Start-->
-    <div class="slider-area">
-        <div class="slider-active">
-            <!-- Single Slider -->
-            <div class="single-slider slider-height d-flex align-items-center">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-7 col-lg-7 col-md-8 col-sm-10">
-                            <div class="hero__caption">
-                                <h1 data-animation="fadeInUp" data-delay=".6s">같이투자와 <br>함께 하는 자산관리</h1>
-                                <P data-animation="fadeInUp" data-delay=".8s" >현명한 자산관리, 같이투자와 함께 시작해요!</P>
-                                <!-- Hero-btn -->
-                                <div class="hero__btn">
-                                	<sec:authorize access="isAnonymous()">
-										<a href="registrationForm" class="btn hero-btn mb-10"  data-animation="fadeInLeft" data-delay=".8s">회원가입</a>
-									</sec:authorize>
-									<sec:authorize access="isAuthenticated()">
-										<sec:authentication var="principal" property="principal"/>
-										<P data-animation="fadeInUp" data-delay=".8s" >${principal.dto.name}님 , 반갑습니다</P>		
-									</sec:authorize>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Single Slider -->
-            <div class="single-slider slider-height d-flex align-items-center">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-8 col-sm-10">
-                            <div class="hero__caption">
-                                <h1 data-animation="fadeInUp" data-delay=".6s">같이투자와<br>함께 하는 자산관리</h1>
-                                <P data-animation="fadeInUp" data-delay=".8s" >현명한 자산관리, 같이투자와 함께 시작해요!</P>
-                                <!-- Hero-btn -->
-                                <div class="hero__btn">
-                                    <a href="registrationForm" class="btn hero-btn mb-10"  data-animation="fadeInLeft" data-delay=".8s">회원가입</a>
-                                </div>
-                            </div>
+    <!--? Hero Start -->
+    <div class="slider-area2">
+        <div class="slider-height2 d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap hero-cap2 pt-20 text-center">
+                            <h2>About US</h2>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- slider Area End-->
-    
+    <!-- Hero End -->
     <!--? Services Area Start -->
     <div class="service-area section-padding30">
         <div class="container">
@@ -191,7 +153,7 @@
                     <!-- Section Tittle -->
                     <div class="section-tittle text-center mb-80">
                         <span>What we are doing</span>
-                        <h2>계좌 연동과 지출 분석으로 </br> 자산 관리를 편리하게!</h2>
+                        <h2>We Are In A Mission To Help The Helpless</h2>
                     </div>
                 </div>
             </div>
@@ -202,8 +164,8 @@
                             <span class="flaticon-null-1"></span>
                         </div>
                         <div class="cat-cap">
-                            <h5><a href="accountBalance">가계부</a></h5>
-                            <p>계좌를 연동해서 지출 내역을 관리하세요. </p>
+                            <h5><a href="services.html">Clean Water</a></h5>
+                            <p>The sea freight service has grown conside rably in recent years. We spend timetting to know your processes to.</p>
                         </div>
                     </div>
                 </div>
@@ -213,8 +175,8 @@
                             <span class="flaticon-think"></span>
                         </div>
                         <div class="cat-cap">
-                            <h5><a href="calculator">계산기</a></h5>
-                            <p>같이투자에서 제공하는 적정 주가 계산기로 편리하게 주식을 관리하세요.</p>
+                            <h5><a href="services.html">Clean Water</a></h5>
+                            <p>The sea freight service has grown conside rably in recent years. We spend timetting to know your processes to.</p>
                         </div>
                     </div>
                 </div>
@@ -224,8 +186,8 @@
                             <span class="flaticon-gear"></span>
                         </div>
                         <div class="cat-cap">
-                            <h5><a href="leaderboards">투자 랭킹</a></h5>
-                            <p>같이투자의 다양한 고객들은 어떻게 자산관리를 하고 있는지 구독을 통해 확인해보세요.</p>
+                            <h5><a href="services.html">Clean Water</a></h5>
+                            <p>The sea freight service has grown conside rably in recent years. We spend timetting to know your processes to.</p>
                         </div>
                     </div>
                 </div>
@@ -233,8 +195,55 @@
         </div>
     </div>
     <!-- Services Area End -->
-
-    
+    <!--? About Law Start-->
+    <section class="about-low-area section-padding2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-10">
+                    <div class="about-caption mb-50">
+                        <!-- Section Tittle -->
+                        <div class="section-tittle mb-35">
+                            <span>About our foundetion</span>
+                            <h2>We Are In A Mission To  Help Helpless</h2>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,mod tempor incididunt ut labore et dolore magna aliqua. Utnixm, quis nostrud exercitation ullamc.</p>
+                        <p>Lorem ipvsum dolor sit amext, consectetur adipisicing elit, smod tempor incididunt ut labore et dolore.</p>
+                    </div>
+                    <a href="about.html" class="btn">About US</a>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <!-- about-img -->
+                    <div class="about-img ">
+                        <div class="about-font-img d-none d-lg-block">
+                            <img src="resources/main/assets/img/gallery/about2.png" alt="">
+                        </div>
+                        <div class="about-back-img ">
+                            <img src="resources/main/assets/img/gallery/about1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Law End-->
+    <!-- Want To work -->
+    <section class="wantToWork-area ">
+        <div class="container">
+            <div class="wants-wrapper w-padding2  section-bg" data-background="resources/main/assets/img/gallery/section_bg01.png">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-xl-5 col-lg-9 col-md-8">
+                        <div class="wantToWork-caption wantToWork-caption2">
+                            <h2>Lets Chenge The World With Humanity</h2>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3 col-md-4">
+                        <a href="#" class="btn white-btn f-right sm-left">Become A Volunteer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Want To work End -->
     <!--? Testimonial Start -->
     <div class="testimonial-area testimonial-padding">
         <div class="container">
@@ -249,12 +258,12 @@
                                 <div class="testimonial-founder">
                                     <div class="founder-img mb-40">
                                         <img src="resources/main/assets/img/gallery/testimonial.png" alt="">
-                                        <span>마가렛 로손</span>
-                                        <p>32세 무직</p>
+                                        <span>Margaret Lawson</span>
+                                        <p>Creative Director</p>
                                     </div>
                                 </div>
                                 <div class="testimonial-top-cap">
-                                    <p>가치투자와 함께하고우 천마눤 모아써요우! 완전히 추천해요우! very good</p>
+                                    <p>“I am at an age where I just want to be fit and healthy our bodies are our responsibility! So start caring for your body and it will care for you. Eat clean it will care for you and workout hard.”</p>
                                 </div>
                             </div>
                         </div>
@@ -270,7 +279,7 @@
                                     </div>
                                 </div>
                                 <div class="testimonial-top-cap">
-                                    <p>âI am at an age where I just want to be fit and healthy our bodies are our responsibility! So start caring for your body and it will care for you. Eat clean it will care for you and workout hard.â</p>
+                                    <p>“I am at an age where I just want to be fit and healthy our bodies are our responsibility! So start caring for your body and it will care for you. Eat clean it will care for you and workout hard.”</p>
                                 </div>
                             </div>
                         </div>
@@ -286,7 +295,7 @@
                                     </div>
                                 </div>
                                 <div class="testimonial-top-cap">
-                                    <p>âI am at an age where I just want to be fit and healthy our bodies are our responsibility! So start caring for your body and it will care for you. Eat clean it will care for you and workout hard.â</p>
+                                    <p>“I am at an age where I just want to be fit and healthy our bodies are our responsibility! So start caring for your body and it will care for you. Eat clean it will care for you and workout hard.”</p>
                                 </div>
                             </div>
                         </div>
@@ -297,9 +306,8 @@
     </div>
     <!-- Testimonial End -->
 
-    
     <!--? Count Down Start -->
-    <div class="count-down-area pt-25 section-bg" data-background="resources/main/assets/img/gallery/background.png">
+    <div class="count-down-area pt-25 section-bg" data-background="resources/main/assets/img/gallery/section_bg02.png">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-12 col-md-12">
@@ -308,33 +316,33 @@
                             <div class="col-lg-3 col-md-6 col-sm-6">
                                 <!-- Counter Up -->
                                 <div class="single-counter text-center">
-                                    <span class="counter color-green">200,000</span>
+                                    <span class="counter color-green">6,200</span>
                                     <span class="plus">+</span>
-                                    <p class="color-green">총 가입자 수</p>
+                                    <p class="color-green">Donation</p>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-6">
                                 <!-- Counter Up -->
                                 <div class="single-counter text-center">
-                                    <span class="counter color-green">1,000</span>
+                                    <span class="counter color-green">80</span>
                                     <span class="plus">+</span>
-                                    <p class="color-green">신규 가입자 수</p>
+                                    <p class="color-green">Fund Raised</p>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-6">
                                 <!-- Counter Up -->
                                 <div class="single-counter text-center">
-                                    <span class="counter color-green">2,540,000</span>
+                                    <span class="counter color-green">256</span>
                                     <span class="plus">+</span>
-                                    <p class="color-green">누적 접속자 수</p>
+                                    <p class="color-green">Donation</p>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-6">
                                 <!-- Counter Up -->
                                 <div class="single-counter text-center">
-                                    <span class="counter color-green">2,560</span>
+                                    <span class="counter color-green">256</span>
                                     <span class="plus">+</span>
-                                    <p class="color-green">오늘 접속자 수</p>
+                                    <p class="color-green">Donation</p>
                                 </div>
                             </div>
                         </div>
@@ -345,7 +353,6 @@
     </div>
     <!-- Count Down End -->
     </main>
-    
     <footer>
         <div class="footer-wrapper section-bg2" data-background="resources/main/assets/img/gallery/footer_bg.png">
             <!-- Footer Top-->
@@ -357,7 +364,7 @@
                             <div class="single-footer-caption mb-30">
                                 <div class="footer-tittle">
                                     <div class="footer-logo mb-20">
-                                        <a href="/into"><img src="resources/main/assets/img/logo/logo2_footer.png" alt=""></a>
+                                        <a href="index.html"><img src="resources/main/assets/img/logo/logo2_footer.png" alt=""></a>
                                     </div>
                                 </div>
                             </div>
@@ -369,10 +376,10 @@
                                     <h4>Contact Info</h4>
                                     <ul>
                                         <li>
-                                            <p>주소 : 서울특별시 서대분구 신촌로32길 14-4 대박빌딩 23층 235호</p>
+                                            <p>Address :Your address goes here, your demo address.</p>
                                         </li>
-                                        <li><a href="#">전화번호 : +82 02 5555 5555</a></li>
-                                        <li><a href="#">이메일 : info@investogether.com</a></li>
+                                        <li><a href="#">Phone : +8880 44338899</a></li>
+                                        <li><a href="#">Email : info@colorlib.com</a></li>
                                     </ul>
                                 </div>
 
@@ -383,8 +390,10 @@
                                 <div class="footer-tittle">
                                     <h4>Important Link</h4>
                                     <ul>
-                                        <li><a href="#">About Us</a></li>
+                                        <li><a href="#"> View Project</a></li>
                                         <li><a href="#">Contact Us</a></li>
+                                        <li><a href="#">Testimonial</a></li>
+                                        <li><a href="#">Proparties</a></li>
                                         <li><a href="#">Support</a></li>
                                     </ul>
                                 </div>
@@ -395,7 +404,7 @@
                                 <div class="footer-tittle">
                                     <h4>Newsletter</h4>
                                     <div class="footer-pera footer-pera2">
-                                    <p>자산관리에 유용한 정보를 받아보세요!</p>
+                                    <p>Heaven fruitful doesn't over lesser in days. Appear creeping.</p>
                                 </div>
                                 <!-- Form -->
                                 <div class="footer-form" >
@@ -445,14 +454,6 @@
             </div>
         </div>
     </footer>
-    
-    <script>
-	$(function() {
-		$("#logoutBtn").click(function(){
-			$("#logout-form").submit();
-		});
-	});
-	</script>
 
     <!-- Scroll Up -->
     <div id="back-top" >

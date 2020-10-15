@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import bit.it.into.dto.AccountDTO;
 import bit.it.into.dto.MemberDTO;
+import bit.it.into.page.PurchaseCriteria;
 import bit.it.into.security.CustomUser;
 
 public interface UserMapper {
@@ -46,12 +47,6 @@ public interface UserMapper {
 	public void deleteRank(int member_num);
 
 	public void deleteAccount(int member_num);
-
-	public void deleteOrders(int member_num);
-
-	public void deleteComments(int member_num);
-
-	public void deleteBoard(int member_num);
 
 	public void deleteMember(int member_num);
 

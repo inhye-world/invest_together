@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import bit.it.into.dto.AccountDTO;
 import bit.it.into.dto.MemberDTO;
 import bit.it.into.mapper.UserMapper;
+import bit.it.into.page.PurchaseCriteria;
 import bit.it.into.security.CustomUser;
 import lombok.extern.log4j.Log4j;
 
@@ -125,9 +126,6 @@ public class UserService {
 		mapper.deleteBond(member_num);
 		mapper.deleteRank(member_num);
 		mapper.deleteAccount(member_num);
-		mapper.deleteOrders(member_num);
-		mapper.deleteComments(member_num);
-		mapper.deleteBoard(member_num);
 		mapper.deleteMember(member_num);
 	}
 

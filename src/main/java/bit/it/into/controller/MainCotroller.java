@@ -14,7 +14,7 @@ public class MainCotroller {
 	@RequestMapping("/")
 	public String home() {
 		log.info("MainController - home()");
-		return "main/index";
+		return "index";
 	}
 	
 	@RequestMapping("/accessDenied")
@@ -22,6 +22,11 @@ public class MainCotroller {
 		log.info("MainController - accessDenied()");
 		
 		return "error/accessDenied";
+	}
+	
+	@RequestMapping("/index")
+	public String testmain() {
+		return "main/index";
 	}
 	
 	@RequestMapping("/blog_details")
@@ -47,5 +52,6 @@ public class MainCotroller {
 	@RequestMapping("/program")
 	public String program() {
 		return "main/program";
+
 	}
 }

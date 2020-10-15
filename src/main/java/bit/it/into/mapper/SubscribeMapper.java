@@ -1,6 +1,7 @@
 package bit.it.into.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -21,5 +22,7 @@ public interface SubscribeMapper {
 	public List<SubscribeDTO> selectSubscribeListByMemberNum(int member_num);
 
 	public String selectNicknameByMemberNum(int member_num);
+
+	public void updateSetPrice(Map<Integer, Integer> user);
 
 }
