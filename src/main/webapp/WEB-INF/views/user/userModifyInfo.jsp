@@ -17,7 +17,7 @@
 
 </head>
 	<body>
-	<jsp:include page="../include/header.jsp"/>
+	<jsp:include page="../main/header.jsp"/>
 		<div class="member-container page-modify">			
 			<h1 class="usermodify-title">회원정보 수정</h1>
 			<table class="usermodify-table">
@@ -397,6 +397,6 @@
 			});
 			
 		</script>
-		<jsp:include page="../include/footer.jsp"/>
+		<jsp:include page="../main/footer.jsp"/>
 	</body>
 </html>
