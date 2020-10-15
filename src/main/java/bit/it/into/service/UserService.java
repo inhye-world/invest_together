@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import bit.it.into.dto.AccountDTO;
 import bit.it.into.dto.MemberDTO;
 import bit.it.into.mapper.UserMapper;
+import bit.it.into.page.PurchaseCriteria;
 import bit.it.into.security.CustomUser;
 import lombok.extern.log4j.Log4j;
 

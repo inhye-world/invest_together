@@ -112,30 +112,11 @@
 			delete from account where member_num = #{member_num}
 		]]>
 	</delete>
-
-<!-- 	<delete id="deleteOrders">
-		<![CDATA[
-			delete from orders where member_num = #{member_num}
-		]]>
-	</delete> -->
-	
-<!-- 	<delete id="deleteComments">
-		<![CDATA[
-			delete from comments where member_num = #{member_num}
-		]]>
-	</delete> -->
-	
-<!-- 	<delete id="deleteBoard">
-		<![CDATA[
-			delete from board where member_num = #{member_num}
-		]]>
-	</delete> -->
 	
 	<delete id="deleteMember">
 		<![CDATA[
 			delete from member where member_num = #{member_num}
 		]]>
 	</delete>
-	
 	
 </mapper>

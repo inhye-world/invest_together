@@ -1,8 +1,21 @@
 package bit.it.into.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import bit.it.into.dto.MemberDTO;
+import bit.it.into.dto.SubscribeDTO;
+import bit.it.into.dto.SubscribeInfoDTO;
+import bit.it.into.page.PurchaseCriteria;
+import bit.it.into.security.CustomUser;
+import bit.it.into.service.SubscribeService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -11,10 +24,72 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class PurchaseDetailsController {
 	
+	private SubscribeService service;
+	
 	@RequestMapping("/purchaseDetails")
-	public String purchaseDetails(Model model) {
+	public String purchaseDetails(Authentication authentication, PurchaseCriteria cri, Model model) {
 		log.info("PurchaseDetailsController - purchaseDetails()");
+		
+		if(authentication==null) {
+			return "login/login_require";
+		}
+		
+		CustomUser user = (CustomUser)authentication.getPrincipal();
+		int user_num = user.getDto().getMember_num();
+		
+		List<SubscribeDTO> subList = service.getSubscribeList(user_num);
+		List<SubscribeInfoDTO> list = new ArrayList<>();
+		
+		for(SubscribeDTO dto : subList) {
+			SubscribeInfoDTO infoDTO = new SubscribeInfoDTO(dto);
 			
+			String seller_nickname = service.getNicknameByMemberNum(dto.getSeller_num());
+			infoDTO.setSeller_nickname(seller_nickname);
+			
+			list.add(infoDTO);
+		}
+		
+		model.addAttribute("list", list);
+		
+		return "user/purchaseDetails";
+	}
+	
+	@RequestMapping("/setPrice")
+	public String setPrice(MemberDTO memberDTO,Authentication authentication, Model model) {
+		log.info("PurchaseDetailsController - setPrice()");
+				
+		if(authentication==null) {
+			return "login/login_require";
+		}
+		
+		CustomUser user = (CustomUser)authentication.getPrincipal();
+		user.setDto(memberDTO);
+		
+		int member_num = user.getDto().getMember_num();
+		int set_price = memberDTO.getSet_price();
+		
+		Map<Integer, Integer> user_info = new HashMap();
+		
+		user_info.put(member_num, member_num);
+		user_info.put(set_price, set_price);
+	
+		service.SetPrice(user_info);
+		
+		List<SubscribeDTO> subList = service.getSubscribeList(member_num);
+		List<SubscribeInfoDTO> list = new ArrayList<>();
+		
+		for(SubscribeDTO dto : subList) {
+			SubscribeInfoDTO infoDTO = new SubscribeInfoDTO(dto);
+			
+			String seller_nickname = service.getNicknameByMemberNum(dto.getSeller_num());
+			infoDTO.setSeller_nickname(seller_nickname);
+			
+			list.add(infoDTO);
+		}
+		
+		model.addAttribute("list", list);
+		
+		
 		return "user/purchaseDetails";
 	}
 	
