@@ -107,7 +107,7 @@
                     </div>
                 </div>
                 
-                <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12" id="calculator">
+                <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12" id="calculator2">
                 </div>
                 
                 <div class="col-xl-2 col-lg-12 col-md-12 col-sm-2" id="outcome">

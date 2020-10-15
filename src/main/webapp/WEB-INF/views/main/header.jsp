@@ -79,12 +79,25 @@
                                           		<li><a href="assets" id="assets">자산</a></li>                                                                                       
                                                 <li><a href="accountBalance" id="accountBalance">가계부</a></li>
                                                 <li><a href="#" id="salary">월급관리</a></li>
-                                                <li><a href="calculator" id="calculator">계산기</a></li>
+                                                <li><a href="calculator" id="calculator">계산기</a>
+                                                	<ul class="submenu">
+                                                        <li><a href="myCalculator">나의 기업관리</a></li>
+                                                        <li><a href="target">적정주가계산</a></li>
+                                                        <li><a href="calculator">계산기</a></li>
+                                                    </ul>
+                                                </li>
+
                                                 <li><a href="#" id="sub">구독목록</a></li>
-                                                <li><a href="#" id="rank">투자랭킹</a></li>
+                                                <li><a href="leaderboards" id="rank">투자랭킹</a></li>
                                                 <li><a href="boardList" id="boardList">게시판</a></li>
                                                 <sec:authorize access="isAuthenticated()">
-												    <li><a href="user/myPage" id="myPage">마이페이지</a></li>
+												    <li><a href="modify" id="modify">마이페이지</a>
+												    	<ul class="submenu">
+	                                                        <li><a href="addAccount">계좌 추가</a></li>
+	                                                        <li><a href="modify">회원정보수정</a></li>
+	                                                        <li><a href="#">구매/입금내역</a></li>
+                                                    	</ul>
+												    </li>
 												</sec:authorize>
                                             </ul>
                                         </nav>
@@ -129,7 +142,7 @@
 	 	var page = href.substring(href.lastIndexOf('/') + 1);
 	 	console.log(page);
 	 	
-	 	let hrefArr = ['accountBalance', 'salary', 'assets', 'calculator', 'sub', 'rank', 'boardList', 'myPage'];
+	 	let hrefArr = ['accountBalance', 'salary', 'assets', 'calculator', 'sub', 'rank', 'boardList', 'modify'];
 	 	console.log(hrefArr);
 	 	
 	 	//nav바 하이라이트
@@ -151,12 +164,12 @@
 	 		}
 	 	} 
 	 	
-	 	if(page == 'modify' || page == 'userModify'){
-	 		$('#myPage').addClass('activated');
+	 	if(page == 'addAccount'){
+	 		$('#modify').addClass('activated');
 	 	} else {
-	 		$('#myPage').removeClass('myPage');
-	 		if(page == 'myPage'){
-	 			$('#myPage').addClass('myPage');
+	 		$('#modify').removeClass('activated');
+	 		if(page == 'modify'){
+	 			$('#modify').addClass('activated');
 	 		}
 	 	}
 

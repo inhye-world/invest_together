@@ -81,7 +81,7 @@
                                                 <li><a href="../assets" id="assets">자산</li>
                                                 <li><a href="../calculator" id="calculator">계산기</a></li>
                                                 <li><a href="#" id="sub">구독목록</a></li>
-                                                <li><a href="#" id="rank">투자랭킹</a></li>
+                                                <li><a href="../leaderboards" id="rank">투자랭킹</a></li>
                                                 <li><a href="../boardList" id="boardList">게시판</a></li>
                                                 <sec:authorize access="isAuthenticated()">
 												    <li><a href="user/myPage" id="myPage">마이페이지</a></li>

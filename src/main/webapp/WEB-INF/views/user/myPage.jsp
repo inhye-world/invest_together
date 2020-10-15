@@ -17,9 +17,11 @@
     </style>	
 </head>
 	<body>
-	<jsp:include page="../main/header2.jsp"/>
+
+	<jsp:include page="../main/header.jsp"/>
  		<c:url value="/modify" var="modify_url" />
      	<c:url value="/purchaseDetails" var="purchase_details_url" />
+
 		<div class="wrapper">
 			
 			<div class="contain">
@@ -36,6 +38,9 @@
 				<button class="button5" onclick="location.href='${purchase_details_url}'">구매 및 입금내역 조회</button><br>
 			</div>
 		</div>
-		<jsp:include page="../main/footer2.jsp"/>
+
+
+		<jsp:include page="../main/footer.jsp"/>
+
 	</body>
 </html>

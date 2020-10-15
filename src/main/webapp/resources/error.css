@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'BMEULJIRO';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/BMEULJIRO.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MapoDPPA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoDPPA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+.wrapper{
+	margin: auto;
+}
+.contain{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.contain p{
+	font-family: 'Nanum Gothic', serif;
+}
+
+.contain h3{
+	font-family: 'MapoDPPA';
+	color: #09cc7f;
+}
