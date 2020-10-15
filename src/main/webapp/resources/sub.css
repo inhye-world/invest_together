@@ -69,3 +69,87 @@
 #backscreen-3 .black-model-section{
 	padding-bottom: 30px;
 }
+
+.bttn-ggreen {
+	background-color: #09cc7f;
+	outline: none 0px !important;
+}
+
+.sub-info-nickname {
+	margin-top: 50px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 32px;
+}
+
+.sub-info-title {
+	height: 42px;
+	padding-bottom: 5px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 28px;
+}
+
+.sub-info-portfolio {
+	margin-top: 30px;
+}
+
+.sub-info-stock {
+	margin-top: 30px;
+}
+
+.sub-info-bond {
+	margin-top: 30px;
+}
+
+.sub-info-calculator {
+	margin-top: 30px;
+	margin-bottom: 50px;
+}
+
+.sub-info-chart {
+	width: 50%;
+	margin: 0 auto;
+	padding-top: 10px;
+}
+
+.sub-info-chart-empty {
+	font-family: 'Noto Sans KR', sans-serif;
+	color: #8f9094;
+	font-size: 20px;
+}
+
+.sub-info-chart canvas {
+	margin: 0 auto;
+}
+
+.sub-info-chart div {
+	margin-top: 10px;
+	text-align: center;
+}
+
+.sub-info-bttn-container button, .sub-info-bttn-container span{
+	margin-bottom: 3px;
+}
+
+.sub-info-cal-symbols {
+	padding-top: 5px;
+}
+
+.sub-info-cal-symbols select, .sub-info-cal-symbols option {
+	font-size: 12px;
+	font-family: '돋움', sans-serif;
+	padding: 3px;
+}
+
+.sub-info-table-empty {
+	padding-top: 70px !important;
+	padding-bottom: 70px !important;
+	text-align: center;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 20px;
+}
+
+@media ( max-width: 768px ) { 
+	.sub-info-chart {
+		width: 70%;	
+	}
+}

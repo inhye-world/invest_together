@@ -17,6 +17,12 @@
 		]]>
 	</select>
 	
+	<select id="selectAccessToken" resultType="String">
+		<![CDATA[
+			SELECT access_token FROM member WHERE member_num=#{member_num}	
+		]]>
+	</select>
+	
 	<insert id="insertSubscribe">
 		<![CDATA[
 			INSERT INTO subscribe(merchant_uid, member_num, name, phone, seller_num, sub_price, sub_date) VALUES(#{merchant_uid}, #{member_num}, #{name}, #{phone}, #{seller_num}, #{sub_price}, sysdate)

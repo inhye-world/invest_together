@@ -5,7 +5,7 @@
 <mapper namespace="bit.it.into.mapper.CalculatorMapper">
 	
 	<insert id="insert">
-		INSERT INTO CALCULATOR VALUES (#{stockinfo_symbols}, #{member_num}, #{ev}, #{share_issued}, #{roe}, #{ke})
+		INSERT INTO CALCULATOR(stockinfo_symbols, member_num, ev, share_issued, roe, ke) VALUES (#{stockinfo_symbols}, #{member_num}, #{ev}, #{share_issued}, #{roe}, #{ke})
     </insert>
     
     <update id="update">
