@@ -14,6 +14,8 @@
     font-style: normal;
 }
 
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
 .button4 {
 	border: none;
 	color: white;
@@ -77,6 +79,15 @@
 	padding-top: 50px;
 	padding-bottom: 50px;
 	text-align: center;
+}
+
+.contain p{
+	font-family: 'Nanum Gothic', serif;
+}
+
+.contain h3{
+	font-family: 'MapoDPPA';
+	color: #09cc7f;
 }
 
 .contain .mainA{

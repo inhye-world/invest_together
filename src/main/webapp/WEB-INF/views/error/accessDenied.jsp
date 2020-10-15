@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>같이투자</title>
 </head>
 <body>
 	<h2>권한이 없습니다</h2>

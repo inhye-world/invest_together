@@ -83,12 +83,19 @@
                                                 <li><a href="blog.html">구독목록</a></li>
                                                 <li><a href="leaderboards">투자랭킹</a></li>
                                                 <li><a href="boardList">게시판</a></li>
-                                                <sec:authorize access="isAuthenticated()">
-												    <li><a href="modify">마이페이지</a>
+                                                <sec:authorize access="hasRole('ROLE_USER')">
+												    <li><a id="modify">마이페이지</a>
 												    	<ul class="submenu">
 	                                                        <li><a href="addAccount">계좌 추가</a></li>
 	                                                        <li><a href="modify">회원정보수정</a></li>
 	                                                        <li><a href="#">구매/입금내역</a></li>
+                                                    	</ul>
+												    </li>
+												</sec:authorize>
+												<sec:authorize access="hasRole('ROLE_ADMIN')">
+												    <li><a href="profits-admin" id="profits-admin">관리자모드</a>
+												    	<ul class="submenu">
+	                                                        <li><a href="profits-admin">매출관리</a></li>
                                                     	</ul>
 												    </li>
 												</sec:authorize>
@@ -194,7 +201,7 @@
                             <span class="flaticon-null-1"></span>
                         </div>
                         <div class="cat-cap">
-                            <h5><a href="services.html">가계부</a></h5>
+                            <h5><a href="accountBalance">가계부</a></h5>
                             <p>계좌를 연동해서 지출 내역을 관리하세요. </p>
                         </div>
                     </div>
