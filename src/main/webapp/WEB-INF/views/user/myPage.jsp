@@ -8,7 +8,7 @@
 	<link href="../resources/temporary.css" rel="stylesheet" type="text/css">
 </head>
 	<body>
-	<jsp:include page="../include/header_temp.jsp"/>
+	<jsp:include page="../include/header2.jsp"/>
 		<c:url value="/modify" var="modify_url" />
 		<c:url value="/#" var="purchase_details_url" />
 		<div class="wrapper">
@@ -25,5 +25,6 @@
 				<button class="button5" onclick="location.href='${purchase_details_url}'">구매 및 입금내역 조회</button><br>
 			</div>
 		</div>
+		<jsp:include page="../include/footer2.jsp"/>
 	</body>
 </html>

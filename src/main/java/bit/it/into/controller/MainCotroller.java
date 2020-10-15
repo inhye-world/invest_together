@@ -28,4 +28,9 @@ public class MainCotroller {
 	public String testmain() {
 		return "include/testmain";
 	}
+	
+	@RequestMapping("/element")
+	public String element() {
+		return "main/elements";
+	}
 }

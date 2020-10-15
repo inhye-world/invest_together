@@ -60,7 +60,6 @@
 		
 		#expenseWrap{
 			clear:both;
-			text-align: center;
 		}
 		
 		#expenseTable{
@@ -68,6 +67,7 @@
 			margin: auto;
 			text-align: center;
 			margin-bottom: 50px;
+			font-size: 2em;
 		}
 		
 		@media ( max-width: 768px ) {
@@ -94,14 +94,12 @@
 </head>	
 	<body>
 		<div class="wrapper">
-		<jsp:include page="../include/header.jsp"/>
+		<jsp:include page="../include/header2.jsp"/>
 		
 			<div class="container">
-				<a class="mainA" href="/into"> 같이투자 API TEST</a>
-				
+						
 				<br><br>
 				
-				<h2>-가계부 분석-</h2>
 				<br>
 				<div id="graphs">
 				<!-- 지출 유형 그래프(도넛)  -->
@@ -154,7 +152,10 @@
 							<div id="sec1">
 							</div>
 							<div id="sec2">
-								▼
+								<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-calendar-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								  <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+								  <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+								</svg>
 							</div>
 							<div id="sec3">
 								<div id="sec4">
@@ -166,7 +167,7 @@
 					</div>
 				<br>
 				
-				<table id="expenseTable">
+				<table id="expenseTable" class="table">
 					<thead>
 						<tr>
 							<th>유형</th>
@@ -273,7 +274,7 @@
 			</script>
 			
 		</div>
-		<jsp:include page="../include/footer.jsp"/>
+		<jsp:include page="../include/footer2.jsp"/>
 		<script>
 			$(function() {
 				var year = ${year}

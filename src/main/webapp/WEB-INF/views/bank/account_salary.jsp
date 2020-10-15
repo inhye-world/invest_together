@@ -16,8 +16,9 @@
    <script src="resources/sb_admin/vendor/jquery/jquery.min.js"></script>
    <script src="resources/sb_admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
    <script src="resources/sb_admin/vendor/jquery-easing/jquery.easing.min.js"></script>
-   <script src="resources/sb_admin/js/sb-admin-2.min.js"></script>
+
    <script src="resources/sb_admin/vendor/chart.js/Chart.min.js"></script> 
+ 
    
    <style>
    
@@ -64,18 +65,21 @@
 </head>
 
    <body>
-   
-         <div class="wrapper">
-         <jsp:include page="../include/header.jsp"/>
+  <main>
+        
+         <jsp:include page="../include/header2.jsp"/>
+        
          
             <div class="container container2" >
             <a class="mainA" href="/into"> 같이투자 API TEST</a>
             <br><br><br>
             
              <!-- Page Heading -->
-                   <h1 class="h3 mb-2 text-gray-800">월급 관리</h1>
+                   <h1>월급 관리</h1>
                    <p class="mb-4"> 회원님의 적금·예금 현황을 나타냅니다.</p>
             
+            
+            </div>
             
                <c:if test="${!( sum1==0 and sum2==0 and sum3==0)}"> 
                   <div class="portfolio">
@@ -97,16 +101,14 @@
                <br>
             
       <!-- DataTales -->
-            <div class="card shadow mb-4" style="width:125%;" >
-               <div class="card-header py-3">
+            
+            	  <div class="btn-list" >
+                     <button type="button" id="modify" class="genric-btn success" >수정</button>
+                  </div>
+               <div class="card-header py-3"> 
                  <h6 class="m-0 font-weight-bold text-primary">월급 관리</h6>
                </div>
-               <div class="card-body" >
-                 <div class="table-responsive">
-               <div class="account-list">
-                  <div class="btn-list" >
-                     <button type="button" id="modify" class="btn btn-outline btn-primary pull-right" >수정</button>
-                  </div>
+                  
                   
                   <form:form id="salary-modify-form" name="salary-modify-form" method = "post">
                      <table id="account-table" class="table table-bordered" width="100%" cellspacing="0">
@@ -126,14 +128,14 @@
                         <tbody>
                            <c:forEach var="salary" items="${accountSalaryList}" varStatus="status" >
                            <tr id="salary-${status.index}">
-                              <td class="test2"><select name="category" id="category" disabled  >
+                              <td class="test2"><div class="default-select" id="default-select"><span id="hello"><select name="category" id="category" disabled  >
                                  <option value="적금" ${salary.category=="적금" ? "selected" : ""} >적금</option>   
                                  <option value="예금" ${salary.category=="예금" ? "selected" : ""} >예금</option>   
-                                 <option value="자유 입출금" ${salary.category=="자유 입출금" ? "selected" : ""} >자유 입출금</option>         
-                              </select></td>
-                              <td class="test2"><button class="button" onclick="window.open('${pageContext.request.contextPath}/account_salary?fin=${salary.fintech_use_num}','통장 내역','width=1100,height=420,left=400, top=300,location=no,status=no');">${salary.account_alias}</button></td>
+                                 <option value="자유 입출금" ${salary.category=="자유 입출금" ? "selected" : ""} >자유 입출금</option>        
+                              </select></span></div></td>
+                              <td class="test2"><button class="button" onclick="window.open('${pageContext.request.contextPath}/account_salary?fin=${salary.fintech_use_num}','통장 내역','width=1050,height=420,left=400, top=300,location=no,status=no');">${salary.account_alias}</button></td>
                               <td class="test2">${salary.bank_name}</td>
-                              <td class="test2"><input type="text" numberOnly name="interest" id="interest" value="${salary.interest}" disabled required="required"/></td>
+                              <td class="test2"><input type="text" name="interest" id="interest" value="${salary.interest}" disabled required="required"/></td>
                               <td class="test2"><input type="text" numberOnly name="expected_amt" id="expected_amt" value="${salary.expected_amt}" disabled required="required"/></td>
                               <td class="test2"><fmt:formatNumber type="number" maxFractionDigits="3" value="${salary.tran_amt}" />원</td>
                               <td class="test2"><fmt:formatNumber type="number" maxFractionDigits="3" value="${salary.balance_amt}" />원</td>
@@ -159,19 +161,30 @@
                      </tbody>
                   </table>
                </form:form>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-         
-         
+               
+               
+            <br><br><br><br>
+      
+      
+      
+            <jsp:include page="../include/footer2.jsp"/>
+            
+           
       <script type="text/javascript">
          $("#modify").click(function(){
+        	 
+        	 var tdArr = new Array();
+			 var checkBtn = $(this);
+        	 
             for(var m=0; m<count; ++m){
                $("#salary-"+m).find('input').attr("disabled", false);
                $("#salary-"+m).find('select').attr("disabled", false);
+               
+               document.getElementById('hello').innerHTML = '<select name="category" id="category">'+
+               '<option value="적금" ${salary.category=="적금" ? "selected" : ""} >적금</option>'+   
+               '<option value="예금" ${salary.category=="예금" ? "selected" : ""} >예금</option>'+   
+               '<option value="자유 입출금" ${salary.category=="자유 입출금" ? "selected" : ""} >자유 입출금</option>'+        
+            '</select>';
             }
          })
       </script>
@@ -246,11 +259,12 @@
       });
 
       </script>
+      </main> 
+      
          <script src="resources/sb_admin/vendor/chart.js/Chart.min.js"></script>
          <script src="resources/tableExport/tableExport.min.js" type="text/javascript"></script>
          <script src="resources/tableExport/xlsx.core.min.js" type="text/javascript"></script>
          <script src="resources/tableExport/FileSaver.min.js" type="text/javascript"></script>
       </body>
-         <br><br><br><br>
-      <jsp:include page="../include/footer.jsp"/>
+        
 </html>
