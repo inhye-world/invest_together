@@ -3311,6 +3311,11 @@ hr {
   text-transform: capitalize;
 }
 
+.main-header .main-menu ul li a.activated{
+	color: #09cc7f;
+	font-weight: bold;
+}
+
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   /* line 161, C:/Users/HP/Desktop/jun-2020/277.Charity _Non-profit/assets/scss/_headerMenu.scss */
   .main-header .main-menu ul li a {

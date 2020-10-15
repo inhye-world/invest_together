@@ -1,7 +1,6 @@
 package bit.it.into.controller;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +21,7 @@ import bit.it.into.page.RankCriteria;
 import bit.it.into.page.RankPageDTO;
 import bit.it.into.security.CustomUser;
 import bit.it.into.service.RankService;
+import bit.it.into.service.SubscribeService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import net.sf.json.JSONArray;
@@ -32,6 +32,7 @@ import net.sf.json.JSONArray;
 public class RankController {
 	
 	private RankService service;
+	private SubscribeService sub;
 	
 	@RequestMapping("/leaderboards")
 	public String ranking(RankCriteria cri, Model model) {
@@ -198,13 +199,20 @@ public class RankController {
 		valid.put("isLogin", true);
 		
 		CustomUser user = (CustomUser)authentication.getPrincipal();
-		if(rankingDTO.getMember_num() == user.getDto().getMember_num()) {
+		int user_num = user.getDto().getMember_num();
+		
+		if(rankingDTO.getMember_num() == user_num) {
 			valid.put("isMe", true);
 		}else {
 			valid.put("isMe", false);
 		}
 		
-		////// boolean isSubscribe *************
+		if(sub.isSubscribe(user_num, rankingDTO.getMember_num())) {
+			valid.put("isSubscribe", true);
+		}else {
+			valid.put("isSubscribe", false);
+		}
+		
 		
 		Integer setPrice = service.getSetPrice(rankingDTO.getMember_num());
 		if(setPrice == null) {

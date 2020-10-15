@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>마이페이지</title>
 	<link href="../resources/temporary.css" rel="stylesheet" type="text/css">
 	
@@ -14,19 +14,18 @@
 			margin-top: 100px;
 			margin-bottom: 100px;
     	}
-    </style>
-
+    </style>	
 </head>
 	<body>
 	<jsp:include page="../main/header2.jsp"/>
-	
-		<c:url value="/modify" var="modify_url" />
-		<c:url value="/#" var="purchase_details_url" />
+
 		<div class="wrapper">
 			
 			<div class="contain">
+
 				<a class="mainA" href="/into"> 같이투자 API TEST</a>
 				<br><br>
+
 				
 				<h2>-마이페이지-</h2>
 				<br><br><br><br>

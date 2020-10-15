@@ -134,6 +134,7 @@
 		document.getElementById("outcome").innerHTML = "";
 		}
     </script>
+    
 
  	<!-- Calculating src -->
 	<jsp:include page="variousCalculator.jsp"/>

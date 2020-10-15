@@ -1,0 +1,159 @@
+@charset "UTF-8";
+
+.assets-1 {
+	display: inline-block;
+	width: 100%;
+	margin-top: 50px;
+}
+
+.assets-account {
+	display: inline-block;
+	float: left;
+	font-family: 'Noto Sans KR', sans-serif;
+	color: #8f9094;
+}
+
+.assets-account-1 {
+	display: inline-block;
+	width: 250px;
+}
+
+.assets-account-2 {
+	display: inline-block;
+}
+
+.assets-account-1-1 {
+	display: inline-block;
+	width: 90px;
+}
+
+.assets-account-1-2 {
+	display: inline-block;
+}
+
+
+.assets-account-title {
+	font-size: 28px;
+	font-weight: 500;
+	color: black;
+}
+
+.assets-account b {
+	color: black;
+}
+
+.assets-chart {
+	display: inline-block;
+	float: right;
+}
+
+.assets-chart div {
+	margin-top: 10px;
+	text-align: center;
+}
+
+.assets-chart canvas {
+	width: 360px !important;
+	height: 180px !important;
+}
+
+.text-succes {
+  color: #09CC7F !important;
+}
+
+.text-inf {
+  color: #36b9cc !important;
+}
+
+.text-primar {
+  color: #4e73df !important;
+}
+
+.assets-2 {
+	width: 100%;
+	margin-top: 30px;
+}
+
+.assets-2:last-child {
+	margin-bottom: 50px;
+}
+
+.assets-title {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 28px;
+	height: 42px;
+	padding-bottom: 5px;
+}
+
+.assets-bttn-container {
+	text-align: left;
+	padding-bottom: 3px;
+}
+
+.bttn-ggreen {
+	background-color: #09cc7f;
+	outline: none 0px !important;
+}
+
+.assets-submit-bttn {
+	background-color: #09cc7f;
+	border: none;
+	outline: none 0px !important;
+	padding: 5px;
+	width: 20px;
+	height: 20px;
+	border-radius: 3px; 		
+}
+
+.right-bttn {
+	float: right;
+}
+
+.ui-autocomplete {
+    max-height: 300px;
+    overflow-y: auto; /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+}
+
+.assets-table-empty {
+	padding-top: 100px !important;
+	padding-bottom: 100px !important;
+	text-align: center;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 20px;
+}
+
+.assets-account-empty {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 20px;
+}
+
+@media ( max-width: 1200px ) {
+	.bond-table-container {
+		width: 100%;
+		overflow-x: auto;
+	}
+}
+
+@media ( max-width: 768px ) {
+	.stock-table-container {
+		width: 100%;
+		overflow-x: auto;
+	}
+	
+	.assets-chart {
+		display: block;
+		float: none;
+		margin-bottom: 30px;
+	}
+	
+	.assets-account {
+		display: block;
+		float: none;
+	}
+	
+	.assets-chart canvas {
+		margin: 0 auto;
+	}
+	
+}
