@@ -26,7 +26,6 @@
 		}
 		
 		 tbody {
-      
             height: 190px; 
             overflow-y: scroll;
         }
@@ -37,8 +36,8 @@
             width: 190px;
         }
         
-        table {
-             border-collapse: collapse;  
+      #salary-table {
+             border-collapse: collapse; 
         }
         
          thead,tbody {
@@ -71,12 +70,11 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>	
-	
+
 </head>
 	<body>
 	<div class="wrapper">
-	<div>
-            	  
+		<div>
             	  <div class="ranking-reague">
 					<ul>
 						<li>
@@ -89,8 +87,8 @@
             	  <ul class="ranking-notice">
 					<li>회원님의 해당통장에 대한 내역을 보여드립니다.</li>
 				</ul>
-    </div>
-	<table id="salary-table" class="table">
+    	</div>
+		<table id="salary-table" class="table">
 				<thead>
 					<tr >
 							<th class="test3">회차</th>

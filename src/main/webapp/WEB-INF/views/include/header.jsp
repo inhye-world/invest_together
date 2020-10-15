@@ -24,7 +24,7 @@
 	
 	<script>
 		$(function() {
-			$(".logout-btn").click(function(){
+			$("#logout-btn").click(function(){
 				$("#logout-form").submit();
 			});
 		});
@@ -70,7 +70,7 @@
 									<sec:authentication var="principal" property="principal"/>
 									<div class="log-box-2"> 
 								    		<a class="mypage-a">${principal.dto.name}님</a>
-								    		<button class="logout-btn">로그아웃 </button>
+								    		<button class="btn header-btn" id="logout-btn">로그아웃 </button>
 								    </div>
 								</sec:authorize>
 					    		<br>

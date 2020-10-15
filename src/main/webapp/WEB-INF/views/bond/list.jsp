@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 
 <!DOCTYPE html>
 <html>
@@ -35,12 +36,16 @@
 		margin: auto;
   	}
   	
+  	#dataTable{
+  		text-align: center;
+  	}
+  	
   </style>
 
 </head>
 
 <body id="page-top">
-<jsp:include page="../include/header.jsp"/>
+<jsp:include page="../main/header.jsp"/>
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -104,6 +109,13 @@
           
           <!-- table script -->
           <script type="text/javascript">
+          
+      	//채권에 아무 값이 없을 때
+       	$(document).ready(function(){
+       	    if(${fn:length(list) } == 0){
+       	    	document.getElementById("bond_tbody").innerHTML = '<tr><td colspan="11">보유 중인 채권 정보가 없습니다.</td></tr>';
+       	    }
+       	});
           
           function alerting(content){
         		AstNotif.dialog('알림', content, {
@@ -278,8 +290,11 @@
 		            '  	 <button type="button" class="btn btn-outline btn-primary" onclick="insertCheck();">+</button></td>'+
 		            '</tr>';
 		            
-		            $("#bond_tbody").append(addTableRow);
-		        
+			        if(${fn:length(list) } == 0){
+		       	    	document.getElementById("bond_tbody").innerHTML = addTableRow;
+		       	    } else{
+		       	    	$("#bond_tbody").append(addTableRow);
+		       	    }
 		    });
 
 		    //null check B4 submit
@@ -497,7 +512,7 @@
   <!-- End of Page Wrapper -->
   
   <!-- footer -->
-  <jsp:include page="../include/footer.jsp"/>
+  <jsp:include page="../main/footer.jsp"/>
 
 
   <!-- Page level plugins -->

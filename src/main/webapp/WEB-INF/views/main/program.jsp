@@ -7,23 +7,23 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="resources/main/assets/img/favicon.ico">
 
 	<!-- CSS here -->
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-	<link rel="stylesheet" href="assets/css/slicknav.css">
-    <link rel="stylesheet" href="assets/css/flaticon.css">
-    <link rel="stylesheet" href="assets/css/progressbar_barfiller.css">
-    <link rel="stylesheet" href="assets/css/gijgo.css">
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/animated-headline.css">
-	<link rel="stylesheet" href="assets/css/magnific-popup.css">
-	<link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-	<link rel="stylesheet" href="assets/css/themify-icons.css">
-	<link rel="stylesheet" href="assets/css/slick.css">
-	<link rel="stylesheet" href="assets/css/nice-select.css">
-	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="resources/main/assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="resources/main/assets/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="resources/main/assets/css/slicknav.css">
+    <link rel="stylesheet" href="resources/main/assets/css/flaticon.css">
+    <link rel="stylesheet" href="resources/main/assets/css/progressbar_barfiller.css">
+    <link rel="stylesheet" href="resources/main/assets/css/gijgo.css">
+    <link rel="stylesheet" href="resources/main/assets/css/animate.min.css">
+    <link rel="stylesheet" href="resources/main/assets/css/animated-headline.css">
+	<link rel="stylesheet" href="resources/main/assets/css/magnific-popup.css">
+	<link rel="stylesheet" href="resources/main/assets/css/fontawesome-all.min.css">
+	<link rel="stylesheet" href="resources/main/assets/css/themify-icons.css">
+	<link rel="stylesheet" href="resources/main/assets/css/slick.css">
+	<link rel="stylesheet" href="resources/main/assets/css/nice-select.css">
+	<link rel="stylesheet" href="resources/main/assets/css/style.css">
 </head>
 <body>
     <!-- ? Preloader Start -->
@@ -32,7 +32,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="assets/img/logo/loder.png" alt="">
+                    <img src="resources/main/assets/img/logo/loder.png" alt="">
                 </div>
             </div>
         </div>
@@ -87,7 +87,7 @@
                             <!-- Logo -->
                             <div class="col-xl-2 col-lg-2">
                                 <div class="logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                    <a href="index.html"><img src="resources/main/assets/img/logo/logo.png" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-xl-10 col-lg-10">
@@ -129,7 +129,9 @@
         <!-- Header End -->
     </header>
     <!-- header end -->
+    
     <main>
+    
     <!--? Hero Start -->
     <div class="slider-area2">
         <div class="slider-height2 d-flex align-items-center">
@@ -137,7 +139,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="hero-cap hero-cap2 pt-20 text-center">
-                            <h2>social events </h2>
+                            <h2>latest causes </h2>
                         </div>
                     </div>
                 </div>
@@ -145,44 +147,163 @@
         </div>
     </div>
     <!-- Hero End -->
-    <!--? Count Down Start -->
-    <div class="count-down-area pt-25 section-bg" data-background="assets/img/gallery/section_bg02.png">
+    
+    <!-- Our Cases Start -->
+    <div class="our-cases-area section-padding30">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-12 col-md-12">
-                    <div class="count-down-wrapper" >
-                        <div class="row justify-content-between">
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <!-- Counter Up -->
-                                <div class="single-counter text-center">
-                                    <span class="counter color-green">6,200</span>
-                                    <span class="plus">+</span>
-                                    <p class="color-green">Donation</p>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-cases mb-40">
+                        <div class="cases-img">
+                            <img src="resources/main/assets/img/gallery/case1.png" alt="">
+                        </div>
+                        <div class="cases-caption">
+                            <h3><a href="#">Ensure Education For Every Poor Children</a></h3>
+                            <!-- Progress Bar -->
+                            <div class="single-skill mb-15">
+                                <div class="bar-progress">
+                                    <div id="bar1" class="barfiller">
+                                        <div class="tipWrap">
+                                            <span class="tip"></span>
+                                        </div>
+                                        <span class="fill" data-percentage="70"></span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <!-- Counter Up -->
-                                <div class="single-counter text-center">
-                                    <span class="counter color-green">80</span>
-                                    <span class="plus">+</span>
-                                    <p class="color-green">Fund Raised</p>
+                            <!-- / progress -->
+                            <div class="prices d-flex justify-content-between">
+                                <p>Raised:<span> $20,000</span></p>
+                                <p>Goal:<span> $35,000</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-cases mb-40">
+                        <div class="cases-img">
+                            <img src="resources/main/assets/img/gallery/case2.png" alt="">
+                        </div>
+                        <div class="cases-caption">
+                            <h3><a href="#">Providing Healthy Food For The Children</a></h3>
+                            <!-- Progress Bar -->
+                            <div class="single-skill mb-15">
+                                <div class="bar-progress">
+                                    <div id="bar2" class="barfiller">
+                                        <div class="tipWrap">
+                                            <span class="tip"></span>
+                                        </div>
+                                        <span class="fill" data-percentage="25"></span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <!-- Counter Up -->
-                                <div class="single-counter text-center">
-                                    <span class="counter color-green">256</span>
-                                    <span class="plus">+</span>
-                                    <p class="color-green">Donation</p>
+                            <!-- / progress -->
+                            <div class="prices d-flex justify-content-between">
+                                <p>Raised:<span> $20,000</span></p>
+                                <p>Goal:<span> $35,000</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-cases mb-40">
+                        <div class="cases-img">
+                            <img src="resources/main/assets/img/gallery/case3.png" alt="">
+                        </div>
+                        <div class="cases-caption">
+                            <h3><a href="#">Supply Drinking Water For  The People</a></h3>
+                            <!-- Progress Bar -->
+                            <div class="single-skill mb-15">
+                                <div class="bar-progress">
+                                    <div id="bar3" class="barfiller">
+                                        <div class="tipWrap">
+                                            <span class="tip"></span>
+                                        </div>
+                                        <span class="fill" data-percentage="50"></span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 col-sm-6">
-                                <!-- Counter Up -->
-                                <div class="single-counter text-center">
-                                    <span class="counter color-green">256</span>
-                                    <span class="plus">+</span>
-                                    <p class="color-green">Donation</p>
+                            <!-- / progress -->
+                            <div class="prices d-flex justify-content-between">
+                                <p>Raised:<span> $20,000</span></p>
+                                <p>Goal:<span> $35,000</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-cases mb-40">
+                        <div class="cases-img">
+                            <img src="resources/main/assets/img/gallery/case1.png" alt="">
+                        </div>
+                        <div class="cases-caption">
+                            <h3><a href="#">Ensure Education For Every Poor Children</a></h3>
+                            <!-- Progress Bar -->
+                            <div class="single-skill mb-15">
+                                <div class="bar-progress">
+                                    <div id="bar4" class="barfiller">
+                                        <div class="tipWrap">
+                                            <span class="tip"></span>
+                                        </div>
+                                        <span class="fill" data-percentage="70"></span>
+                                    </div>
                                 </div>
+                            </div>
+                            <!-- / progress -->
+                            <div class="prices d-flex justify-content-between">
+                                <p>Raised:<span> $20,000</span></p>
+                                <p>Goal:<span> $35,000</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-cases mb-40">
+                        <div class="cases-img">
+                            <img src="resources/main/assets/img/gallery/case3.png" alt="">
+                        </div>
+                        <div class="cases-caption">
+                            <h3><a href="#">Supply Drinking Water For  The People</a></h3>
+                            <!-- Progress Bar -->
+                            <div class="single-skill mb-15">
+                                <div class="bar-progress">
+                                    <div id="bar5" class="barfiller">
+                                        <div class="tipWrap">
+                                            <span class="tip"></span>
+                                        </div>
+                                        <span class="fill" data-percentage="50"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- / progress -->
+                            <div class="prices d-flex justify-content-between">
+                                <p>Raised:<span> $20,000</span></p>
+                                <p>Goal:<span> $35,000</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-cases mb-40">
+                        <div class="cases-img">
+                            <img src="resources/main/assets/img/gallery/case2.png" alt="">
+                        </div>
+                        <div class="cases-caption">
+                            <h3><a href="#">Providing Healthy Food For The Children</a></h3>
+                            <!-- Progress Bar -->
+                            <div class="single-skill mb-15">
+                                <div class="bar-progress">
+                                    <div id="bar6" class="barfiller">
+                                        <div class="tipWrap">
+                                            <span class="tip"></span>
+                                        </div>
+                                        <span class="fill" data-percentage="25"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- / progress -->
+                            <div class="prices d-flex justify-content-between">
+                                <p>Raised:<span> $20,000</span></p>
+                                <p>Goal:<span> $35,000</span></p>
                             </div>
                         </div>
                     </div>
@@ -190,149 +311,25 @@
             </div>
         </div>
     </div>
-    <!-- Count Down End -->
-    <!-- Featured_job_start -->
-    <section class="featured-job-area section-padding30 section-bg2" data-background="assets/img/gallery/section_bg03.png">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-7 col-lg-9 col-md-10 col-sm-12">
-                    <!-- Section Tittle -->
-                    <div class="section-tittle text-center mb-80">
-                        <span>What we are boing</span>
-                        <h2>We arrange many social events for charity donations</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-9 col-md-12">
-                    <!-- single-job-content -->
-                    <div class="single-job-items mb-30">
-                        <div class="job-items">
-                            <div class="company-img">
-                                <a href="#"><img src="assets/img/gallery/socialEvents1.png" alt=""></a>
-                            </div>
-                            <div class="job-tittle">
-                                <a href="#"><h4>Donation is Hope</h4></a>
-                                <ul>
-                                    <li><i class="far fa-clock"></i>8:30 - 9:30am</li>
-                                    <li><i class="fas fa-sort-amount-down"></i>18.01.2021</li>
-                                    <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-9 col-md-12">
-                    <!-- single-job-content -->
-                    <div class="single-job-items mb-30">
-                        <div class="job-items">
-                            <div class="company-img">
-                                <a href="#"><img src="assets/img/gallery/socialEvents2.png" alt=""></a>
-                            </div>
-                            <div class="job-tittle">
-                                <a href="#"><h4>A hand for Children</h4></a>
-                                <ul>
-                                    <li><i class="far fa-clock"></i>8:30 - 9:30am</li>
-                                    <li><i class="fas fa-sort-amount-down"></i>18.01.2021</li>
-                                    <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-9 col-md-12">
-                    <!-- single-job-content -->
-                    <div class="single-job-items mb-30">
-                        <div class="job-items">
-                            <div class="company-img">
-                                <a href="#"><img src="assets/img/gallery/socialEvents3.png" alt=""></a>
-                            </div>
-                            <div class="job-tittle">
-                                <a href="#"><h4>Help for Children</h4></a>
-                                <ul>
-                                    <li><i class="far fa-clock"></i>8:30 - 9:30am</li>
-                                    <li><i class="fas fa-sort-amount-down"></i>18.01.2021</li>
-                                    <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-9 col-md-12">
-                    <!-- single-job-content -->
-                    <div class="single-job-items mb-30">
-                        <div class="job-items">
-                            <div class="company-img">
-                                <a href="#"><img src="assets/img/gallery/socialEvents1.png" alt=""></a>
-                            </div>
-                            <div class="job-tittle">
-                                <a href="#"><h4>Donation is Hope</h4></a>
-                                <ul>
-                                    <li><i class="far fa-clock"></i>8:30 - 9:30am</li>
-                                    <li><i class="fas fa-sort-amount-down"></i>18.01.2021</li>
-                                    <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-9 col-md-12">
-                    <!-- single-job-content -->
-                    <div class="single-job-items mb-30">
-                        <div class="job-items">
-                            <div class="company-img">
-                                <a href="#"><img src="assets/img/gallery/socialEvents2.png" alt=""></a>
-                            </div>
-                            <div class="job-tittle">
-                                <a href="#"><h4>A hand for Children</h4></a>
-                                <ul>
-                                    <li><i class="far fa-clock"></i>8:30 - 9:30am</li>
-                                    <li><i class="fas fa-sort-amount-down"></i>18.01.2021</li>
-                                    <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-9 col-md-12">
-                    <!-- single-job-content -->
-                    <div class="single-job-items mb-30">
-                        <div class="job-items">
-                            <div class="company-img">
-                                <a href="#"><img src="assets/img/gallery/socialEvents3.png" alt=""></a>
-                            </div>
-                            <div class="job-tittle">
-                                <a href="#"><h4>Help for Children</h4></a>
-                                <ul>
-                                    <li><i class="far fa-clock"></i>8:30 - 9:30am</li>
-                                    <li><i class="fas fa-sort-amount-down"></i>18.01.2021</li>
-                                    <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Featured_job_end -->
+    <!-- Our Cases End -->
     </main>
+    
     <footer>
-        <div class="footer-wrapper section-bg2" data-background="assets/img/gallery/footer_bg.png">
+        <div class="footer-wrapper section-bg2" data-background="resources/main/assets/img/gallery/footer_bg.png">
             <!-- Footer Top-->
             <div class="footer-area footer-padding">
                 <div class="container">
                     <div class="row d-flex justify-content-between">
                         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                            <div class="single-footer-caption mb-50">
-                                <div class="single-footer-caption mb-30">
-                                    <div class="footer-tittle">
-                                        <div class="footer-logo mb-20">
-                                            <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
-                                        </div>
+                        <div class="single-footer-caption mb-50">
+                            <div class="single-footer-caption mb-30">
+                                <div class="footer-tittle">
+                                    <div class="footer-logo mb-20">
+                                        <a href="index.html"><img src="resources/main/assets/img/logo/logo2_footer.png" alt=""></a>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
                             <div class="single-footer-caption mb-50">
@@ -346,6 +343,7 @@
                                         <li><a href="#">Email : info@colorlib.com</a></li>
                                     </ul>
                                 </div>
+
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
@@ -379,7 +377,7 @@
                                             onblur="this.placeholder = ' Email Address '">
                                             <div class="form-icon">
                                                 <button type="submit" name="submit" id="newsletter-submit"
-                                                class="email_icon newsletter-submit button-contactForm"><img src="assets/img/gallery/form.png" alt=""></button>
+                                                class="email_icon newsletter-submit button-contactForm"><img src="resources/main/assets/img/gallery/form.png" alt=""></button>
                                             </div>
                                             <div class="mt-10 info"></div>
                                         </form>
@@ -425,46 +423,46 @@
 
     <!-- JS here -->
 
-    <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="./resources/main/assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <!-- Jquery, Popper, Bootstrap -->
-    <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="./assets/js/popper.min.js"></script>
-    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="./resources/main/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="./resources/main/assets/js/popper.min.js"></script>
+    <script src="./resources/main/assets/js/bootstrap.min.js"></script>
     <!-- Jquery Mobile Menu -->
-    <script src="./assets/js/jquery.slicknav.min.js"></script>
+    <script src="./resources/main/assets/js/jquery.slicknav.min.js"></script>
 
     <!-- Jquery Slick , Owl-Carousel Plugins -->
-    <script src="./assets/js/owl.carousel.min.js"></script>
-    <script src="./assets/js/slick.min.js"></script>
+    <script src="./resources/main/assets/js/owl.carousel.min.js"></script>
+    <script src="./resources/main/assets/js/slick.min.js"></script>
     <!-- One Page, Animated-HeadLin -->
-    <script src="./assets/js/wow.min.js"></script>
-    <script src="./assets/js/animated.headline.js"></script>
-    <script src="./assets/js/jquery.magnific-popup.js"></script>
+    <script src="./resources/main/assets/js/wow.min.js"></script>
+    <script src="./resources/main/assets/js/animated.headline.js"></script>
+    <script src="./resources/main/assets/js/jquery.magnific-popup.js"></script>
 
     <!-- Date Picker -->
-    <script src="./assets/js/gijgo.min.js"></script>
+    <script src="./resources/main/assets/js/gijgo.min.js"></script>
     <!-- Nice-select, sticky -->
-    <script src="./assets/js/jquery.nice-select.min.js"></script>
-    <script src="./assets/js/jquery.sticky.js"></script>
+    <script src="./resources/main/assets/js/jquery.nice-select.min.js"></script>
+    <script src="./resources/main/assets/js/jquery.sticky.js"></script>
     <!-- Progress -->
-    <script src="./assets/js/jquery.barfiller.js"></script>
+    <script src="./resources/main/assets/js/jquery.barfiller.js"></script>
     
     <!-- counter , waypoint,Hover Direction -->
-    <script src="./assets/js/jquery.counterup.min.js"></script>
-    <script src="./assets/js/waypoints.min.js"></script>
-    <script src="./assets/js/jquery.countdown.min.js"></script>
-    <script src="./assets/js/hover-direction-snake.min.js"></script>
+    <script src="./resources/main/assets/js/jquery.counterup.min.js"></script>
+    <script src="./resources/main/assets/js/waypoints.min.js"></script>
+    <script src="./resources/main/assets/js/jquery.countdown.min.js"></script>
+    <script src="./resources/main/assets/js/hover-direction-snake.min.js"></script>
 
     <!-- contact js -->
-    <script src="./assets/js/contact.js"></script>
-    <script src="./assets/js/jquery.form.js"></script>
-    <script src="./assets/js/jquery.validate.min.js"></script>
-    <script src="./assets/js/mail-script.js"></script>
-    <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="./resources/main/assets/js/contact.js"></script>
+    <script src="./resources/main/assets/js/jquery.form.js"></script>
+    <script src="./resources/main/assets/js/jquery.validate.min.js"></script>
+    <script src="./resources/main/assets/js/mail-script.js"></script>
+    <script src="./resources/main/assets/js/jquery.ajaxchimp.min.js"></script>
     
     <!-- Jquery Plugins, main Jquery -->	
-    <script src="./assets/js/plugins.js"></script>
-    <script src="./assets/js/main.js"></script>
+    <script src="./resources/main/assets/js/plugins.js"></script>
+    <script src="./resources/main/assets/js/main.js"></script>
     
     </body>
 </html>
