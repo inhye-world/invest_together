@@ -233,7 +233,7 @@
       </script>
       
     <!-- footer -->
-	<jsp:include page="../include/footer.jsp"/>
+	<jsp:include page="../main/footer.jsp"/>
 
   <!-- Page level plugins -->
   <script src="resources/sb_admin/vendor/datatables/jquery.dataTables.min.js"></script>
