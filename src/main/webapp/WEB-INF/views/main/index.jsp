@@ -73,12 +73,24 @@
                                                 <li><a href="accountBalance">가계부</a></li>
                                                 <li><a href="program.html">월급관리</a></li>
                                                 <li><a href="assets">자산</a></li>
-                                                <li><a href="calculator">계산기</a></li>
+                                                <li><a href="calculator">계산기</a>
+                                                	<ul class="submenu">
+                                                        <li><a href="myCalculator">나의 기업관리</a></li>
+                                                        <li><a href="target">적정주가계산</a></li>
+                                                        <li><a href="calculator">계산기</a></li>
+                                                    </ul>
+                                                </li>
                                                 <li><a href="blog.html">구독목록</a></li>
                                                 <li><a href="leaderboards">투자랭킹</a></li>
                                                 <li><a href="boardList">게시판</a></li>
                                                 <sec:authorize access="isAuthenticated()">
-												    <li><a href="user/myPage">마이페이지</a></li>
+												    <li><a href="modify">마이페이지</a>
+												    	<ul class="submenu">
+	                                                        <li><a href="addAccount">계좌 추가</a></li>
+	                                                        <li><a href="modify">회원정보수정</a></li>
+	                                                        <li><a href="#">구매/입금내역</a></li>
+                                                    	</ul>
+												    </li>
 												</sec:authorize>
                                             </ul>
                                         </nav>
@@ -204,7 +216,7 @@
                             <span class="flaticon-gear"></span>
                         </div>
                         <div class="cat-cap">
-                            <h5><a href="services.html">투자 랭킹</a></h5>
+                            <h5><a href="leaderboards">투자 랭킹</a></h5>
                             <p>같이투자의 다양한 고객들은 어떻게 자산관리를 하고 있는지 구독을 통해 확인해보세요.</p>
                         </div>
                     </div>
