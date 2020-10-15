@@ -15,12 +15,28 @@
   	<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
   	<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
 	
+	<style type="text/css">
+		.usermodify-title{
+			margin-left: 500px;
+   			margin-top: 50px;
+   			color: #032380;
+		}
+		
+		.usermodify-table1{
+			margin-left: 500px;
+		}
+		
+		 th{
+			font-family: "Lucida Console", Courier, monospace;
+		} 
+	</style>
 </head>
 	<body>
-	<jsp:include page="../include/header.jsp"/>
-		<div class="member-container page-modify">			
+	<jsp:include page="../main/header.jsp"/>
+		<div class="member-container1 page-modify">			
 			<h1 class="usermodify-title">회원정보 수정</h1>
-			<table class="usermodify-table">
+			
+			<table class="usermodify-table1">
 				<sec:authorize access="isAuthenticated()">
 				<sec:authentication var="principal" property="principal"/>
 				<tr>
@@ -87,10 +103,10 @@
 			</table>
 			<div class="usermodify-secession">
 				 탈퇴를 원하시면 우측의 회원탈퇴 버튼을 눌러주세요.
-				<a class="usermodify-secession-btn">회원탈퇴</a>
-			</div>
-			<div class="usermodify-foot">
-				<button onclick = "location.href = ${pageContext.request.contextPath}/"  type="button" class="usermodify-cancel">나가기</button>
+				<a class="usermodify-secession-btn1">회원탈퇴</a>
+			
+			<!-- <div class="usermodify-foot"> -->
+				<button onclick = "location.href = ${pageContext.request.contextPath}/"  type="button" class="usermodify-cancel1">나가기</button>
 			</div>
 		</div>
 		<script>
@@ -205,17 +221,17 @@
 					$(".usermodify-phone-change-auth").attr({"style":"display:none"});
 				});
 				
-				$(".usermodify-secession-btn").on("click", function() {
+				$(".usermodify-secession-btn1").on("click", function() {
 					var result = confirm("회원정보를 탈퇴 하시겠습니까?")
 					if(result){
-						$(".usermodify-secession-btn").attr({"href":"secession"});
+						$(".usermodify-secession-btn1").attr({"href":"secession"});
 					} else 
-						$(".usermodify-secession-btn").attr({"href":"modify"});
+						$(".usermodify-secession-btn1").attr({"href":"modify"});
 				});
 								
 			});
 
 		</script>
-		<jsp:include page="../include/footer.jsp"/>
+		<jsp:include page="../main/footer.jsp"/>
 	</body>
 </html>

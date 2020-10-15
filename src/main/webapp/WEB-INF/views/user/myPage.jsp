@@ -18,16 +18,17 @@
 </head>
 	<body>
 	<jsp:include page="../main/header2.jsp"/>
-
+ 		<c:url value="/modify" var="modify_url" />
+     	<c:url value="/purchaseDetails" var="purchase_details_url" />
 		<div class="wrapper">
 			
 			<div class="contain">
 
-				<a class="mainA" href="/into"> 같이투자 API TEST</a>
+				<a class="mainA" href="/into"> 마이페이지</a>
 				<br><br>
 
 				
-				<h2>-마이페이지-</h2>
+				<h2 style="color:#032380;">회원님의 정보 및 구독 내역을 알려드립니다.</h2>
 				<br><br><br><br>
 				
 				<button class="button5" onclick="location.href='${open_url}'">계좌 추가하기</button><br>

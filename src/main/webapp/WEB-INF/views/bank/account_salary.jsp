@@ -31,6 +31,7 @@
 		    display: inline-block;
 		    font-size: 15px;
 		    margin: 4px;
+		    cursor:pointer;
 			}
 			
 		  #modify{
@@ -242,5 +243,5 @@
 		</body>
 		
 			<br><br><br><br>
-		<jsp:include page="../main/footer.jsp"/>
+		<jsp:include page="../include/footer.jsp"/>
 </html>

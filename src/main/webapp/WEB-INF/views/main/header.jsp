@@ -75,10 +75,10 @@
                                     <!-- Main-menu -->
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
-                                            <ul id="navigation">                                                                                          
+                                            <ul id="navigation">   
+                                          		<li><a href="assets" id="assets">자산</a></li>                                                                                       
                                                 <li><a href="accountBalance" id="accountBalance">가계부</a></li>
                                                 <li><a href="#" id="salary">월급관리</a></li>
-                                                <li><a href="assets" id="assets">자산</a></li>
                                                 <li><a href="calculator" id="calculator">계산기</a></li>
                                                 <li><a href="#" id="sub">구독목록</a></li>
                                                 <li><a href="#" id="rank">투자랭킹</a></li>
