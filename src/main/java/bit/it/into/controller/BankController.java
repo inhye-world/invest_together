@@ -48,7 +48,7 @@ public class BankController {
 		log.info("BankController - accountBalance()");
 		
 		if(authentication == null) {
-			return "login/loginForm";
+			return "redirect:/loginForm";
 		}
 		
 		

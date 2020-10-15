@@ -31,7 +31,7 @@ public class PurchaseDetailsController {
 		log.info("PurchaseDetailsController - purchaseDetails()");
 		
 		if(authentication==null) {
-			return "login/login_require";
+			return "redirect:/loginForm";
 		}
 		
 		CustomUser user = (CustomUser)authentication.getPrincipal();
@@ -51,6 +51,10 @@ public class PurchaseDetailsController {
 		
 		model.addAttribute("list", list);
 		
+		int price = service.getSetPrice(user_num);
+
+		model.addAttribute("price", price);
+		
 		return "user/purchaseDetails";
 	}
 	
@@ -59,38 +63,26 @@ public class PurchaseDetailsController {
 		log.info("PurchaseDetailsController - setPrice()");
 				
 		if(authentication==null) {
-			return "login/login_require";
+			return "redirect:/loginForm";
 		}
 		
 		CustomUser user = (CustomUser)authentication.getPrincipal();
-		user.setDto(memberDTO);
 		
 		int member_num = user.getDto().getMember_num();
 		int set_price = memberDTO.getSet_price();
 		
-		Map<Integer, Integer> user_info = new HashMap();
+		Map<String, Integer> user_info = new HashMap();
 		
-		user_info.put(member_num, member_num);
-		user_info.put(set_price, set_price);
+		user_info.put("member_num", member_num);
+		user_info.put("set_price", set_price);
 	
 		service.SetPrice(user_info);
 		
-		List<SubscribeDTO> subList = service.getSubscribeList(member_num);
-		List<SubscribeInfoDTO> list = new ArrayList<>();
+		int price = service.getSetPrice(member_num);
+
+		model.addAttribute("price", price);
 		
-		for(SubscribeDTO dto : subList) {
-			SubscribeInfoDTO infoDTO = new SubscribeInfoDTO(dto);
-			
-			String seller_nickname = service.getNicknameByMemberNum(dto.getSeller_num());
-			infoDTO.setSeller_nickname(seller_nickname);
-			
-			list.add(infoDTO);
-		}
-		
-		model.addAttribute("list", list);
-		
-		
-		return "user/purchaseDetails";
+		return "redirect:/purchaseDetails";
 	}
 	
 }

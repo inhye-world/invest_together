@@ -22,6 +22,7 @@
 		    margin-bottom: 25px;
 		    font-size:17px;
 		}
+	
 		
 		.container{
 			padding-top: 100px;
@@ -170,7 +171,7 @@
                      <form:form class="form-contact comment_form" action="writeComment" id="commentForm">
                            <div class="col-12">
                               <div class="form-group">
-                                 <textarea class="form-control" name="comment_content" id="comment" cols="50" rows="15" placeholder="Write Comment"></textarea>
+                                 <textarea class="form-control" name="comment_content" id="comment" cols="3" rows="7" placeholder="Write Comment" maxlength="200"></textarea>
                               </div>
                            </div>
                         <div class="form-group">

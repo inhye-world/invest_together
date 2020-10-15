@@ -30,7 +30,7 @@ public class BoardCotroller {
 		 log.info("list");
 		 
 		if(authentication == null) {
-			return "login/loginForm";
+			return "redirect:/loginForm";
 		}	
 		
 		model.addAttribute("list", boardService.getList(cri));	
@@ -50,7 +50,7 @@ public class BoardCotroller {
 			log.info("content_view()");
 			
 			if(authentication == null) {
-				return "login/loginForm";
+				return "redirect:/loginForm";
 			}
 						
 			CustomUser user = (CustomUser)authentication.getPrincipal();

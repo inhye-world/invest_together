@@ -66,7 +66,7 @@ public class CalculateController {
 	 public String myTargetPrice(Model model, Authentication authentication, CalculatorDTO calculatorDTO) {
 		 
 		 if(authentication == null) {
-			return "login/loginForm";
+			return "redirect:/loginForm";
 	 	 }
 		 
 		 CustomUser user = (CustomUser)authentication.getPrincipal();
@@ -127,7 +127,7 @@ public class CalculateController {
 		}
 		
 		 if(authentication == null) {
-			return "login/loginForm";
+			return "redirect:/loginForm";
 	 	 }
 		 
 		 CustomUser user = (CustomUser)authentication.getPrincipal();

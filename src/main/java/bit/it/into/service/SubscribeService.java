@@ -6,11 +6,8 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
-
-import bit.it.into.dto.MemberDTO;
 import bit.it.into.dto.SubscribeDTO;
 import bit.it.into.mapper.SubscribeMapper;
-import bit.it.into.security.CustomUser;
 import lombok.extern.log4j.Log4j;
 
 @Service
@@ -72,7 +69,7 @@ public class SubscribeService {
 		return mapper.selectNicknameByMemberNum(member_num);
 	}
 
-	public void SetPrice(Map<Integer, Integer> user_info) {
+	public void SetPrice(Map<String, Integer> user_info) {
 		log.info("SubscribeService -SetPrice()");
 		
 		mapper.updateSetPrice(user_info);

@@ -36,7 +36,7 @@ public class BondController {
 		log.info("////////////////////list/////////////////////");
 		
 		if(authentication == null) {
-			return "login/loginForm";
+			return "redirect:/loginForm";
 		}
 		
 		
@@ -53,7 +53,7 @@ public class BondController {
 		log.info("////////////////////write///////////////////////");
 		
 		if(authentication == null) {
-			return "login/loginForm";
+			return "redirect:/loginForm";
 		}
 		
 		

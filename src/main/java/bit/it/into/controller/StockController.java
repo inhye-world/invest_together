@@ -44,7 +44,7 @@ public class StockController {
 		log.info("StockController - stockBondTable()");
 		
 		if(authentication==null) {
-			return "login/loginForm";
+			return "redirect:/loginForm";
 		}
 		
 		
@@ -79,7 +79,7 @@ public class StockController {
 		log.info("StockController - buyStock()");
 		
 		if(authentication==null) {
-			return "login/loginForm";
+			return "redirect:/loginForm";
 		}
 		
 		
@@ -106,7 +106,7 @@ public class StockController {
 		log.info("StockController - sellStock()");
 		
 		if(authentication==null) {
-			return "login/loginForm";
+			return "redirect:/loginForm";
 		}
 		
 		
@@ -127,7 +127,7 @@ public class StockController {
 		log.info("StockController - deleteStock()");
 		
 		if(authentication==null) {
-			return "login/loginForm";
+			return "redirect:/loginForm";
 		}
 		
 		String[] stockSymbols = request.getParameterValues("deleteStockSymbol");
