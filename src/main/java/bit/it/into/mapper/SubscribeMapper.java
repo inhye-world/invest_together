@@ -25,6 +25,6 @@ public interface SubscribeMapper {
 
 	public String selectNicknameByMemberNum(int member_num);
 
-	public void updateSetPrice(Map<Integer, Integer> user);
+	public void updateSetPrice(Map<String, Integer> user);
 
 }

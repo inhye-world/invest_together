@@ -9,6 +9,7 @@
 
 <head>
 	
+  <title>같이투자 | 거래내역</title>	
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,8 +17,13 @@
   <!-- alert -->
   <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
   <script src="resources/sb_admin/js/ast-notif.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
 
-  <title>같이투자 | 거래내역</title>
+	<style type="text/css">
+		.error{
+			color:red;
+		}
+	</style>
   
 </head>
 
@@ -59,7 +65,7 @@
 				  	<sec:authentication var="principal" property="principal"/>
 	            	
 	            	<div>
-	            		<p>현재 판매금액 :${principal.dto.set_price} </p>
+	            		<p>현재 판매금액 :<fmt:formatNumber value="${price}"/>원</p>
 	            	</div>
 	            	
 	            	</sec:authorize>
@@ -89,7 +95,7 @@
 								<tr>
 									<td><fmt:formatDate value="${dto.sub_date}" pattern="yyyy-MM-dd" /></td>
 									<td>${dto.seller_nickname}</td>
-									<td>${dto.sub_price}</td>
+									<td><fmt:formatNumber value="${dto.sub_price}"/>원</td>
 									<td><fmt:formatDate value="${dto.sub_maturity_date}" pattern="yyyy-MM-dd" /></td>
 								</tr>
 								
@@ -97,6 +103,43 @@
 						</tbody>
 					</table>
 				</div>
+				
+			<script type="text/javascript">
+				
+				$(document).ready(function (){
+				
+				$.validator.addMethod("priceRegex", function(value, element) {
+					return this.optional(element) || value.match(/^[0-9]+$/);   
+				});
+				
+				$(".setPrice-form").validate({
+					//규칙
+					rules:{
+						set_price:{
+							required : true, //필수입력여부
+							maxlength : 8,  //최대 입력 글자수
+							priceRegex : true,
+						},
+					},
+
+					//메시지
+					messages:{
+						set_price:{
+							required : "금액을 입력해주세요.",
+							maxlength : "최대 8자리까지 입력가능합니다.",
+							priceRegex : "숫자만 입력가능합니다.",
+						},
+					},
+
+					//메시지 태그
+					errorElement : 'div', 	//태그
+					errorClass: 'error',	//클래스 이름
+					validClass:'vaild' 
+				});
+			});
+				
+			</script>	
+				
 	   <!-- footer -->
 	   <jsp:include page="../main/footer.jsp"/>
 	</body>
