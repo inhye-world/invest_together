@@ -27,6 +27,8 @@
 */
 /*--------------- ---- Responsive --------------------------*/
 /*-------------   Color Variable  --------------*/
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 @import url("https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600;700;800;900&display=swap");
 /* line 33, C:/Users/HP/Desktop/jun-2020/277.Charity _Non-profit/assets/scss/_color.scss */
 .white-bg {
@@ -92,7 +94,7 @@
   color: #09cc7f !important;
   display: inline-block;
   padding: 18px 44px;
-  font-family: "Muli", sans-serif;
+  font-family: 'Nanum Gothic', serif;
   font-size: 14px;
   font-weight: 400;
   border: 0;
@@ -191,7 +193,7 @@
 /* 1. Theme default css */
 /* line 4, C:/Users/HP/Desktop/jun-2020/277.Charity _Non-profit/assets/scss/_common.scss */
 body {
-  font-family: "Muli", sans-serif;
+  font-family: 'Nanum Gothic', serif;
   font-weight: normal;
   font-style: normal;
   font-size: 16px;
@@ -204,7 +206,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Muli", sans-serif;
+  font-family: 'Jeju Gothic', serif;
   color: #072366;
   margin-top: 0px;
   font-style: normal;
@@ -214,7 +216,7 @@ h6 {
 
 /* line 24, C:/Users/HP/Desktop/jun-2020/277.Charity _Non-profit/assets/scss/_common.scss */
 p {
-  font-family: "Muli", sans-serif;
+  font-family: 'Nanum Gothic', serif;
   color: #10285d;
   font-size: 16px;
   line-height: 30px;
@@ -497,7 +499,7 @@ hr {
 /* line 245, C:/Users/HP/Desktop/jun-2020/277.Charity _Non-profit/assets/scss/_common.scss */
 .btn {
   background: #09cc7f;
-  font-family: "Muli", sans-serif;
+  font-family: 'Nanum Gothic', serif;
   text-transform: capitalize;
   padding: 27px 44px;
   color: #fff;
@@ -3848,7 +3850,7 @@ hr {
 /* line 112, C:/Users/HP/Desktop/jun-2020/277.Charity _Non-profit/assets/scss/_about.scss */
 .about-details .about-details-cap h4 {
   font-size: 30px;
-  font-family: "Muli", sans-serif;
+  font-family: 'Nanum Gothic', serif;
   font-weight: 700;
   margin-bottom: 30px;
   color: #000a2d;
@@ -3924,7 +3926,7 @@ hr {
   -moz-transition: 0.2s;
   -o-transition: 0.2s;
   transition: 0.2s;
-  font-family: "Muli", sans-serif;
+  font-family: 'Nanum Gothic', serif;
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
@@ -4348,7 +4350,7 @@ hr {
   font-weight: 700;
   line-height: 1;
   display: block;
-  font-family: "Muli", sans-serif;
+  font-family: 'Nanum Gothic', serif;
   margin-bottom: 10px;
 }
 
@@ -4730,7 +4732,7 @@ hr {
   padding: 0;
   font-weight: 300;
   display: block;
-  font-family: "Muli", sans-serif;
+  font-family: 'Nanum Gothic', serif;
   color: #fff;
 }
 
@@ -5142,7 +5144,7 @@ hr {
   color: #3a3a3a;
   text-transform: uppercase;
   font-size: 14px;
-  font-family: "Muli", sans-serif;
+  font-family: 'Nanum Gothic', serif;
   color: #3a3a3a;
 }
 
@@ -6794,7 +6796,7 @@ hr {
   color: #fff;
   font-weight: 900;
   margin-bottom: 0;
-  font-family: "Muli", sans-serif;
+  font-family: 'Nanum Gothic', serif;
   text-transform: capitalize;
 }
 
@@ -6862,7 +6864,7 @@ hr {
   cursor: pointer;
   display: block;
   float: left;
-  font-family: "Muli", sans-serif;
+  font-family: 'Nanum Gothic', serif;
   font-weight: normal;
   width: 100% !important;
   /* height: 42px; */

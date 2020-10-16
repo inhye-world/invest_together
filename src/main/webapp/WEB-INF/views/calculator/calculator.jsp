@@ -26,37 +26,7 @@
 
   <!-- Custom styles for this page -->
   <link href="resources/sb_admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  
-  
-  <style>
-
-  	.tableTitle{
-  		width: 200px;
-  	}
-
-  	.ctn {
-  		padding: 100px;
-  	}
-  	
-  	#inputInfo, #resultTable{
-  		margin: 20px 10px; 
-  	}
-  	
-  	#inputInfo td, #resultTable td{
-  		height: 40px;
-  	}
-  	
-  	#inputName{
-  		width: 120px;
-  	}
-  	
-  	.tableContent{
-  		vertical-align: top;
-  	}
-
-  </style>
-
-
+  <link href="resources/calculator.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>

@@ -10,22 +10,24 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="../resources/main/assets/img/favicon.ico">
+
+    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
 
 	<!-- CSS here -->
-	<link rel="stylesheet" href="../resources/main/assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../resources/main/assets/css/owl.carousel.min.css">
-	<link rel="stylesheet" href="../resources/main/assets/css/slicknav.css">
-    <link rel="stylesheet" href="../resources/main/assets/css/flaticon.css">
-    <link rel="stylesheet" href="../resources/main/assets/css/progressbar_barfiller.css">
-    <link rel="stylesheet" href="../resources/main/assets/css/gijgo.css">
-    <link rel="stylesheet" href="../resources/main/assets/css/animate.min.css">
-    <link rel="stylesheet" href="../resources/main/assets/css/animated-headline.css">
-	<link rel="stylesheet" href="../resources/main/assets/css/magnific-popup.css">
-	<link rel="stylesheet" href="../resources/main/assets/css/fontawesome-all.min.css">
-	<link rel="stylesheet" href="../resources/main/assets/css/themify-icons.css">
-	<link rel="stylesheet" href="../resources/main/assets/css/slick.css">
-	<link rel="stylesheet" href="../resources/style.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/slicknav.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/flaticon.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/progressbar_barfiller.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/gijgo.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/animate.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/animated-headline.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/magnific-popup.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/fontawesome-all.min.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/themify-icons.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/slick.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/style.css">
+
 	
 </head>
 <body>
@@ -42,7 +44,8 @@
                             <div class="single-footer-caption mb-30">
                                 <div class="footer-tittle">
                                     <div class="footer-logo mb-20">
-                                        <a href="/into"><img src="../resources/main/assets/img/logo/logo2_footer.png" alt=""></a>
+
+                                        <a href="/into"><img src="${pageContext.request.contextPath}/resources/main/assets/img/logo/logo2_footer.png" alt=""></a>
                                     </div>
                                 </div>
                             </div>
@@ -91,8 +94,10 @@
                                             class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
                                             onblur="this.placeholder = ' Email Address '">
                                             <div class="form-icon">
-                                                <button type="submit" name="submit" id="newsletter-submit"
-                                                class="email_icon newsletter-submit button-contactForm"><img src="../resources/main/assets/img/gallery/form.png" alt=""></button>
+                                                <button type="submit" name="submit" id="newsletter-submit" class="email_icon newsletter-submit button-contactForm">
+                                                <img src="${pageContext.request.contextPath}/resources/main/assets/img/gallery/form.png" alt="">
+                                                </button>
+
                                             </div>
                                             <div class="mt-10 info"></div>
                                         </form>
@@ -114,47 +119,46 @@
     </div>
 
     <!-- JS here -->
-
-    <script src="../resources/main/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main/assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <!-- Jquery, Popper, Bootstrap -->
-    <script src="../resources/main/assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="../resources/main/assets/js/popper.min.js"></script>
-    <script src="../resources/main/assets/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main/assets/js/popper.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main/assets/js/bootstrap.min.js"></script>
     <!-- Jquery Mobile Menu -->
-    <script src="../resources/main/assets/js/jquery.slicknav.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main/assets/js/jquery.slicknav.min.js"></script>
 
     <!-- Jquery Slick , Owl-Carousel Plugins -->
-    <script src="../resources/main/assets/js/owl.carousel.min.js"></script>
-    <script src="../resources/main/assets/js/slick.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main/assets/js/owl.carousel.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main/assets/js/slick.min.js"></script>
     <!-- One Page, Animated-HeadLin -->
-    <script src="../resources/main/assets/js/wow.min.js"></script>
-    <script src="../resources/main/assets/js/animated.headline.js"></script>
-    <script src="../resources/main/assets/js/jquery.magnific-popup.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main/assets/js/wow.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main/assets/js/animated.headline.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main/assets/js/jquery.magnific-popup.js"></script>
 
     <!-- Date Picker -->
-    <script src="../resources/main/assets/js/gijgo.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main/assets/js/gijgo.min.js"></script>
     <!-- Nice-select, sticky -->
 
-    <script src="../resources/main/assets/js/jquery.sticky.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main/assets/js/jquery.sticky.js"></script>
     <!-- Progress -->
-    <script src="../resources/main/assets/js/jquery.barfiller.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main/assets/js/jquery.barfiller.js"></script>
     
     <!-- counter , waypoint,Hover Direction -->
-    <script src="../resources/main/assets/js/jquery.counterup.min.js"></script>
-    <script src="../resources/main/assets/js/waypoints.min.js"></script>
-    <script src="../resources/main/assets/js/jquery.countdown.min.js"></script>
-    <script src="../resources/main/assets/js/hover-direction-snake.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main/assets/js/jquery.counterup.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main/assets/js/waypoints.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main/assets/js/jquery.countdown.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main/assets/js/hover-direction-snake.min.js"></script>
 
     <!-- contact js -->
-    <script src="../resources/main/assets/js/contact.js"></script>
-    <script src="../resources/main/assets/js/jquery.form.js"></script>
-    <script src="../resources/main/assets/js/jquery.validate.min.js"></script>
-    <script src="../resources/main/assets/js/mail-script.js"></script>
-    <script src="../resources/main/assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main/assets/js/contact.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main/assets/js/jquery.form.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main/assets/js/jquery.validate.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main/assets/js/mail-script.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main/assets/js/jquery.ajaxchimp.min.js"></script>
     
     <!-- Jquery Plugins, main Jquery -->	
-    <script src="../resources/main/assets/js/plugins.js"></script>
-    <script src="../resources/main/assets/js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main/assets/js/plugins.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main/assets/js/main.js"></script>
     
     </body>
 </html>

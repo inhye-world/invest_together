@@ -37,7 +37,7 @@
 	<jsp:include page="../main/header.jsp"/>
 		<div class="member-container page-modify">			
 			<h1 class="usermodify-title">회원정보 수정</h1>
-		
+			<br>
 			<table class="usermodify-table">
 
 				<sec:authorize access="isAuthenticated()">
@@ -145,6 +145,7 @@
 				<button onclick = "location.href = ${pageContext.request.contextPath}/"  type="button" class="usermodify-cancel">나가기</button>
 			</div>
 		</div>
+		<br><br><br>
 		<script>
 			
 			$(document).ready(function (){

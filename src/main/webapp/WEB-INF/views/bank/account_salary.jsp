@@ -10,7 +10,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
 	<link href="resources/sb_admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 	<script src="resources/sb_admin/vendor/jquery/jquery.min.js"></script>
@@ -68,7 +68,7 @@
 	<body>
 		
 			<div class="wrapper">
-			<jsp:include page="../main/header.jsp"/>
+		 	 <jsp:include page="../main/header.jsp"/> 
 			
 				<div class="container" >
 				
@@ -101,7 +101,7 @@
 			             </div><br>
 					<div class="account-list">
 						<div >
-							<button id="modify" class="btn">수정</button>
+							<button id="modifySalT" class="btn">수정</button>
 						</div> 
 						<form:form id="salary-modify-form" name="salary-modify-form" method = "post">
 							<table id="account-table" class="table table-bordered" width="100%" cellspacing="0">
@@ -157,9 +157,12 @@
 				</div>
 			</div>
 		</div>
+		
 		<script type="text/javascript">
-			$("#modify").click(function(){
-
+			$("#modifySalT").click(function(){
+				
+				var tdArr = new Array();
+				
 				for(var m=0; m<count; ++m){
 					$("#salary-"+m).find('input').attr("disabled", false);
 				    $("#salary-"+m).find('select').attr("disabled", false); 
@@ -243,5 +246,5 @@
 		</body>
 		
 			<br><br><br><br>
-		<jsp:include page="../include/footer.jsp"/>
+		<jsp:include page="../main/footer.jsp"/>
 </html>

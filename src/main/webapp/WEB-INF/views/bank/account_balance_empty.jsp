@@ -4,24 +4,17 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>같이투자 : 가계부</title>
+	<link href="resources/error.css" rel="stylesheet" type="text/css">
 </head>
 	<body>
-		
-		<div class="wrapper">
-		<jsp:include page="../include/header_temp.jsp"/>
-			
-			<div class="container">
-				<a class="mainA" href="/into"> 같이투자 API TEST</a>
-				<br><br>
-				
-				<h2>-자산-</h2>
-				<br><br><br><br><br>
-				
-				<h2>등록된 계좌가 없습니다 </h2>
-				<h2>마이페이지에서 계좌 추가 후 이용해주세요 </h2>
-				<br><br><br><br><br><br>
+		<jsp:include page="../main/header.jsp"/>
+			<div class="contain">	
+				<div>			
+					<h3>등록된 계좌가 없습니다.</h3>
+					<p>마이페이지에서 계좌 추가 후 이용해주세요.</p>
+				</div>
 			</div>
-		</div>
+		<jsp:include page="../main/footer.jsp"/>
 	</body>
 </html>

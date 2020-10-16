@@ -13,24 +13,13 @@
 		
 		div.member-container {
 		    min-height: 900px;
-		    padding: 50px 50px 0px 50px;
+		   /*  padding: 50px 50px 0px 50px; */
 		    background-color: #fff;
-		    width: 980px;
+		    /* width: 980px; */
 		    height: 600px;
    	 		display: table-cell;
    	 		margin: auto;
 		}
-		
-		 div.member-container1 {
-		    min-height: 900px;
-		    /* padding: 50px 50px 0px 50px; */
-		    background-color: #fff;
-		    width: 980px;
-		    height: 600px;
-   	 		display: table-cell;
-   	 		margin: auto;
-		} 
-		
 		
 		.usermodify-title {
 		    margin: 0 0 10px;
@@ -51,22 +40,7 @@
     		border-bottom: 1px solid #ddd;
 		}
 		
-		.usermodify-table1 th {
-			width: 100px;
-		    background-color: #eef1f8;
-		    text-align: left;
-		    white-space: nowrap;
-		    padding: 14px 30px;
-    		border-bottom: 1px solid #ddd;
-		}
-		
 		.usermodify-table {
-			width: 100%;
-		    border-top: 2px solid #969696;
-		    border-collapse: collapse;
-		    position: relative;
-		}
-		.usermodify-table1 {
 			width: 100%;
 		    border-top: 2px solid #969696;
 		    border-collapse: collapse;
@@ -78,22 +52,8 @@
 			padding: 14px 30px;
     		border-bottom: 1px solid #ddd;
 		}
-		.usermodify-table1 td {
-			border-left: 1px solid #ddd;
-			padding: 14px 30px;
-    		border-bottom: 1px solid #ddd;
-		}
 				
 		.usermodify-table .usermodify-pw th{
-			border-collapse: collapse;
-			font-weight: normal;
-		    padding: 5px 6px 11px 0;
-		    background-color: #fff;
-		    white-space: nowrap;
-		    width: 1%;
-		    border-bottom: 0;
-		}
-		.usermodify-table1 .usermodify-pw th{
 			border-collapse: collapse;
 			font-weight: normal;
 		    padding: 5px 6px 11px 0;
@@ -125,29 +85,13 @@
 		
 		.usermodify-cancel{
 			float: left;
-   			margin-left: 555px; 
+   			margin-left: 505px; 
    			color:black;
    			border: 1px solid #898989;
    			border-radius: 3px;
    			cursor:pointer;
 		}
-		.usermodify-cancel1{
-			float: left;
-   			 margin-left: 505px;  
-   			color:black;
-   			border: 1px solid #898989;
-   			border-radius: 3px;
-   			cursor:pointer;
-		}
-		
 		.usermodify-table{
-			border-collapse: collapse;
-			border-left: 0;
-			width: 100%;
-		    border-top: 2px solid #969696;
-		    border-collapse: collapse;
-		}
-		.usermodify-table1{
 			border-collapse: collapse;
 			border-left: 0;
 			width: 100%;
@@ -182,7 +126,6 @@
 		    margin-top: 10px;
 		    text-align: right;
 		    color: #97979f;
-		    
 		}
 		
 		.usermodify-secession-btn {
@@ -191,19 +134,9 @@
 		    background-color: #EEEFEA;
 		  	border-radius:10px;
 		  	cursor:pointer;
-		 
+		  	margin: 0px -300px 0px 10px;
 		}
-		
-		.usermodify-secession-btn1 {
-		    border-color: #898989;
-		    color: black;
-		    background-color: #EEEFEA;
-		  	border-radius:10px;
-		  	cursor:pointer;
-		 
-		}
-		
-		
+
 		.usermodify-secession-btn {
 		    /* display: inline-block; */
 		    padding: 3px 6px;
@@ -213,35 +146,15 @@
 		    letter-spacing: -1px;
 		    
 		}
-		.usermodify-secession-btn1 {
-		    /* display: inline-block; */
-		    padding: 3px 6px;
-		    border-radius: 2px;
-		    font-size: 14px;
-		    line-height: 13px;
-		    letter-spacing: -1px;
-		    
-		}
-		
+
 		.usermodify-secession-btn{
 			box-sizing: border-box;
 		    border: 1px solid #898989;
 		    text-decoration: none;
 		    vertical-align: middle;
 		    text-align: center;
-		     margin: 0px 520px 0px 10px; 
-		   
 		}
-		.usermodify-secession-btn1{
-			box-sizing: border-box;
-		    border: 1px solid #898989;
-		    text-decoration: none;
-		    vertical-align: middle;
-		    text-align: center;
-		    /* margin: 0px 520px 0px 10px; */
-		   
-		}
-		
+
 		tr {
 		    display: table-row;
 		    vertical-align: inherit;

@@ -26,13 +26,6 @@ public class UserController {
 	private UserService service;
 	private OpenBankingService open;
 	
-	@RequestMapping("/myPage")
-	public String myPage() {
-		log.info("UserController - myPage()");
-			
-		return "user/myPage";
-	}
-	
 	@RequestMapping("/addAccount")
 	public String addAccount(Model model) {
 		log.info("UserController - addAccount()");

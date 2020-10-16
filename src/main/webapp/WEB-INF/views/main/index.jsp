@@ -7,6 +7,11 @@
 <!doctype html>
 <html class="no-js">
 <head>
+	<style>
+		.point{
+			cursor:pointer;
+		}
+	</style>
 
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
@@ -72,12 +77,9 @@
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">                                                                                          
-
-                                                <li><a href="accountBalance">자산</a></li>
-                                                <li><a href="#" id="accountTransaction">가계부</a></li>
-                                                <li><a href="#" id="salaryList">월급관리</a></li>
-                                                <li><a href="stockBondTable">주식</a></li>
-                                                <li><a href="bond">채권</a></li>
+												
+                                                <li class="point"><a id="accountTransaction">가계부</a></li>
+                                                <li class="point"><a id="salaryList">월급관리</a></li>
                                                 <li><a href="assets">자산</a></li>
                                                 <li><a href="calculator">계산기</a>
                                                 	<ul class="submenu">
@@ -89,12 +91,21 @@
                                                 <li><a href="blog.html">구독목록</a></li>
                                                 <li><a href="leaderboards">투자랭킹</a></li>
                                                 <li><a href="boardList">게시판</a></li>
-                                                <sec:authorize access="isAuthenticated()">
-												    <li><a href="myPage">마이페이지</a>
+
+                                                <sec:authorize access="hasRole('ROLE_USER')">
+												    <li><a id="modify">마이페이지</a>
 												    	<ul class="submenu">
 	                                                        <li><a href="addAccount">계좌 추가</a></li>
 	                                                        <li><a href="modify">회원정보수정</a></li>
 	                                                        <li><a href="#">구매/입금내역</a></li>
+                                                    	</ul>
+												    </li>
+												</sec:authorize>
+
+												<sec:authorize access="hasRole('ROLE_ADMIN')">
+												    <li><a href="profits-admin" id="profits-admin">관리자모드</a>
+												    	<ul class="submenu">
+	                                                        <li><a href="profits-admin">매출관리</a></li>
                                                     	</ul>
 												    </li>
 												</sec:authorize>
@@ -130,17 +141,7 @@
         </div>
         <!-- Header End -->
     </header>
-    
-    <script>
-	    $(function() {
-			$("#accountTransaction").attr("onclick", "location.href='accountTransaction-"+year+"-"+month+"'");
-		});
-    
-	    $(function() {
-			$("#salaryList").attr("onclick", "location.href='salaryList-"+year+"-"+month+"'");
-		});
-   </script>
-    
+   
     <!-- header end -->
     
     <main>
@@ -200,7 +201,7 @@
                     <!-- Section Tittle -->
                     <div class="section-tittle text-center mb-80">
                         <span>What we are doing</span>
-                        <h2>계좌 연동과 지출 분석으로 </br> 자산 관리를 편리하게!</h2>
+                        <h2>계좌 연동과 지출 분석으로 <br> 자산 관리를 편리하게!</h2>
                     </div>
                 </div>
             </div>
@@ -211,7 +212,7 @@
                             <span class="flaticon-null-1"></span>
                         </div>
                         <div class="cat-cap">
-                            <h5><a href="services.html">가계부</a></h5>
+                            <h5><a href="accountBalance">가계부</a></h5>
                             <p>계좌를 연동해서 지출 내역을 관리하세요. </p>
                         </div>
                     </div>

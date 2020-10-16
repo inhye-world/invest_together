@@ -10,15 +10,15 @@
 	
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 	
-	<link href="resources/error.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="resources/main/assets/css/backbutton.css">
+	<link href="${pageContext.request.contextPath}/resources/error.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/backbutton.css">
 
 	<body>
 		<div class="wrapper">
 			<div class="contain col-xl-5 col-lg-5">
 				<div>
 				<header>
-					<img src="resources/main/assets/img/error.png">
+					<img src="${pageContext.request.contextPath}/resources/main/assets/img/error.png">
 				</header>
 
 				<h3>

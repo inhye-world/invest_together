@@ -5,15 +5,16 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>같이투자 : 가계부</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 	<body>
 		
+		
 		<div class="wrapper">
-		<jsp:include page="../include/header.jsp"/>
+		<jsp:include page="../main/header.jsp"/>
 			
-			<div class="container">
+			<div class="contain">
 				<a class="mainA" href="/into"> 같이투자 API TEST</a>
 				<br><br>
 				
@@ -43,7 +44,7 @@
 					</script>
 				</c:forEach>
 			</div>
-			<jsp:include page="../include/footer.jsp"/>	
+			<jsp:include page="../main/footer.jsp"/>	
 		</div>
 		
 		<script>

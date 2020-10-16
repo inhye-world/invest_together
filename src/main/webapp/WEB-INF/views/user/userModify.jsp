@@ -13,11 +13,15 @@
 	<link href="resources/ranking.css" rel="stylesheet" type="text/css">
 	
 	<style>
-		.member-web-adapter{
+		/* .member-web-adapter{
     		margin: 150px 200px 200px 500px;
-    	}
+    	} */
     	.usermodify-table th {
     		font-family: "Lucida Console", Courier, monospace;
+    		margin:center;
+    	}
+    	.passwordConfirmForm{
+    	margin: 150px 200px 200px 700px;
     	}
 
 	</style>
@@ -32,7 +36,8 @@
 				<sec:authorize access="isAuthenticated()">
 				<sec:authentication var="principal" property="principal"/>
 				<form:form class="passwordConfirmForm" action="userModify" method="post">
-				<h1 class="usermodify-auth-title">회원정보확인</h1>			
+				<h1 class="usermodify-auth-title">회원정보확인</h1>	
+						
           			<div>
             	  		<ul class="ranking-notice">
             	  		<li><strong class="usermodify-auth-nickname">${principal.dto.nickname}</strong>
