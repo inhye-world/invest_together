@@ -13,9 +13,9 @@
 		
 		div.member-container {
 		    min-height: 900px;
-		    padding: 50px;
+		   /*  padding: 50px 50px 0px 50px; */
 		    background-color: #fff;
-		    width: 980px;
+		    /* width: 980px; */
 		    height: 600px;
    	 		display: table-cell;
    	 		margin: auto;
@@ -63,23 +63,34 @@
 		    border-bottom: 0;
 		}
 		
-		.usermodify-id-change-btn, .usermodify-nickname-change-btn, .usermodify-phone-change-btn, .usermodify-email-change-btn, .usermodify-password-submit, .usermodify-cancel, .usermodify-id-change-cancel, .usermodify-id-change-auth-send, .usermodify-nickname-change-cancel, .usermodify-nickname-change-auth-send, .usermodify-phone-change-cancel, .usermodify-phone-change-auth-send, .usermodify-email-change-cancel, .usermodify-email-change-auth-send {
+		.usermodify-id-change-btn, .usermodify-nickname-change-btn, .usermodify-phone-change-btn, .usermodify-email-change-btn, .usermodify-password-submit, .usermodify-id-change-cancel, .usermodify-nickname-change-cancel, .usermodify-phone-change-cancel, .usermodify-email-change-cancel {
 		    border-color: #bcbfc6;
 		    color: #777;
 		    background-color: #fafbf6;
 		    background-image: linear-gradient(#fff,#f1f1f1);
-		    
+		    background-color: #193B66;
+		    border-radius: 3px;
+		    cursor:pointer;
 		}
 		
-		.usermodify-id-change-btn, .usermodify-nickname-change-btn, .usermodify-phone-change-btn, .usermodify-email-change-btn, .usermodify-password-submit, .usermodify-cancel, .usermodify-id-change-cancel, .usermodify-id-change-auth-send, .usermodify-nickname-change-cancel, .usermodify-nickname-change-auth-send, .usermodify-phone-change-cancel, .usermodify-phone-change-auth-send, .usermodify-email-change-cancel, .usermodify-email-change-auth-send {
+		.usermodify-id-change-btn, .usermodify-nickname-change-btn, .usermodify-phone-change-btn, .usermodify-email-change-btn, .usermodify-password-submit, .usermodify-id-change-cancel, .usermodify-nickname-change-cancel, .usermodify-phone-change-cancel, .usermodify-email-change-cancel, .usermodify-email-change-auth-send {
 		    display: inline-block;
 		    box-sizing: border-box;
 		    border: 1px solid #898989;
 		    text-decoration: none;
 		    vertical-align: middle;
 		    text-align: center;
+		    cursor:pointer;
 		}
 		
+		.usermodify-cancel{
+			float: left;
+   			margin-left: 505px; 
+   			color:black;
+   			border: 1px solid #898989;
+   			border-radius: 3px;
+   			cursor:pointer;
+		}
 		.usermodify-table{
 			border-collapse: collapse;
 			border-left: 0;
@@ -119,19 +130,23 @@
 		
 		.usermodify-secession-btn {
 		    border-color: #898989;
-		    color: #fff;
-		    background-color: #a8a8a8;
+		    color: black;
+		    background-color: #EEEFEA;
+		  	border-radius:10px;
+		  	cursor:pointer;
+		  	margin: 0px -300px 0px 10px;
 		}
-		
+
 		.usermodify-secession-btn {
-		    display: inline-block;
+		    /* display: inline-block; */
 		    padding: 3px 6px;
 		    border-radius: 2px;
-		    font-size: 11px;
+		    font-size: 14px;
 		    line-height: 13px;
 		    letter-spacing: -1px;
+		    
 		}
-		
+
 		.usermodify-secession-btn{
 			box-sizing: border-box;
 		    border: 1px solid #898989;
@@ -139,7 +154,7 @@
 		    vertical-align: middle;
 		    text-align: center;
 		}
-		
+
 		tr {
 		    display: table-row;
 		    vertical-align: inherit;
@@ -225,44 +240,74 @@
     		font-size: 14px;
 		}
 		
-		.usermodify-nickname-change-auth-send, .usermodify-phone-change-auth-send, .usermodify-id-change-auth-send, .usermodify-email-change-auth-send{
+		.usermodify-id-change-auth-send,.usermodify-nickname-change-auth-send,.usermodify-phone-change-auth-send{
 			border-color: #0185da;
-    		color: #fff;
-    		background-color: #0e9ae9;
-    		background-image: linear-gradient(#20b3f8,#0185d8);
-    		display: block;
-		    margin-top: 7px;
-		}		
+		    color: #fff;
+		    background-color: #193B66;
+		  	display: inline-block;
+			box-sizing: border-box;
+			border: 1px solid #B9C6BC; 
+			text-decoration: none;
+			vertical-align: middle;
+			text-align: center;
+			width:60px;
+			height:30px;
+			font-family: "Lucida Console", Courier, monospace;
+			border-radius: 3px;
+			cursor:pointer;
+		}	
+		.usermodify-email-change-auth-send{
+			border-color: #0185da;
+		    color: #fff;
+		    background-color: #193B66;
+		  	display: inline-block;
+			box-sizing: border-box;
+			border: 1px solid #B9C6BC; 
+			text-decoration: none;
+			vertical-align: middle;
+			text-align: center;
+			width:120px;
+			height:30px;
+			font-family: "Lucida Console", Courier, monospace;
+		}	
 		
 		.usermodify-nickname-if, .usermodify-phone-if, .usermodify-id-if, .usermodify-email-if {
 			margin-right: 5px;
 			margin-bottom: 5px;
 		}
 		
-		.usermodify-auth-submit {
+		 #usermodify-auth-submit {
 			border-color: #0185da;
 		    color: #fff;
-		    background-color: #0e9ae9;
-		    background-image: linear-gradient(#20b3f8,#0185d8);
+		    background-color: #193B66;
+		    /* background-image: linear-gradient(#20b3f8,#0185d8); */
 		    display: inline-block;
 			box-sizing: border-box;
-			border: 1px solid #0185da;
+			 border: 1px solid #B9C6BC; 
 			text-decoration: none;
 			vertical-align: middle;
 			text-align: center;
-		}
+			width:60px;
+			height:40px;
+			font-family: "Lucida Console", Courier, monospace;
+			cursor:pointer;
+		} 
 		
 		.usermodify-auth-cancel {
 			border-color: #828282;
 		    color: #fff;
 		    background-color: #999ca5;
-		    background-image: linear-gradient(#a8abba,#8c8f98);
+		    /* background-image: linear-gradient(#a8abba,#8c8f98); */
 			display: inline-block;
 		    box-sizing: border-box;
-		    border: 1px solid #828282;
+		    border: 1px solid #F2EADF;
 		    text-decoration: none;
 		    vertical-align: middle;
 		    text-align: center;
+		    width:60px;
+			height:40px;
+			font-family: "Lucida Console", Courier, monospace;
+			cursor:pointer;
 		}
 		
 		.usermodify-auth-title {
@@ -270,7 +315,7 @@
 		    font-size: 30px;
 		    font-family: "맑은 고딕", "malgun gothic", sans-serif;
 		    font-weight: bold;
-		    color: rgb(51, 51, 51);
+		    color: #032380;
 		    letter-spacing: -1px;
 		}
 		
@@ -280,12 +325,27 @@
 		}
 		
 		.usermodify-table {
+			width: 80%;
+		    border-top: 2px solid #969696;
+		    border-collapse: collapse;
+		}
+		
+		.usermodify-table1 {
 			width: 100%;
 		    border-top: 2px solid #969696;
 		    border-collapse: collapse;
 		}
 		
 		.usermodify-table th {
+		    width: 100px;
+		    background-color: #eef1f8;
+		    text-align: left;
+		    white-space: nowrap;		    
+		    padding: 14px 30px;
+   			border-bottom: 1px solid #ddd;
+		}
+		
+		.usermodify-table1 th {
 		    width: 100px;
 		    background-color: #eef1f8;
 		    text-align: left;

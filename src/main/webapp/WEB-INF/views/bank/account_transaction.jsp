@@ -14,7 +14,7 @@
 </head>
 	<body>
 		<div class="wrapper">
-		<jsp:include page="../include/header.jsp"/>
+		<jsp:include page="../include/header2.jsp"/>
 		
 			<div class="container">
 				<a class="mainA" href="/into"> 같이투자 API TEST</a>

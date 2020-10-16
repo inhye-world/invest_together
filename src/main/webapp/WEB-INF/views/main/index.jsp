@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -6,6 +7,11 @@
 <!doctype html>
 <html class="no-js">
 <head>
+	<style>
+		.point{
+			cursor:pointer;
+		}
+	</style>
 
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
@@ -35,6 +41,7 @@
 	<link rel="stylesheet" href="resources/main/assets/css/style.css">
 	
 </head>
+
 <body>
     <!-- ? Preloader Start -->
     <div id="preloader-active">
@@ -70,8 +77,9 @@
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">                                                                                          
-                                                <li><a href="accountBalance">가계부</a></li>
-                                                <li><a href="program.html">월급관리</a></li>
+												
+                                                <li class="point"><a id="accountTransaction">가계부</a></li>
+                                                <li class="point"><a id="salaryList">월급관리</a></li>
                                                 <li><a href="assets">자산</a></li>
                                                 <li><a href="calculator">계산기</a>
                                                 	<ul class="submenu">
@@ -83,6 +91,7 @@
                                                 <li><a href="subList" id="subList">구독목록</a></li>
                                                 <li><a href="leaderboards">투자랭킹</a></li>
                                                 <li><a href="boardList">게시판</a></li>
+
                                                 <sec:authorize access="hasRole('ROLE_USER')">
 												    <li><a id="modify">마이페이지</a>
 												    	<ul class="submenu">
@@ -92,6 +101,7 @@
                                                     	</ul>
 												    </li>
 												</sec:authorize>
+
 												<sec:authorize access="hasRole('ROLE_ADMIN')">
 												    <li><a href="profits-admin" id="profits-admin">관리자모드</a>
 												    	<ul class="submenu">
@@ -131,7 +141,7 @@
         </div>
         <!-- Header End -->
     </header>
-    
+   
     <!-- header end -->
     
     <main>
@@ -191,7 +201,7 @@
                     <!-- Section Tittle -->
                     <div class="section-tittle text-center mb-80">
                         <span>What we are doing</span>
-                        <h2>계좌 연동과 지출 분석으로 </br> 자산 관리를 편리하게!</h2>
+                        <h2>계좌 연동과 지출 분석으로 <br> 자산 관리를 편리하게!</h2>
                     </div>
                 </div>
             </div>
@@ -502,5 +512,23 @@
     <script src="./resources/main/assets/js/plugins.js"></script>
     <script src="./resources/main/assets/js/main.js"></script>
     
+    <script>
+			function numberPad(n, width) {
+			    n = n + '';
+			    return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;
+			}	
+		
+			var date = new Date();
+			var year = date.getFullYear();
+			var month = numberPad((date.getMonth()+1), 2);
+			
+			$(function() {
+				$("#accountTransaction").attr("onclick", "location.href='accountTransaction-"+year+"-"+month+"'");
+			});
+		
+			$(function() {
+				$("#salaryList").attr("onclick", "location.href='salaryList-"+year+"-"+month+"'");
+			});
+	</script>
     </body>
 </html>

@@ -37,10 +37,10 @@ import lombok.extern.log4j.Log4j;
 public class OpenBankingService {
 	
 
-	private final static String O_CLIENT_ID = "TmlHvtfDp4g3a4KxAqPlexXCgmUz7V5xKd8hNnSd";
-	private final static String O_CLIENT_SECRET= "540RGNZttoNAaI3K1CvL36vlnPlltJsLL16I9X5z";
+	private final static String O_CLIENT_ID = "XfHewLwJvDm2e7VMsutt5MERpPSiCX2m59dRQtqk";
+	private final static String O_CLIENT_SECRET= "gCHdoLWsaqZl7O9M3XAkVM7WmhBr3ITTxBhyoosp";
 	private final static String O_REDIRECT_URI = "http://localhost:8282/into/user/addAccount";
-	private final static String O_ORGANIZATION_CODE = "T991648810";
+	private final static String O_ORGANIZATION_CODE = "T991650260";
 
 	
 	public String getUrl() {

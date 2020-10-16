@@ -10,16 +10,33 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
 	<link href="resources/user_modify.css" rel="stylesheet" type="text/css">
+	<link href="../resources/temporary.css" rel="stylesheet" type="text/css">
 	
 	<!-- ajax사용 위해 csrf설정 -->
   	<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
   	<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
 	
+	<style type="text/css">
+		.usermodify-title{
+			margin-left: 500px;
+   			margin-top: 50px;
+   			color: #032380;
+		}
+		
+		.usermodify-table{
+			margin-left: 500px;
+		}
+		
+		 th{
+			font-family: "Lucida Console", Courier, monospace;
+		} 
+	</style>
 </head>
 	<body>
-	<jsp:include page="../include/header.jsp"/>
+	<jsp:include page="../main/header.jsp"/>
 		<div class="member-container page-modify">			
 			<h1 class="usermodify-title">회원정보 수정</h1>
+			<br>
 			<table class="usermodify-table">
 				<sec:authorize access="isAuthenticated()">
 				<sec:authentication var="principal" property="principal"/>
@@ -34,7 +51,7 @@
 						</div>	
 					</td>
 				</tr>
-				<br>
+				
 				<tr>
 					<th scope="row">닉네임</th>
 					<td>
@@ -49,7 +66,7 @@
 						</div>	
 					</td>
 				</tr>
-				<br>
+				
 				<tr>
 					<th scope="row">휴대폰 번호</th>
 					<td>
@@ -64,7 +81,7 @@
 						</div>	
 					</td>
 				</tr>
-				<br>
+			
 				<tr>
 					<th scope="row">이름</th>
 					<td>
@@ -73,7 +90,7 @@
 						</div>	
 					</td>
 				</tr>
-				<br>
+				
 				<tr>
 					<th scope="row">이메일</th>
 					<td>
@@ -82,17 +99,18 @@
 						</div>	
 					</td>
 				</tr>
-				<br>	
+					
 			</sec:authorize>
 			</table>
 			<div class="usermodify-secession">
 				 탈퇴를 원하시면 우측의 회원탈퇴 버튼을 눌러주세요.
 				<a class="usermodify-secession-btn">회원탈퇴</a>
-			</div>
-			<div class="usermodify-foot">
+			
+			<!-- <div class="usermodify-foot"> -->
 				<button onclick = "location.href = ${pageContext.request.contextPath}/"  type="button" class="usermodify-cancel">나가기</button>
 			</div>
 		</div>
+		<br>
 		<script>
 			
 			$(document).ready(function (){
@@ -216,6 +234,6 @@
 			});
 
 		</script>
-		<jsp:include page="../include/footer.jsp"/>
+		<jsp:include page="../main/footer.jsp"/>
 	</body>
 </html>

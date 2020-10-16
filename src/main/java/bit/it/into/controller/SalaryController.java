@@ -55,6 +55,7 @@ public class SalaryController {
 
 		if (authentication == null) {
 			return "redirect:/loginForm";
+
 		}
 
 		CustomUser user = (CustomUser) authentication.getPrincipal();

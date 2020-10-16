@@ -10,6 +10,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
+
     <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
 
 	<!-- CSS here -->
@@ -26,6 +27,7 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/themify-icons.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/slick.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/style.css">
+
 	
 </head>
 <body>
@@ -42,6 +44,7 @@
                             <div class="single-footer-caption mb-30">
                                 <div class="footer-tittle">
                                     <div class="footer-logo mb-20">
+
                                         <a href="/into"><img src="${pageContext.request.contextPath}/resources/main/assets/img/logo/logo2_footer.png" alt=""></a>
                                     </div>
                                 </div>
@@ -91,8 +94,10 @@
                                             class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
                                             onblur="this.placeholder = ' Email Address '">
                                             <div class="form-icon">
-                                                <button type="submit" name="submit" id="newsletter-submit"
-                                                class="email_icon newsletter-submit button-contactForm"><img src="${pageContext.request.contextPath}/resources/main/assets/img/gallery/form.png" alt=""></button>
+                                                <button type="submit" name="submit" id="newsletter-submit" class="email_icon newsletter-submit button-contactForm">
+                                                <img src="${pageContext.request.contextPath}/resources/main/assets/img/gallery/form.png" alt="">
+                                                </button>
+
                                             </div>
                                             <div class="mt-10 info"></div>
                                         </form>
@@ -114,7 +119,6 @@
     </div>
 
     <!-- JS here -->
-
     <script src="${pageContext.request.contextPath}/resources/main/assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <!-- Jquery, Popper, Bootstrap -->
     <script src="${pageContext.request.contextPath}/resources/main/assets/js/vendor/jquery-1.12.4.min.js"></script>

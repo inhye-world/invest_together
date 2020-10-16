@@ -16,6 +16,12 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 
+	<style>
+		.point{
+			cursor:pointer;
+			}
+	</style>
+	
 	<!-- CSS here -->
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/owl.carousel.min.css">
@@ -39,6 +45,8 @@
 			});
 		});
 	</script>
+	
+	
 	
 </head>
 <body>
@@ -75,11 +83,11 @@
                                     <!-- Main-menu -->
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
-                                            <ul id="navigation">                                                                                          
-                                                <li><a href="accountBalance" id="accountBalance">가계부</a></li>
-                                                <li><a href="#" id="salary">월급관리</a></li>
-                                                <li><a href="assets" id="assets">자산</a></li>
-                                                <li><a href="calculator" id="calculator">계산기</a>
+                                            <ul id="navigation">   
+                                          		<li class="point"><a id="accountTransaction">가계부</a></li>
+                                                <li class="point"><a id="salaryList">월급관리</a></li>
+                                                <li><a href="assets">자산</a></li>
+                                                <li><a href="calculator">계산기</a>
                                                 	<ul class="submenu">
                                                         <li><a href="myCalculator">나의 기업관리</a></li>
                                                         <li><a href="target">적정주가계산</a></li>
@@ -98,6 +106,7 @@
                                                     	</ul>
 												    </li>
 												</sec:authorize>
+
 												<sec:authorize access="hasRole('ROLE_ADMIN')">
 												    <li><a href="profits-admin" id="profits-admin">관리자모드</a>
 												    	<ul class="submenu">
@@ -148,7 +157,11 @@
 	 	var page = href.substring(href.lastIndexOf('/') + 1);
 	 	console.log(page);
 	 	
+<<<<<<< HEAD
 	 	let hrefArr = ['accountBalance', 'salary', 'assets', 'calculator', 'subList', 'rank', 'boardList', 'modify', 'profits-admin'];
+=======
+	 	let hrefArr = ['accountTransaction', 'salaryList', 'assets', 'calculator', 'sub', 'rank', 'boardList', 'modify', 'profits-admin'];
+>>>>>>> origin/develop_sun4
 	 	console.log(hrefArr);
 	 	
 	 	//nav바 하이라이트
@@ -234,5 +247,23 @@
     <script src="${pageContext.request.contextPath}/resources/main/assets/js/plugins.js"></script>
     <script src="${pageContext.request.contextPath}/resources/main/assets/js/main.js"></script>
     
+    <script>
+			function numberPad(n, width) {
+			    n = n + '';
+			    return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;
+			}	
+		
+			var date = new Date();
+			var year = date.getFullYear();
+			var month = numberPad((date.getMonth()+1), 2);
+			
+			$(function() {
+				$("#accountTransaction").attr("onclick", "location.href='accountTransaction-"+year+"-"+month+"'");
+			});
+		
+			$(function() {
+				$("#salaryList").attr("onclick", "location.href='salaryList-"+year+"-"+month+"'");
+			});
+	</script>
     </body>
 </html>
