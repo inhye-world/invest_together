@@ -43,7 +43,7 @@
 						&nbsp;<fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.sub_price}"/>원
 					</div>
 				</div>
-				<h4>결제내역 확인은 마이페이지의 "결제내역조회"에서 하실 수 있습니다.</h4>
+				<h4>결제내역 확인은 마이페이지의 "구매/입금내역"에서 하실 수 있습니다.</h4>
 				<div class="payment-complete-btn">
 					<button class="bttn-simple bttn-xs bttn-ggreen" onclick="location.href='/into'">확인</button>
 				</div>

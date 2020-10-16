@@ -157,11 +157,9 @@
 	 	var page = href.substring(href.lastIndexOf('/') + 1);
 	 	console.log(page);
 	 	
-<<<<<<< HEAD
-	 	let hrefArr = ['accountBalance', 'salary', 'assets', 'calculator', 'subList', 'rank', 'boardList', 'modify', 'profits-admin'];
-=======
+
 	 	let hrefArr = ['accountTransaction', 'salaryList', 'assets', 'calculator', 'sub', 'rank', 'boardList', 'modify', 'profits-admin'];
->>>>>>> origin/develop_sun4
+
 	 	console.log(hrefArr);
 	 	
 	 	//nav바 하이라이트
