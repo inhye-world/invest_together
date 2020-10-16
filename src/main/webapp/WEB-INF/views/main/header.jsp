@@ -197,6 +197,33 @@
 	 			$('#profits-admin').addClass('activated');
 	 		}
 	 	}
+	 	
+	 	if(page == 'write_view' || href.indexOf('content_view') != -1 || href.indexOf('notice_view') != -1){
+	 		$('#boardList').addClass('activated');
+	 	} else {
+	 		$('#boardList').removeClass('activated');
+	 		if(page == 'boardList'){
+	 			$('#boardList').addClass('activated');
+	 		}
+	 	}
+	 	
+	 	if(href.indexOf('accountTransaction') != -1){
+	 		$('#accountTransaction').addClass('activated');
+	 	} else {
+	 		$('#accountTransaction').removeClass('activated');
+	 		if(page == 'accountTransaction'){
+	 			$('#accountTransaction').addClass('activated');
+	 		}
+	 	}
+	 	
+	 	if(href.indexOf('salaryList') != -1){
+	 		$('#salaryList').addClass('activated');
+	 	} else {
+	 		$('#salaryList').removeClass('activated');
+	 		if(page == 'salaryList'){
+	 			$('#salaryList').addClass('activated');
+	 		}
+	 	}
 
     </script>
 
