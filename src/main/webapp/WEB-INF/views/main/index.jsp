@@ -88,7 +88,7 @@
 												    	<ul class="submenu">
 	                                                        <li><a href="addAccount">계좌 추가</a></li>
 	                                                        <li><a href="modify">회원정보수정</a></li>
-	                                                        <li><a href="#">구매/입금내역</a></li>
+	                                                        <li><a href="purchaseDetails">구매/입금내역</a></li>
                                                     	</ul>
 												    </li>
 												</sec:authorize>
