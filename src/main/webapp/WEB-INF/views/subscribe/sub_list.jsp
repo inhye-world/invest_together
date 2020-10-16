@@ -13,6 +13,7 @@
 	<title>같이투자 - 구독목록</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
+	<link href="resources/sb_admin/css/bttn.css" rel="stylesheet" type="text/css">
 	<link href="resources/ranking.css" rel="stylesheet" type="text/css">
 	<link href="resources/sub.css" rel="stylesheet" type="text/css">
 	
@@ -158,6 +159,20 @@
 			});
 		}
 	    
+	    function goSubInfo(seller_num) {
+	    	var newForm = $("<form></form>");
+	    	newForm.attr("action", "subInfo");
+	    	newForm.attr("method", "POST");
+	    	
+	    	var input = $("<input type='hidden' value='"+seller_num+"' name='seller_num' />");
+	    	var input_csrf = $("<input type='hidden' name='${_csrf.parameterName}' value='${_csrf.token}' />")
+	    	newForm.append(input);
+	    	newForm.append(input_csrf);
+	    	
+	    	newForm.appendTo("body");
+	    	newForm.submit();
+	    }
+	    
 	    
 		$(function() {
 			$(".header-nav ul li").removeClass("header-li-active");
@@ -251,9 +266,8 @@
 								<td></td>
 								<td><fmt:formatDate value="${dto.sub_date}" pattern="yyyy-MM-dd" /></td>
 								<td><fmt:formatDate value="${dto.sub_maturity_date}" pattern="yyyy-MM-dd" /></td>
-								<td><button>보기</button></td>
+								<td><button onclick="goSubInfo(${dto.seller_num})" class="bttn-simple bttn-xs bttn-ggreen">보기</button></td>
 							</tr>
-							
 							<script>
 								var nick = "${dto.seller_nickname}";
 								nickArr.push(nick);

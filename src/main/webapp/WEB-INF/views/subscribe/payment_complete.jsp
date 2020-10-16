@@ -10,6 +10,7 @@
 	<title>결제 완료</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
+	<link href="resources/sb_admin/css/bttn.css" rel="stylesheet" type="text/css">
 	<link href="resources/sub.css" rel="stylesheet" type="text/css">
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -44,7 +45,7 @@
 				</div>
 				<h4>결제내역 확인은 마이페이지의 "결제내역조회"에서 하실 수 있습니다.</h4>
 				<div class="payment-complete-btn">
-					<button onclick="location.href='/into'">확인</button>
+					<button class="bttn-simple bttn-xs bttn-ggreen" onclick="location.href='/into'">확인</button>
 				</div>
 			</div>
 		</div>

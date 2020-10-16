@@ -10,7 +10,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>같이투자 - 자산</title>
+	<title>같이투자 | 매출관리</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
@@ -96,14 +96,6 @@
 				      yPadding: 15,
 				      displayColors: false,
 				      caretPadding: 10,
-				      callbacks: {
-				    	  beforeLabel: function(tooltipItem, data) {
-				    	  	  return data.labels[tooltipItem.index]+" "+(data.datasets[0].data[tooltipItem.index]/(accountSum+stockSum+bondSum)*100).toFixed(2)+"%";		
-				    	  },
-				    	  label:function(tooltipItem, data) {
-				    		  return data.datasets[0].data[tooltipItem.index].toLocaleString()+"원";
-				    	  }
-				      }
 				    },
 				    legend: {
 				      display: false
@@ -166,7 +158,7 @@
 					
 					var str = '<tr>';
 					str += '<td><input type="submit" id="buy_stock_submit" class="bttn-material-flat assets-submit-bttn" value="" onclick="javascript: form.action=`buyStock`;" /></td>';
-					str += '<td><input type="text" id="buy_stockinfo_symbols" name="buy_stockinfo_symbols" placeholder="종목명" size="13" /></td>';
+					str += '<td><input type="text" id="buy_stockinfo_symbols" name="buy_stockinfo_symbols" placeholder="종목명" size="6" /></td>';
 					str += '<td><input type="text" id="buy_company" name="buy_company" placeholder="증권사" size="5" /></td>';
 					str += '<td><input type="text" id="buy_purchase_price" name="buy_purchase_price" placeholder="매수가" size="5" /></td>';
 					str += '<td>-</td><td>-</td><td>-</td>';

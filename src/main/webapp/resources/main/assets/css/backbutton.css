@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
 .back-btn {
   border-radius: 3px;
   background-color: #1f2b7b;
@@ -16,6 +18,7 @@
   font-size: .8em;
   text-decoration: none;
   font-weight: 500;
+  font-family: 'Nanum Gothic', serif;
 }
 
 .back-btn span {

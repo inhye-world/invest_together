@@ -26,13 +26,11 @@ public class UserController {
 	private UserService service;
 	private OpenBankingService open;
 	
-	@RequestMapping("/user/myPage")
-	public String myPage(Model model) {
-		log.info("UserController - myPage()");
-		
-		model.addAttribute("open_url", open.getUrl());
+	@RequestMapping("/addAccount")
+	public String addAccount(Model model) {
+		log.info("UserController - addAccount()");
 			
-		return "user/myPage";
+		return "redirect:"+open.getUrl();
 	}
 	
 	@RequestMapping(value = "/user/addAccount", produces = "application/json", method = { RequestMethod.GET, RequestMethod.POST })

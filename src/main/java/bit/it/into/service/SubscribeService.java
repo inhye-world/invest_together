@@ -28,7 +28,13 @@ public class SubscribeService {
 		
 		return mapper.selectSetPrice(member_num);
 	}
-
+	
+	public String getAccessToken(int member_num) {
+		log.info("SubscribeService - getAccessToken()");
+		
+		return mapper.selectAccessToken(member_num);
+	}
+	
 	public void successPayment(SubscribeDTO subscribeDTO) {
 		log.info("SubscribeService - successPayment()");
 		
@@ -75,6 +81,8 @@ public class SubscribeService {
 		mapper.updateSetPrice(user_info);
 		
 	}
+
+	
 
 	
 }
