@@ -12,7 +12,7 @@
    viewBox="0 0 20 20"
    version="1.1"
    id="svg22"
-   sodipodi:docname="다운로드.svg"
+   sodipodi:docname="check.svg"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)">
   <metadata
      id="metadata28">
@@ -41,16 +41,17 @@
      id="namedview24"
      showgrid="false"
      inkscape:zoom="45.254834"
-     inkscape:cx="5.937525"
-     inkscape:cy="12.248169"
+     inkscape:cx="1.6838358"
+     inkscape:cy="7.8287516"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg22" />
+     inkscape:current-layer="svg22"
+     inkscape:document-rotation="0" />
   <path
      fill="#EB0056"
      fill-rule="evenodd"
      d="M7.814 14.539l-4.44-5.14-1.376 1.19 5.122 5.928a.91.91 0 0 0 1.37.006L18.904 4.689l-1.365-1.201-9.725 11.051z"
      id="path20"
-     style="fill:#227fec;fill-opacity:1" />
+     style="fill:#09cc7f;fill-opacity:1" />
 </svg>
