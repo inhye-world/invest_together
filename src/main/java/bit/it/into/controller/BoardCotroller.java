@@ -14,6 +14,7 @@ import bit.it.into.page.CommentsCriteria;
 import bit.it.into.page.CommentsPageDTO;
 import bit.it.into.security.CustomUser;
 import bit.it.into.service.BoardService;
+import bit.it.into.service.NoticeService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -25,6 +26,9 @@ public class BoardCotroller {
 	@Inject
 	BoardService boardService;
 	
+	@Inject
+	NoticeService noticeService;
+	
 	 @RequestMapping("/boardList")
 	 public String list(BoardCriteria cri, Model model, Authentication authentication) {	
 		 log.info("list");
@@ -33,7 +37,8 @@ public class BoardCotroller {
 			return "redirect:/loginForm";
 		}	
 		
-		model.addAttribute("list", boardService.getList(cri));	
+		model.addAttribute("list", boardService.getList(cri));
+		model.addAttribute("nlist", noticeService.getList());
 		 
 		int total = boardService.getTotal(cri);
 		log.info("total" + total);

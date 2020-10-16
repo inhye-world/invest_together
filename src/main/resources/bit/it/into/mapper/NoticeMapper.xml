@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bit.it.into.mapper.NoticeMapper">
+
+	<select id="getList" resultType="bit.it.into.dto.NoticeDTO">
+	<![CDATA[
+		select notice_num, notice_name, notice_title, notice_content, notice_date, notice_hit
+				from notice order by notice_date desc
+	]]>
+	</select>
+	
+	<select id="read" resultType="bit.it.into.dto.NoticeDTO">
+	<![CDATA[
+		select * from notice where notice_num = #{notice_num}
+	]]>
+	</select>
+	
+	<delete id="noticeDelete" >
+	<![CDATA[
+		delete from notice where notice_num = #{notice_num}
+	]]>
+	</delete>
+	
+	<insert id="insertNotice" >
+	<![CDATA[
+		insert into notice (notice_num, notice_name, notice_title, notice_content, notice_hit, notice_date) 
+					values (notice_num_seq.nextval, #{notice_name}, #{notice_title}, #{notice_content}, 0, sysdate)
+	]]>
+	</insert>
+	
+	<update id="modify" >
+	<![CDATA[
+		update notice set notice_content = #{notice_content} where notice_num = #{notice_num}
+	]]>
+	</update>
+
+	<update id="updateHit">
+	<![CDATA[
+		update notice set notice_hit = notice_hit + 1 where notice_num = #{notice_num}
+	]]>
+	</update>
+	
+</mapper>

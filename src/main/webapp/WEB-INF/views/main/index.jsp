@@ -76,14 +76,12 @@
                                 <div class="menu-wrapper  d-flex align-items-center justify-content-end">
                                     <!-- Main-menu -->
                                     <div class="main-menu d-none d-lg-block">
-                                        <nav>
-                                            <ul id="navigation">                                                                                          
-
-												
-                                                <li class="point"><a id="accountTransaction">가계부</a></li>
+                                         <nav>
+                                            <ul id="navigation">   
+                                          		<li class="point"><a id="accountTransaction">가계부</a></li>
                                                 <li class="point"><a id="salaryList">월급관리</a></li>
-                                                <li><a href="assets">자산</a></li>
-                                                <li><a href="calculator">계산기</a>
+                                                <li><a href="assets" id="assets">자산</a></li>
+                                                <li><a href="calculator" id="calculator">계산기</a>
                                                 	<ul class="submenu">
                                                         <li><a href="myCalculator">나의 기업관리</a></li>
                                                         <li><a href="target">적정주가계산</a></li>
@@ -91,9 +89,8 @@
                                                     </ul>
                                                 </li>
                                                 <li><a href="subList" id="subList">구독목록</a></li>
-                                                <li><a href="leaderboards">투자랭킹</a></li>
-                                                <li><a href="boardList">게시판</a></li>
-
+                                                <li><a href="leaderboards" id="leaderboards">투자랭킹</a></li>
+                                                <li><a href="boardList" id="boardList">게시판</a></li>
                                                 <sec:authorize access="hasRole('ROLE_USER')">
 												    <li><a id="modify">마이페이지</a>
 												    	<ul class="submenu">
@@ -103,15 +100,15 @@
                                                     	</ul>
 												    </li>
 												</sec:authorize>
-
 												<sec:authorize access="hasRole('ROLE_ADMIN')">
 												    <li><a href="profits-admin" id="profits-admin">관리자모드</a>
 												    	<ul class="submenu">
 	                                                        <li><a href="profits-admin">매출관리</a></li>
+	                                                        <li><a href="stats-admin">통계관리</a></li>
+	                                                        <li><a href="write_notice">공지등록</a></li>
                                                     	</ul>
 												    </li>
 												</sec:authorize>
-
                                             </ul>
                                         </nav>
                                     </div>
