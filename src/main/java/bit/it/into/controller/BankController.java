@@ -48,7 +48,7 @@ public class BankController {
 		log.info("BankController - accountBalance()");
 		
 		if(authentication == null) {
-			return "login/login_require";
+			return "login/loginForm";
 		}
 		
 		
@@ -99,7 +99,7 @@ public class BankController {
 		log.info("BankController - accountTransaction()");
 		
 		if(authentication == null) {
-			return "login/login_require";
+			return "login/loginForm";
 		}
 		
 		
@@ -181,212 +181,13 @@ public class BankController {
 		
 		return "bank/account_transaction";
 	}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
-	@RequestMapping(value = "/expenseCalender-{year}-{month}", produces = "application/json", method = { RequestMethod.GET, RequestMethod.POST })
-	public String expenseCalender(Authentication authentication, @PathVariable String year, @PathVariable String month, Model model) throws ParseException {
-		log.info("BankController - expenseCalender()");
-		
-		if(authentication == null) {
-			return "login/login_require";
-		}
-	
-		CustomUser user = (CustomUser)authentication.getPrincipal();
-		
-		String access_token = user.getDto().getAccess_token();
-		
-		int user_num = user.getDto().getMember_num();
-		List<AccountDTO> accountList = service.getAccountList(user_num);
-		
-		List<AccountTransactionDTO> accountTransactionList = new ArrayList<>();
-		
-		LocalDateTime startDate = LocalDateTime.parse(year+month+"010000", DateTimeFormatter.ofPattern("yyyyMMddHHmm"));
-		LocalDateTime endDate = startDate.plusMonths(1);
-		
-		for(AccountDTO dto : accountList) {
-			String fintech_use_num = dto.getFintech_use_num();
-			JsonNode node = open.getAccountTransactionList(access_token, fintech_use_num, year, month);
-			
-			String product_name = open.getAccountBalance(access_token, fintech_use_num).get("product_name").asText();
-			
-			int count = 0;
-			while(true) {
-				String tran_date = node.get("res_list").get(count).get("tran_date").asText();
-				String tran_time = node.get("res_list").get(count).get("tran_time").asText();
-				String inout_type = node.get("res_list").get(count).get("inout_type").asText();
-				String tran_type = node.get("res_list").get(count).get("tran_type").asText();
-				String print_content = node.get("res_list").get(count).get("print_content").asText();
-				String tran_amt = node.get("res_list").get(count).get("tran_amt").asText();
-				String branch_name = node.get("res_list").get(count).get("branch_name").asText();
-				String after_balance_amt = node.get("res_list").get(count).get("after_balance_amt").asText();
-				LocalDateTime tran_date_time = LocalDateTime.parse(tran_date+tran_time, DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
-				
-				if(startDate.isBefore(tran_date_time) && endDate.isAfter(tran_date_time)) {
-					int day = tran_date_time.getDayOfMonth();
-					
-					AccountTransactionDTO transactionDTO = new AccountTransactionDTO(tran_date_time, inout_type, tran_type, print_content, tran_amt, branch_name, after_balance_amt, product_name, day);
-					accountTransactionList.add(transactionDTO);
-					
-				}	
-				
-				++count;
-				
-				
-				if(node.get("res_list").get(count) == null) {
-					break;
-				}
-			}
-		}
-		
-		
-		int[] dayArr = new int[accountTransactionList.size()];
-		int[] outArr = new int[accountTransactionList.size()];
-		int[] inArr = new int[accountTransactionList.size()];
-		int tCount = 0;
-		
-		for(AccountTransactionDTO tdto : accountTransactionList) {
-			boolean hasDay = false;
-			
-			int tDay = tdto.getDay();
-			
-			int outAmount=0;
-			int inAmount=0;
-			
-			if(tdto.getInout_type().equals("출금")) {
-				outAmount = Integer.valueOf(tdto.getTran_amt());
-			}
-			if(tdto.getInout_type().equals("입금")) {
-				inAmount = Integer.valueOf(tdto.getTran_amt());
-			}
-			
-			for(int i=0; i<dayArr.length; i++) {
-				if(dayArr[i]==tDay) {
-					outArr[i] += outAmount;
-					hasDay = true;
-				}
-			}
-			
-			for(int i=0; i<dayArr.length; i++) {
-				if(dayArr[i]==tDay) {
-					inArr[i] += inAmount;
-					hasDay = true;
-				}
-			}
-			
-			if(!hasDay) {
-				dayArr[tCount] = tDay;
-				outArr[tCount] = outAmount;
-				inArr[tCount] = inAmount;
-				++tCount;
-			}
-			
-		}
-		
-		for(int a : dayArr) {
-			System.out.print(a+"  ");
-		}
-		
-		System.out.println();
-		
-		for(int a : outArr) {
-			System.out.print(a+"  ");
-		}
-		
-		System.out.println("");
-		
-		for(int a : inArr) {
-			System.out.print(a+"  ");
-		}
-		
-		System.out.println("");
-		
-		int[] dayArrs = Arrays.copyOfRange(dayArr, 0, tCount);
-		int[] outArrs = Arrays.copyOfRange(outArr, 0, tCount);
-		int[] inArrs = Arrays.copyOfRange(inArr, 0, tCount);
-		
-		for(int a : dayArrs) {
-			System.out.print(a+"  ");
-		}
-		
-		System.out.println();
-		
-		for(int a : outArrs) {
-			System.out.print(a+"  ");
-		}
-		
-		System.out.println("");
-		
-		for(int a : inArrs) {
-			System.out.print(a+"  ");
-		}
-		
-		//////////////////////////////배열 정렬///////////////////////////////////			
-		int tempDay = 0;
-		int tempOutAmt = 0;
-		int tempInAmt = 0;
-		
-		for(int i=0; i<dayArrs.length-1; i++) {
-			for(int j=0; j<dayArrs.length-1-i; j++) {
-				if(dayArrs[j] > dayArrs[j+1]) {
-					tempDay = dayArrs[j];
-					dayArrs[j] = dayArrs[j+1];
-					dayArrs[j+1] = tempDay;
-					
-					tempOutAmt = outArrs[j];
-					outArrs[j] = outArrs[j+1];
-					outArrs[j+1] = tempOutAmt;
-					
-					tempInAmt = inArrs[j];
-					inArrs[j] = inArrs[j+1];
-					inArrs[j+1] = tempInAmt;
-				}
-			}
-		}
-		System.out.println(" ");
-		System.out.println("dayArrs: ");
-		for(int a : dayArrs) {
-			System.out.print(a+"  ");
-		}
-		
-		System.out.println(" ");
-		System.out.println("outArrs: ");
-		for(int a : outArrs) {
-			System.out.print(a+"  ");
-		}
-		
-		System.out.println("inArrs: ");
-		for(int a : inArrs) {
-			System.out.print(a+"  ");
-		}
-		
-		JSONArray transArray = new JSONArray();
-		
-		try {
-			
-			for(int i = 0; i<dayArrs.length; i++) {
-				JSONObject obj = new JSONObject();
-				obj.put("date", dayArrs[i]);
-				obj.put("expenseAmt", outArrs[i]);
-				obj.put("incomeAmt", inArrs[i]);
-				transArray.add(obj);
-			}
-			System.out.println(" ");
-			System.out.println("array결과: "+transArray.toString());
-		}catch(JSONException e) {
-			e.printStackTrace();
-		}
-		
-		model.addAttribute("data", transArray);
-		
-		return "bank/accountCalender4";
-	}
-//////////////////////////////////////////////////////////////////////////////////////////////////	
 	
 	@RequestMapping(value = "/expenseAnalyze-{year}-{month}", produces = "application/json", method = { RequestMethod.GET, RequestMethod.POST })
 	public String expenseAnalyze(Authentication authentication, @PathVariable String year, @PathVariable String month, Model model) throws ParseException {
 		log.info("BankController - expenseAnalyze()");
 		
 		if(authentication == null) {
-			return "login/login_require";
+			return "login/loginForm";
 		}
 		
 		int shoppingSum = 0;

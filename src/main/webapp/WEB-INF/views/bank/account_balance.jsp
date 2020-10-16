@@ -11,7 +11,7 @@
 	<body>
 		
 		<div class="wrapper">
-		<jsp:include page="../include/header2.jsp"/>
+		<jsp:include page="../main/header.jsp"/>
 			
 			<div class="container">
 				
@@ -39,7 +39,7 @@
 					</script>
 				</c:forEach>
 			</div>
-			<jsp:include page="../include/footer2.jsp"/>	
+			<jsp:include page="../main/footer.jsp"/>	
 		</div>
 		
 		<script>

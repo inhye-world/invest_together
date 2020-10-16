@@ -71,31 +71,30 @@
 	overflow: hidden;
 }
 
-.container {
+.contain {
 	border: 1px solid #e5e5e5;
-	margin: 0 auto;
 	width: 500px;
 	padding-top: 50px;
 	padding-bottom: 50px;
 	text-align: center;
 }
 
-.container .mainA{
+.contain .mainA{
 	font-family: 'MapoDPPA';
 	font-size: 50px;
 	text-decoration: none;
 }
-.container .mainA:link, .container .mainA:visited, .container .mainA:active {
+.contain .mainA:link, .contain .mainA:visited, .contain .mainA:active {
 	color: black;
 }
 
-.container .mainB{
+.contain .mainB{
 	font-family: 'MapoDPPA';
 	font-size: 20px;
 	text-decoration: none;
 }
 
-.container h2{
+.contain h2{
 	font-family: 'MapoDPPA';
 }
 
@@ -316,13 +315,13 @@
 	float: right;
 }
 
-.container2 {
+.contain2 {
 	width: 1200px;
 	padding-left: 50px;
 	padding-right: 50px;
 }
 
-.container2 h2 {
+.contain2 h2 {
 	text-align: left;
 }
 
@@ -386,7 +385,7 @@ table tr td:nth-child(1), table tr th:nth-child(1) {
 	left: 868px;
 }
 
-.container2 input[type=submit] {
+.contain2 input[type=submit] {
 	width: 16px;
 	height: 16px;
 }

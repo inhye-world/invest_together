@@ -67,7 +67,7 @@
    <body>
   <main>
         
-         <jsp:include page="../include/header2.jsp"/>
+         <jsp:include page="../main/header.jsp"/>
         
          
             <div class="container container2" >
@@ -167,7 +167,7 @@
       
       
       
-            <jsp:include page="../include/footer2.jsp"/>
+            <jsp:include page="../main/footer.jsp"/>
             
            
       <script type="text/javascript">

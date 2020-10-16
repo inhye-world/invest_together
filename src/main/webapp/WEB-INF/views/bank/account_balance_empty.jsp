@@ -9,7 +9,7 @@
 	<body>
 		
 		<div class="wrapper">
-		<jsp:include page="../include/header2.jsp"/>
+		<jsp:include page="../main/header2.jsp"/>
 			
 			<div class="container">
 				<a class="mainA" href="/into"> 같이투자 API TEST</a>
@@ -22,7 +22,7 @@
 				<h2>마이페이지에서 계좌 추가 후 이용해주세요 </h2>
 				<br><br><br><br><br><br>
 			</div>
-		<jsp:include page="../include/footer2.jsp"/>	
+		<jsp:include page="../main/footer2.jsp"/>	
 		</div>
 	</body>
 </html>

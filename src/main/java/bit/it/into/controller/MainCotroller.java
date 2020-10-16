@@ -24,9 +24,29 @@ public class MainCotroller {
 		return "error/accessDenied";
 	}
 	
-	@RequestMapping("/testmain")
-	public String testmain() {
-		return "include/testmain";
+	@RequestMapping("/blog_details")
+	public String blog_details() {
+		return "main/blog_details";
+	}
+	
+	@RequestMapping("/blog")
+	public String blog() {
+		return "main/blog";
+	}
+	
+	@RequestMapping("/contact")
+	public String contact() {
+		return "main/contact";
+	}
+	
+	@RequestMapping("/elements")
+	public String elements() {
+		return "main/elements";
+	}
+
+	@RequestMapping("/program")
+	public String program() {
+		return "main/program";
 	}
 	
 	@RequestMapping("/element")

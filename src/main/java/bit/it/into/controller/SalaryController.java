@@ -54,7 +54,7 @@ public class SalaryController {
 		log.info("SalaryController - accountTransaction()");
 
 		if (authentication == null) {
-			return "login/login_require";
+			return "login/loginForm";
 		}
 
 		CustomUser user = (CustomUser) authentication.getPrincipal();
@@ -145,7 +145,7 @@ public class SalaryController {
 		log.info("SalaryController - modify()");
 
 		if (authentication == null) {
-			return "login/login_require";
+			return "login/loginForm";
 		}
 
 		log.info("==============" + accountSalaryDTO.getFintech_use_num());
@@ -164,7 +164,7 @@ public class SalaryController {
 		log.info("BankController - aTransaction()");
 
 		if (authentication == null) {
-			return "login/login_require";
+			return "login/loginForm";
 		}
 
 		CustomUser user = (CustomUser) authentication.getPrincipal();

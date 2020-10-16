@@ -8,11 +8,11 @@
 </head>
 <body>
 	<div class="wrapper">
-		<jsp:include page="../include/header2.jsp"/>
+		<jsp:include page="../main/header2.jsp"/>
 		<h2>권한이 없습니다</h2>
 		
 		
-		<jsp:include page="../include/footer2.jsp"/>
+		<jsp:include page="../main/footer2.jsp"/>
 	</div>
 </body>
 </html>

@@ -1,5 +1,7 @@
 package bit.it.into.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -36,4 +38,36 @@ public class SubscribeService {
 			log.info("insertSubscribe 오류");
 		}
 	}
+
+	public boolean isSubscribe(int member_num, int seller_num) {
+		log.info("SubscribeService - isSubscribe()");
+		
+		Integer count = mapper.selectCountSubscribe(member_num, seller_num);
+		
+		if(count==0) {
+			return false;
+		}
+		
+		return true;
+	}
+
+	public SubscribeDTO getSubscribe(String merchant_uid) {
+		log.info("SubscribeService - getSubscribe()");
+		
+		return mapper.selectSubscribeByMerchantUid(merchant_uid);
+	}
+
+	public List<SubscribeDTO> getSubscribeList(int member_num) {
+		log.info("SubscribeService - getSubscribeList()");
+		
+		return mapper.selectSubscribeListByMemberNum(member_num);
+	}
+
+	public String getNicknameByMemberNum(int member_num) {
+		log.info("SubscribeService -getNicknameByMemberNum()");
+		
+		return mapper.selectNicknameByMemberNum(member_num);
+	}
+
+	
 }

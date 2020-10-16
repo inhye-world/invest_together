@@ -1,13 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<!doctype html>
+<html class="no-js">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="resources/header_footer.css" rel="stylesheet" type="text/css">
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="resources/main/assets/img/favicon.ico">
 
@@ -24,13 +25,14 @@
 	<link rel="stylesheet" href="resources/main/assets/css/fontawesome-all.min.css">
 	<link rel="stylesheet" href="resources/main/assets/css/themify-icons.css">
 	<link rel="stylesheet" href="resources/main/assets/css/slick.css">
-	<link rel="stylesheet" href="resources/main/assets/css/nice-select.css">
-	<link rel="stylesheet" href="resources/main/assets/css/style.css">
-</head>
-	<body>
+	<link rel="stylesheet" href="resources/style.css">
 	
-		<footer>
-        <div class="footer-wrapper section-bg2" data-background="resources/main/assets/img/gallery/footer_bg.png">
+</head>
+<body>
+
+    
+    <footer>
+        <div class="footer-wrapper section-bg2">
             <!-- Footer Top-->
             <div class="footer-area footer-padding">
                 <div class="container">
@@ -52,7 +54,7 @@
                                     <h4>Contact Info</h4>
                                     <ul>
                                         <li>
-                                            <p>주소 : 서울특별시 서대문구 신촌로32길 14-4 대박빌딩 23층 235호</p>
+                                            <p>주소 : 서울특별시 서대분구 신촌로32길 14-4 대박빌딩 23층 235호</p>
                                         </li>
                                         <li><a href="#">전화번호 : +82 02 5555 5555</a></li>
                                         <li><a href="#">이메일 : info@investogether.com</a></li>
@@ -102,30 +104,7 @@
                     </div>
                 </div>
             </div>
-            <!-- footer-bottom -->
-            <div class="footer-bottom-area">
-                <div class="container">
-                    <div class="footer-border">
-                        <div class="row d-flex justify-content-between align-items-center">
-                            <div class="col-xl-10 col-lg-9 ">
-                                <div class="footer-copy-right">
-                                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-3">
-                                <div class="footer-social f-right">
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a  href="https://www.facebook.com/sai4ull"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fas fa-globe"></i></a>
-                                    <a href="#"><i class="fab fa-behance"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </footer>
 
@@ -155,7 +134,7 @@
     <!-- Date Picker -->
     <script src="./resources/main/assets/js/gijgo.min.js"></script>
     <!-- Nice-select, sticky -->
-    <script src="./resources/main/assets/js/jquery.nice-select.min.js"></script>
+
     <script src="./resources/main/assets/js/jquery.sticky.js"></script>
     <!-- Progress -->
     <script src="./resources/main/assets/js/jquery.barfiller.js"></script>
@@ -176,5 +155,6 @@
     <!-- Jquery Plugins, main Jquery -->	
     <script src="./resources/main/assets/js/plugins.js"></script>
     <script src="./resources/main/assets/js/main.js"></script>
-	</body>
+    
+    </body>
 </html>

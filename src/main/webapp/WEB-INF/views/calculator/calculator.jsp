@@ -22,27 +22,36 @@
   <meta id="_csrf" name="_csrf" content="${_csrf.token}" />
   <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
 
-  <title>같이투자</title>
+  <title>같이투자 : 계산기</title>
 
   <!-- Custom styles for this page -->
   <link href="resources/sb_admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   
+  
   <style>
-  	.title{
-  		font-size: 1.3em;
-  		font-weight: bold;
+
+  	.tableTitle{
   		width: 200px;
   	}
-  	td{
-  		height: 50px;
+
+  	.ctn {
+  		padding: 100px;
   	}
-  	#wrapper{
-  		width: 100%;
-  		height: 600px;
+  	
+  	#inputInfo, #resultTable{
+  		margin: 20px 10px; 
   	}
-  	#card-total{
-  		width: 90%;
-  		margin: auto;
+  	
+  	#inputInfo td, #resultTable td{
+  		height: 40px;
+  	}
+  	
+  	#inputName{
+  		width: 120px;
+  	}
+  	
+  	.tableContent{
+  		vertical-align: top;
   	}
 
   </style>
@@ -50,52 +59,88 @@
 
 </head>
 
-<body id="page-top">
-<jsp:include page="../include/header.jsp"/>
+<body>
+<jsp:include page="../main/header.jsp"/>
 
+	<main>
+    <div class="our-cases-area">
+        <div class="ctn">
+            <div class="row">
+                <div class="col-xl-7 col-lg-12 col-md-12 col-sm-12">
+                    <div class="single-cases mb-40">
+	                    <div class="card shadow">
+	                        <div class="cases-caption">	                        	
+				                <table> 
+				                	<sec:authorize access="isAuthenticated()">
+									    <tr>
+											<td class="tableTitle"><h3><a href="myCalculator">나의 기업관리</a></h3></td>
+											<td class="tableContent">계산한 적정주가를 저장하여 관리할 수 있습니다.</td>
+				                    	</tr> 
+									</sec:authorize>
+				                	<tr>
+										<td class="tableTitle"><h3><a href="target">적정 주가 계산</a></h3></td>
+										<td class="tableContent">잔여이익모델로 현재 주식의 향후 적정 주가를 계산할 수 있습니다.</td>
+				                    </tr>  
+				                	<tr>
+										<td class="tableTitle"><h3><a onclick="nwc();">순운전자본</a></h3></td>
+										<td class="tableContent">때로는 단순히 운전 자본이라고도하는 순 운전 자본 (NWC)의 공식은 회사의 유동 부채를 감안하여 유동 자산의 가용성을 결정하는 데 사용됩니다.</td>
+				                    </tr>              
+				                    <tr>
+										<td class="tableTitle"><h3><a onclick="debtRatio();">부채비율</a></h3></td>
+										<td class="tableContent">회사의 의무 이행 능력을 측정하기 위해 다른 금융 레버리지 비율과 함께 사용하는 재무 레버리지 비율입니다.</td>
+				                    </tr>
+				                    <tr>
+										<td class="tableTitle"><h3><a onclick="roe();">ROE</a></h3></td>
+										<td class="tableContent">ROE(Return on Equity)의 수식은 ROE로 간략히 표시되며 회사의 순 수입을 평균 주주의 자본으로 나눈 값입니다.</td>
+				                    </tr>
+				                    <tr>
+										<td class="tableTitle"><h3><a onclick="atr();">자산회전율</a></h3></td>
+										<td class="tableContent">자산수익률은 회사가 자산을 활용하여 순이익을 얻는 능력을 보여줍니다.</td>
+				                    </tr>
+				                    <tr>
+										<td class="tableTitle"><h3><a onclick="itr();">재고자산회전율</a></h3></td>
+										<td class="tableContent">재고자산회전율은 회사가 재고를 판매로 얼마나 잘 전환하고 있는지를 측정합니다.</td>
+				                    </tr>
+				                </table>				                
+	                        </div>
+	                       </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12" id="calculator">
+                </div>
+                
+                <div class="col-xl-2 col-lg-12 col-md-12 col-sm-2" id="outcome">
+                </div>
+                
+            </div>
+        </div>
+    </div>
 
-		<div id="wrapper">
+    </main>
+    
+    <script>
+	    //alerting
+		function alerting(content){
+			AstNotif.dialog('알림', content, {
+	  	  theme: 'default',
+	  	  imgIcon: "resources/sb_admin/img/error_hitam_garis.png",
+	  	});
+		}
 		
-          <!-- DataTales -->
-          <div class="card shadow mb-4" id="card-total">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">수식 계산기</h6>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                  
-                <table> 
-                	<tr>
-						<td class="title"><a href="${pageContext.request.contextPath}/calculator/nwc.do">순운전자본</a></td>
-						<td>때로는 단순히 운전 자본이라고도하는 순 운전 자본 (NWC)의 공식은 회사의 유동 부채를 감안하여 유동 자산의 가용성을 결정하는 데 사용됩니다</td>
-                    </tr>              
-                    <tr>
-						<td class="title"><a href="${pageContext.request.contextPath}/calculator/debtRatio.do">부채비율</a></td>
-						<td>회사의 의무 이행 능력을 측정하기 위해 다른 금융 레버리지 비율과 함께 사용하는 재무 레버리지 비율입니다.</td>
-                    </tr>
-                    <tr>
-						<td class="title"><a href="${pageContext.request.contextPath}/calculator/roe.do">ROE</a></td>
-						<td>ROE(Return on Equity)의 수식은 ROE로 간략히 표시되며 회사의 순 수입을 평균 주주의 자본으로 나눈 값입니다.</td>
-                    </tr>
-                    <tr>
-						<td class="title"><a href="${pageContext.request.contextPath}/calculator/atr.do">자산회전율</a></td>
-						<td>자산수익률은 회사가 자산을 활용하여 순이익을 얻는 능력을 보여줍니다.</td>
-                    </tr>
-                    <tr>
-						<td class="title"><a href="${pageContext.request.contextPath}/calculator/itr.do">재고자산회전율</a></td>
-						<td>재고자산회전율은 회사가 재고를 판매로 얼마나 잘 전환하고 있는지를 측정합니다.</td>
-                    </tr>
-                </table>                
+	   //새로고침
+	   function refresh(){
+		$('.inputHere').val('');
+		document.getElementById("outcome").innerHTML = "";
+		}
+    </script>
+    
 
-              </div>
-            </div>
-          </div>
-          
-         </div>
-
+ 	<!-- Calculating src -->
+	<jsp:include page="variousCalculator.jsp"/>
+ 
 	<!-- footer -->
-	<jsp:include page="../include/footer.jsp"/>
-
+	<jsp:include page="../main/footer.jsp"/>
 
   <!-- Page level plugins -->
   <script src="resources/sb_admin/vendor/datatables/jquery.dataTables.min.js"></script>

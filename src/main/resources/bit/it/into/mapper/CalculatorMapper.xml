@@ -35,5 +35,12 @@
 	<delete id="delete">
 		DELETE FROM CALCULATOR WHERE stockinfo_symbols = #{stockinfo_symbols} AND member_num = #{member_num}
 	</delete>
+	
+	<select id="selectAutocompleteList" resultType="String">
+		<![CDATA[
+			SELECT stockinfo_symbols FROM stock_info 
+    		WHERE stockinfo_symbols LIKE concat(UPPER(#{value}), '%') OR stockinfo_symbols LIKE concat(LOWER(#{value}), '%')
+		]]>
+	</select>
 
 </mapper>

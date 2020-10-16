@@ -10,7 +10,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>같이투자 투자랭킹</title>
+	<title>같이투자 - 투자랭킹</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
@@ -18,6 +18,7 @@
 	
 	<link href="resources/ranking.css" rel="stylesheet" type="text/css">
 	
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
 	<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
 	<script src="https://kit.fontawesome.com/80d121b39f.js" crossorigin="anonymous"></script>
 	
@@ -25,14 +26,29 @@
 	
 	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 	
+	<!-- alert -->
+  	<link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
+  	<script src="resources/sb_admin/js/ast-notif.js"></script>
+	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>	
-	
 	<script>
 		var chart;
-	
+		
+		function alerting(content){
+       		AstNotif.dialog('알림', content, {
+           		theme: 'default',
+           	});
+       	}
+         
+        function confirming(content){
+      		AstNotif.snackbar(content, {
+          		theme: 'default',
+          	});
+     	}
+		
 		function getIndividualRank(nickname) {
 			$.ajax({
 				type: "GET",
@@ -81,7 +97,6 @@
 				dataType: "json",
 				data: {"nickname": nickname},
 				success: function(result) {
-					console.log(result)
 					
 					if(result.ranking.league=="empty") {
 						return;
@@ -89,7 +104,7 @@
 					
 					$(".black-model-section-title u").text(nickname);
 					$("#backscreen-1 .black-model-section-place img").attr("src", "resources/icon/"+result.ranking.league+".png");
-					$("#backscreen-1 .black-model-section-place span:nth-child(2)").addClass("color-place-"+result.ranking.league).text(result.ranking.place+"위");
+					$("#backscreen-1 .black-model-section-place span:nth-child(2)").addClass("color-place-"+result.ranking.league).text(result.ranking.place.toLocaleString()+"위");
 					$("#backscreen-1 .black-model-section-place span:nth-child(3)").text("(상위 "+result.ranking.percentile+"%)");
 					
 					if(!result.valid.isLogin) {
@@ -97,6 +112,8 @@
 					}else {
 						if(result.valid.isMe) {
 							$("#backscreen-1 #subscribe-btn").addClass("black-model-bottom-btn-disabled").text("자기 자신은 구독할수 없습니다").prop("disabled", true);
+						}else if(result.valid.isSubscribe) {
+							$("#backscreen-1 #subscribe-btn").addClass("black-model-bottom-btn-disabled").text("이미 구독한 회원입니다").prop("disabled", true);
 						}else {
 							$("#backscreen-1 #subscribe-btn").addClass("black-model-bottom-btn-enabled").text("구독하기").attr("onclick", "driveBackscreen2()").prop("disabled", false);
 							
@@ -122,7 +139,7 @@
 			                }]
 		            	},
 		           		options: {
-		           			responsive: false,
+		           			responsive: true,
 			                animation: {
 			                    duration: 200
 			                },
@@ -290,39 +307,42 @@
 				        		}
 				        	}).done(function(result){
 				        		if(result.successPayment) {
-				        			alert("결제 성공");
-				        			// 결제성공페이지로 이동하게 만들기
+				        			location.href = "/into/paymentComplete?merchant_uid="+merchantid;
 				        		}else {
 				        			if(result.hasSetPrice) {
-				        				alert("결제하신 금액과 판매자가 설정한 금액이 다릅니다.");
-				        				var reason = "결제금액 과 설정금액이 다름";
+				        				alerting("결제하신 금액과 판매자가 설정한 금액이 다릅니다.");
+				        				var reason = "price not equals";
 				        			}else {
-				        				alert("판매자가 구독을 비활성화 했습니다.");
-				        				var reason = "설정금액 존재하지 않음";
+				        				alerting("판매자가 구독을 비활성화 했습니다.");
+				        				var reason = "price null";
 				        			}
 				        			
-				        		//	$.ajax({
-				        		//		url: "rest/cancelPayment",
-				        		//		type: 'POST',
-				        		//		data: {
-				        		//			merchant_uid: merchantid,
-				        		//			reason: reason
-				        		//		},
-				        		//		beforeSend: function(xhr){
-						        //			xhr.setRequestHeader(header, token);
-						        //		}
-				        		//	})
-				        			
-				        			// 여기서 환불하는 로직
-				        			alert("자동으로 결제가 취소되었습니다.")
+				        			(function() {
+					        			$.ajax({
+					        				url: "rest/cancelPayment",
+					        				type: 'POST',
+					        				dataType: 'json',
+					        				data: {
+					        					merchant_uid: merchantid,
+					        					reason: reason
+					        				},
+					        				beforeSend: function(xhr){
+							        			xhr.setRequestHeader(header, token);
+							        		}
+					        			}).done(function(result2){
+					        				if(result2.code==0) {
+					        					alerting("자동으로 결제가 취소되었습니다.");
+					        				}else {
+					        					alerting("결제가 취소되지 않았습니다. 관리자에게 문의해주세요.")
+					        				}
+					        			});
+				        			})();
 				        		}
 				        	});
 				        
 				    	}else {
-				        
-				        	alert("결제에 실패하셨습니다.");
-				        
-				    	}
+				        	alerting("결제에 실패하셨습니다.");
+				        }
 			  		}
 				);
 			</sec:authorize>
@@ -374,11 +394,10 @@
 					chart.destroy();
 				}	
 			});
-
-
+			
 			
 		});
-	</script>
+	</script>	
 </head>
 	<body>
 		<jsp:include page="../include/header.jsp"/>
@@ -422,7 +441,7 @@
 							<c:if test="${principal.dto.rankDTO.enabled eq 0}">
 								<tr>
 									<td class="ranking-individual-notice" colspan="6">
-										주식·채권 탭에서 주식을 추가해주세요
+										자산 탭에서 주식을 추가해주세요
 										<p>(랭킹 업데이트시 반영됩니다)</p>
 									</td>
 								</tr>
@@ -556,7 +575,7 @@
 						</div>
 						<div class="black-model-section-chart">
 							<p>수익률 그래프</p>
-							<canvas id="black-model-section-canvas" width="590" height="311"></canvas>
+							<canvas id="black-model-section-canvas"></canvas>
 						</div>
 					</div>
 					<div class="black-model-bottom-btn-container">
@@ -578,7 +597,7 @@
 							<ul>
 								<li>구독한 회원의 실시간 보유 주식정보 확인</li>
 								<li>구독한 회원의 보유 채권정보 확인</li>
-								<li>구독한 회원의 현금·주식·채권 보유 비율 확인</li>
+								<li>구독한 회원의 현금·주식·채권 보유비율 확인</li>
 								<li>구독한 회원의 보유주식별 적정주가 확인</li>
 							</ul>
 						</div>
@@ -601,6 +620,6 @@
 			</div>	
 		</div>
 		
-		<jsp:include page="../include/footer.jsp"/>	
+		<jsp:include page="../include/footer.jsp"/>
 	</body>
 </html>

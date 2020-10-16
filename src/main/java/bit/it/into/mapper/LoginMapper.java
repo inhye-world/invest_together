@@ -34,4 +34,5 @@ public interface LoginMapper {
 	public void updatePw(String id);
 
 	public String selectAuthKey(String parameter);
+
 }

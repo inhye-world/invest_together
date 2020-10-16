@@ -30,6 +30,7 @@
 	</script>
 </head>
 	<body>
+	<jsp:include page="../main/header.jsp"/>
 		
 		<div class="wrapper">
 		<jsp:include page="../include/header_temp.jsp"/>
@@ -511,5 +512,7 @@
 		<script src="resources/tableExport/tableExport.min.js" type="text/javascript"></script>
 		<script src="resources/tableExport/xlsx.core.min.js" type="text/javascript"></script>
 		<script src="resources/tableExport/FileSaver.min.js" type="text/javascript"></script>
+		
+		<jsp:include page="../main/footer.jsp"/>
 	</body>
 </html>

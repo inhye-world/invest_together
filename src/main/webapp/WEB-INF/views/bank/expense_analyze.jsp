@@ -50,6 +50,10 @@
 			margin-left:-150px;
 		}
 		
+		.section{
+			display:flex;
+		}
+		
 		#expenseList{
 			flex:1;
 		}
@@ -89,12 +93,51 @@
 			}
 		}
 		
+		.tran-dropdown {
+		  position: relative;
+		  display: inline-block;
+		  width: 600px;
+		  left: 50%;
+		  margin-left:-280px;
+		  font-size: 2em;
+		}
+		
+		.tran-dropdown-content {
+		  display: none;
+		  position: absolute;
+		  background-color: #f1f1f1;
+		  max-height: 200px;
+		  overflow-y: auto; /* prevent horizontal scrollbar */
+		  overflow-x: hidden;
+		  min-width: 100%;
+		  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		  z-index: 1;
+		  font-size: 1em;
+		}
+		
+		.tran-dropdown-content a {
+		  color: black;
+		  padding: 12px 16px;
+		  text-decoration: none;
+		  font-family: 'MapoDPPA';
+		  display: block;
+		}
+		
+		.tran-dropdown-content a:hover {
+			background-color: #ddd;
+			text-decoration: none;
+			color: #027368;
+		}
+		
+		.tran-dropdown:hover .tran-dropdown-content {display: block;}
+		
+		.tran-dropdown:hover .section {background-color: #E7E7E7;}
 	</style>
 	
 </head>	
 	<body>
 		<div class="wrapper">
-		<jsp:include page="../include/header2.jsp"/>
+		<jsp:include page="../main/header.jsp"/>
 		
 			<div class="container">
 						
@@ -150,16 +193,16 @@
 					<div class="tran-dropdown">
 						<div class="section">
 							<div id="sec1">
-							</div>
+							</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<div id="sec3">
+								<div id="sec4">
+								</div>
+							</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<div id="sec2">
 								<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-calendar-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 								  <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
 								  <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
 								</svg>
-							</div>
-							<div id="sec3">
-								<div id="sec4">
-								</div>
 							</div>	
 						</div>
 						<div id="tran-dropdown-content" class="tran-dropdown-content">
@@ -274,7 +317,7 @@
 			</script>
 			
 		</div>
-		<jsp:include page="../include/footer2.jsp"/>
+		<jsp:include page="../main/footer.jsp"/>
 		<script>
 			$(function() {
 				var year = ${year}

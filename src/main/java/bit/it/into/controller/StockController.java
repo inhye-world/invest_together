@@ -44,7 +44,7 @@ public class StockController {
 		log.info("StockController - stockBondTable()");
 		
 		if(authentication==null) {
-			return "login/login_require";
+			return "login/loginForm";
 		}
 		
 		
@@ -79,7 +79,7 @@ public class StockController {
 		log.info("StockController - buyStock()");
 		
 		if(authentication==null) {
-			return "login/login_require";
+			return "login/loginForm";
 		}
 		
 		
@@ -98,7 +98,7 @@ public class StockController {
 		}
 		
 		
-		return "redirect:/stockBondTable";
+		return "redirect:/assets";
 	}
 	
 	@PostMapping("/sellStock")
@@ -106,7 +106,7 @@ public class StockController {
 		log.info("StockController - sellStock()");
 		
 		if(authentication==null) {
-			return "login/login_require";
+			return "login/loginForm";
 		}
 		
 		
@@ -119,7 +119,7 @@ public class StockController {
 		service.modifyRemoveStock(stockDTO);
 		
 		
-		return "redirect:/stockBondTable";
+		return "redirect:/assets";
 	}
 	
 	@PostMapping("/deleteStock")
@@ -127,7 +127,7 @@ public class StockController {
 		log.info("StockController - deleteStock()");
 		
 		if(authentication==null) {
-			return "login/login_require";
+			return "login/loginForm";
 		}
 		
 		String[] stockSymbols = request.getParameterValues("deleteStockSymbol");
@@ -138,7 +138,7 @@ public class StockController {
 		service.deleteStocks(user_num, stockSymbols);
 		
 		
-		return "redirect:/stockBondTable";
+		return "redirect:/assets";
 	}
 	
 	

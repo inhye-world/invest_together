@@ -6,12 +6,12 @@ import bit.it.into.dto.BondDTO;
 
 public interface BondMapper {
 	
-	public List<BondDTO> getList(int member_num) throws Exception;
+	public List<BondDTO> getList(int member_num);
 
 	public void writeBond(BondDTO bondDTO);
 
 	public void delete(String bond_num);
 	
-	public void update(BondDTO bondDTO) throws Exception;
+	public void update(BondDTO bondDTO);
 
 }

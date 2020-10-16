@@ -2914,6 +2914,11 @@ hr {
   padding-bottom: 120px;
 }
 
+.footer-wrapper{
+	background: url('main/assets/img/gallery/footer_bg.png');
+	background-repeat: no-repeat;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   /* line 893, C:/Users/HP/Desktop/jun-2020/277.Charity _Non-profit/assets/scss/_common.scss */
   .footer-padding {
@@ -3309,11 +3314,6 @@ hr {
   -o-transition: 0.3s;
   transition: 0.3s;
   text-transform: capitalize;
-}
-
-.main-header .main-menu ul li a.activated{
-	color: #09cc7f;
-	font-weight: bold;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
