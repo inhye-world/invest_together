@@ -50,4 +50,6 @@ public interface UserMapper {
 
 	public void deleteMember(int member_num);
 
+	public void deleteSubsribe(int member_num);
+
 }

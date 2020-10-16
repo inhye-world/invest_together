@@ -15,6 +15,7 @@
 	
 	</head>
 	<body>
+	  <jsp:include page="../main/header.jsp"/>
 		<div class="wrapper">
 			<header class="header-pw">
 			</header>			
@@ -108,6 +109,8 @@
 			
 			
 		</script>
-			
+		
+		<!-- footer -->
+		<jsp:include page="../main/footer.jsp"/>
 	</body>
 </html>

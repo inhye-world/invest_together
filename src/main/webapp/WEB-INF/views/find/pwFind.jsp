@@ -16,6 +16,7 @@
 		</style>
 	</head>
 	<body>
+	   <jsp:include page="../main/header.jsp"/>
 	${authKey}
 	${memberDTO.id}
 		<div class="wrapper">
@@ -124,5 +125,9 @@
 			});
 	
 	</script>
+	
+	<!-- footer -->
+	<jsp:include page="../main/footer.jsp"/>
+	
 	</body>
 </html>

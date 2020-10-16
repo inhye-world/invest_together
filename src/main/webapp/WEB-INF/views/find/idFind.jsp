@@ -11,16 +11,32 @@
 		<link href="resources/find.css" rel="stylesheet" type="text/css">
 		
 		<style type="text/css">
-		.auth_form span.error {color:red;} 
-		.verify_form span.error {color:red;} 
+		
+			.auth_form span.error {
+				color:red;
+			} 
+			
+			.verify_form span.error {
+				color:red;
+			} 
+			
+			.container {
+				padding: 100px;
+			}
+			
+			.content__body__page {
+				text-align: center;
+			}
+			
 		</style>
 		
 	</head>
 	<body>
+	 	<jsp:include page="../main/header.jsp"/>
 	${authKey}
 	${memberDTO.name}
 	${memberDTO.email}
-		<div class="wrapper">
+		<div class="container">
 			<header class="header-pw">
 			</header>			
 			<!-- body -->
@@ -134,5 +150,9 @@
 			});
 	
 	</script> 	
+	
+	<!-- footer -->
+	<jsp:include page="../main/footer.jsp"/>
+	
 	</body>
 </html>
