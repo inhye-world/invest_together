@@ -42,7 +42,6 @@ public class OpenBankingService {
 	private final static String O_REDIRECT_URI = "http://localhost:8282/into/user/addAccount";
 	private final static String O_ORGANIZATION_CODE = "T991650260";
 
-	
 	public String getUrl() {
 		String openUrl = 	"https://testapi.openbanking.or.kr/oauth/2.0/authorize?"
 								+"response_type=code" 

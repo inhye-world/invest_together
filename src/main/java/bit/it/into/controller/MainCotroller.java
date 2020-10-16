@@ -54,4 +54,9 @@ public class MainCotroller {
 		return "main/program";
 
 	}
+	
+	@RequestMapping("/element")
+	public String element() {
+		return "main/elements";
+	}
 }

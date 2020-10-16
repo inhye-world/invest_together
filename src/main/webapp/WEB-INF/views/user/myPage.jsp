@@ -20,6 +20,7 @@
 
 	<jsp:include page="../main/header.jsp"/>
 
+
 		<c:url value="/modify" var="modify_url" />
 		<c:url value="/purchaseDetails" var="purchase_details_url" />
 		<div class="wrapper">
@@ -39,8 +40,8 @@
 			</div>
 		</div>
 
-
 		<jsp:include page="../main/footer.jsp"/>
+
 
 	</body>
 </html>

@@ -14,12 +14,7 @@
 		<div class="wrapper">
 		<jsp:include page="../main/header.jsp"/>
 			
-			<div class="contain">
-				<a class="mainA" href="/into"> 같이투자 API TEST</a>
-				<br><br>
-				
-				<h2>-자산-</h2>
-				<br>
+			<div class="container">		
 				
 				<div class="section">
 					<div id="sec5">

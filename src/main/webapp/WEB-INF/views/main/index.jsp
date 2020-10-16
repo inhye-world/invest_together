@@ -42,6 +42,7 @@
 	
 </head>
 
+
 <body>
     <!-- ? Preloader Start -->
     <div id="preloader-active">
@@ -77,6 +78,7 @@
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">                                                                                          
+
 												
                                                 <li class="point"><a id="accountTransaction">가계부</a></li>
                                                 <li class="point"><a id="salaryList">월급관리</a></li>
@@ -115,6 +117,7 @@
                                     </div>
                                     <!-- Header-btn -->
                                     <div class="header-right-btn d-none d-lg-block ml-20">
+
                                     	<sec:authorize access="isAnonymous()">
 											<c:url value="/loginForm" var="loginForm" />
 											<div class="log-box-1">
@@ -127,6 +130,7 @@
 										    		<button type="button" class="btn header-btn" id="logoutBtn">로그아웃 </button>
 										    </div>
 										</sec:authorize>
+
                                     </div>
                                 </div>
                             </div> 
@@ -144,7 +148,7 @@
    
     <!-- header end -->
     
-    <main>
+    <main id="mainContent">
     <!-- slider Area Start-->
     <div class="slider-area">
         <div class="slider-active">
@@ -521,7 +525,7 @@
 			var date = new Date();
 			var year = date.getFullYear();
 			var month = numberPad((date.getMonth()+1), 2);
-			
+
 			$(function() {
 				$("#accountTransaction").attr("onclick", "location.href='accountTransaction-"+year+"-"+month+"'");
 			});

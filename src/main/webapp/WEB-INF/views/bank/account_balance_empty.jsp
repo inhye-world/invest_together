@@ -8,6 +8,7 @@
 	<link href="resources/error.css" rel="stylesheet" type="text/css">
 </head>
 	<body>
+
 		<jsp:include page="../main/header.jsp"/>
 			<div class="contain">	
 				<div>			
@@ -16,5 +17,6 @@
 				</div>
 			</div>
 		<jsp:include page="../main/footer.jsp"/>
+
 	</body>
 </html>

@@ -6,10 +6,10 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	
-	<link href="../resources/temporary.css" rel="stylesheet" type="text/css">
+	<link href="../resources/header_footer.css" rel="stylesheet" type="text/css">
 </head>
 	<body>
-		
+		<jsp:include page="../main/header2.jsp"/>
 		<div class="wrapper">
 			<div class="container">
 				<a class="mainA" href="/into"> 같이투자 API TEST</a>
@@ -21,6 +21,6 @@
 				<a href="/into">홈으로</a>
 			</div>
 		</div>
-		
+		<jsp:include page="../main/footer2.jsp"/>
 	</body>
 </html>

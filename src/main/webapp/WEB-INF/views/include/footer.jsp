@@ -23,6 +23,7 @@
 </head>
 	<body>
 		<footer>
+		<div class="footer-wrapper section-bg2" data-background="resources/main/assets/img/gallery/footer_bg.png">
 			<div class="footer-back">
 				<div class="footer-wrap">
 					<div class="footer-center">
@@ -56,6 +57,7 @@
 						</div>
 					</div>
 				</div>
+			</div>
 			</div>
 		</footer>
 	</body>

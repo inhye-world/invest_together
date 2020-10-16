@@ -7,6 +7,12 @@
 <title>같이투자</title>
 </head>
 <body>
-	<h2>권한이 없습니다</h2>
+	<div class="wrapper">
+		<jsp:include page="../main/header2.jsp"/>
+		<h2>권한이 없습니다</h2>
+		
+		
+		<jsp:include page="../main/footer2.jsp"/>
+	</div>
 </body>
 </html>

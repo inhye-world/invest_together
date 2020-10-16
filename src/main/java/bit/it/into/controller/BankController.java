@@ -247,37 +247,18 @@ public class BankController {
 						}else if(tran_type.equals("커피")){
 							coffeeSum += Integer.valueOf(tran_amt);
 						}else if(tran_type.equals("식사")){
-							hobbySum += Integer.valueOf(tran_amt);
-						}else if(tran_type.equals("취미생활")){
 							mealSum += Integer.valueOf(tran_amt);
+						}else if(tran_type.equals("취미")){
+							hobbySum += Integer.valueOf(tran_amt);
 						}else{
 							etcSum += Integer.valueOf(tran_amt);
 						}
 					}	
-						
-					/*
-					 * //////////////////일별지출///////////////////// Map<Integer, String> map = new
-					 * HashMap<Integer, String>();
-					 * 
-					 * int temp=0; int dayTest=0;
-					 * 
-					 * for(AccountTransactionDTO tDto : accountTransactionList) {
-					 * if(tDto.getInout_type().equals("출금")) { dayTest = tDto.getDay(); if(temp !=
-					 * dayTest) { map.put(dayTest, tDto.getTran_amt()); }else { int dailySum = 0;
-					 * //day가 같은것의 value를 누적합으로 변경하고싶다. dailySum +=
-					 * Integer.valueOf(tDto.getTran_amt());
-					 * 
-					 * map.put(dayTest, Integer.toString(dailySum));
-					 * 
-					 * System.out.println("일치할 때의 map: "+map); } temp = dayTest; } }
-					 * 
-					 * System.out.println("map:" + map);
-					 */
 				}	
 				
 				++count;
 				
-			
+				
 				if(node.get("res_list").get(count) == null) {
 					break;
 				}
@@ -337,50 +318,50 @@ public class BankController {
 		}
 		
 		//////////////////////////////배열 정렬///////////////////////////////////			
-			int tempDay = 0;
-			int tempAmt = 0;
-			
-				for(int i=0; i<dayArrs.length-1; i++) {
-					for(int j=0; j<dayArrs.length-1-i; j++) {
-						if(dayArrs[j] > dayArrs[j+1]) {
-							tempDay = dayArrs[j];
-							dayArrs[j] = dayArrs[j+1];
-							dayArrs[j+1] = tempDay;
-							
-							tempAmt = amountArrs[j];
-							amountArrs[j] = amountArrs[j+1];
-							amountArrs[j+1] = tempAmt;
-						}
-					}
+		int tempDay = 0;
+		int tempAmt = 0;
+		
+		for(int i=0; i<dayArrs.length-1; i++) {
+			for(int j=0; j<dayArrs.length-1-i; j++) {
+				if(dayArrs[j] > dayArrs[j+1]) {
+					tempDay = dayArrs[j];
+					dayArrs[j] = dayArrs[j+1];
+					dayArrs[j+1] = tempDay;
+					
+					tempAmt = amountArrs[j];
+					amountArrs[j] = amountArrs[j+1];
+					amountArrs[j+1] = tempAmt;
 				}
+			}
+		}
+		System.out.println(" ");
+		System.out.println("dayArrs: ");
+		for(int a : dayArrs) {
+			System.out.print(a+"  ");
+		}
+		
+		System.out.println(" ");
+		System.out.println("amountArrs: ");
+		for(int a : amountArrs) {
+			System.out.print(a+"  ");
+		}
+		
+		JSONArray expenseArray = new JSONArray();
+		
+		try {
+			
+			for(int i = 0; i<dayArrs.length; i++) {
+				JSONObject obj = new JSONObject();
+				obj.put("date", dayArrs[i]);
+				obj.put("expenseAmt", amountArrs[i]);
+				expenseArray.add(obj);
+			}
 			System.out.println(" ");
-			System.out.println("dayArrs: ");
-			for(int a : dayArrs) {
-				System.out.print(a+"  ");
-			}
-			
-			System.out.println(" ");
-			System.out.println("amountArrs: ");
-			for(int a : amountArrs) {
-				System.out.print(a+"  ");
-			}
-			
-			JSONArray expenseArray = new JSONArray();
-			
-			try {
-				
-				for(int i = 0; i<dayArrs.length; i++) {
-					JSONObject obj = new JSONObject();
-					obj.put("date", dayArrs[i]);
-					obj.put("expenseAmt", amountArrs[i]);
-					expenseArray.add(obj);
-				}
-				System.out.println(" ");
-				System.out.println("array결과: "+expenseArray.toString());
-			}catch(JSONException e) {
-				e.printStackTrace();
-			}
-				
+			System.out.println("array결과: "+expenseArray.toString());
+		}catch(JSONException e) {
+			e.printStackTrace();
+		}
+		
 		model.addAttribute("expenseSum", expenseSum);
 		
 		model.addAttribute("shoppingSum", shoppingSum);

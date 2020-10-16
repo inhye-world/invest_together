@@ -188,6 +188,10 @@
 .tran-dropdown {
   position: relative;
   display: inline-block;
+  width: 600px;
+  left: 50%;
+  margin-left:-280px;
+  font-size: 2em;
 }
 
 .tran-dropdown-content {
@@ -200,6 +204,7 @@
   min-width: 100%;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  font-size: 1em;
 }
 
 .tran-dropdown-content a {
@@ -213,6 +218,7 @@
 .tran-dropdown-content a:hover {
 	background-color: #ddd;
 	text-decoration: none;
+	color: #027368;
 }
 
 .tran-dropdown:hover .tran-dropdown-content {display: block;}

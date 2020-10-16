@@ -8,6 +8,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Insert title here</title>
 	
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -45,6 +46,12 @@
 	<style>
 		#graphs{
 			display:flex;
+			left:50%
+			margin-left:-150px;
+		}
+		
+		.section{
+			display:flex;
 		}
 		
 		#expenseList{
@@ -57,7 +64,6 @@
 		
 		#expenseWrap{
 			clear:both;
-			text-align: center;
 		}
 		
 		#expenseTable{
@@ -65,20 +71,78 @@
 			margin: auto;
 			text-align: center;
 			margin-bottom: 50px;
+			font-size: 2em;
 		}
+		
+		@media ( max-width: 768px ) {
+			#graphs{
+				flex-wrap:wrap;
+				width:auto;
+			}
+		
+  			#expenseList{
+  				font-size:0.5em;
+				width:auto;
+				text-align: center;
+			}
+			
+			#dailyExpense{
+				width:auto;
+				text-align: center;
+				padding-top:50px;
+			}
+		}
+		
+		.tran-dropdown {
+		  position: relative;
+		  display: inline-block;
+		  width: 600px;
+		  left: 50%;
+		  margin-left:-280px;
+		  font-size: 2em;
+		}
+		
+		.tran-dropdown-content {
+		  display: none;
+		  position: absolute;
+		  background-color: #f1f1f1;
+		  max-height: 200px;
+		  overflow-y: auto; /* prevent horizontal scrollbar */
+		  overflow-x: hidden;
+		  min-width: 100%;
+		  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		  z-index: 1;
+		  font-size: 1em;
+		}
+		
+		.tran-dropdown-content a {
+		  color: black;
+		  padding: 12px 16px;
+		  text-decoration: none;
+		  font-family: 'MapoDPPA';
+		  display: block;
+		}
+		
+		.tran-dropdown-content a:hover {
+			background-color: #ddd;
+			text-decoration: none;
+			color: #027368;
+		}
+		
+		.tran-dropdown:hover .tran-dropdown-content {display: block;}
+		
+		.tran-dropdown:hover .section {background-color: #E7E7E7;}
 	</style>
 	
 </head>	
 	<body>
 		<div class="wrapper">
-		<jsp:include page="../include/header.jsp"/>
+		<jsp:include page="../main/header.jsp"/>
 		
 			<div class="container">
-				<a class="mainA" href="/into"> 같이투자 API TEST</a>
-				
+						
 				<br><br>
 				
-				<h2>-가계부 분석-</h2>
 				<br>
 				<div id="graphs">
 				<!-- 지출 유형 그래프(도넛)  -->
@@ -104,7 +168,7 @@
 			                    	<i class="fas fa-circle" style="color:#72675D"></i> 식사 &nbsp;
 			                    </span>
 			                    <span>
-			                    	<i class="fas fa-circle" style="color:#B7AEBF"></i> 취미생활 &nbsp;
+			                    	<i class="fas fa-circle" style="color:#B7AEBF"></i> 취미 &nbsp;
 			                    </span>
 			                    <span>
 			                    	<i class="fas fa-circle" style="color:#A6949C"></i> 미분류 &nbsp;
@@ -129,13 +193,16 @@
 					<div class="tran-dropdown">
 						<div class="section">
 							<div id="sec1">
-							</div>
-							<div id="sec2">
-								▼
-							</div>
+							</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<div id="sec3">
 								<div id="sec4">
 								</div>
+							</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<div id="sec2">
+								<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-calendar-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								  <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+								  <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+								</svg>
 							</div>	
 						</div>
 						<div id="tran-dropdown-content" class="tran-dropdown-content">
@@ -143,7 +210,7 @@
 					</div>
 				<br>
 				
-				<table id="expenseTable">
+				<table id="expenseTable" class="table">
 					<thead>
 						<tr>
 							<th>유형</th>
@@ -172,7 +239,7 @@
 								<td>${mealSum}</td>
 							</tr>
 							<tr>
-								<td>취미생활</td>
+								<td>취미</td>
 								<td>${hobbySum}</td>
 							</tr>
 							<tr>
@@ -199,7 +266,7 @@
 				var myDoughnutChart = new Chart(ctx, {
 				  type: 'doughnut',
 				  data: {
-				    labels: ["쇼핑", "생활", "교통", "커피", "식사", "취미생활", "미분류"],
+				    labels: ["쇼핑", "생활", "교통", "커피", "식사", "취미", "미분류"],
 				    datasets: [{
 				      data: [shoppingSum, livingExpense, transportSum, coffeeSum, mealSum, hobbySum, etcSum],
 				      backgroundColor: ['#2C4459', '#465E73', '#C1CED9', '#3D2D35','#72675D','#B7AEBF','#A6949C'],
@@ -250,7 +317,7 @@
 			</script>
 			
 		</div>
-		<jsp:include page="../include/footer.jsp"/>
+		<jsp:include page="../main/footer.jsp"/>
 		<script>
 			$(function() {
 				var year = ${year}
