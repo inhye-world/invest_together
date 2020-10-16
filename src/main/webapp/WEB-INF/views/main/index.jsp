@@ -80,7 +80,7 @@
                                                         <li><a href="calculator">계산기</a></li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="blog.html">구독목록</a></li>
+                                                <li><a href="subList" id="subList">구독목록</a></li>
                                                 <li><a href="leaderboards">투자랭킹</a></li>
                                                 <li><a href="boardList">게시판</a></li>
                                                 <sec:authorize access="hasRole('ROLE_USER')">

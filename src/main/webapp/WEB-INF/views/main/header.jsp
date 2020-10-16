@@ -86,7 +86,7 @@
                                                         <li><a href="calculator">계산기</a></li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="#" id="sub">구독목록</a></li>
+                                                <li><a href="subList" id="subList">구독목록</a></li>
                                                 <li><a href="leaderboards" id="rank">투자랭킹</a></li>
                                                 <li><a href="boardList" id="boardList">게시판</a></li>
                                                 <sec:authorize access="hasRole('ROLE_USER')">
@@ -148,7 +148,7 @@
 	 	var page = href.substring(href.lastIndexOf('/') + 1);
 	 	console.log(page);
 	 	
-	 	let hrefArr = ['accountBalance', 'salary', 'assets', 'calculator', 'sub', 'rank', 'boardList', 'modify', 'profits-admin'];
+	 	let hrefArr = ['accountBalance', 'salary', 'assets', 'calculator', 'subList', 'rank', 'boardList', 'modify', 'profits-admin'];
 	 	console.log(hrefArr);
 	 	
 	 	//nav바 하이라이트
