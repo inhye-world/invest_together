@@ -10,7 +10,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>같이투자 - 투자랭킹</title>
+	<title>같이투자 : 투자랭킹</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
@@ -362,8 +362,6 @@
 		
 		
 		$(function() {
-			$(".header-nav ul li").removeClass("header-li-active");
-			$(".header-nav ul li:nth-child(6)").addClass("header-li-active");
 			
 			$("#ranking-individual-find").click(function() {
 				$(".ranking-individual-myplace").css("display", "none");
@@ -411,7 +409,7 @@
 	</script>	
 </head>
 	<body>
-		<jsp:include page="../include/header.jsp"/>
+		<jsp:include page="../main/header.jsp"/>
 		
 		<div class="container mt-4 mb-4 px-0">
 			<div class="ranking-individual">
@@ -631,6 +629,6 @@
 			</div>	
 		</div>
 		
-		<jsp:include page="../include/footer.jsp"/>
+		<jsp:include page="../main/footer.jsp"/>
 	</body>
 </html>

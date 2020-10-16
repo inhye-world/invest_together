@@ -10,7 +10,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>같이투자 - 구독</title>
+	<title>같이투자 : 구독</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
@@ -135,10 +135,8 @@
   		}
       	
       	$(function() {
-      		$(".header-nav ul li").removeClass("header-li-active");
-			$(".header-nav ul li:nth-child(5)").addClass("header-li-active");
-			
-			selectSymbols();
+      		
+      		selectSymbols();
 			
 			<c:if test="${!(empty stockList and empty bondList and accountSum==0)}">
 				
@@ -289,7 +287,7 @@
 	</script>
 </head>
 	<body>
-		<jsp:include page="../include/header.jsp"/>
+		<jsp:include page="../main/header.jsp"/>
 	
 		<div class="container mt-4 mb-4 px-0">
 			<div class="sub-info-nickname">
@@ -486,7 +484,7 @@
 			</div>
 		</div>
 	
-		<jsp:include page="../include/footer.jsp"/>
+		<jsp:include page="../main/footer.jsp"/>
 	
 		<script src="resources/sb_admin/vendor/chart.js/Chart.min.js"></script>
 		

@@ -19,7 +19,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>	
 </head>
 	<body>
-		<jsp:include page="../include/header.jsp"/>
+		<jsp:include page="../main/header.jsp"/>
 		
 		<div class="payment-complete container mt-4 mb-4 px-0">
 			<div class="payment-complete-container">
@@ -50,6 +50,6 @@
 			</div>
 		</div>
 		
-		<jsp:include page="../include/footer.jsp"/>
+		<jsp:include page="../main/footer.jsp"/>
 	</body>
 </html>
