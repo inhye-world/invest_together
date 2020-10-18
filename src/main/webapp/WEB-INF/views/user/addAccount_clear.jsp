@@ -15,7 +15,7 @@
 				<a class="mainA" href="/into"> 같이투자 API TEST</a>
 				<br><br><br><br>
 				
-				<h3>계좌 등록이 완료 되었습니다 </h3>
+				<h3 style="text-align:center">계좌 등록이 완료 되었습니다 </h3>
 				
 				<br><br><br>
 				<a href="/into">홈으로</a>
