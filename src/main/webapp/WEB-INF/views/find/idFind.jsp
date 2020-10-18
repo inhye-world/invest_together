@@ -11,16 +11,33 @@
 		<link href="resources/find.css" rel="stylesheet" type="text/css">
 		
 		<style type="text/css">
-		.auth_form span.error {color:red;} 
-		.verify_form span.error {color:red;} 
+		
+			.auth_form span.error {
+				color:red;
+			} 
+			
+			.verify_form span.error {
+				color:red;
+			} 
+			
+			.container {
+				padding: 100px;
+			}
+			
+			.content__body__page {
+				text-align: center;
+				padding: 100px;
+			}
+			
 		</style>
 		
 	</head>
 	<body>
+	 	<jsp:include page="../main/header.jsp"/>
 	${authKey}
 	${memberDTO.name}
 	${memberDTO.email}
-		<div class="wrapper">
+		<div class="container">
 			<header class="header-pw">
 			</header>			
 			<!-- body -->
@@ -54,9 +71,9 @@
 										</form:form>
 										<form:form class="verify_form" action="verifyId" method="POST">
 											<input type="hidden" name="email" value="${memberDTO.email}">
-											<input type="hidden" id="authKey" value="${authKey}" />
-											<input type="password" name="verifyNumber" placeholder="인증번호 6자리 숫자 입력" maxlength="6"><br><br>
-											<input id="verifyNumber-submit" type="submit" value="확인">
+											<input type="hidden" id="authKey" value="${authKey}"/>
+											<input class="verifyNumber-input" type="password" name="verifyNumber" placeholder="인증번호 6자리 숫자 입력" maxlength="6" style="display: none;"><br><br>
+											<input class="verifyNumber-submit" type="submit" value="확인" style="display: none;">
 										</form:form>
 									</span>		
 								</div>
@@ -131,8 +148,19 @@
 					errorClass: 'error',	//클래스 이름
 					validClass:'vaild' 
 				});
+				
+				$("#authKey-submit").on("click", function() {
+					$(".verifyNumber-input").attr({"style":"display:inline-block"});
+					$(".verifyNumber-submit").attr({"style":"display:inline-block"});
+				});
+				
+				
 			});
 	
 	</script> 	
+	
+	<!-- footer -->
+	<jsp:include page="../main/footer.jsp"/>
+	
 	</body>
 </html>

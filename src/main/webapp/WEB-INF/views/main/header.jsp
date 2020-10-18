@@ -97,14 +97,15 @@
                                                 <li><a href="leaderboards" id="leaderboards">투자랭킹</a></li>
                                                 <li><a href="boardList" id="boardList">게시판</a></li>
                                                 <sec:authorize access="hasRole('ROLE_USER')">
-                                        <li><a id="modify">마이페이지</a>
-                                           <ul class="submenu">
-                                                           <li><a href="addAccount">계좌 추가</a></li>
-                                                           <li><a href="modify">회원정보수정</a></li>
-                                                           <li><a href="purchaseDetails">구매/입금내역</a></li>
-                                                       </ul>
-                                        </li>
-                                    </sec:authorize>
+
+											    <li><a id="modify">마이페이지</a>
+											    	<ul class="submenu">
+                                                        <li><a href="addAccount">계좌 추가</a></li>
+                                                        <li><a href="modify">회원정보수정</a></li>
+                                                        <li><a href="purchaseDetails">거래내역</a></li>
+                                                   	</ul>
+											    </li>
+												</sec:authorize>
 
                                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                                         <li><a href="profits-admin" id="profits-admin">관리자모드</a>
@@ -149,44 +150,47 @@
     
     <script>   
     
-        // Get current URL
-       var href = document.location.href;
-   
-       // Get last part of current URL
-       var page = href.substring(href.lastIndexOf('/') + 1);
-       console.log(page);
-       
-       var hrefArr = ['accountTransaction', 'salaryList', 'assets', 'calculator', 'subList', 'leaderboards', 'boardList', 'modify', 'profits-admin'];
 
-       console.log(hrefArr);
-       
-       //nav바 하이라이트
-       for(i = 0; i < hrefArr.length; i++){
-          if(page == hrefArr[i]){
-             console.log("This page is " + hrefArr[i]);
-             $('#'+hrefArr[i]).addClass('activated');
-          } else{
-             $('#'+hrefArr[i]).removeClass('activated');
-          }
-       }
-       
-       if(page == 'myCalculator' || page == 'target'){
-          $('#calculator').addClass('activated');
-       } else {
-          $('#calculator').removeClass('activated');
-          if(page == 'calculator'){
-             $('#calculator').addClass('activated');
-          }
-       } 
-       
-       if(page == 'addAccount'){
-          $('#modify').addClass('activated');
-       } else {
-          $('#modify').removeClass('activated');
-          if(page == 'modify'){
-             $('#modify').addClass('activated');
-          }
-       }
+  		// Get current URL
+	    var href = document.location.href;
+	
+	 	// Get last part of current URL
+	 	var page = href.substring(href.lastIndexOf('/') + 1);
+	 	console.log(page);
+	 	
+
+	 	let hrefArr = ['accountTransaction', 'salaryList', 'assets', 'calculator', 'sub', 'rank', 'boardList', 'modify', 'profits-admin'];
+
+	 	console.log(hrefArr);
+	 	
+	 	//nav바 하이라이트
+	 	for(i = 0; i < hrefArr.length; i++){
+	 		if(page == hrefArr[i]){
+	 			console.log("This page is " + hrefArr[i]);
+		 		$('#'+hrefArr[i]).addClass('activated');
+	 		} else{
+	 			$('#'+hrefArr[i]).removeClass('activated');
+	 		}
+	 	}
+	 	
+	 	if(page == 'myCalculator' || page == 'target'){
+	 		$('#calculator').addClass('activated');
+	 	} else {
+	 		$('#calculator').removeClass('activated');
+	 		if(page == 'calculator'){
+	 			$('#calculator').addClass('activated');
+	 		}
+	 	} 
+	 	
+	 	if(page == 'addAccount'){
+	 		$('#modify').addClass('activated');
+	 	} else {
+	 		$('#modify').removeClass('activated');
+	 		if(page == 'modify'){
+	 			$('#modify').addClass('activated');
+	 		}
+	 	}
+
 
     </script>
 

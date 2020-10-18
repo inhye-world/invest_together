@@ -60,15 +60,18 @@
 	            		<input type="text" name="set_price" placeholder="판매금액" maxlength="8">
 	            		<input type="submit" value="입력"> 
 	            	</form:form>
-	            	
-	            	<sec:authorize access="isAuthenticated()">
-				  	<sec:authentication var="principal" property="principal"/>
-	            	
+	            		            		
 	            	<div>
-	            		<p>현재 판매금액 :<fmt:formatNumber value="${price}"/>원</p>
+	            		<c:if test="${empty price}">
+		            		<tr>
+		            			<td>입력된 가격이 없습니다.<td>
+		            		</tr>
+	            		</c:if>
+	            		<c:if test="${!empty price}">
+	            				<p>현재 판매금액 :<fmt:formatNumber value="${price}"/>원</p>
+	            		</c:if>
 	            	</div>
 	            	
-	            	</sec:authorize>
 				</div>
 					
 			    <div class="hero-cap">

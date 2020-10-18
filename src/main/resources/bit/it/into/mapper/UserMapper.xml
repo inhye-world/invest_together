@@ -113,6 +113,12 @@
 		]]>
 	</delete>
 	
+	<delete id="deleteSubsribe">
+		<![CDATA[
+			delete from subscribe where member_num = #{member_num}
+		]]>
+	</delete>
+	
 	<delete id="deleteMember">
 		<![CDATA[
 			delete from member where member_num = #{member_num}

@@ -19,7 +19,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>	
 </head>
 	<body>
-		<jsp:include page="../include/header.jsp"/>
+		<jsp:include page="../main/header.jsp"/>
 		
 		<div class="payment-complete container mt-4 mb-4 px-0">
 			<div class="payment-complete-container">
@@ -43,13 +43,13 @@
 						&nbsp;<fmt:formatNumber type="number" maxFractionDigits="3" value="${dto.sub_price}"/>원
 					</div>
 				</div>
-				<h4>결제내역 확인은 마이페이지의 "결제내역조회"에서 하실 수 있습니다.</h4>
+				<h4>결제내역 확인은 마이페이지의 "구매/입금내역"에서 하실 수 있습니다.</h4>
 				<div class="payment-complete-btn">
 					<button class="bttn-simple bttn-xs bttn-ggreen" onclick="location.href='/into'">확인</button>
 				</div>
 			</div>
 		</div>
 		
-		<jsp:include page="../include/footer.jsp"/>
+		<jsp:include page="../main/footer.jsp"/>
 	</body>
 </html>

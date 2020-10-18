@@ -10,7 +10,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>같이투자 - 투자랭킹</title>
+	<title>같이투자 : 투자랭킹</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
@@ -109,14 +109,14 @@
 					$("#backscreen-1 .black-model-section-place span:nth-child(3)").text("(상위 "+result.ranking.percentile+"%)");
 					
 					if(!result.valid.isLogin) {
-						$("#backscreen-1 #subscribe-btn").addClass("black-model-bottom-btn-enabled").text("구독하기").attr("onclick", "location.href='/into/loginForm'").prop("disabled", false);
+						$("#backscreen-1 #subscribe-btn").addClass("black-model-bottom-btn-enabled").addClass("black-model-bottom-btn-"+result.ranking.league).text("구독하기").attr("onclick", "location.href='/into/loginForm'").prop("disabled", false);
 					}else {
 						if(result.valid.isMe) {
 							$("#backscreen-1 #subscribe-btn").addClass("black-model-bottom-btn-disabled").text("자기 자신은 구독할수 없습니다").prop("disabled", true);
 						}else if(result.valid.isSubscribe) {
 							$("#backscreen-1 #subscribe-btn").addClass("black-model-bottom-btn-disabled").text("이미 구독한 회원입니다").prop("disabled", true);
 						}else {
-							$("#backscreen-1 #subscribe-btn").addClass("black-model-bottom-btn-enabled").text("구독하기").attr("onclick", "driveBackscreen2()").prop("disabled", false);
+							$("#backscreen-1 #subscribe-btn").addClass("black-model-bottom-btn-enabled").addClass("black-model-bottom-btn-"+result.ranking.league).text("구독하기").attr("onclick", "driveBackscreen2()").prop("disabled", false);
 							
 							if(!result.valid.hasSetPrice) {
 								$("#backscreen-2 #payment-btn").addClass("black-model-bottom-btn-disabled").text("설정금액을 설정하지 않았습니다").prop("disabled", true);
@@ -126,14 +126,24 @@
 						}
 					}
 					
+					if(result.ranking.league=='whale') {
+						var chartcolor = "#227fec";
+					}else if(result.ranking.league=='mackerel') {
+						var chartcolor = "#a593e0";
+					}else if(result.ranking.league=='shrimp') {
+						var chartcolor = "#f7630c";
+					}
+					
+					
+					
 					chart = new Chart($('#black-model-section-canvas')[0].getContext('2d'), {
 		            	type: 'line',
 		            	data: {
 		                	labels: result.labels,
 			           	 	datasets: [{
 			                	data: result.data,
-			                    backgroundColor: '#227FEC',
-			                    borderColor: '#227FEC',
+			                    backgroundColor: chartcolor,
+			                    borderColor: chartcolor,
 			                    fill: false,
 			                    borderWidth: 1,
 			                    pointRadius: 2,
@@ -352,8 +362,6 @@
 		
 		
 		$(function() {
-			$(".header-nav ul li").removeClass("header-li-active");
-			$(".header-nav ul li:nth-child(6)").addClass("header-li-active");
 			
 			$("#ranking-individual-find").click(function() {
 				$(".ranking-individual-myplace").css("display", "none");
@@ -401,7 +409,7 @@
 	</script>	
 </head>
 	<body>
-		<jsp:include page="../include/header.jsp"/>
+		<jsp:include page="../main/header.jsp"/>
 		
 		<div class="container mt-4 mb-4 px-0">
 			<div class="ranking-individual">
@@ -621,6 +629,6 @@
 			</div>	
 		</div>
 		
-		<jsp:include page="../include/footer.jsp"/>
+		<jsp:include page="../main/footer.jsp"/>
 	</body>
 </html>
