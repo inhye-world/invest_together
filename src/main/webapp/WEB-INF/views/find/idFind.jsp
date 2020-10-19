@@ -85,7 +85,9 @@
 		</div>
 	
 	 <script type="text/javascript">	
-		 
+		 	
+	 		var validError = false;
+	 
 			$(document).ready(function (){
 				$(".auth_form").validate({
 					//규칙
@@ -123,7 +125,13 @@
 					//메시지 태그
 					errorElement : 'span', 	//태그
 					errorClass: 'error',	//클래스 이름
-					validClass:'vaild' 
+					validClass:'vaild',
+					invalidHandler: function (form, validator) {
+						var errors = validator.numberOfInvalids();
+						if(errors) {
+							validError = true;
+						}
+					}
 				});
 				
 				$(".verify_form").validate({
@@ -149,9 +157,16 @@
 					validClass:'vaild' 
 				});
 				
-				$("#authKey-submit").on("click", function() {
+				$(".auth_form").on("submit", function() {
+					
+					if(validError) {
+						return false;
+					}
+					
 					$(".verifyNumber-input").attr({"style":"display:inline-block"});
 					$(".verifyNumber-submit").attr({"style":"display:inline-block"});
+					
+					alert("알림");
 				});
 				
 				
