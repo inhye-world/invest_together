@@ -16,10 +16,27 @@
 	height: 40px;
 }
  	
-#inputName{
-	width: 120px;
-}
- 	
 .tableContent{
 	vertical-align: top;
+}
+
+.inputName{
+	width: 40%;
+}
+
+.inputHere{
+	width: 60%;
+}
+
+#cal-description{
+	min-width: 560px;
+}
+
+#calculator2{
+	min-width: 400px;
+	margin-bottom: 40px;
+}
+
+#outcome{
+	min-width: 250px;
 }

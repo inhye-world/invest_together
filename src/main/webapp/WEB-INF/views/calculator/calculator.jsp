@@ -27,6 +27,7 @@
   <!-- Custom styles for this page -->
   <link href="resources/sb_admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <link href="resources/calculator.css" rel="stylesheet" type="text/css">
+  
 </head>
 
 <body>
@@ -37,7 +38,7 @@
         <div class="ctn">
             <div class="row">
                 <div class="col-xl-7 col-lg-12 col-md-12 col-sm-12">
-                    <div class="single-cases mb-40">
+                    <div class="single-cases mb-40" id="cal-description">
 	                    <div class="card shadow">
 	                        <div class="cases-caption">	                        	
 				                <table> 

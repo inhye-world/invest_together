@@ -49,6 +49,10 @@
   	#resultTap{
   		padding: 20px;
   	}
+  	
+  	#inputCalculator{
+  		 min-width: 438px;
+  	}
 
 
   </style>
@@ -62,7 +66,7 @@
 	    <div class="our-cases-area">
 	        <div class="ctn">
 	            <div class="row">
-	                <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
+	                <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12" id="inputCalculator">
 	                    <div class="single-cases mb-40">
 	                    	<div class="card shadow">
 	                       	 	<div class="cases-caption">

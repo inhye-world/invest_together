@@ -13,7 +13,7 @@
      function nwc(){
  		document.getElementById("calculator2").innerHTML = "";
  		document.getElementById("calculator2").innerHTML = '<div class="card shadow">'+
- 														  '<div class="single-cases mb-40">'+
+ 														  '<div class="single-cases">'+
         													  '<div class="cases-caption">'+
           											      '<h1>순운전자본</h1>'+
           											      '<table id="inputInfo">'+

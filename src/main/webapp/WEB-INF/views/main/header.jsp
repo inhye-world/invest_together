@@ -294,7 +294,7 @@
 				$("#accountTransaction").attr("onclick", "location.href='accountTransaction-"+year+"-"+month+"'");
 			});
 		
-			$(function() {
+			$(function() {  
 				$("#salaryList").attr("onclick", "location.href='salaryList-"+year+"-"+month+"'");
 			});
 	</script>
