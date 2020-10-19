@@ -10,13 +10,17 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
 		<link href="resources/find.css" rel="stylesheet" type="text/css">
 		
+		<!-- alert -->
+	    <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
+	    <script src="resources/sb_admin/js/ast-notif.js"></script>
+		
 		<style type="text/css">
 		
-			.auth_form span.error {
+			.auth_form div.error {
 				color:red;
 			} 
 			
-			.verify_form span.error {
+			.verify_form div.error {
 				color:red;
 			} 
 			
@@ -86,6 +90,19 @@
 	
 	 <script type="text/javascript">	
 		 
+			function alerting(content){
+	       		AstNotif.dialog('알림', content, {
+	           		theme: 'default',
+	           	});
+	       	}
+	         
+	        function confirming(content){
+	      		AstNotif.snackbar(content, {
+	          		theme: 'default',
+	          	});
+	     	}
+	 
+	 	
 			$(document).ready(function (){
 				$(".auth_form").validate({
 					//규칙
@@ -121,7 +138,7 @@
 					},
 
 					//메시지 태그
-					errorElement : 'span', 	//태그
+					errorElement : 'div', 	//태그
 					errorClass: 'error',	//클래스 이름
 					validClass:'vaild' 
 				});
@@ -144,12 +161,13 @@
 					},
 
 					//메시지 태그
-					errorElement : 'span', 	//태그
+					errorElement : 'div', 	//태그
 					errorClass: 'error',	//클래스 이름
 					validClass:'vaild' 
 				});
 				
 				$("#authKey-submit").on("click", function() {
+					alerting("이메일이 발송되었습니다.")
 					$(".verifyNumber-input").attr({"style":"display:inline-block"});
 					$(".verifyNumber-submit").attr({"style":"display:inline-block"});
 				});

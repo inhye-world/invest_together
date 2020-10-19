@@ -12,7 +12,7 @@
    </head>
    <body>
    	 <jsp:include page="../main/header.jsp"/>
-      <div class="wrapper">
+      <div class="container">
          <header class="header-pw">
          </header>         
          <!-- body -->

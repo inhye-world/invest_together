@@ -10,16 +10,36 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
 		<link href="resources/find.css" rel="stylesheet" type="text/css">
 	
+		<!-- alert -->
+	    <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
+	    <script src="resources/sb_admin/js/ast-notif.js"></script>
+	
 		<style type="text/css">
-			.id_form span.error {color:red;} 
-			.auth_form span.error {color:red;} 
+		
+			.id_form span.error {
+				color:red;
+			} 
+			
+			.auth_form span.error {
+				color:red;
+			} 
+			
+			.container {
+				padding: 100px;
+			}
+			
+			.content__body__page {
+				text-align: center;
+				padding: 100px;
+			}
+			
 		</style>
 	</head>
 	<body>
 	   <jsp:include page="../main/header.jsp"/>
 	${authKey}
 	${memberDTO.id}
-		<div class="wrapper">
+		<div class="container">
 			<header class="header-pw">
 			</header>			
 			<!-- body -->
@@ -76,6 +96,19 @@
 		
 	 <script type="text/javascript">	
 		 
+			function alerting(content){
+	       		AstNotif.dialog('알림', content, {
+	           		theme: 'default',
+	           	});
+	       	}
+	         
+	        function confirming(content){
+	      		AstNotif.snackbar(content, {
+	          		theme: 'default',
+	          	});
+	     	}
+	 
+	 
 			$(document).ready(function (){
 				$(".id_form").validate({
 					//규칙
