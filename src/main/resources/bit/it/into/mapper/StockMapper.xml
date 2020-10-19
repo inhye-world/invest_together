@@ -28,6 +28,7 @@
 			FROM stock s 
 				INNER JOIN stock_info si ON s.stockinfo_symbols = si.stockinfo_symbols 
 			WHERE member_num=#{member_num}
+			ORDER BY s.stockinfo_symbols ASC
 		]]>
 	</select>
 	

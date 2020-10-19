@@ -5,7 +5,7 @@
 <mapper namespace="bit.it.into.mapper.BondMapper">
 
 	<select id="getList" resultType="BondDTO">
-        SELECT * FROM BOND WHERE member_num=#{member_num} ORDER BY bond_num DESC
+        SELECT * FROM BOND WHERE member_num=#{member_num} ORDER BY bond_num ASC
     </select>
 	
 	<insert id="writeBond">
