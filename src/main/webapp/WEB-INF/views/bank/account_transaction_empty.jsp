@@ -3,28 +3,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Insert title here</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <meta charset="UTF-8">
+   <title>Insert title here</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+ <body>
+      <div class="wrapper">
+         <jsp:include page="../main/header.jsp"/>
+            <div id="empty">
+	               <br><br><br><br><br>
+	               <h2 style="text-align:center">이번달 내역이 없습니다</h2>
+	               <br><br><br><br><br><br><br>   
+            </div>
+         <jsp:include page="../main/footer.jsp"/>   
+      </div>
+      
+   </body>
 
-<style>
-	
-</style>
-
-	<body>
-		<div class="wrapper">
-			<jsp:include page="../main/header.jsp"/>
-				<div id="empty">
-					<br><br><br><br><br>
-					
-					<h2 style="text-align:center">이번달 내역이 없습니다</h2>
-					<br><br><br><br><br><br>
-					
-				</div>
-	
-			<jsp:include page="../main/footer.jsp"/>	
-		</div>
-		
-	</body>
 </html>

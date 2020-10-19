@@ -4,26 +4,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Insert title here</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
-	<script>
-		let countDay = 0;
-	</script>
-	
-	
+   <meta charset="UTF-8">
+   <title>Insert title here</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+   <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
+   
+   <script>
+      let countDay = 0;
+   </script>
+   
+   
 </head>
 <style>
-	.transListContainer{
-		width:90%;
-		margin-left: 100px;
-	}
 
-	.section{
-			display:flex;
-	}
+   .transListContainer{
+      width:90%;
+      margin-left: 100px;
+   }
+
+
+   .section{
+         display:flex;
+   }
 
 	.transactionList{
 		font-size: 2em;
@@ -202,7 +206,7 @@
 					</c:forEach>
 				</div>
 				<br><br>
-				<button id="expense_analyze">분석내역 보기</button>
+				<button id="expense_analyze" style="cursor:pointer;">분석내역 보기</button>
 				<br><br><br>
 			</div>
 			<jsp:include page="../main/footer.jsp"/>	
@@ -260,6 +264,7 @@
 			})
 			
 		</script>
+>>>>>>> origin/develop_inhye2
 
-	</body>
+   </body>
 </html>

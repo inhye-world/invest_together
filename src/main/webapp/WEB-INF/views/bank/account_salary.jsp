@@ -18,6 +18,8 @@
    <script src="resources/sb_admin/vendor/jquery-easing/jquery.easing.min.js"></script>
    <script src="resources/sb_admin/vendor/chart.js/Chart.min.js"></script> 
    <link href="resources/ranking.css" rel="stylesheet" type="text/css">
+   <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
+
 
    <style>
    
@@ -34,11 +36,12 @@
           cursor:pointer;
          }
          
-        #modify{
+        #modifySalT{
             padding: 20px;
             font-size:1em;
             border:1px solid #fff;
             background-color: #595959;
+            border-radius: 4px;
          }
         
       .portfolio {
@@ -60,6 +63,10 @@
       #salary-modify-form{
          width:120%;
       }
+      .salary-table-empty{
+      	 padding-top: 100px !important;
+   		 padding-bottom: 100px !important;
+      }
 
    </style>
             
@@ -79,7 +86,7 @@
                    <div>
                        <ul class="ranking-notice">
                      <li>회원님의 적금·예금 현황을 나타냅니다.</li>
-                     <li>통장이름 클릭시 해당 통장의 상세 내역을 나타냅니다.</li>
+                     <li>'통장이름' 클릭시 해당 통장의 상세 내역을 나타냅니다.</li>
                   </ul>
                   </div>
                <c:if test="${!( sum1==0 and sum2==0 and sum3==0)}"> 
@@ -104,7 +111,7 @@
                      <button id="modifySalT" class="btn">수정</button>
                   </div> 
                   <form:form id="salary-modify-form" name="salary-modify-form" method = "post">
-                     <table id="account-table" class="table table-bordered" width="100%" cellspacing="0">
+                     <table id="account-table" class="table leaderboards" width="100%" cellspacing="0">
                         <thead>
                            <tr class="test2">
                               <th>카테고리</th>
@@ -115,10 +122,19 @@
                               <th>실입금액</th>
                               <th>누적액</th>
                               <th>만기</th>
-                              <th></th>
+                              <th> </th>
                            </tr>
                         </thead>
                         <tbody>
+                        
+                        <c:if test="${empty accountSalaryList}">
+							<tr>
+								<td class="salary-table-empty" colspan="9" style="text-align:center;">
+									계좌를 추가해주세요.
+								</td>
+							</tr>
+						</c:if>
+                        
                            <c:forEach var="salary" items="${accountSalaryList}" varStatus="status" >
                            <tr id="salary-${status.index}">
                               <td class="test2"><span id="hello-${status.index}"><select name="category" id="category" disabled  >
@@ -133,7 +149,7 @@
                               <td class="test2"><fmt:formatNumber type="number" maxFractionDigits="3" value="${salary.tran_amt}" />원</td>
                               <td class="test2"><fmt:formatNumber type="number" maxFractionDigits="3" value="${salary.balance_amt}" />원</td>
                               <td class="test2"><input type="date" name="strMaturity" id="strMaturity" value="${salary.strMaturity}" disabled required="required"/></td>
-                              <td class="test2"><input type="hidden" name="fintech_use_num" value="${salary.fintech_use_num}" /><button id="modifyBtn-${status.index}" class="btn" style="padding: 20px;font-size:1em;border:1px solid #fff;background-color: #595959;">저장</button></td>
+                              <td class="test2"><input type="hidden" name="fintech_use_num" value="${salary.fintech_use_num}" /><button id="modifyBtn-${status.index}" class="btn" style="padding: 20px;font-size:1em;border:1px solid #fff;background-color: #595959;border-radius: 4px;">저장</button></td>
                            </tr>
                            <script>
                                var count = ${status.count} 

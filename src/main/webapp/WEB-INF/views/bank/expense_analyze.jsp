@@ -19,6 +19,8 @@
    <script src="resources/sb_admin/vendor/jquery-easing/jquery.easing.min.js"></script>
    <script src="resources/sb_admin/js/sb-admin-2.min.js"></script>
    <script src="resources/sb_admin/vendor/chart.js/Chart.min.js"></script>
+   <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
+   
 	<script>
 		var shoppingSum = ${shoppingSum};
 		var livingExpense = ${livingExpense};

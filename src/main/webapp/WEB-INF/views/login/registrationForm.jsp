@@ -10,7 +10,9 @@
 	<link href="resources/temporary.css" rel="stylesheet" type="text/css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
-
+	<link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
+  	<script src="resources/sb_admin/js/ast-notif.js"></script>
+  	
 	<style>
 		.contain{
 			margin: auto;
@@ -49,6 +51,12 @@
 		</div>
 		
 		<script>
+		
+			function alerting(content){
+	    		AstNotif.dialog('알림', content, {
+	        	  theme: 'default',
+	        	});
+	    	}
 			
 			$("input[type=text]").keyup(function() {
 				var pw1 = $("#pw1").val();
@@ -83,7 +91,7 @@
 				var pw1 = $("#pw1").val();
 				var pw2 = $("#pw2").val();
 				if(pw1 != pw2) {
-					alert("비밀번호와 비밀번호 재확인이 일치해야 합니다");
+					alerting("비밀번호와 비밀번호 재확인이 일치해야 합니다");
 					e.preventDefault();
 				}
 			});

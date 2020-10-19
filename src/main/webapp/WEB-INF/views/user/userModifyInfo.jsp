@@ -7,24 +7,38 @@
 <head>
     <meta charset="utf-8">
 	<title>유저 정보 수정</title>
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
 	<link href="../resources/temporary.css" rel="stylesheet" type="text/css">
 	<link href="resources/user_modify.css" rel="stylesheet" type="text/css">
+  	
+  	<link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
+  	<script src="resources/sb_admin/js/ast-notif.js"></script>
 	
+	<link href="resources/sb_admin/css/bttn.css" rel="stylesheet" type="text/css">
+	<link href="resources/ranking.css" rel="stylesheet" type="text/css">
+	<link href="resources/assets.css" rel="stylesheet" type="text/css">
+  	
 	<!-- ajax사용 위해 csrf설정 -->
   	<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
   	<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
   	
 	<style type="text/css">
-		.usermodify-title{
-			margin-left: 500px;
-   			margin-top: 50px;
+		 .usermodify-title{
+			margin-left: 50%;
+   			margin-top: 7%;
    			color: #032380;
+		} 
+		
+		 .table{
+			 left:50%; 
+			 
 		}
 		
-		.usermodify-table{
-			margin-left: 500px;
+		.member-container{
+			left:40%;
+			padding:20%;
 		}
 		
 		 th{
@@ -38,7 +52,7 @@
 		<div class="member-container page-modify">			
 			<h1 class="usermodify-title">회원정보 수정</h1>
 			<br>
-			<table class="usermodify-table">
+			<table class="table">
 
 				<sec:authorize access="isAuthenticated()">
 				<sec:authentication var="principal" property="principal"/>
@@ -136,7 +150,7 @@
 				</tr>	
 			</sec:authorize>
 			</table>	
-		
+			
 			<div class="usermodify-secession">
 				 탈퇴를 원하시면 우측의 회원탈퇴 버튼을 눌러주세요.
 				<a class="usermodify-secession-btn">회원탈퇴</a>
@@ -147,7 +161,12 @@
 		</div>
 		<br><br><br>
 		<script>
-			
+				function alerting(content){
+		    		AstNotif.dialog('알림', content, {
+		        	  theme: 'default',
+		        	});
+		    	}
+		      
 			$(document).ready(function (){
 				
 				$.validator.addMethod("idRegex", function(value, element) {
@@ -382,8 +401,9 @@
 				});
 				
 				$(".usermodify-secession-btn").on("click", function() {
-					var result = confirm("회원정보를 탈퇴 하시겠습니까?")
+					var result = confirm("회원정보를 탈퇴 하시겠습니까?");
 					if(result){
+						
 						$(".usermodify-secession-btn").attr({"href":"secession"});
 					} else 
 						$(".usermodify-secession-btn").attr({"href":"modify"});
@@ -410,7 +430,7 @@
 				var pw1 = $("#pw1").val();
 				var pw2 = $("#pw2").val();
 				if(pw1 != pw2) {
-					alert("비밀번호와 비밀번호 재확인이 일치해야 합니다");
+					alerting("비밀번호와 비밀번호 재확인이 일치해야 합니다");
 					e.preventDefault();
 				}
 			});

@@ -11,15 +11,12 @@
 	<body>
 		<jsp:include page="../main/header.jsp"/>
 			<div class="wrapper">
-			<jsp:include page="../main/header.jsp"/>
-			<div class="snsLoginSucceed">
-				<br><br><br><br>
-				
-				<h3 style="align:center">회원가입이 완료 되었습니다 </h3>
-				<br><br><br>
+				<div class="snsLoginSucceed">
+					<br><br><br><br><br><br>
+						<h3 style="text-align:center">회원가입이 완료 되었습니다 </h3>
+					<br><br><br><br><br>
+				</div>
 			</div>
-			<jsp:include page="../main/footer.jsp"/>
-		</div>
 		<jsp:include page="../main/footer.jsp"/>
 	</body>
 </html>

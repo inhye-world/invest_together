@@ -150,6 +150,7 @@
     
     <script>   
     
+
   		// Get current URL
 	    var href = document.location.href;
 	
@@ -158,7 +159,6 @@
 	 	console.log(page);
 	 
 	 	let hrefArr = ['accountTransaction', 'salaryList', 'assets', 'calculator', 'subList', 'leaderboards', 'boardList', 'modify', 'profits-admin'];
-
 
        console.log(hrefArr);
        
@@ -225,6 +225,7 @@
              $('#salaryList').addClass('activated');
           }
        }
+       
 
     </script>
 
