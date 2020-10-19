@@ -17,14 +17,21 @@
   	<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
 	
 	<style type="text/css">
-		.usermodify-title{
-			margin-left: 500px;
-   			margin-top: 50px;
+		
+		
+		 .usermodify-title{
+			margin-left: 50%;
+   			margin-top: 7%;
    			color: #032380;
+		} 
+		
+		 .table{
+			 left:50%; 
+			 
 		}
 		
-		.usermodify-table{
-			margin-left: 500px;
+		.member-container{
+			left:40%;
 		}
 		
 		 th{
@@ -37,7 +44,7 @@
 		<div class="member-container page-modify">			
 			<h1 class="usermodify-title">회원정보 수정</h1>
 			<br>
-			<table class="usermodify-table">
+			<table class="table">
 				<sec:authorize access="isAuthenticated()">
 				<sec:authentication var="principal" property="principal"/>
 				<tr>
@@ -106,7 +113,7 @@
 				 탈퇴를 원하시면 우측의 회원탈퇴 버튼을 눌러주세요.
 				<a class="usermodify-secession-btn">회원탈퇴</a>
 			
-			<!-- <div class="usermodify-foot"> -->
+			<!-- <div class="usermodify-foot">  -->
 				<button onclick = "location.href = ${pageContext.request.contextPath}/"  type="button" class="usermodify-cancel">나가기</button>
 			</div>
 		</div>

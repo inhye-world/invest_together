@@ -34,11 +34,12 @@
           cursor:pointer;
          }
          
-        #modify{
+        #modifySalT{
             padding: 20px;
             font-size:1em;
             border:1px solid #fff;
             background-color: #595959;
+            border-radius: 4px;
          }
         
       .portfolio {
@@ -79,7 +80,7 @@
                    <div>
                        <ul class="ranking-notice">
                      <li>회원님의 적금·예금 현황을 나타냅니다.</li>
-                     <li>통장이름 클릭시 해당 통장의 상세 내역을 나타냅니다.</li>
+                     <li>'통장이름' 클릭시 해당 통장의 상세 내역을 나타냅니다.</li>
                   </ul>
                   </div>
                <c:if test="${!( sum1==0 and sum2==0 and sum3==0)}"> 
@@ -133,7 +134,7 @@
                               <td class="test2"><fmt:formatNumber type="number" maxFractionDigits="3" value="${salary.tran_amt}" />원</td>
                               <td class="test2"><fmt:formatNumber type="number" maxFractionDigits="3" value="${salary.balance_amt}" />원</td>
                               <td class="test2"><input type="date" name="strMaturity" id="strMaturity" value="${salary.strMaturity}" disabled required="required"/></td>
-                              <td class="test2"><input type="hidden" name="fintech_use_num" value="${salary.fintech_use_num}" /><button id="modifyBtn-${status.index}" class="btn" style="padding: 20px;font-size:1em;border:1px solid #fff;background-color: #595959;">저장</button></td>
+                              <td class="test2"><input type="hidden" name="fintech_use_num" value="${salary.fintech_use_num}" /><button id="modifyBtn-${status.index}" class="btn" style="padding: 20px;font-size:1em;border:1px solid #fff;background-color: #595959;border-radius: 4px;">저장</button></td>
                            </tr>
                            <script>
                                var count = ${status.count} 

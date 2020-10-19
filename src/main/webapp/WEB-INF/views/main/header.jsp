@@ -14,40 +14,39 @@
     <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
     
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
 
-	<style>
-		.point{
-			cursor:pointer;
-			}
-	</style>
-	
-	<!-- CSS here -->
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/owl.carousel.min.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/slicknav.css">
+   <style>
+      .point{
+         cursor:pointer;
+         }
+   </style>
+   
+   <!-- CSS here -->
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/bootstrap.min.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/owl.carousel.min.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/slicknav.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/progressbar_barfiller.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/gijgo.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/animate.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/animated-headline.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/magnific-popup.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/fontawesome-all.min.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/themify-icons.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/slick.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/nice-select.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/style.css">
-	
-	<script>
-		$(function() {
-			$("#logout-btn").click(function(){
-				$("#logout-form").submit();
-			});
-		});
-	</script>
-	
-	
-	
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/magnific-popup.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/fontawesome-all.min.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/themify-icons.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/slick.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/nice-select.css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/style.css">
+   
+   <script>
+      $(function() {
+         $("#logout-btn").click(function(){
+            $("#logout-form").submit();
+         });
+      });
+   </script>
+   
+
 </head>
 <body>
     <!-- ? Preloader Start -->
@@ -84,53 +83,53 @@
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">   
-                                          		<li class="point"><a id="accountTransaction">가계부</a></li>
+                                                <li class="point"><a id="accountTransaction">가계부</a></li>
                                                 <li class="point"><a id="salaryList">월급관리</a></li>
-                                                <li><a href="assets">자산</a></li>
-                                                <li><a href="calculator">계산기</a>
-                                                	<ul class="submenu">
+                                                <li><a href="assets" id="assets">자산</a></li>
+                                                <li><a href="calculator" id="calculator">계산기</a>
+                                                   <ul class="submenu">
                                                         <li><a href="myCalculator">나의 기업관리</a></li>
                                                         <li><a href="target">적정주가계산</a></li>
                                                         <li><a href="calculator">계산기</a></li>
                                                     </ul>
                                                 </li>
                                                 <li><a href="subList" id="subList">구독목록</a></li>
-                                                <li><a href="leaderboards" id="rank">투자랭킹</a></li>
+                                                <li><a href="leaderboards" id="leaderboards">투자랭킹</a></li>
                                                 <li><a href="boardList" id="boardList">게시판</a></li>
                                                 <sec:authorize access="hasRole('ROLE_USER')">
-												    <li><a id="modify">마이페이지</a>
-												    	<ul class="submenu">
-	                                                        <li><a href="addAccount">계좌 추가</a></li>
-	                                                        <li><a href="modify">회원정보수정</a></li>
-	                                                        <li><a href="purchaseDetails">구매/입금내역</a></li>
-                                                    	</ul>
-												    </li>
-												</sec:authorize>
+                                        <li><a id="modify">마이페이지</a>
+                                           <ul class="submenu">
+                                                           <li><a href="addAccount">계좌 추가</a></li>
+                                                           <li><a href="modify">회원정보수정</a></li>
+                                                           <li><a href="purchaseDetails">구매/입금내역</a></li>
+                                                       </ul>
+                                        </li>
+                                    </sec:authorize>
 
-												<sec:authorize access="hasRole('ROLE_ADMIN')">
-												    <li><a href="profits-admin" id="profits-admin">관리자모드</a>
-												    	<ul class="submenu">
-	                                                        <li><a href="profits-admin">매출관리</a></li>
-                                                    	</ul>
-												    </li>
-												</sec:authorize>
+                                    <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                        <li><a href="profits-admin" id="profits-admin">관리자모드</a>
+                                           <ul class="submenu">
+                                                           <li><a href="profits-admin">매출관리</a></li>
+                                                       </ul>
+                                        </li>
+                                    </sec:authorize>
                                             </ul>
                                         </nav>
                                     </div>
                                     <!-- Header-btn -->
                                     <div class="header-right-btn d-none d-lg-block ml-20">
-                                    	<sec:authorize access="isAnonymous()">
-											<c:url value="/loginForm" var="loginForm" />
-											<div class="log-box-1">
-												<a class="btn header-btn" href="${loginForm}">로그인</a>
-											</div>
-										</sec:authorize>
-										<sec:authorize access="isAuthenticated()">
-											<sec:authentication var="principal" property="principal"/>
-											<div class="log-box-2"> 
-										    		<button class="btn header-btn" id="logout-btn">로그아웃 </button>
-										    </div>
-										</sec:authorize>
+                                       <sec:authorize access="isAnonymous()">
+                                 <c:url value="/loginForm" var="loginForm" />
+                                 <div class="log-box-1">
+                                    <a class="btn header-btn" href="${loginForm}">로그인</a>
+                                 </div>
+                              </sec:authorize>
+                              <sec:authorize access="isAuthenticated()">
+                                 <sec:authentication var="principal" property="principal"/>
+                                 <div class="log-box-2"> 
+                                        <button class="btn header-btn" id="logout-btn">로그아웃 </button>
+                                  </div>
+                              </sec:authorize>
                                     </div>
                                 </div>
                             </div> 
@@ -150,47 +149,46 @@
     
     <script>   
     
-  		// Get current URL
-	    var href = document.location.href;
-	
-	 	// Get last part of current URL
-	 	var page = href.substring(href.lastIndexOf('/') + 1);
-	 	console.log(page);
-	 	
-<<<<<<< HEAD
-	 	let hrefArr = ['accountBalance', 'salary', 'assets', 'calculator', 'subList', 'rank', 'boardList', 'modify', 'profits-admin'];
-=======
-	 	let hrefArr = ['accountTransaction', 'salaryList', 'assets', 'calculator', 'sub', 'rank', 'boardList', 'modify', 'profits-admin'];
->>>>>>> origin/develop_sun4
-	 	console.log(hrefArr);
-	 	
-	 	//nav바 하이라이트
-	 	for(i = 0; i < hrefArr.length; i++){
-	 		if(page == hrefArr[i]){
-	 			console.log("This page is " + hrefArr[i]);
-		 		$('#'+hrefArr[i]).addClass('activated');
-	 		} else{
-	 			$('#'+hrefArr[i]).removeClass('activated');
-	 		}
-	 	}
-	 	
-	 	if(page == 'myCalculator' || page == 'target'){
-	 		$('#calculator').addClass('activated');
-	 	} else {
-	 		$('#calculator').removeClass('activated');
-	 		if(page == 'calculator'){
-	 			$('#calculator').addClass('activated');
-	 		}
-	 	} 
-	 	
-	 	if(page == 'addAccount'){
-	 		$('#modify').addClass('activated');
-	 	} else {
-	 		$('#modify').removeClass('activated');
-	 		if(page == 'modify'){
-	 			$('#modify').addClass('activated');
-	 		}
-	 	}
+        // Get current URL
+       var href = document.location.href;
+   
+       // Get last part of current URL
+       var page = href.substring(href.lastIndexOf('/') + 1);
+       console.log(page);
+       
+       var hrefArr = ['accountTransaction', 'salaryList', 'assets', 'calculator', 'subList', 'leaderboards', 'boardList', 'modify', 'profits-admin'];
+
+       console.log(hrefArr);
+       
+       //nav바 하이라이트
+       for(i = 0; i < hrefArr.length; i++){
+          if(page == hrefArr[i]){
+             console.log("This page is " + hrefArr[i]);
+             $('#'+hrefArr[i]).addClass('activated');
+          }else{
+             $('#'+hrefArr[i]).removeClass('activated');
+          }
+       }
+       
+       if(page == 'myCalculator' || page == 'target'){
+          $('#calculator').addClass('activated');
+       } else {
+          $('#calculator').removeClass('activated');
+          if(page == 'calculator'){
+             $('#calculator').addClass('activated');
+          }
+       } 
+       
+       if(page == 'addAccount'){
+          $('#modify').addClass('activated');
+       } else {
+          $('#modify').removeClass('activated');
+          if(page == 'modify'){
+             $('#modify').addClass('activated');
+          }
+       }
+       
+       
 
     </script>
 
@@ -243,27 +241,27 @@
     <script src="${pageContext.request.contextPath}/resources/main/assets/js/mail-script.js"></script>
     <script src="${pageContext.request.contextPath}/resources/main/assets/js/jquery.ajaxchimp.min.js"></script>
     
-    <!-- Jquery Plugins, main Jquery -->	
+    <!-- Jquery Plugins, main Jquery -->   
     <script src="${pageContext.request.contextPath}/resources/main/assets/js/plugins.js"></script>
     <script src="${pageContext.request.contextPath}/resources/main/assets/js/main.js"></script>
     
     <script>
-			function numberPad(n, width) {
-			    n = n + '';
-			    return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;
-			}	
-		
-			var date = new Date();
-			var year = date.getFullYear();
-			var month = numberPad((date.getMonth()+1), 2);
-			
-			$(function() {
-				$("#accountTransaction").attr("onclick", "location.href='accountTransaction-"+year+"-"+month+"'");
-			});
-		
-			$(function() {
-				$("#salaryList").attr("onclick", "location.href='salaryList-"+year+"-"+month+"'");
-			});
-	</script>
+         function numberPad(n, width) {
+             n = n + '';
+             return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;
+         }   
+      
+         var date = new Date();
+         var year = date.getFullYear();
+         var month = numberPad((date.getMonth()+1), 2);
+         
+         $(function() {
+            $("#accountTransaction").attr("onclick", "location.href='accountTransaction-"+year+"-"+month+"'");
+         });
+      
+         $(function() {
+            $("#salaryList").attr("onclick", "location.href='salaryList-"+year+"-"+month+"'");
+         });
+   </script>
     </body>
 </html>

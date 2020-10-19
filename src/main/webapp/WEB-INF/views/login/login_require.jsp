@@ -19,6 +19,6 @@
 				<br><br><br><br><br><br>
 			</div>
 		</div>
-		<jsp:include page="../main/footer2.jsp"/>
+		<jsp:include page="../main/footer.jsp"/>
 	</body>
 </html>
