@@ -89,93 +89,108 @@
 		</div>
 	
 	 <script type="text/javascript">	
-		 
-			function alerting(content){
-	       		AstNotif.dialog('알림', content, {
-	           		theme: 'default',
-	           	});
-	       	}
-	         
-	        function confirming(content){
-	      		AstNotif.snackbar(content, {
-	          		theme: 'default',
-	          	});
-	     	}
-	 
-	 	
-			$(document).ready(function (){
-				$(".auth_form").validate({
-					//규칙
-					rules:{
-						name:{
-							required : true, //필수입력여부
-							minlength : 2 	//최소 입력 글자수
-						},
-						email:{
-							required : true, //필수입력여부
-							email : true 	//이메일형식
-						},
-						
-						verifyNumber:{
-							required : true, //필수입력여부
-						},
-					},
 
-					//메시지
-					messages:{
-						name:{
-							required : "이름을 입력해주세요.",
-							minlength : "최소 2글자 이상 입력해주세요."
-						},
-						email: {
-							required : "이메일을 입력해주세요.",
-							email : "이메일 형식을 지켜주세요." 
-						},
-						
-						verifyNumber: {
-							required : "인증번호를 입력해주세요."
-						},
-					},
+ 		var validError = false;
+ 		
+		function alerting(content){
+       		AstNotif.dialog('알림', content, {
+           		theme: 'default',
+           	});
+       	}
+         
+        function confirming(content){
+      		AstNotif.snackbar(content, {
+          		theme: 'default',
+          	});
+     	}
 
-					//메시지 태그
-					errorElement : 'div', 	//태그
-					errorClass: 'error',	//클래스 이름
-					validClass:'vaild' 
-				});
-				
-				$(".verify_form").validate({
-					//규칙
-					rules:{	
-						verifyNumber:{
-							required : true, //필수입력여부
-							equalTo : "#authKey"
-						},
-					},
 
-					//메시지
-					messages:{		
-						verifyNumber: {
-							required : "인증번호를 입력해주세요.",
-							equalTo : "인증번호가 틀렸습니다."
-						},
+		$(document).ready(function (){
+			$(".auth_form").validate({
+				//규칙
+				rules:{
+					name:{
+						required : true, //필수입력여부
+						minlength : 2 	//최소 입력 글자수
 					},
+					email:{
+						required : true, //필수입력여부
+						email : true 	//이메일형식
+					},
+					
+					verifyNumber:{
+						required : true, //필수입력여부
+					},
+				},
 
-					//메시지 태그
-					errorElement : 'div', 	//태그
-					errorClass: 'error',	//클래스 이름
-					validClass:'vaild' 
-				});
-				
-				$("#authKey-submit").on("click", function() {
-					$(".verifyNumber-input").attr({"style":"display:inline-block"});
-					$(".verifyNumber-submit").attr({"style":"display:inline-block"});
-				});
-				
-				$("#authKey-submit").submit(function(){
-					alerting("이메일이 발송되었습니다.")
-					 
-				 });
+				//메시지
+				messages:{
+					name:{
+						required : "이름을 입력해주세요.",
+						minlength : "최소 2글자 이상 입력해주세요."
+					},
+					email: {
+						required : "이메일을 입력해주세요.",
+						email : "이메일 형식을 지켜주세요." 
+					},
+					
+					verifyNumber: {
+						required : "인증번호를 입력해주세요."
+					},
+				},
+
+				//메시지 태그
+				errorElement : 'div', 	//태그
+				errorClass: 'error',	//클래스 이름
+				validClass:'vaild',
+				invalidHandler: function (form, validator) {
+					var errors = validator.numberOfInvalids();
+					if(errors) {
+						validError = true;
+					}
+				}
 			});
+			
+			$(".verify_form").validate({
+				//규칙
+				rules:{	
+					verifyNumber:{
+						required : true, //필수입력여부
+						equalTo : "#authKey"
+					},
+				},
+
+				//메시지
+				messages:{		
+					verifyNumber: {
+						required : "인증번호를 입력해주세요.",
+						equalTo : "인증번호가 틀렸습니다."
+					},
+				},
+
+				//메시지 태그
+				errorElement : 'div', 	//태그
+				errorClass: 'error',	//클래스 이름
+				validClass:'vaild' 
+			});
+			
+			$(".auth_form").on("submit", function() {
+				
+				if(validError) {
+					return false;
+				}
+				
+				$(".verifyNumber-input").attr({"style":"display:inline-block"});
+				$(".verifyNumber-submit").attr({"style":"display:inline-block"});
+				
+				alert("알림");
+			});
+			
+			$("#authKey-submit").submit(function(){
+				alerting("이메일이 발송되었습니다.")
+				 
+			 });
+		});
 	
 	</script> 	
 	
