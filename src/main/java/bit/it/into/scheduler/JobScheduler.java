@@ -28,7 +28,7 @@ public class JobScheduler {
 	
 	// 4시간마다로 변경시
 	// (cron="0 */4 * * *") 
-	@Scheduled(cron="00 59 14 19 10 ?")
+	@Scheduled(cron="00 48 17 19 10 ?")
 	public void updateRanking() {
 		log.info("============================ 랭킹 업데이트 ============================");
 		
