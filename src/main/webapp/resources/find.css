@@ -25,7 +25,7 @@ div {
 .content--login .content__body{
 	position: relative;
     margin: 0 auto;
-    width: 545px;
+    width: 650px;
     border: 1px solid #d9d9d9;
     background-color: #fff;
 }
@@ -47,6 +47,35 @@ div {
     width: 100%;
     height: auto;
 }
+
+.container {
+	padding: 100px;
+}
+
+.content__body__page {
+	text-align: center;
+	padding: 100px;
+}
+
+.auth-submit {
+	padding-top: 15px;
+}
+
+.auth_form div.error {
+	color:red;
+} 
+
+.verify_form div.error {
+	color:red;
+} 
+
+.id_form div.error {
+	color:red;
+} 
+
+.pw_form div.error {
+	color:red;
+} 
 
 img {
     vertical-align: top;

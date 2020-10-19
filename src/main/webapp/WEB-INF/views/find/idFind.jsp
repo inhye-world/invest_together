@@ -14,23 +14,16 @@
 	    <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
 	    <script src="resources/sb_admin/js/ast-notif.js"></script>
 		
-		<style type="text/css">
 		
-			.auth_form div.error {
-				color:red;
-			} 
-			
-			.verify_form div.error {
-				color:red;
-			} 
-			
-			.container {
-				padding: 100px;
+		
+		<style type="text/css">
+				
+			.name-input {
+				padding-bottom: 3px;
 			}
-			
-			.content__body__page {
-				text-align: center;
-				padding: 100px;
+		
+			.verify_form-content {
+				padding-top: 15px;
 			}
 			
 		</style>
@@ -38,9 +31,6 @@
 	</head>
 	<body>
 	 	<jsp:include page="../main/header.jsp"/>
-	${authKey}
-	${memberDTO.name}
-	${memberDTO.email}
 		<div class="container">
 			<header class="header-pw">
 			</header>			
@@ -69,16 +59,23 @@
 								<div class="user-area_content">
 									<span class="input-state input-state--success is-block" id="user_id_box">
 										<form:form class="auth_form" action="idEmailSend" method="POST">
-											이름: <input type="text" id="name" name="name" maxlength="40"><br><br>
-											이메일 주소: <input type="text" id="email" name="email" maxlength="100"><br><br>
-											</span><input id="authKey-submit" type="submit" value="인증번호 받기"><br><br>
+											<div class="name-input">
+												이름: <input type="text" id="name" name="name" maxlength="40">
+											</div>
+											<br>
+												이메일 주소: <input type="text" id="email" name="email" maxlength="100">
+									</span>
+											<div class="auth-submit"><input id="authKey-submit" type="submit" value="인증번호 받기"></div>
 										</form:form>
+										
+										<div class="verify_form-content">
 										<form:form class="verify_form" action="verifyId" method="POST">
-											<input type="hidden" name="email" value="${memberDTO.email}">
-											<input type="hidden" id="authKey" value="${authKey}"/>
-											<input class="verifyNumber-input" type="password" name="verifyNumber" placeholder="인증번호 6자리 숫자 입력" maxlength="6" style="display: none;"><br><br>
+											<input type="hidden" id="authEmail" name="email" />
+											<input type="hidden" id="authKey" />
+											<input class="verifyNumber-input" type="password" name="verifyNumber" placeholder="인증번호 6자리 숫자 입력" maxlength="6" style="display: none;">
 											<input class="verifyNumber-submit" type="submit" value="확인" style="display: none;">
 										</form:form>
+										</div>
 									</span>		
 								</div>
 							</article>
@@ -89,9 +86,7 @@
 		</div>
 	
 	 <script type="text/javascript">	
-
- 		var validError = false;
- 		
+	 
 		function alerting(content){
        		AstNotif.dialog('알림', content, {
            		theme: 'default',
@@ -106,7 +101,11 @@
 
 
 		$(document).ready(function (){
+			
+			var validError = false;
+			
 			$(".auth_form").validate({
+				
 				//규칙
 				rules:{
 					name:{
@@ -118,9 +117,6 @@
 						email : true 	//이메일형식
 					},
 					
-					verifyNumber:{
-						required : true, //필수입력여부
-					},
 				},
 
 				//메시지
@@ -134,9 +130,6 @@
 						email : "이메일 형식을 지켜주세요." 
 					},
 					
-					verifyNumber: {
-						required : "인증번호를 입력해주세요."
-					},
 				},
 
 				//메시지 태그
@@ -174,24 +167,47 @@
 				validClass:'vaild' 
 			});
 			
-			$(".auth_form").on("submit", function() {
+ 			$(".auth_form").on("submit", function() {
 				
 				if(validError) {
+					alerting("이름 또는 이메일을 잘못 입력하셨습니다.")
 					return false;
 				}
 				
-				$(".verifyNumber-input").attr({"style":"display:inline-block"});
-				$(".verifyNumber-submit").attr({"style":"display:inline-block"});
-				
-				alert("알림");
-			});
-			
-			$("#authKey-submit").submit(function(){
-				alerting("이메일이 발송되었습니다.")
-				 
-			 });
-		});
-	
+				event.preventDefault();
+				/* 이메일 중복 체크 후 메일 발송 비동기 처리 */
+				$.ajax({
+					type:"get",
+					url : "rest/idEmailSend",
+					dataType: 'json',
+					data : "email=" + $("#email").val() + "&name=" + $("#name").val(),
+					
+				success : function(data){
+					
+					console.log(data);
+					
+					if(data.hasEmail) {
+						$(".verifyNumber-input").attr({"style":"display:inline-block"});
+						$(".verifyNumber-submit").attr({"style":"display:inline-block"});
+						
+						alerting("이메일이 발송되었습니다.");
+						
+						$("#authKey").val(data.authKey);
+						var authEmail = $("#email").val();
+						$("#authEmail").val(authEmail);
+						
+					}else {
+						alerting("다시 입력해 주세요.")	
+					}
+				},
+				error: function(data){
+					alerting("다시 입력해 주세요.");
+					return false;
+				}
+			});	
+		}); 
+	});
+
 	</script> 	
 	
 	<!-- footer -->
