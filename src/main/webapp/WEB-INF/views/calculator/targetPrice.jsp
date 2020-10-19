@@ -13,7 +13,7 @@
   <meta id="_csrf" name="_csrf" content="${_csrf.token}" />	
   <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
   
-  <title>같이투자 : 적정주가계산</title>
+  <title>같이투자 | 적정주가계산</title>
   
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -21,6 +21,7 @@
   
   <!-- Custom styles for this page -->
   <link href="resources/sb_admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link rel="shortcut icon" type="image/x-icon" href="resources/main/assets/img/favicon.ico">
   
  <!-- alert -->
   <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css?v=<%=System.currentTimeMillis() %>" />
@@ -110,10 +111,10 @@
 				            		</table>
 				            		<table id="inputButton">
 				            			<tr>
-				            				<td><button type="button" class="genric-btn info" onclick="calculate();">계산</button></td>
-				            				<td><button type="button" class="genric-btn info" onclick="refresh();">초기화</button></td>
+				            				<td><button type="button" class="genric-btn primary" onclick="calculate();">계산</button></td>
+				            				<td><button type="button" class="genric-btn primary" onclick="refresh();">초기화</button></td>
 				            				<sec:authorize access="isAuthenticated()">
-												<td><button type="button" class="genric-btn info" onclick="location.href='myCalculator'">나의 기업 관리</button></td>
+												<td><button type="button" class="genric-btn primary" onclick="location.href='myCalculator'">나의 기업 관리</button></td>
 											</sec:authorize>
 				            				<td><span id="submitButton"></span></td>
 				            			</tr>
@@ -233,7 +234,7 @@
                  '<input type="hidden" name="roe" value='+material1+'>'+
                  '<input type="hidden" name="ke" value='+material2+'>'+
                  '<input type="hidden" name="share_issued" value='+material3+'>'+
-                 '<input type="submit" id="save" class="genric-btn info" onclick="send();" value="저장" />'+
+                 '<input type="submit" id="save" class="genric-btn primary" onclick="send();" value="저장" />'+
                  '</form>';	
  		    } 
  
