@@ -27,4 +27,8 @@ public interface SubscribeMapper {
 
 	public void updateSetPrice(Map<String, Integer> user);
 
+	public int selectSubPriceDay();
+	
+	public int insertDailySales(int dailySaleSum);
+
 }

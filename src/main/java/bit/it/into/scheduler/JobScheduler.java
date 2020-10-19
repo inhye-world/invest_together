@@ -11,6 +11,7 @@ import bit.it.into.dto.RankDTO;
 import bit.it.into.dto.StockDTO;
 import bit.it.into.service.RankService;
 import bit.it.into.service.StockService;
+import bit.it.into.service.SubscribeService;
 import bit.it.into.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -23,8 +24,11 @@ public class JobScheduler {
 	private UserService user;
 	private StockService stock;
 	private RankService rank;
+	private SubscribeService sub;
 	
-	@Scheduled(cron="00 45 10 19 10 ?")
+	// 4시간마다로 변경시
+	// (cron="0 */4 * * *") 
+	@Scheduled(cron="00 59 14 19 10 ?")
 	public void updateRanking() {
 		log.info("============================ 랭킹 업데이트 ============================");
 		
@@ -65,4 +69,10 @@ public class JobScheduler {
 		
 	}
 	
+	@Scheduled(cron="00 00 00 * * *")
+	public void updateSales() {
+		log.info("============================ 매출 업데이트 ============================");
+		
+		sub.updateDailySales();
+	}
 }
