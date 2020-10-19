@@ -46,8 +46,7 @@
 		});
 	</script>
 	
-	
-	
+
 </head>
 <body>
     <!-- ? Preloader Start -->
@@ -86,8 +85,8 @@
                                             <ul id="navigation">   
                                           		<li class="point"><a id="accountTransaction">가계부</a></li>
                                                 <li class="point"><a id="salaryList">월급관리</a></li>
-                                                <li><a href="assets">자산</a></li>
-                                                <li><a href="calculator">계산기</a>
+                                                <li><a href="assets" id="assets">자산</a></li>
+                                                <li><a href="calculator" id="calculator">계산기</a>
                                                 	<ul class="submenu">
                                                         <li><a href="myCalculator">나의 기업관리</a></li>
                                                         <li><a href="target">적정주가계산</a></li>
@@ -95,7 +94,7 @@
                                                     </ul>
                                                 </li>
                                                 <li><a href="subList" id="subList">구독목록</a></li>
-                                                <li><a href="leaderboards" id="rank">투자랭킹</a></li>
+                                                <li><a href="leaderboards" id="leaderboards">투자랭킹</a></li>
                                                 <li><a href="boardList" id="boardList">게시판</a></li>
                                                 <sec:authorize access="hasRole('ROLE_USER')">
 												    <li><a id="modify">마이페이지</a>
@@ -106,11 +105,12 @@
                                                     	</ul>
 												    </li>
 												</sec:authorize>
-
 												<sec:authorize access="hasRole('ROLE_ADMIN')">
 												    <li><a href="profits-admin" id="profits-admin">관리자모드</a>
 												    	<ul class="submenu">
 	                                                        <li><a href="profits-admin">매출관리</a></li>
+	                                                        <li><a href="stats-admin">통계관리</a></li>
+	                                                        <li><a href="write_notice">공지등록</a></li>
                                                     	</ul>
 												    </li>
 												</sec:authorize>
@@ -156,8 +156,7 @@
 	 	// Get last part of current URL
 	 	var page = href.substring(href.lastIndexOf('/') + 1);
 	 	console.log(page);
-	 	
-
+	 
 	 	let hrefArr = ['accountTransaction', 'salaryList', 'assets', 'calculator', 'sub', 'rank', 'boardList', 'modify', 'profits-admin'];
 
 	 	console.log(hrefArr);
@@ -187,6 +186,42 @@
 	 		$('#modify').removeClass('activated');
 	 		if(page == 'modify'){
 	 			$('#modify').addClass('activated');
+	 		}
+	 	}
+	 	
+	 	if(page == 'write_notice' || page == 'stats-admin'){
+	 		$('#profits-admin').addClass('activated');
+	 	} else {
+	 		$('#profits-admin').removeClass('activated');
+	 		if(page == 'profits-admin'){
+	 			$('#profits-admin').addClass('activated');
+	 		}
+	 	}
+	 	
+	 	if(page == 'write_view' || href.indexOf('content_view') != -1 || href.indexOf('notice_view') != -1){
+	 		$('#boardList').addClass('activated');
+	 	} else {
+	 		$('#boardList').removeClass('activated');
+	 		if(page == 'boardList'){
+	 			$('#boardList').addClass('activated');
+	 		}
+	 	}
+	 	
+	 	if(href.indexOf('accountTransaction') != -1){
+	 		$('#accountTransaction').addClass('activated');
+	 	} else {
+	 		$('#accountTransaction').removeClass('activated');
+	 		if(page == 'accountTransaction'){
+	 			$('#accountTransaction').addClass('activated');
+	 		}
+	 	}
+	 	
+	 	if(href.indexOf('salaryList') != -1){
+	 		$('#salaryList').addClass('activated');
+	 	} else {
+	 		$('#salaryList').removeClass('activated');
+	 		if(page == 'salaryList'){
+	 			$('#salaryList').addClass('activated');
 	 		}
 	 	}
 

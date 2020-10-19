@@ -9,11 +9,11 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
 @AllArgsConstructor
-public class AdminCotroller {
+public class ProfitsCotroller {
 	
 	@RequestMapping("/profits-admin")
 	public String admin() {
-		log.info("AdminController - profits()");
+		log.info("ProfitsCotroller - profits()");
 		return "admin/profits-admin";
 	}
 

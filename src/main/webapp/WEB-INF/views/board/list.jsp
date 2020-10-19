@@ -42,6 +42,25 @@
 		    line-height: 1;
 		    padding-bottom: 30px;
 		}
+		
+		.notice-btn{
+		  display: inline-block;
+		  outline: none;
+		  line-height: 25px;
+		  padding: 0 15px;
+		  font-size: .9em;
+		  text-align: center;
+		  text-decoration: none;
+		  font-weight: 500;
+		  cursor: pointer;
+		  -webkit-transition: all 0.3s ease 0s;
+		  -moz-transition: all 0.3s ease 0s;
+		  -o-transition: all 0.3s ease 0s;
+		  transition: all 0.3s ease 0s;
+		  color: #fff;
+ 		  background: #f44a40;
+ 		  border: 1px solid transparent;
+		}
 			
 	</style>
 	
@@ -60,6 +79,15 @@
 						<td>작성일</td>
 						<td>조회수</td>
 					</tr>
+					<c:forEach items="${nlist}" var="ndto">
+					<tr id="content" onmouseover="this.style.backgroundColor='rgba(9, 204, 127, 0.4)'" onmouseout="this.style.backgroundColor='white'" onclick="location.href='notice_view?notice_num=${ndto.notice_num}'">
+						<td><button class="notice-btn">공지</button></td>
+						<td>${ndto.notice_title}</td>
+						<td>관리자</td>
+						<td><fmt:formatDate value="${ndto.notice_date}" dateStyle="full" /></td>
+						<td>${ndto.notice_hit}</td>
+					</tr>
+					</c:forEach>
 					<c:forEach items="${list}" var="dto">
 					<tr id="content" onmouseover="this.style.backgroundColor='rgba(9, 204, 127, 0.4)'" onmouseout="this.style.backgroundColor='white'" onclick="location.href='content_view?board_num=${dto.board_num}'">
 						<td>${dto.board_num}</td>

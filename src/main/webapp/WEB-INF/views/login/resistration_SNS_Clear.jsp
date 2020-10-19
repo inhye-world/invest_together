@@ -9,17 +9,14 @@
 	<link href="resources/temporary.css" rel="stylesheet" type="text/css">
 </head>
 	<body>
-		
-		<div class="wrapper">
-			<div class="container">
-				<a class="mainA" href="/into"> 같이투자 API TEST</a>
-				<br><br><br><br>
-				
-				<h3>회원가입이 완료 되었습니다 </h3>
-				<br><br><br>
-				<a href="/into">홈으로</a>
+		<jsp:include page="../main/header.jsp"/>
+			<div class="wrapper">
+				<div class="container">					
+					<h3>회원가입이 완료 되었습니다 </h3>
+					<br><br><br>
+					<a href="/into">홈으로</a>
+				</div>
 			</div>
-		</div>
-		
+		<jsp:include page="../main/footer.jsp"/>
 	</body>
 </html>
