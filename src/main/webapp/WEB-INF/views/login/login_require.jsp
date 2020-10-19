@@ -11,8 +11,7 @@
 
 			<jsp:include page="../main/header.jsp"/>
 		
-			<div class="container">
-			<a class="mainA" href="/into"> 같이투자 API TEST</a>
+			<div class="loginContainer">
 				<br><br><br><br><br><br><br>
 			
 				<h2 style="text-align:center;">로그인 후 이용 가능합니다 </h2>

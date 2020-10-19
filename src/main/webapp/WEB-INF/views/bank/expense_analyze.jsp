@@ -184,6 +184,8 @@
 							
 						
 					</div>
+					<div id="expenseReport">
+					</div>
 				</c:if>
 				</div>
 					<br>
@@ -318,6 +320,7 @@
 			
 		</div>
 		<jsp:include page="../main/footer.jsp"/>
+		
 		<script>
 			$(function() {
 				var year = ${year}
@@ -353,7 +356,6 @@
 				}
 			});
 		</script>
-		
 		
    <script src="resources/sb_admin/vendor/chart.js/Chart.min.js"></script>
    <script src="resources/tableExport/tableExport.min.js" type="text/javascript"></script>
