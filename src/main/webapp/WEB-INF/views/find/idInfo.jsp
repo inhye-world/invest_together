@@ -11,6 +11,7 @@
       <link href="resources/find.css" rel="stylesheet" type="text/css">
    </head>
    <body>
+   	 <jsp:include page="../main/header.jsp"/>
       <div class="wrapper">
          <header class="header-pw">
          </header>         
@@ -60,5 +61,9 @@
             </div>      
          </section>
       </div>
+      
+     <!-- footer -->
+	<jsp:include page="../main/footer.jsp"/>
+      
    </body>
 </html>

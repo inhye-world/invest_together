@@ -101,7 +101,7 @@
 												    	<ul class="submenu">
 	                                                        <li><a href="addAccount">계좌 추가</a></li>
 	                                                        <li><a href="modify">회원정보수정</a></li>
-	                                                        <li><a href="purchaseDetails">구매/입금내역</a></li>
+	                                                        <li><a href="purchaseDetails">거래내역</a></li>
                                                     	</ul>
 												    </li>
 												</sec:authorize>
@@ -156,8 +156,8 @@
 	 	// Get last part of current URL
 	 	var page = href.substring(href.lastIndexOf('/') + 1);
 	 	console.log(page);
-	 	
-	 	var hrefArr = ['accountTransaction', 'salaryList', 'assets', 'calculator', 'subList', 'leaderboards', 'boardList', 'modify', 'profits-admin'];
+	 
+	 	let hrefArr = ['accountTransaction', 'salaryList', 'assets', 'calculator', 'sub', 'rank', 'boardList', 'modify', 'profits-admin'];
 
 	 	console.log(hrefArr);
 	 	
