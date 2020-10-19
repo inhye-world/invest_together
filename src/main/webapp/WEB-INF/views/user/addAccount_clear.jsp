@@ -36,8 +36,10 @@
 				<a href="/into">홈으로</a>
 			</div>
 		</div>
+
 		<footer>
 		<jsp:include page="../main/footer.jsp"/>
 		</footer>
+
 	</body>
 </html>

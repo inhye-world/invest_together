@@ -15,6 +15,12 @@
 			margin-top: 100px;
 			margin-bottom: 100px;
     	}
+    	
+    	.loginForm a{
+    		color: #072366;
+    		font-weight: 700;
+    	}
+    	
     </style>
        
 </head>

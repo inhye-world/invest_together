@@ -27,7 +27,7 @@ public class PurchaseDetailsController {
 	private SubscribeService service;
 	
 	@RequestMapping("/purchaseDetails")
-	public String purchaseDetails(Authentication authentication, PurchaseCriteria cri, Model model) {
+	public String purchaseDetails(Authentication authentication,  Model model) {
 		log.info("PurchaseDetailsController - purchaseDetails()");
 		
 		if(authentication==null) {
@@ -51,7 +51,7 @@ public class PurchaseDetailsController {
 		
 		model.addAttribute("list", list);
 		
-		int price = service.getSetPrice(user_num);
+		Integer price = service.getSetPrice(user_num);
 
 		model.addAttribute("price", price);
 		
@@ -77,10 +77,6 @@ public class PurchaseDetailsController {
 		user_info.put("set_price", set_price);
 	
 		service.SetPrice(user_info);
-		
-		int price = service.getSetPrice(member_num);
-
-		model.addAttribute("price", price);
 		
 		return "redirect:/purchaseDetails";
 	}

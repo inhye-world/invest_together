@@ -10,7 +10,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>같이투자 - 구독목록</title>
+	<title>같이투자 : 구독목록</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<link href="resources/sb_admin/css/bttn.css" rel="stylesheet" type="text/css">
@@ -175,8 +175,6 @@
 	    
 	    
 		$(function() {
-			$(".header-nav ul li").removeClass("header-li-active");
-			$(".header-nav ul li:nth-child(5)").addClass("header-li-active");
 			
 			for(var i=0; i<nickArr.length; ++i) {
 				(function(j) {
@@ -230,7 +228,7 @@
 	</script>
 </head>
 	<body>
-	<jsp:include page="../include/header.jsp"/>
+	<jsp:include page="../main/header.jsp"/>
 	
 		<div class="container mt-4 mb-4 px-0">
 			<div class="sub-list">
@@ -299,6 +297,6 @@
 			</div>	
 		</div>
 		
-	<jsp:include page="../include/footer.jsp"/>
+	<jsp:include page="../main/footer.jsp"/>
 	</body>
 </html>

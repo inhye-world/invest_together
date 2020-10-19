@@ -63,8 +63,6 @@
   		}
 		
 		$(function() {
-			$(".header-nav ul li").removeClass("header-li-active");
-			$(".header-nav ul li:nth-child(3)").addClass("header-li-active");
 			
 			<c:if test="${!(empty stockList and empty bondList and accountSum==0)}">
 			
@@ -167,10 +165,10 @@
 					var str = '<tr>';
 					str += '<td><input type="submit" id="buy_stock_submit" class="bttn-material-flat assets-submit-bttn" value="" onclick="javascript: form.action=`buyStock`;" /></td>';
 					str += '<td><input type="text" id="buy_stockinfo_symbols" name="buy_stockinfo_symbols" placeholder="종목명" size="13" /></td>';
-					str += '<td><input type="text" id="buy_company" name="buy_company" placeholder="증권사" size="5" /></td>';
-					str += '<td><input type="text" id="buy_purchase_price" name="buy_purchase_price" placeholder="매수가" size="5" /></td>';
+					str += '<td><input type="text" id="buy_company" name="buy_company" placeholder="증권사" size="6" /></td>';
+					str += '<td><input type="text" id="buy_purchase_price" name="buy_purchase_price" placeholder="매수가" size="6" /></td>';
 					str += '<td>-</td><td>-</td><td>-</td>';
-					str += '<td><input type="text" id="buy_quantity" name="buy_quantity" placeholder="매수수량" size="4" /></td>';
+					str += '<td><input type="text" id="buy_quantity" name="buy_quantity" placeholder="매수수량" size="5" /></td>';
 					str += '<td>-</td>';
 					str += '</tr>';
 					
@@ -293,7 +291,7 @@
 					var str = '<input type="submit" id="sell_stock_submit" class="bttn-material-flat assets-submit-bttn" value="" onclick="javascript: form.action=`sellStock`;" />';
 					$("#stock-"+check+" td:nth-child(1)").html(str);
 					
-					str = '<input type="text" id="sell_quantity" name="sell_quantity" placeholder="매도수량" size="4" />';
+					str = '<input type="text" id="sell_quantity" name="sell_quantity" placeholder="매도수량" size="5" />';
 					$("#stock-"+check+" td:nth-child(8)").html(str);
 					
 					str = '<input type="hidden" name="sell_stockinfo_symbols" value="'+symbolArr[check]+'" />';
@@ -350,6 +348,11 @@
 					return false;
 				}
 				
+				if(stockisEmpty) {
+					alerting("다운로드 하실 수 없습니다");
+					return false;
+				}
+				
 				$('#stock-table').tableExport({
 					fileName:"가치투자_주식내역_" + new Date().toISOString().replace(/[\-\:\.]/g, ""),
 					type:'excel',
@@ -363,7 +366,16 @@
 			});
 			
 			$('#downloadExel').on('click', function (e) {
-	            e.preventDefault();
+				if(addBondisRun || modifyBondisRun) {
+					alerting("수정중에는 다운로드 하실 수 없습니다");
+					return false;
+				}
+				
+				if(bondisEmpty) {
+					alerting("다운로드 하실 수 없습니다");
+					return false;
+				}
+				e.preventDefault();
 	
 	            $('#bond-table').tableExport({type:'excel'});
             });
@@ -569,7 +581,6 @@
 				</div>
 			</div>	
 		</div>
-	
 	<jsp:include page="../main/footer.jsp"/>
 	
 	<script type="text/javascript">

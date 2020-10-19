@@ -126,6 +126,7 @@ public class UserService {
 		mapper.deleteBond(member_num);
 		mapper.deleteRank(member_num);
 		mapper.deleteAccount(member_num);
+		mapper.deleteSubsribe(member_num);
 		mapper.deleteMember(member_num);
 	}
 

@@ -16,14 +16,25 @@
 	<style type="text/css">
 		.form div.error {color:red;} 
 		.form div{color:red;}
+		
+		.contain{
+    		margin: auto;
+		 	margin-top: 100px;
+			margin-bottom: 100px; 
+    	}
+    	
+    	
 	</style>
 </head>
 	<body>
-		<div class="wrapper">
-			<div class="container nicknameForm">
-				<a class="mainA" href="/into"> 같이투자 API TEST</a>
-				<br><br><br><br>
-				
+		<jsp:include page="../main/header.jsp"/>
+		<br><br><br>
+			<div class="wrapper">
+			<div class="contain nicknameForm col-xl-4 col-lg-4">
+				<h1 style="text-align:center;font-size:2em;">카카오톡 회원가입</h1> 
+				<br>
+				<h2 style="text-align:center;font-size:1em;">닉네임과 핸드폰 번호를 입력해주세요</h2> 
+			
 				<form:form class="form" action="addKakaoUser" method="POST">
 					<input type="hidden" name="id" value="${dto.id}" />
 					<input type="hidden" name="email" value="${dto.email}" />
@@ -31,14 +42,18 @@
 					<input type="hidden" name="sns_type" value="${dto.sns_type}" />
 					<input type="hidden" name="sns_token" value="${dto.sns_token}" />
 					<br><br>
-					<h1>닉네임</h1>
-					<input type="text" name="nickname" />
-					<h1>핸드폰 번호</h1>
+					<h1 style="margin-left:-50%">닉네임</h1>
+					
+					<input type="text" name="nickname" /><br>
+					<h1 style="margin-left:-50%">핸드폰 번호</h1>
 					<input type="text" name="phone" maxlength="11">
 					<input type="submit" value="확인" />
 				</form:form>
 			</div>
+			<br><br><br><br>
+			<jsp:include page="../main/footer.jsp"/>
 		</div>
+		
 		<script type="text/javascript">	
 		
 		$.validator.addMethod("nicknameRegex", function(value, element) {
