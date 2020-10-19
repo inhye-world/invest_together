@@ -13,6 +13,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" type="image/x-icon" href="resources/main/assets/img/favicon.ico">
   
   <!-- alert -->
   <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
@@ -22,11 +23,12 @@
   <meta id="_csrf" name="_csrf" content="${_csrf.token}" />
   <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
 
-  <title>같이투자 : 계산기</title>
+  <title>같이투자 | 계산기</title>
 
   <!-- Custom styles for this page -->
   <link href="resources/sb_admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <link href="resources/calculator.css" rel="stylesheet" type="text/css">
+  
 </head>
 
 <body>
@@ -37,7 +39,7 @@
         <div class="ctn">
             <div class="row">
                 <div class="col-xl-7 col-lg-12 col-md-12 col-sm-12">
-                    <div class="single-cases mb-40">
+                    <div class="single-cases mb-40" id="cal-description">
 	                    <div class="card shadow">
 	                        <div class="cases-caption">	                        	
 				                <table> 

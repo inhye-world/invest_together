@@ -16,7 +16,7 @@
 	
 </head>
 <style>
-	.container{
+	.transListContainer{
 		width:90%;
 		margin-left: 100px;
 	}
@@ -50,6 +50,7 @@
 		font-size:1em;
 		border:1px solid #fff;
 		background-color: #112026;
+		color:#fff;
 	}
 	
 	#expense_analyze:hover{
@@ -80,6 +81,35 @@
 	  font-size: 1em;
 	}
 	
+	#sec1 {
+	width: 100px;
+	height: 100px;
+	float: left;
+	line-height: 100px;
+	font-size: 1em;
+	}
+	#sec2 {
+		width: 40px;
+		height: 100px;
+		float: right;
+		font-size: 1em;
+		text-align: left;
+		line-height: 100px;
+	}
+	#sec3 {
+		width: 230px;
+		height: 100px;
+		float: right;
+		display: table;
+		text-align: left;
+	}
+	
+	#sec4 {
+		display: table-cell;
+		vertical-align: middle;
+		font-size: 1em;
+	}
+	
 	.tran-dropdown-content a {
 	  color: black;
 	  padding: 12px 16px;
@@ -102,7 +132,7 @@
 		<div class="wrapper">
 		<jsp:include page="../main/header.jsp"/>
 		
-			<div class="container">
+			<div class="transListContainer">
 				<br>
 				
 				<br>
@@ -113,7 +143,7 @@
 							<div id="sec3">
 								<div id="sec4">
 								</div>
-							</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							</div>&nbsp;&nbsp;
 							<div id="sec2">
 								<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-calendar-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 								  <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>

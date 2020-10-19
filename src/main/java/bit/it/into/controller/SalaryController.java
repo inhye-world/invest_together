@@ -54,7 +54,7 @@ public class SalaryController {
 		log.info("SalaryController - accountTransaction()");
 
 		if (authentication == null) {
-			return "redirect:/loginForm";
+			return "login/login_require";
 
 		}
 

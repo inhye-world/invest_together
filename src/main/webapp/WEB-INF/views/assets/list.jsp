@@ -10,7 +10,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>같이투자 - 자산</title>
+	<title>같이투자 | 자산</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
@@ -21,6 +21,8 @@
 	<link href="resources/sb_admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 	
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	
 	<!-- alert -->
   	<link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
@@ -30,7 +32,12 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>	
+
+	<link rel="shortcut icon" type="image/x-icon" href="resources/main/assets/img/favicon.ico">
 	
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 	<link href="resources/sb_admin/css/bttn.css" rel="stylesheet" type="text/css">
 	<link href="resources/ranking.css" rel="stylesheet" type="text/css">
 	<link href="resources/assets.css" rel="stylesheet" type="text/css">
@@ -557,7 +564,7 @@
 			                    <td><input type="checkbox" class="checkRow" name="checkRow" data-symbols="${bond.bond_num}" /></td>
 			                    <td style="display:none;">${bond.bond_num}</td> <!-- jQuery.Deferred exception의 원인 th, td 컬럼 수가 불일치 -->
 			                    <td>${bond.bond_symbols}</td>
-			                    <td><fmt:formatNumber type="number" maxFractionDigits="3" value="${bond.total_interest}" />원</td>
+			                    <td><fmt:formatNumber type="number" maxFractionDigits="3" value="${bond.total_interest}" />%</td>
 			                    <td>${bond.bond_company}</td>
 			                    <td><fmt:formatNumber type="number" maxFractionDigits="3" value="${bond.bond_price}" />원</td>
 			                    <td><fmt:parseDate var="dateString" value="${bond.bond_date}" pattern="yyyy-MM-dd HH:mm:ss" /><fmt:formatDate value="${dateString}" pattern="yyyy-MM-dd" /></td>
@@ -613,10 +620,10 @@
 	        	  var bond_symbols = document.getElementById("bond_symbols").value;
 
  	        	  var pattern1 = /\s/;
-	        	  var pattern2 = /[._+=-`~!@#$%^&*|\\\'\";:\/?]/gi;
+	        	  //var pattern2 = /[._+=-`~!@#$%^&*|\\\'\";:\/?]/gi;
 	        	  
-	         	  if(bond_symbols.search(pattern1) != -1 || bond_symbols.search(pattern2) != -1) {
-	                  alerting("종목명을 다시 입력해주세요. 공백 및 특수문자는 사용할 수 없습니다.");
+	         	  if(bond_symbols.search(pattern1) != -1) {
+	                  alerting("종목명을 입력해주세요.");
 	                  document.getElementById("bond_symbols").value = "";
 	                  return false;
 	               }
@@ -726,7 +733,7 @@
 		    	
 		        var addTableRow =     
 		        	'	 <tr id="bondList_${dto.bond_num}">'+
-		            '    <td></td>'+
+		            '    <td><input type="checkbox" class="checkRow" name="checkRow" data-symbols="${dto.bond_num}" /></td>'+
 		            '    <td style="display:none;"><input type="hidden" name="bond_num" value="${dto.bond_num}" /></td>'+
 		            '    <td><input type="text" id="bond_symbols" name="bond_symbols" placeholder="종목명" size="5"/></td>'+
 		            '    <td><input type="text" id="total_interest" name="total_interest" placeholder="세후이자" size="7"/></td>'+
@@ -972,10 +979,7 @@
 		</script>
 		
 		<script src="resources/sb_admin/vendor/chart.js/Chart.min.js"></script>
-	
-		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-		
+
 		<script src="resources/tableExport/tableExport.min.js" type="text/javascript"></script>
 		<script src="resources/tableExport/xlsx.core.min.js" type="text/javascript"></script>
 		<script src="resources/tableExport/FileSaver.min.js" type="text/javascript"></script>
