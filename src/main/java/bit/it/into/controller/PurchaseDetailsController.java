@@ -31,7 +31,7 @@ public class PurchaseDetailsController {
 		log.info("PurchaseDetailsController - purchaseDetails()");
 		
 		if(authentication==null) {
-			return "redirect:/loginForm";
+			return "login/login_require";
 		}
 		
 		CustomUser user = (CustomUser)authentication.getPrincipal();

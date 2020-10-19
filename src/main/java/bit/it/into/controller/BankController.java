@@ -48,7 +48,7 @@ public class BankController {
 		log.info("BankController - accountBalance()");
 		
 		if(authentication == null) {
-			return "redirect:/loginForm";
+			return "login/login_require";
 		}
 		
 		
@@ -98,7 +98,7 @@ public class BankController {
 		log.info("BankController - accountTransaction()");
 		
 		if(authentication == null) {
-			return "login/loginForm";
+			return "login/login_require";
 		}
 		
 		
@@ -186,7 +186,7 @@ public class BankController {
 		log.info("BankController - expenseAnalyze()");
 		
 		if(authentication == null) {
-			return "login/loginForm";
+			return "login/login_require";
 		}
 		
 		int shoppingSum = 0;
@@ -264,8 +264,6 @@ public class BankController {
 				}
 			}
 		}
-		
-		
 		
 		int[] dayArr = new int[accountTransactionList.size()];
 		int[] amountArr = new int[accountTransactionList.size()];
@@ -361,6 +359,7 @@ public class BankController {
 		}catch(JSONException e) {
 			e.printStackTrace();
 		}
+		
 		
 		model.addAttribute("expenseSum", expenseSum);
 		

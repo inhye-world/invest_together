@@ -6,13 +6,11 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	
-	<link href="../resources/header_footer.css" rel="stylesheet" type="text/css">
 </head>
 	<body>
 		<jsp:include page="../main/header.jsp"/>
 		<div class="wrapper">
-			<div class="container">
-				<a class="mainA" href="/into"> 같이투자 API TEST</a>
+			<div class="AccountClear">
 				<br><br><br><br>
 				
 				<h3 style="text-align:center">계좌 등록이 완료 되었습니다 </h3>
