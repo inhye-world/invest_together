@@ -11,6 +11,7 @@
 		.point{
 			cursor:pointer;
 		}
+		
 	</style>
 
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -92,22 +93,23 @@
                                                 <li><a href="leaderboards" id="leaderboards">투자랭킹</a></li>
                                                 <li><a href="boardList" id="boardList">게시판</a></li>
                                                 <sec:authorize access="hasRole('ROLE_USER')">
-                                        <li><a id="modify">마이페이지</a>
-                                           <ul class="submenu">
-                                                           <li><a href="addAccount">계좌 추가</a></li>
-                                                           <li><a href="modify">회원정보수정</a></li>
-                                                           <li><a href="purchaseDetails">구매/입금내역</a></li>
-                                                       </ul>
-                                        </li>
-                                    </sec:authorize>
-
-                                    <sec:authorize access="hasRole('ROLE_ADMIN')">
-                                        <li><a href="profits-admin" id="profits-admin">관리자모드</a>
-                                           <ul class="submenu">
-                                                           <li><a href="profits-admin">매출관리</a></li>
-                                                       </ul>
-                                        </li>
-                                    </sec:authorize>
+												    <li><a id="modify">마이페이지</a>
+												    	<ul class="submenu">
+	                                                        <li><a href="addAccount">계좌 추가</a></li>
+	                                                        <li><a href="modify">회원정보수정</a></li>
+	                                                        <li><a href="purchaseDetails">구매/입금내역</a></li>
+                                                    	</ul>
+												    </li>
+												</sec:authorize>
+												<sec:authorize access="hasRole('ROLE_ADMIN')">
+												    <li><a href="profits-admin" id="profits-admin">관리자모드</a>
+												    	<ul class="submenu">
+	                                                        <li><a href="profits-admin">매출관리</a></li>
+	                                                        <li><a href="stats-admin">통계관리</a></li>
+	                                                        <li><a href="write_notice">공지등록</a></li>
+                                                    	</ul>
+												    </li>
+												</sec:authorize>
                                             </ul>
                                         </nav>
                                     </div>

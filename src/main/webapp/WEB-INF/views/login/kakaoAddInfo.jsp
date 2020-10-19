@@ -19,8 +19,8 @@
 		
 		.contain{
     		margin: auto;
-		 	margin-top: 100px;
-			margin-bottom: 100px; 
+		 	margin-top: 75px;
+			margin-bottom: 65px; 
     	}
     	
     	
@@ -42,10 +42,11 @@
 					<input type="hidden" name="sns_type" value="${dto.sns_type}" />
 					<input type="hidden" name="sns_token" value="${dto.sns_token}" />
 					<br><br>
-					<h1 style="margin-left:-50%">닉네임</h1>
+					<h1 style="margin-left:-53%; color:#282724; font-size:1em;">닉네임</h1>
 					
-					<input type="text" name="nickname" /><br>
-					<h1 style="margin-left:-50%">핸드폰 번호</h1>
+					<input type="text" name="nickname" />
+					<br><br>
+					<h1 style="margin-left:-50%; color:#282724; font-size:1em;">핸드폰 번호</h1>
 					<input type="text" name="phone" maxlength="11">
 					<input type="submit" value="확인" />
 				</form:form>

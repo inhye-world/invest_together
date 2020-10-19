@@ -18,6 +18,8 @@
    <script src="resources/sb_admin/vendor/jquery-easing/jquery.easing.min.js"></script>
    <script src="resources/sb_admin/vendor/chart.js/Chart.min.js"></script> 
    <link href="resources/ranking.css" rel="stylesheet" type="text/css">
+   <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
+
 
    <style>
    
@@ -60,6 +62,10 @@
       }
       #salary-modify-form{
          width:120%;
+      }
+      .salary-table-empty{
+      	 padding-top: 100px !important;
+   		 padding-bottom: 100px !important;
       }
 
    </style>
@@ -105,7 +111,7 @@
                      <button id="modifySalT" class="btn">수정</button>
                   </div> 
                   <form:form id="salary-modify-form" name="salary-modify-form" method = "post">
-                     <table id="account-table" class="table table-bordered" width="100%" cellspacing="0">
+                     <table id="account-table" class="table leaderboards" width="100%" cellspacing="0">
                         <thead>
                            <tr class="test2">
                               <th>카테고리</th>
@@ -116,10 +122,19 @@
                               <th>실입금액</th>
                               <th>누적액</th>
                               <th>만기</th>
-                              <th></th>
+                              <th> </th>
                            </tr>
                         </thead>
                         <tbody>
+                        
+                        <c:if test="${empty accountSalaryList}">
+							<tr>
+								<td class="salary-table-empty" colspan="9" style="text-align:center;">
+									계좌를 추가해주세요.
+								</td>
+							</tr>
+						</c:if>
+                        
                            <c:forEach var="salary" items="${accountSalaryList}" varStatus="status" >
                            <tr id="salary-${status.index}">
                               <td class="test2"><span id="hello-${status.index}"><select name="category" id="category" disabled  >

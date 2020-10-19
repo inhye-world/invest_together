@@ -19,6 +19,8 @@
    <script src="resources/sb_admin/vendor/jquery-easing/jquery.easing.min.js"></script>
    <script src="resources/sb_admin/js/sb-admin-2.min.js"></script>
    <script src="resources/sb_admin/vendor/chart.js/Chart.min.js"></script>
+   <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
+   
 	<script>
 		var shoppingSum = ${shoppingSum};
 		var livingExpense = ${livingExpense};
@@ -184,6 +186,8 @@
 							
 						
 					</div>
+					<div id="expenseReport">
+					</div>
 				</c:if>
 				</div>
 					<br>
@@ -318,6 +322,7 @@
 			
 		</div>
 		<jsp:include page="../main/footer.jsp"/>
+		
 		<script>
 			$(function() {
 				var year = ${year}
@@ -353,7 +358,6 @@
 				}
 			});
 		</script>
-		
 		
    <script src="resources/sb_admin/vendor/chart.js/Chart.min.js"></script>
    <script src="resources/tableExport/tableExport.min.js" type="text/javascript"></script>

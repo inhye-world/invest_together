@@ -150,14 +150,15 @@
     
     <script>   
     
-        // Get current URL
-       var href = document.location.href;
-   
-       // Get last part of current URL
-       var page = href.substring(href.lastIndexOf('/') + 1);
-       console.log(page);
-    
-       let hrefArr = ['accountTransaction', 'salaryList', 'assets', 'calculator', 'sub', 'rank', 'boardList', 'modify', 'profits-admin'];
+
+  		// Get current URL
+	    var href = document.location.href;
+	
+	 	// Get last part of current URL
+	 	var page = href.substring(href.lastIndexOf('/') + 1);
+	 	console.log(page);
+	 
+	 	let hrefArr = ['accountTransaction', 'salaryList', 'assets', 'calculator', 'subList', 'leaderboards', 'boardList', 'modify', 'profits-admin'];
 
        console.log(hrefArr);
        
@@ -224,6 +225,7 @@
              $('#salaryList').addClass('activated');
           }
        }
+       
 
     </script>
 

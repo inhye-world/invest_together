@@ -36,7 +36,7 @@ public class BondController {
 		log.info("////////////////////list/////////////////////");
 		
 		if(authentication == null) {
-			return "redirect:/loginForm";
+			return "login/login_require";
 		}
 		
 		
