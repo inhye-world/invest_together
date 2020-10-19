@@ -167,12 +167,14 @@
 				});
 				
 				$("#authKey-submit").on("click", function() {
-					alerting("이메일이 발송되었습니다.")
 					$(".verifyNumber-input").attr({"style":"display:inline-block"});
 					$(".verifyNumber-submit").attr({"style":"display:inline-block"});
 				});
 				
-				
+				$("#authKey-submit").submit(function(){
+					alerting("이메일이 발송되었습니다.")
+					 
+				 });
 			});
 	
 	</script> 	
