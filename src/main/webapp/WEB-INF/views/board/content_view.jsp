@@ -90,7 +90,7 @@
 	                        <div class="single-comment justify-content-between d-flex">
 	                           <div class="user justify-content-between d-flex">
 	                              <div class="thumb">
-	                                 <img src="resources/main/assets/img/blog/profile.jpeg" alt="">
+	                                 <img src="${pageContext.request.contextPath}${dto.photo}" alt="">
 	                              </div>
 	                              <div class="desc">
 	                                 <p class="comment">

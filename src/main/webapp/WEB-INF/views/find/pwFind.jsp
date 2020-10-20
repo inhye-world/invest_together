@@ -48,7 +48,7 @@
 								</dl>
 							</article>
 							<article class="user-area">
-								<div class="user-area_content">
+									<div class="user-area_content">
 									<span class="input-state input-state--success is-block" id="user_id_box">
 										<form:form class="id_form" action="pwdEmailSend" method="POST">
 											<input type="text" class="form-control--base-c" id="id" name="id" placeholder="아이디 (대소문자 구분)" maxlength="12">
@@ -64,21 +64,13 @@
 											<input class="genric-btn primary" id="verifyNumber-submit" type="submit" value="확인" style="display: none;">
 										</form:form>
 										<br>		
-								</div>
-								<div class="user-area__help">
-									<span class="list-bul">
-										아이디를 찾으시나요?			
-									</span>
-									<button class="genric-btn primary" onclick="location.href='idFind'">
-										<span>아이디 찾기</span>
-									</button>			
-								</div>
-							</article>
-						</section>
-					</div>	
-				</div>		
-			</section>
-		</div>
+									</div>
+								</article>
+							</section>
+						</div>	
+					</div>		
+				</section>
+			</div>
 		
 	 <script type="text/javascript">	
 		 

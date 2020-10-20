@@ -22,4 +22,11 @@ public class CommentsDTO {
 	private int comment_indent;
 	private int board_num;
 	
+	public String getPhoto() {
+		
+		int num = (int)(Math.random()*6)+1;
+		
+		return "/resources/main/assets/img/blog/profile" + num + ".jpeg";
+	}
+	
 }

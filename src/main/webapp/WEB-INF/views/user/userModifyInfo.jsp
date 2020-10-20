@@ -159,7 +159,7 @@
 			</div>
 		</div>
 		<br><br><br>
-<script>
+	<script>
 		
 			function alerting(content){
 	    		AstNotif.dialog('알림', content, {
@@ -437,9 +437,9 @@
 				});
 				
 				$(".usermodify-secession-btn").on("click", function() {
-					confirming("ㅇㅈㅂㄹㄷㅈㄹㄷㅈㄹ");
 					
 					var result = confirm("회원정보를 탈퇴 하시겠습니까?");
+					
 					if(result){		
 						$(".usermodify-secession-btn").attr({"href":"secession"});
 					} else 
