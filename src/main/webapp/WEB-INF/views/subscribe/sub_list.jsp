@@ -10,7 +10,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>같이투자 : 구독목록</title>
+	<title>같이투자 | 구독목록</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<link href="resources/sb_admin/css/bttn.css" rel="stylesheet" type="text/css">
@@ -18,7 +18,7 @@
 	<link href="resources/sub.css" rel="stylesheet" type="text/css">
 	
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
-	
+	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
 	<script src="resources/sb_admin/vendor/chart.js/Chart.min.js"></script>
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

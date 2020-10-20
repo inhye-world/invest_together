@@ -6,11 +6,12 @@
 <html>
 <head>
     <meta charset="utf-8">
-	<title>유저 정보 수정</title>
+	<title>같이투자 | 유저 정보 수정</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
 	<link href="resources/user_modify.css" rel="stylesheet" type="text/css">
 	<link href="../resources/temporary.css" rel="stylesheet" type="text/css">
+	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
 	
 	<!-- ajax사용 위해 csrf설정 -->
   	<meta id="_csrf" name="_csrf" content="${_csrf.token}" />

@@ -22,11 +22,12 @@
   <meta id="_csrf" name="_csrf" content="${_csrf.token}" />
   <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
 
-  <title>같이투자 : 계산기</title>
+  <title>같이투자 | 계산기</title>
 
   <!-- Custom styles for this page -->
   <link href="resources/sb_admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <link href="resources/calculator.css" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
 </head>
 
 <body>

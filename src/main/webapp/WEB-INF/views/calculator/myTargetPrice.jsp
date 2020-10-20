@@ -17,12 +17,12 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
+  <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
   <!-- ajax사용 위해 csrf설정 -->
   <meta id="_csrf" name="_csrf" content="${_csrf.token}" />
   <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
 
-  <title>같이투자 : 나의적정주가</title>
+  <title>같이투자 | 나의적정주가</title>
 
   <!-- Custom styles for this page -->
   <link href="resources/sb_admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">

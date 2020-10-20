@@ -5,13 +5,13 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>유저 정보 수정</title>
+	<title>같이투자 | 유저 정보 수정</title>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
 	<link href="resources/user_modify.css" rel="stylesheet" type="text/css"> 
 	<link href="resources/ranking.css" rel="stylesheet" type="text/css">
-	
+	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
 	<style>
 		
     	.table th {
@@ -22,7 +22,7 @@
     		position:absolute;
     		border-collapse: collapse;
   			border-spacing: 0;
-  			top:25%;
+  			top:35%;
   			left:40%;
     	}
 
@@ -47,7 +47,7 @@
 							
 						</ul>
    					</div>
-				<table class="table">
+				<table class="table col-xl-5 col-lg-5">
 					<tbody>
 						<tr>
 							<th scope="row">닉네임<th>

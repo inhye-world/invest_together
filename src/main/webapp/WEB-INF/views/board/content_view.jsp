@@ -13,8 +13,7 @@
    <title> 같이투자 | 게시판</title>
    <meta name="description" content="">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="shortcut icon" type="image/x-icon" href="resources/main/assets/img/favicon.ico">
-
+   <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
 	<style>
 		
 		.form-group textarea.form-control {

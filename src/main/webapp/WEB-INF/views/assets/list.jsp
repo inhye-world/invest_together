@@ -10,7 +10,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>같이투자 - 자산</title>
+	<title>같이투자 | 자산</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
@@ -36,7 +36,7 @@
 	<link href="resources/sb_admin/css/bttn.css" rel="stylesheet" type="text/css">
 	<link href="resources/ranking.css" rel="stylesheet" type="text/css">
 	<link href="resources/assets.css" rel="stylesheet" type="text/css">
-	
+	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
 	<script>
 		var codeArr = [];
 		var symbolArr = [];

@@ -4,14 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>같이투자</title>
+<title>같이투자 | 권한이 없습니다</title>
 </head>
 <body>
 	<div class="wrapper">
 		<jsp:include page="../main/header.jsp"/>
-		<h2>권한이 없습니다</h2>
 		
+		<br><br><br><br><br><br>
+		<h2 style="text-align:center">권한이 없습니다</h2>
 		
+		<br><br><br><br><br><br><br>
 		<jsp:include page="../main/footer.jsp"/>
 	</div>
 </body>

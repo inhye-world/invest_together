@@ -9,7 +9,7 @@
 
 <head>
    <meta charset="UTF-8">
-   <title>Insert title here</title>
+   <title>같이투자 | 월급관리</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
    <link href="resources/sb_admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -67,7 +67,7 @@
       	 padding-top: 100px !important;
    		 padding-bottom: 100px !important;
       }
-
+	
    </style>
             
 </head>
@@ -129,7 +129,7 @@
                         
                         <c:if test="${empty accountSalaryList}">
 							<tr>
-								<td class="salary-table-empty" colspan="9" style="text-align:center;">
+								<td class="salary-table-empty" colspan="9" style="text-align:center; font-family:'Noto Sans KR', sans-serif; font-size: 20px;">
 									계좌를 추가해주세요.
 								</td>
 							</tr>

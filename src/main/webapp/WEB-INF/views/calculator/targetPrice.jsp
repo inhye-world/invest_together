@@ -13,12 +13,12 @@
   <meta id="_csrf" name="_csrf" content="${_csrf.token}" />	
   <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
   
-  <title>같이투자 : 적정주가계산</title>
+  <title>같이투자 | 적정주가계산</title>
   
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  
+  <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
   <!-- Custom styles for this page -->
   <link href="resources/sb_admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   

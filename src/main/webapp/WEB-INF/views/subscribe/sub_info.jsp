@@ -10,7 +10,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>같이투자 : 구독</title>
+	<title>같이투자 | 구독</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">

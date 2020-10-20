@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>같이투자 | 주식/채권</title>
 	
 	<link href="resources/sb_admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -36,7 +36,6 @@
 		<jsp:include page="../include/header_temp.jsp"/>
 			
 			<div class="container container2">
-				<a class="mainA" href="/into"> 같이투자 API TEST</a>
 				<br><br><br>
 				
 				<div class="stock-list">

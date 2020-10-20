@@ -7,7 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>같이투자 | 마이페이지</title>
 	<link href="../resources/temporary.css" rel="stylesheet" type="text/css">
-	
+	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
 	<style>
     	.contain{
     		margin: auto;

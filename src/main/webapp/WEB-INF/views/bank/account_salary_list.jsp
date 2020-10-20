@@ -64,13 +64,13 @@
 </style>
 <head>
 	<meta charset="UTF-8">
-	<title>통장내역</title>
+	<title>같이투자 | 통장내역</title>
 	<link href="resources/ranking.css" rel="stylesheet" type="text/css">
 	<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>	
-
+	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
 </head>
 	<body>
 	<div class="wrapper">

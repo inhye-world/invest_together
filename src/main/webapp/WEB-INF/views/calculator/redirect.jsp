@@ -11,7 +11,7 @@
 	    <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
   		<script src="resources/sb_admin/js/ast-notif.js"></script>
 		
-	    <title>알림창</title>
+	    <title>같이투자 | 알림창</title>
 
 	</head>
 	

@@ -5,7 +5,7 @@
 <html lang="ko">
 	<head>
 	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	    <title>같이투자 :: 400에러</title>
+	    <title>같이투자 || 400에러</title>
 	</head>
 	
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
