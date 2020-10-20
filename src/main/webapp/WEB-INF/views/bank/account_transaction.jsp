@@ -5,7 +5,7 @@
 <html>
 <head>
    <meta charset="UTF-8">
-   <title>Insert title here</title>
+   <title>같이투자 | 가계부</title>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
@@ -264,7 +264,6 @@
 			})
 			
 		</script>
->>>>>>> origin/develop_inhye2
 
    </body>
 </html>

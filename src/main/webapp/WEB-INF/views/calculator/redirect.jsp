@@ -6,13 +6,12 @@
 	<head>
 		<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
-		<link rel="shortcut icon" type="image/x-icon" href="resources/main/assets/img/favicon.ico">
 	    
 	    <!-- alert -->
 	    <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
   		<script src="resources/sb_admin/js/ast-notif.js"></script>
 		
-	    <title>같이투자</title>
+	    <title>같이투자 | 알림창</title>
 
 	</head>
 	

@@ -4,8 +4,8 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
-	
+	<title>같이투자 | 회원가입 완료</title>
+	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
 	<link href="resources/temporary.css" rel="stylesheet" type="text/css">
 </head>
 	<body>

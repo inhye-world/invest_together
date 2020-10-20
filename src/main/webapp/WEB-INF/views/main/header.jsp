@@ -97,12 +97,12 @@
                                                 <li><a href="leaderboards" id="leaderboards">투자랭킹</a></li>
                                                 <li><a href="boardList" id="boardList">게시판</a></li>
                                                 <sec:authorize access="hasRole('ROLE_USER')">
-                                        <li><a id="modify">마이페이지</a>
+                                        <li class="point"><a id="modify">마이페이지</a>
                                            <ul class="submenu">
-                                                           <li><a href="addAccount">계좌 추가</a></li>
-                                                           <li><a href="modify">회원정보수정</a></li>
-                                                           <li><a href="purchaseDetails">거래내역</a></li>
-                                                       </ul>
+                                               <li><a href="addAccount">계좌 추가</a></li>
+                                               <li><a href="modify">회원정보수정</a></li>
+                                               <li><a href="purchaseDetails">거래내역</a></li>
+                                           </ul>
                                         </li>
                                     </sec:authorize>
                                     <sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -179,7 +179,7 @@
           if(page == 'calculator'){
              $('#calculator').addClass('activated');
           }
-       } 
+       }  
        
        if(page == 'addAccount'){
           $('#modify').addClass('activated');
@@ -208,7 +208,7 @@
           }
        }
        
-       if(href.indexOf('accountTransaction') != -1){
+       if(href.indexOf('accountTransaction') != -1 || href.indexOf('expenseAnalyze') != -1){
           $('#accountTransaction').addClass('activated');
        } else {
           $('#accountTransaction').removeClass('activated');

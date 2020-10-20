@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>같이투자 | 계좌등록 완료</title>
 	
 	<style>
 		footer:{ 

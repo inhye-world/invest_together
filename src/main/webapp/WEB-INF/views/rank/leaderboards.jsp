@@ -11,9 +11,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>같이투자 | 투자랭킹</title>
-	
-	<link rel="shortcut icon" type="image/x-icon" href="resources/main/assets/img/favicon.ico">
-	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
@@ -28,6 +25,7 @@
 	<script src="resources/sb_admin/vendor/chart.js/Chart.min.js"></script>
 	
 	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
 	
 	<!-- alert -->
   	<link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />

@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>같이투자 | 카카오 회원가입</title>
 	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
 	<link href="resources/temporary.css" rel="stylesheet" type="text/css">
-	
+	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
 	<!-- ajax사용 위해 csrf설정 -->
   	<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
   	<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
@@ -33,7 +33,7 @@
 			<div class="contain nicknameForm col-xl-4 col-lg-4">
 				<h1 style="text-align:center;font-size:2em;">카카오톡 회원가입</h1> 
 				<br>
-				<h2 style="text-align:center;font-size:1em;">닉네임과 핸드폰 번호를 입력해주세요</h2> 
+				<h2 style="text-align:center;font-size:1em;">닉네임과 핸드폰 번호를 입력해주세요.</h2> 
 			
 				<form:form class="form" action="addKakaoUser" method="POST">
 					<input type="hidden" name="id" value="${dto.id}" />
