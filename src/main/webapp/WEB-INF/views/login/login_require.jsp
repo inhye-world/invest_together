@@ -18,7 +18,7 @@
 				<br><br><br><br><br><br><br>
 			
 				<h2 style="text-align:center;">로그인 후 이용 가능합니다 </h2>
-				<br><br><br><br><br><br>
+				<br><br><br><br><br><br><br><br><br>
 			</div>
 		</div>
 		<jsp:include page="../main/footer.jsp"/>
