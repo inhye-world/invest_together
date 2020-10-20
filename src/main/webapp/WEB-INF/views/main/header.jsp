@@ -106,10 +106,9 @@
                                         </li>
                                     </sec:authorize>
                                     <sec:authorize access="hasRole('ROLE_ADMIN')">
-                                        <li><a href="profits-admin" id="profits-admin">관리자모드</a>
+                                        <li><a href="sales_manage" id="profits-admin">관리자모드</a>
                                            <ul class="submenu">
-                                                           <li><a href="profits-admin">매출관리</a></li>
-                                                           <li><a href="stats-admin">통계관리</a></li>
+                                                           <li><a href="sales_manage">매출분석</a></li>
                                                            <li><a href="write_notice">공지등록</a></li>
                                                        </ul>
                                         </li>
@@ -190,7 +189,7 @@
           }
        }
        
-       if(page == 'write_notice' || page == 'stats-admin'){
+       if(page == 'write_notice' || page == 'sales_manage'){
           $('#profits-admin').addClass('activated');
        } else {
           $('#profits-admin').removeClass('activated');
