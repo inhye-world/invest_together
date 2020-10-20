@@ -44,18 +44,25 @@ public class MailSendService {
 	    	//6자리 난수 인증번호 생성
 	        String authKey = getKey(6);
 
+	        String htmlText = "<HTML>" +
+	        	     "<HEAD></HEAD>" +
+	        	     "<BODY>" +
+	        	     "<div style=\"width:500px; height:300px; text-align:center; background-color:ghostwhite; font-family:none;\" >"+
+	        	     "<img src=\"http://localhost:8282/into/resources/main/assets/img/logo/logo.png\"></img>"+
+	        	     "<h1>[이메일 인증]</h1>" +
+	        	     "<br>" +
+	        	     "<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>"+
+	        	     "<br>" +
+	        	     "<a href='http://localhost:8282/into/authConfirm?email=" + email + "&authKey=" + authKey + "' target='_blenk'>이메일 인증 확인</a>" +
+	        	     "</div>"+
+	        	     "</BODY>" +
+	        	     "</HTML>";
+	        
 	        //인증메일 보내기
 	        try {
 	            MailUtils sendMail = new MailUtils(mailSender);
 	            sendMail.setSubject("회원가입 이메일 인증");
-	            sendMail.setText(new StringBuffer().append("<h1>[이메일 인증]</h1>")
-	            .append("<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>")
-	            .append("<a href='http://localhost:8282/into/authConfirm?email=")
-	            .append(email)
-	            .append("&authKey=")
-	            .append(authKey)
-	            .append("' target='_blenk'>이메일 인증 확인</a>")
-	            .toString());
+	            sendMail.setText(htmlText);
 	            sendMail.setFrom("hanrnj22@gmail.com", "같이투자");
 	            sendMail.setTo(email);
 	            sendMail.send();
@@ -74,11 +81,16 @@ public class MailSendService {
 	        String authKey = getKey(6);
 	        
 	        String htmlText = "<HTML>" +
-	        	     "<HEAD><TITLE><h1>[인증번호 안내]</h1></TITLE></HEAD>" +
+	        	     "<HEAD></HEAD>" +
 	        	     "<BODY>" +
+	        	     "<div style=\"width:500px; height:300px; text-align:center; background-color:ghostwhite; font-family:none;\" >"+
+	        	     "<img src=\"http://localhost:8282/into/resources/main/assets/img/logo/logo.png\"></img>"+
+	        	     "<h1>[인증번호 안내]</h1>" +
+	        	     "<br>" +
 	        	     "<p>아래의 인증번호를 복사하신 후 이메일 인증번호 입력란에 입력해 주시기 바랍니다.</p>"+
-	        	     "<br>인증번호 : " + authKey +
-	        	     "<img src=${pageContext.request.contextPath}\"/resources/main/assets/img/logo/logo.png\"></img>"+
+	        	     "<br>" +
+	        	     "인증번호 : <p style=\"color:red; font-size:25px\">" + authKey + " </p>" +
+	        	     "</div>"+
 	        	     "</BODY>" +
 	        	     "</HTML>";
 	        
@@ -86,10 +98,6 @@ public class MailSendService {
 	        try {
 	            MailUtils sendMail = new MailUtils(mailSender);
 	            sendMail.setSubject("비밀번호 찾기 인증번호 전송");
-	            sendMail.setText(new StringBuffer().append("<h1>[인증번호 안내]</h1>")
-	            .append("<p>아래의 인증번호를 복사하신 후 이메일 인증번호 입력란에 입력해 주시기 바랍니다.</p>")
-	            .append("인증번호 : " + authKey)
-	            .toString());
 	            sendMail.setText(htmlText);
 	            sendMail.setFrom("hanrnj22@gmail.com", "같이투자");
 	            sendMail.setTo(email);
@@ -108,14 +116,25 @@ public class MailSendService {
 	        //6자리 난수 인증번호 생성
 	        String authKey = getKey(6);
 
+	        String htmlText = "<HTML>" +
+	        	     "<HEAD></HEAD>" +
+	        	     "<BODY>" +
+	        	     "<div style=\"width:500px; height:300px; text-align:center; background-color:ghostwhite; font-family:none;\" >"+
+	        	     "<img src=\"http://localhost:8282/into/resources/main/assets/img/logo/logo.png\"></img>"+
+	        	     "<h1>[인증번호 안내]</h1>" +
+	        	     "<br>" +
+	        	     "<p>아래의 인증번호를 복사하신 후 이메일 인증번호 입력란에 입력해 주시기 바랍니다.</p>"+
+	        	     "<br>" +
+	        	     "인증번호 : <p style=\"color:red; font-size:25px\">" + authKey + " </p>" +
+	        	     "</div>"+
+	        	     "</BODY>" +
+	        	     "</HTML>";
+	        
 	        //인증메일 보내기
 	        try {
 	            MailUtils sendMail = new MailUtils(mailSender);
 	            sendMail.setSubject("아이디 찾기 인증번호 전송");
-	            sendMail.setText(new StringBuffer().append("<h1>[인증번호 안내]</h1>")
-	    	    .append("<p>아래의 인증번호를 복사하신 후 아이디 인증번호 입력란에 입력해 주시기 바랍니다.</p>")
-	    	    .append("인증번호 : " + authKey)
-	            .toString());
+	            sendMail.setText(htmlText);
 	            sendMail.setFrom("hanrnj22@gmail.com", "같이투자");
 	            sendMail.setTo(email);
 	            sendMail.send();
@@ -131,16 +150,25 @@ public class MailSendService {
 	    @Transactional
 	    public void emailChangeMail(String email) {
 
+	        String htmlText = "<HTML>" +
+	        	     "<HEAD></HEAD>" +
+	        	     "<BODY>" +
+	        	     "<div style=\"width:500px; height:300px; text-align:center; background-color:ghostwhite; font-family:none;\" >"+
+	        	     "<img src=\"http://localhost:8282/into/resources/main/assets/img/logo/logo.png\"></img>"+
+	        	     "<h1>[이메일 변경]</h1>" +
+	        	     "<br>" +
+	        	     "<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>"+
+	        	     "<br>" +
+	        	     "<a href='http://localhost:8282/into/alterEmail?email=" + email + "' target='_blenk'>이메일 변경</a>" +
+	        	     "</div>"+
+	        	     "</BODY>" +
+	        	     "</HTML>";
+	    	
 	        //인증메일 보내기
 	        try {
 	            MailUtils sendMail = new MailUtils(mailSender);
-	            sendMail.setSubject("email 변경확인 메일");
-	            sendMail.setText(new StringBuffer().append("<h1>[email 변경]</h1>")
-	    	    .append("<p>아래 링크를 클릭하시면 이메일 변경이 완료됩니다.</p>")
-	    	    .append("<a href='http://localhost:8282/into/alterEmail?email=")
-	            .append(email)
-	            .append("' target='_blenk'>이메일 변경</a>")
-	            .toString());
+	            sendMail.setSubject("이메일 변경확인 메일");
+	            sendMail.setText(htmlText);
 	            sendMail.setFrom("hanrnj22@gmail.com", "같이투자");
 	            sendMail.setTo(email);
 	            sendMail.send();
