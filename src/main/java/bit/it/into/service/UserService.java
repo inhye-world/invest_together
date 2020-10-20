@@ -66,10 +66,10 @@ public class UserService {
 		
 	}
 
-	public String nameCheck(String name) {
+	public Integer nameCheck(Map<String, String> info) {
 		log.info("UserService - nameCheck()");
 			
-		return mapper.selectIdEmail(name);
+		return mapper.selectIdEmail(info);
 	}
 
 	public List<MemberDTO> idInfo(MemberDTO memberDTO) {

@@ -10,23 +10,20 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
 		<link href="resources/find.css" rel="stylesheet" type="text/css">
 		
-		<style type="text/css">
+		<!-- alert -->
+	    <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
+	    <script src="resources/sb_admin/js/ast-notif.js"></script>
 		
-			.auth_form span.error {
-				color:red;
-			} 
-			
-			.verify_form span.error {
-				color:red;
-			} 
-			
-			.container {
-				padding: 100px;
+		
+		
+		<style type="text/css">
+				
+			.name-input {
+				padding-bottom: 3px;
 			}
-			
-			.content__body__page {
-				text-align: center;
-				padding: 100px;
+		
+			.verify_form-content {
+				padding-top: 15px;
 			}
 			
 		</style>
@@ -34,9 +31,6 @@
 	</head>
 	<body>
 	 	<jsp:include page="../main/header.jsp"/>
-	${authKey}
-	${memberDTO.name}
-	${memberDTO.email}
 		<div class="container">
 			<header class="header-pw">
 			</header>			
@@ -65,16 +59,23 @@
 								<div class="user-area_content">
 									<span class="input-state input-state--success is-block" id="user_id_box">
 										<form:form class="auth_form" action="idEmailSend" method="POST">
-											이름: <input type="text" id="name" name="name" maxlength="40"><br><br>
-											이메일 주소: <input type="text" id="email" name="email" maxlength="100"><br><br>
-											</span><input id="authKey-submit" type="submit" value="인증번호 받기"><br><br>
+											<div class="name-input">
+												이름: <input type="text" id="name" name="name" maxlength="40">
+											</div>
+											<br>
+												이메일 주소: <input type="text" id="email" name="email" maxlength="100">
+									</span>
+											<div class="auth-submit"><input id="authKey-submit" type="submit" value="인증번호 받기"></div>
 										</form:form>
+										
+										<div class="verify_form-content">
 										<form:form class="verify_form" action="verifyId" method="POST">
-											<input type="hidden" name="email" value="${memberDTO.email}">
-											<input type="hidden" id="authKey" value="${authKey}"/>
-											<input class="verifyNumber-input" type="password" name="verifyNumber" placeholder="인증번호 6자리 숫자 입력" maxlength="6" style="display: none;"><br><br>
+											<input type="hidden" id="authEmail" name="email" />
+											<input type="hidden" id="authKey" />
+											<input class="verifyNumber-input" type="password" name="verifyNumber" placeholder="인증번호 6자리 숫자 입력" maxlength="6" style="display: none;">
 											<input class="verifyNumber-submit" type="submit" value="확인" style="display: none;">
 										</form:form>
+										</div>
 									</span>		
 								</div>
 							</article>
@@ -85,93 +86,128 @@
 		</div>
 	
 	 <script type="text/javascript">	
-		 	
-	 		var validError = false;
 	 
-			$(document).ready(function (){
-				$(".auth_form").validate({
-					//규칙
-					rules:{
-						name:{
-							required : true, //필수입력여부
-							minlength : 2 	//최소 입력 글자수
-						},
-						email:{
-							required : true, //필수입력여부
-							email : true 	//이메일형식
-						},
-						
-						verifyNumber:{
-							required : true, //필수입력여부
-						},
-					},
+		function alerting(content){
+       		AstNotif.dialog('알림', content, {
+           		theme: 'default',
+           	});
+       	}
+         
+        function confirming(content){
+      		AstNotif.snackbar(content, {
+          		theme: 'default',
+          	});
+     	}
 
-					//메시지
-					messages:{
-						name:{
-							required : "이름을 입력해주세요.",
-							minlength : "최소 2글자 이상 입력해주세요."
-						},
-						email: {
-							required : "이메일을 입력해주세요.",
-							email : "이메일 형식을 지켜주세요." 
-						},
-						
-						verifyNumber: {
-							required : "인증번호를 입력해주세요."
-						},
-					},
 
-					//메시지 태그
-					errorElement : 'span', 	//태그
-					errorClass: 'error',	//클래스 이름
-					validClass:'vaild',
-					invalidHandler: function (form, validator) {
-						var errors = validator.numberOfInvalids();
-						if(errors) {
-							validError = true;
-						}
+		$(document).ready(function (){
+			
+			var validError = false;
+			
+			$(".auth_form").validate({
+				
+				//규칙
+				rules:{
+					name:{
+						required : true, //필수입력여부
+						minlength : 2 	//최소 입력 글자수
+					},
+					email:{
+						required : true, //필수입력여부
+						email : true 	//이메일형식
+					},
+					
+				},
+
+				//메시지
+				messages:{
+					name:{
+						required : "이름을 입력해주세요.",
+						minlength : "최소 2글자 이상 입력해주세요."
+					},
+					email: {
+						required : "이메일을 입력해주세요.",
+						email : "이메일 형식을 지켜주세요." 
+					},
+					
+				},
+
+				//메시지 태그
+				errorElement : 'div', 	//태그
+				errorClass: 'error',	//클래스 이름
+				validClass:'vaild',
+				invalidHandler: function (form, validator) {
+					var errors = validator.numberOfInvalids();
+					if(errors) {
+						validError = true;
 					}
-				});
-				
-				$(".verify_form").validate({
-					//규칙
-					rules:{	
-						verifyNumber:{
-							required : true, //필수입력여부
-							equalTo : "#authKey"
-						},
-					},
-
-					//메시지
-					messages:{		
-						verifyNumber: {
-							required : "인증번호를 입력해주세요.",
-							equalTo : "인증번호가 틀렸습니다."
-						},
-					},
-
-					//메시지 태그
-					errorElement : 'span', 	//태그
-					errorClass: 'error',	//클래스 이름
-					validClass:'vaild' 
-				});
-				
-				$(".auth_form").on("submit", function() {
-					
-					if(validError) {
-						return false;
-					}
-					
-					$(".verifyNumber-input").attr({"style":"display:inline-block"});
-					$(".verifyNumber-submit").attr({"style":"display:inline-block"});
-					
-					alert("알림");
-				});
-				
-				
+				}
 			});
-	
+			
+			$(".verify_form").validate({
+				//규칙
+				rules:{	
+					verifyNumber:{
+						required : true, //필수입력여부
+						equalTo : "#authKey"
+					},
+				},
+
+				//메시지
+				messages:{		
+					verifyNumber: {
+						required : "인증번호를 입력해주세요.",
+						equalTo : "인증번호가 틀렸습니다."
+					},
+				},
+
+				//메시지 태그
+				errorElement : 'div', 	//태그
+				errorClass: 'error',	//클래스 이름
+				validClass:'vaild' 
+			});
+			
+ 			$(".auth_form").on("submit", function() {
+				
+				if(validError) {
+					alerting("이름 또는 이메일을 잘못 입력하셨습니다.")
+					return false;
+				}
+				
+				event.preventDefault();
+				/* 이메일 중복 체크 후 메일 발송 비동기 처리 */
+				$.ajax({
+					type:"get",
+					url : "rest/idEmailSend",
+					dataType: 'json',
+					data : "email=" + $("#email").val() + "&name=" + $("#name").val(),
+					
+				success : function(data){
+					
+					console.log(data);
+					
+					if(data.hasEmail) {
+						$(".verifyNumber-input").attr({"style":"display:inline-block"});
+						$(".verifyNumber-submit").attr({"style":"display:inline-block"});
+						
+						alerting("이메일이 발송되었습니다.");
+						
+						$("#authKey").val(data.authKey);
+						var authEmail = $("#email").val();
+						$("#authEmail").val(authEmail);
+						
+					}else {
+						alerting("다시 입력해 주세요.")	
+					}
+				},
+				error: function(data){
+					alerting("다시 입력해 주세요.");
+					return false;
+				}
+			});	
+		}); 
+	});
+
 	</script> 	
 	
 	<!-- footer -->

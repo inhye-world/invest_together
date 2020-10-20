@@ -10,16 +10,20 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
 		<link href="resources/find.css" rel="stylesheet" type="text/css">
 	
+		<!-- alert -->
+	    <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
+	    <script src="resources/sb_admin/js/ast-notif.js"></script>
+	
 		<style type="text/css">
-			.id_form span.error {color:red;} 
-			.auth_form span.error {color:red;} 
+				
+			.button__text {
+				color:black;
+			}
 		</style>
 	</head>
 	<body>
 	   <jsp:include page="../main/header.jsp"/>
-	${authKey}
-	${memberDTO.id}
-		<div class="wrapper">
+		<div class="container">
 			<header class="header-pw">
 			</header>			
 			<!-- body -->
@@ -47,17 +51,19 @@
 								<div class="user-area_content">
 									<span class="input-state input-state--success is-block" id="user_id_box">
 										<form:form class="id_form" action="pwdEmailSend" method="POST">
-											<input type="text" class="form-control--base-c" name="id" placeholder="아이디 (대소문자 구분)" maxlength="12"><br><br>
-											<input id="pwFind-submit" type="submit" value="인증번호전송">
+											<input type="text" class="form-control--base-c" id="id" name="id" placeholder="아이디 (대소문자 구분)" maxlength="12">
+										
+										<div class="auth-submit"><input id="pwFind-submit" type="submit" value="인증번호전송"></div>
 										</form:form>
 										<br>
 									</span>
-										<form:form class="auth_form" action="verifyPwd" method="POST">
-											<input type="hidden" name="id" value="${memberDTO.id}">
-											<input type="hidden" id="authKey" value="${authKey}" />
-											<input type="password" id="verifyNumber" name="verifyNumber" placeholder="이메일 인증 번호" maxlength="50"><br><br>
-											<input id="verifyNumber-submit" type="submit" value="확인">
-										</form:form>		
+										<form:form class="auth_form" action="verifyPwd">
+											<input type="hidden" name="id" id="authId">
+											<input type="hidden" id="authKey" />
+											<input type="password" id="verifyNumber" name="verifyNumber" placeholder="이메일 인증 번호" maxlength="50" style="display: none;" maxlength="6" >
+											<input id="verifyNumber-submit" type="submit" value="확인" style="display: none;">
+										</form:form>
+										<br>		
 								</div>
 								<div class="user-area__help">
 									<span class="list-bul">
@@ -76,7 +82,23 @@
 		
 	 <script type="text/javascript">	
 		 
+			function alerting(content){
+	       		AstNotif.dialog('알림', content, {
+	           		theme: 'default',
+	           	});
+	       	}
+	         
+	        function confirming(content){
+	      		AstNotif.snackbar(content, {
+	          		theme: 'default',
+	          	});
+	     	}
+	 
+	 
 			$(document).ready(function (){
+				
+				var validError = false;
+				
 				$(".id_form").validate({
 					//규칙
 					rules:{
@@ -95,9 +117,15 @@
 					},
 
 					//메시지 태그
-					errorElement : 'span', 	//태그
+					errorElement : 'div', 	//태그
 					errorClass: 'error',	//클래스 이름
-					validClass:'vaild' 
+					validClass:'vaild',
+					invalidHandler: function (form, validator) {
+						var errors = validator.numberOfInvalids();
+						if(errors) {
+							validError = true;
+						}
+					}
 				});
 				
 				$(".auth_form").validate({
@@ -118,11 +146,52 @@
 					},
 
 					//메시지 태그
-					errorElement : 'span', 	//태그
+					errorElement : 'div', 	//태그
 					errorClass: 'error',	//클래스 이름
 					validClass:'vaild' 
 				});
-			});
+				
+				$(".id_form").on("submit", function() {
+					
+					if(validError) {
+						alerting("아이디를 잘못 입력하셨습니다.")
+						return false;
+					}
+					
+					event.preventDefault();
+					/* 이메일 중복 체크 후 메일 발송 비동기 처리 */
+					$.ajax({
+						type:"get",
+						url : "rest/pwdEmailSend",
+						dataType: 'json',
+						data : "id=" + $("#id").val(),
+						
+					success : function(data){
+						
+						console.log(data);
+						
+						if(data.hasEmail) {
+							
+							$("#verifyNumber").attr({"style":"display:inline-block"});
+							$("#verifyNumber-submit").attr({"style":"display:inline-block"});
+							
+							alerting("이메일이 발송되었습니다.");
+							
+							$("#authKey").val(data.authKey);
+							var authId = $("#id").val();
+							$("#authId").val(authId);
+							
+						}else {
+							alerting("다시 입력해 주세요.")	
+						}
+					},
+					error: function(data){
+						alerting("다시 입력해 주세요.");
+						return false;
+					}
+				});	
+			}); 	
+		});
 	
 	</script>
 	
