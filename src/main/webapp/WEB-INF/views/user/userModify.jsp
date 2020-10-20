@@ -1,3 +1,4 @@
+  
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -5,13 +6,13 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>같이투자 | 유저 정보 수정</title>
+	<title>같이투자 | 회원 정보 수정</title>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
 	<link href="resources/user_modify.css" rel="stylesheet" type="text/css"> 
 	<link href="resources/ranking.css" rel="stylesheet" type="text/css">
-	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
+	
 	<style>
 		
     	.table th {
@@ -19,14 +20,12 @@
     		margin:center;
     	}
     	.passwordConfirmForm{
-    		position:absolute;
+    		position: relative;
     		border-collapse: collapse;
   			border-spacing: 0;
-  			top:35%;
+  			top:25%;
   			left:40%;
-  			
     	}
-
 	</style>
 	
 </head>
@@ -48,7 +47,7 @@
 							
 						</ul>
    					</div>
-				<table class="table col-xl-5 col-lg-5">
+				<table class="table">
 					<tbody>
 						<tr>
 							<th scope="row">닉네임<th>
@@ -72,9 +71,8 @@
 			</sec:authorize>
 			</section>
 			</div>
-			<br><br><br>
 		</div>
-		
+	
 		<jsp:include page="../main/footer.jsp"/>
 		
 		<script type="text/javascript">
