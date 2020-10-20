@@ -22,7 +22,9 @@
   <!-- Custom styles for this page -->
   <link href="resources/sb_admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <link rel="shortcut icon" type="image/x-icon" href="resources/main/assets/img/favicon.ico">
-  
+  <link rel="stylesheet" href="resources/main/assets/css/backbutton.css">
+  <link href="resources/ranking.css" rel="stylesheet" type="text/css">
+
  <!-- alert -->
   <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css?v=<%=System.currentTimeMillis() %>" />
   <script src="resources/sb_admin/js/ast-notif.js?v=<%=System.currentTimeMillis() %>"></script>
@@ -34,13 +36,17 @@
   	}
   	
   	#inputTable{
-  		margin: 20px 10px; 
+  		margin: 20px 10px;
   	}
   	
+  	#ke-why{
+  		font-size: 12px;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  	}
   	
   	#resultTable{
   		margin-top: 20px;
-  		margin-left: 10px;
+  		text-align: center;
   	}
   	
   	#inputTable td, #resultTable td{
@@ -52,7 +58,11 @@
   	}
   	
   	#inputCalculator{
-  		 min-width: 438px;
+  		 min-width: 568px;
+  	}
+  	
+  	#myTable{
+  		min-width: 910px;
   	}
 
 
@@ -99,7 +109,7 @@
 				            			<tr>
 				            				<td>주주요구수익률 :</td>
 				            				<td>
-				            					<input type="text" id="ke" name="주주요구수익률 " placeholder="8" value="8" /> %
+				            					<input type="text" id="ke" name="주주요구수익률 " placeholder="7.84" value="7.84" /> %
 				            				</td>
 				            			</tr>
 				            			<tr>
@@ -108,13 +118,15 @@
 				            					<span id="amount"><input type="text" id="shareIssued" name="발행주식수" /> 주</span>
 				            				</td>		
 				            			</tr>
+				            			<tr><td colspan="2" id="ke-why">*주주요구수익률은 한국신용평가에서 제공한 회사채 BBB- 등급 (2010.10.19 기준)</td></tr>
 				            		</table>
+				            		
 				            		<table id="inputButton">
 				            			<tr>
-				            				<td><button type="button" class="genric-btn primary" onclick="calculate();">계산</button></td>
-				            				<td><button type="button" class="genric-btn primary" onclick="refresh();">초기화</button></td>
+				            				<td><button type="button" class="genric-btn primary radius" onclick="calculate();">계산</button></td>
+				            				<td><button type="button" class="genric-btn primary radius" onclick="refresh();">초기화</button></td>
 				            				<sec:authorize access="isAuthenticated()">
-												<td><button type="button" class="genric-btn primary" onclick="location.href='myCalculator'">나의 기업 관리</button></td>
+												<td><button type="button" class="genric-btn primary radius" onclick="location.href='myCalculator'">나의 기업 관리</button></td>
 											</sec:authorize>
 				            				<td><span id="submitButton"></span></td>
 				            			</tr>
@@ -185,7 +197,7 @@
    	  document.getElementById("myTable").innerHTML =
    			 '<div class="card shadow" id="resultTap">'+
 			 '<h1>계산 결과</h1>'+
-          	 '<table id="resultTable">'+          
+          	 '<table class="table leaderboards" id="resultTable">'+          
              '<thead>'+
           	  	  '<tr><th>초과이익 가정(w)</th>'+
                  '<th>지배주주지분</th>'+
@@ -234,7 +246,7 @@
                  '<input type="hidden" name="roe" value='+material1+'>'+
                  '<input type="hidden" name="ke" value='+material2+'>'+
                  '<input type="hidden" name="share_issued" value='+material3+'>'+
-                 '<input type="submit" id="save" class="genric-btn primary" onclick="send();" value="저장" />'+
+                 '<input type="submit" id="save" class="genric-btn primary radius" onclick="send();" value="저장" />'+
                  '</form>';	
  		    } 
  

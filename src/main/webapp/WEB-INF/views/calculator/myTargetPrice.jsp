@@ -27,10 +27,10 @@
 
   <!-- Custom styles for this page -->
   <link href="resources/sb_admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  
-  <!-- CSS here -->
   <link rel="stylesheet" href="resources/main/assets/css/backbutton.css">
+  <link href="resources/sb_admin/css/bttn.css" rel="stylesheet" type="text/css">
   <link href="resources/ranking.css" rel="stylesheet" type="text/css">
+  <link href="resources/assets.css" rel="stylesheet" type="text/css">
   
   <style>
   
@@ -201,7 +201,7 @@
     													                      '<td>'+material10.toLocaleString()+'원</td>'+
     													                      '<td>매수</td></tr>;'
     													                      
-    						document.getElementById("deleteButton").innerHTML = '<button type="button" id="delete" class="genric-btn primary radius">삭제</button>';
+    						document.getElementById("deleteButton").innerHTML = '<button type="button" id="delete" class="bttn-simple bttn-xs bttn-ggreen">삭제</button>';
     													                      
     		    	    },
     		    	    error: function(request, status, error){

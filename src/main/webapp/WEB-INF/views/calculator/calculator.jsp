@@ -54,23 +54,23 @@
 										<td class="tableContent">잔여이익모델로 현재 주식의 향후 적정 주가를 계산할 수 있습니다.</td>
 				                    </tr>  
 				                	<tr>
-										<td class="tableTitle"><h3><a onclick="nwc();">순운전자본</a></h3></td>
+										<td class="tableTitle point"><h3><a onclick="nwc();">순운전자본</a></h3></td>
 										<td class="tableContent">때로는 단순히 운전 자본이라고도하는 순 운전 자본 (NWC)의 공식은 회사의 유동 부채를 감안하여 유동 자산의 가용성을 결정하는 데 사용됩니다.</td>
 				                    </tr>              
 				                    <tr>
-										<td class="tableTitle"><h3><a onclick="debtRatio();">부채비율</a></h3></td>
+										<td class="tableTitle point"><h3><a onclick="debtRatio();">부채비율</a></h3></td>
 										<td class="tableContent">회사의 의무 이행 능력을 측정하기 위해 다른 금융 레버리지 비율과 함께 사용하는 재무 레버리지 비율입니다.</td>
 				                    </tr>
 				                    <tr>
-										<td class="tableTitle"><h3><a onclick="roe();">ROE</a></h3></td>
+										<td class="tableTitle point"><h3><a onclick="roe();">ROE</a></h3></td>
 										<td class="tableContent">ROE(Return on Equity)의 수식은 ROE로 간략히 표시되며 회사의 순 수입을 평균 주주의 자본으로 나눈 값입니다.</td>
 				                    </tr>
 				                    <tr>
-										<td class="tableTitle"><h3><a onclick="atr();">자산회전율</a></h3></td>
+										<td class="tableTitle point"><h3><a onclick="atr();">자산회전율</a></h3></td>
 										<td class="tableContent">자산수익률은 회사가 자산을 활용하여 순이익을 얻는 능력을 보여줍니다.</td>
 				                    </tr>
 				                    <tr>
-										<td class="tableTitle"><h3><a onclick="itr();">재고자산회전율</a></h3></td>
+										<td class="tableTitle point"><h3><a onclick="itr();">재고자산회전율</a></h3></td>
 										<td class="tableContent">재고자산회전율은 회사가 재고를 판매로 얼마나 잘 전환하고 있는지를 측정합니다.</td>
 				                    </tr>
 				                </table>				                

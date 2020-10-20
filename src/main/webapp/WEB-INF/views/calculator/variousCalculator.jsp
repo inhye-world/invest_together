@@ -22,8 +22,8 @@
           							            		  '<tr><td class="inputName">유동부채 :</td>'+
           							            		  '<td><input type="text" id="currentDebts" name="유동부채" class="inputHere" /> 원</td></tr>'+
           							            		  '</table>'+
-          							            		  '<button type="button" class="genric-btn primary" onclick="calculateNwc();">계산</button>&nbsp;'+
-          							            		  '<button type="button" class="genric-btn primary" onclick="refresh();">초기화</button>'+
+          							            		  '<button type="button" class="genric-btn primary radius" onclick="calculateNwc();">계산</button>&nbsp;'+
+          							            		  '<button type="button" class="genric-btn primary radius" onclick="refresh();">초기화</button>'+
          												  '</div>'+
          												  '</div>'+
     														  '</div>';
@@ -108,8 +108,8 @@ $(document).on("input","input[id=currentDebts]",function(){
           							            		  '<tr><td class="inputName">자산총계 :</td>'+
           							            		  '<td><input type="text" id="assetTotal" name="자산총계" class="inputHere" /> 원</td></tr>'+
           							            		  '</table>'+
-          							            		  '<button type="button" class="genric-btn primary" onclick="calculateAtr();">계산</button>&nbsp;'+
-          							            		  '<button type="button" class="genric-btn primary" onclick="refresh();">초기화</button>'+
+          							            		  '<button type="button" class="genric-btn primary radius" onclick="calculateAtr();">계산</button>&nbsp;'+
+          							            		  '<button type="button" class="genric-btn primary radius" onclick="refresh();">초기화</button>'+
          												  '</div>'+
          												  '</div>'+
     														  '</div>';
@@ -194,8 +194,8 @@ $(document).on("input","input[id=assetTotal]",function(){
           							            		  '<tr><td class="inputName">총 자산 :</td>'+
           							            		  '<td><input type="text" id="assetT" name="총 자산" class="inputHere" /> 원</td></tr>'+
           							            		  '</table>'+
-          							            		  '<button type="button" class="genric-btn primary" onclick="calculateDebtRatio();">계산</button>&nbsp;'+
-          							            		  '<button type="button" class="genric-btn primary" onclick="refresh();">초기화</button>'+
+          							            		  '<button type="button" class="genric-btn primary radius" onclick="calculateDebtRatio();">계산</button>&nbsp;'+
+          							            		  '<button type="button" class="genric-btn primary radius" onclick="refresh();">초기화</button>'+
          												  '</div>'+
          												  '</div>'+
     													  '</div>';
@@ -280,8 +280,8 @@ $(document).on("input","input[id=assetTotal]",function(){
           							            		  '<tr><td class="inputName">평균주주자본 :</td>'+
           							            		  '<td><input type="text" id="avgEquity" name="평균주주자본" class="inputHere" /> 원</td></tr>'+
           							            		  '</table>'+
-          							            		  '<button type="button" class="genric-btn primary" onclick="calculateROE();">계산</button>&nbsp;'+
-          							            		  '<button type="button" class="genric-btn primary" onclick="refresh();">초기화</button>'+
+          							            		  '<button type="button" class="genric-btn primary radius" onclick="calculateROE();">계산</button>&nbsp;'+
+          							            		  '<button type="button" class="genric-btn primary radius" onclick="refresh();">초기화</button>'+
          												  '</div>'+
          												  '</div>'+
     													  '</div>';
@@ -366,8 +366,8 @@ $(document).on("input","input[id=assetTotal]",function(){
           							            		  '<tr><td class="inputName">평균재고자산 :</td>'+
           							            		  '<td><input type="text" id="avgInventory" name="평균재고자산" class="inputHere" /> 원</td></tr>'+
           							            		  '</table>'+
-          							            		  '<button type="button" class="genric-btn primary" onclick="calculateITR();">계산</button>&nbsp;'+
-          							            		  '<button type="button" class="genric-btn primary" onclick="refresh();">초기화</button>'+
+          							            		  '<button type="button" class="genric-btn primary radius" onclick="calculateITR();">계산</button>&nbsp;'+
+          							            		  '<button type="button" class="genric-btn primary radius" onclick="refresh();">초기화</button>'+
          												  '</div>'+
          												  '</div>'+
     													  '</div>';
