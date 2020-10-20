@@ -9,20 +9,20 @@
 	if( typeof define === 'function' && define.amd ) {
 		// AMD. Register as an anonymous module.
 		define( function() {
-			root.AstNotif2 = factory();
-			return root.AstNotif2;
+			root.Astif = factory();
+			return root.Astif;
 		} );
 	} else if( typeof exports === 'object' ) {
 		// Node. Does not work with strict CommonJS.
 		module.exports = factory();
 	} else {
 		// Browser globals.
-		root.AstNotif2 = factory();
+		root.Astif = factory();
 	}
 }( this, function() {
 
 	'use strict';
-	var AstNotif2;
+	var Astif;
 
 	// The ast-notif.js version
 	var VERSION = '0.0.5';
@@ -235,12 +235,6 @@
 	// Dialog State
 	var dialogState = {
 
-		// Title dialog
-		title: "알림",
-
-		// Message dialog
-		message: "Ini ganti dong. :)",
-
 		// Options
 		options: {
 			// Background and text color
@@ -266,10 +260,12 @@
 
 		// Callback positive function
 		callbackPositive: function () {
+			window.location.href = "secession";
 		},
 
 		// Callback negative function
 		callbackNegative: function () {
+			window.location.href = "modify";
 		},
 
 		// Close the dialog
@@ -356,7 +352,7 @@
 		show: function() {
 			// Call all dialog element
 			if (!!this.inited()) return;
-			var $AstNotif2This = this; // Passing this to another inner function
+			var $AstifThis = this; // Passing this to another inner function
 
 			var bgElement = this.initBackdrop();
 			var dialogElement = this.initDialog();
@@ -403,20 +399,20 @@
 				var textElement = bodyElement.querySelector("#ast-dialog-message");
 				textElement.innerHTML = "";
 				setTimeout(function() {
-					typewriterEffect(textElement, $AstNotif2This.message);
+					typewriterEffect(textElement, $AstifThis.message);
 				}, 200);
 			}
 
 			// Append listener to the button
 			dialogElement.addEventListener('click', function(e) {
 			    if (e.target && e.target.id == 'ast-positive-dialog-button') {
-					$AstNotif2This.callbackPositive();
-					$AstNotif2This.close();
+					$AstifThis.callbackPositive();
+					$AstifThis.close();
 			    }
 
 			    if (e.target && e.target.id == 'ast-negative-dialog-button') {
-					$AstNotif2This.callbackNegative();
-					$AstNotif2This.close();
+					$AstifThis.callbackNegative();
+					$AstifThis.close();
 			    }
 			});
 		}
@@ -618,12 +614,12 @@
 		// Options
 		options: {
 			// Snack position, either top or bottom.
-			position: "top",
+			position: "bottom",
 			// Time length, or whatever its called until the snack is gone.
 			length: 2000,
 			// Background and text color
-			bgcolor: "black",
-			color: "white",
+			bgcolor: THEMES.DEFAULT.color,
+			color: THEMES.DEFAULT.bgcolor,
 			// Button color
 			btncolor: THEMES.DEFAULT.btncolor,
 			// Reverse color
@@ -763,9 +759,9 @@
 
 		// Check if the elemen has been initialized
 		inited: function() {
-			var AstNotif2yElement = document.getElementById("ast-notify-container");
-			if (typeof AstNotif2yElement !== "undefined" && AstNotif2yElement != null) {
-				return AstNotif2yElement;
+			var AstifyElement = document.getElementById("ast-notify-container");
+			if (typeof AstifyElement !== "undefined" && AstifyElement != null) {
+				return AstifyElement;
 			}
 			else
 				return false;
@@ -1022,7 +1018,7 @@
 	//////////////////////////////////////////////////
 	// AST Notif API
 	//////////////////////////////////////////////////
-	AstNotif2 = {
+	Astif = {
 		init: function() {
 		},
 
@@ -1037,5 +1033,5 @@
 		VERSION: VERSION
 	};
 
-	return (window.AstNotif2 = window.astn = AstNotif2);
+	return (window.Astif = window.astn = Astif);
 }));

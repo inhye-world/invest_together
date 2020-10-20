@@ -15,6 +15,7 @@
   	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
   	
   	<link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
+  	<script src="resources/ast-notif.js"></script>
   	<script src="resources/sb_admin/js/ast-notif.js"></script>
   	
 	<!-- ajax사용 위해 csrf설정 -->
@@ -161,18 +162,18 @@
 		<br><br><br>
 <script>
 		
-			function alerting(content){
-	    		AstNotif.dialog('알림', content, {
+			function alertingExit(content){
+				Astif.dialog('알림', content, {
 	        	  theme: 'default',
 	        	});
 	    	}
-		      
-	        function confirming(content){
-		      	 AstNotif.snackbar(content, {
-		          	theme: 'default',
-		          });
-	      	}
-				
+			
+			function alerting(content){
+				AstNotif.dialog('알림', content, {
+	        	  theme: 'default',
+	        	});
+	    	}
+			
 			$(document).ready(function (){
 				
 				$.validator.addMethod("idRegex", function(value, element) {
@@ -437,13 +438,7 @@
 				});
 				
 				$(".usermodify-secession-btn").on("click", function() {
-					confirming("ㅇㅈㅂㄹㄷㅈㄹㄷㅈㄹ");
-					
-					var result = confirm("회원정보를 탈퇴 하시겠습니까?");
-					if(result){		
-						$(".usermodify-secession-btn").attr({"href":"secession"});
-					} else 
-						$(".usermodify-secession-btn").attr({"href":"modify"});
+					alertingExit("탈퇴 하시겠습니까?");
 				});
 								
 			});
