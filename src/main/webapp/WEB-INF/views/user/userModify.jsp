@@ -22,8 +22,9 @@
     		position:absolute;
     		border-collapse: collapse;
   			border-spacing: 0;
-  			top:25%;
+  			top:35%;
   			left:40%;
+  			
     	}
 
 	</style>
@@ -47,7 +48,7 @@
 							
 						</ul>
    					</div>
-				<table class="table">
+				<table class="table col-xl-5 col-lg-5">
 					<tbody>
 						<tr>
 							<th scope="row">닉네임<th>
@@ -71,8 +72,9 @@
 			</sec:authorize>
 			</section>
 			</div>
+			<br><br><br>
 		</div>
-	
+		
 		<jsp:include page="../main/footer.jsp"/>
 		
 		<script type="text/javascript">

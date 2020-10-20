@@ -33,7 +33,7 @@
 			<div class="contain nicknameForm col-xl-4 col-lg-4">
 				<h1 style="text-align:center;font-size:2em;">카카오톡 회원가입</h1> 
 				<br>
-				<h2 style="text-align:center;font-size:1em;">닉네임과 핸드폰 번호를 입력해주세요</h2> 
+				<h2 style="text-align:center;font-size:1em;">닉네임과 핸드폰 번호를 입력해주세요.</h2> 
 			
 				<form:form class="form" action="addKakaoUser" method="POST">
 					<input type="hidden" name="id" value="${dto.id}" />

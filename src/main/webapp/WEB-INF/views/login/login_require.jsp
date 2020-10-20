@@ -5,6 +5,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
+	
 </head>
 	<body>
 		<div class="wrapper">
