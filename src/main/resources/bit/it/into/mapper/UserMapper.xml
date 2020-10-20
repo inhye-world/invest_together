@@ -35,9 +35,9 @@
 		]]>
 	</update>
 	
-	<select id="selectIdEmail" resultType="String">
+	<select id="selectIdEmail" resultType="Integer">
 		<![CDATA[
-			select email from member where name = #{name} and sns_type = 'normal'
+			select count(*) from member where name = #{name} and sns_type = 'normal' and email = #{email}
 		]]>
 	</select>
 	

@@ -7,8 +7,6 @@ import org.apache.ibatis.annotations.Param;
 
 import bit.it.into.dto.AccountDTO;
 import bit.it.into.dto.MemberDTO;
-import bit.it.into.page.PurchaseCriteria;
-import bit.it.into.security.CustomUser;
 
 public interface UserMapper {
 
@@ -22,7 +20,7 @@ public interface UserMapper {
 
 	public void updatePwd(Map<String, String> userInfo);
 
-	public String selectIdEmail(String name);
+	public Integer selectIdEmail(Map<String, String> info);
 
 	public List<MemberDTO> selectIdInfo(String email);
 

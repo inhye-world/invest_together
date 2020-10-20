@@ -12,6 +12,7 @@
    <title> 같이투자 | 게시판</title>
    <meta name="description" content="">
    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="shortcut icon" type="image/x-icon" href="resources/main/assets/img/favicon.ico">
 
 </head>
 	

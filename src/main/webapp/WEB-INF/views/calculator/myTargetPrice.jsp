@@ -17,7 +17,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="resources/main/assets/img/favicon.ico">
+  
   <!-- ajax사용 위해 csrf설정 -->
   <meta id="_csrf" name="_csrf" content="${_csrf.token}" />
   <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
@@ -26,9 +27,10 @@
 
   <!-- Custom styles for this page -->
   <link href="resources/sb_admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  
-  <!-- CSS here -->
   <link rel="stylesheet" href="resources/main/assets/css/backbutton.css">
+  <link href="resources/sb_admin/css/bttn.css" rel="stylesheet" type="text/css">
+  <link href="resources/ranking.css" rel="stylesheet" type="text/css">
+  <link href="resources/assets.css" rel="stylesheet" type="text/css">
   
   <style>
   
@@ -41,10 +43,11 @@
   		margin-top: 20px;
   		width: 90%;
   		text-align: center;
+  		min-width: 1170px;
   	}
   	
   	#symbolTable{
-  		margin-left: 80px;
+  		margin-left: 5%;
   	}
   	
   	#headTitle{
@@ -53,8 +56,16 @@
   	
   	.back-btn{
   		float: right;
+  		min-width: 100px;
   	}
   	
+  	.target-table-empty {
+	padding-top: 100px !important;
+	padding-bottom: 100px !important;
+	text-align: center;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 20px;
+}
   </style>
 
 
@@ -70,7 +81,7 @@
         		<div class="col-xl-10 col-lg-10 col-md-10 col-sm-10">
         			<h1 id="headTitle">나의 적정 주가</h1>
         		</div>
-        		<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+        		<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2" id="myCalculatorTable">
         			<button class="back-btn" onclick="location.href='calculator'"><span>계산기</span></button>
         		</div>
         	</div>
@@ -81,7 +92,7 @@
 				<div class="cases-caption">
            		<table id="symbolTable">
            			<tr>
-           				<td>종목명:</td>
+           				<td>종목명: </td>
            				<td><select id="symbols" onchange="selectSymbols(this.value)">
             						<option value="" disabled selected>종목명</option>
             					<c:forEach var = "dto" items= "${symbolsList}">
@@ -94,7 +105,7 @@
            		</table>
            		
            		 <div class="table-responsive">
-               	  <table class="table table-bordered" id="myTable">    
+               	  <table class="table leaderboards" id="myTable">    
 	                  <thead>
 	               	  	  <tr><th>초과이익 가정(w)</th>
 	                      <th>지배주주지분</th>
@@ -134,7 +145,7 @@
       			var optVal = $("#symbols option:selected").val();
       			
       			if(optVal == null || optVal == ""){
-      				document.getElementById("ajaxTable").innerHTML = '<tr><td colspan="8">종목명을 선택해주세요.</td></tr>';
+      				document.getElementById("ajaxTable").innerHTML = '<tr><td class="target-table-empty" colspan="8">종목명을 선택해주세요.</td></tr>';
       			} else {
       				$.ajax({
     		    	    url : "list",
@@ -190,7 +201,7 @@
     													                      '<td>'+material10.toLocaleString()+'원</td>'+
     													                      '<td>매수</td></tr>;'
     													                      
-    						document.getElementById("deleteButton").innerHTML = '<button type="button" id="delete" class="genric-btn primary radius">삭제</button>';
+    						document.getElementById("deleteButton").innerHTML = '<button type="button" id="delete" class="bttn-simple bttn-xs bttn-ggreen">삭제</button>';
     													                      
     		    	    },
     		    	    error: function(request, status, error){

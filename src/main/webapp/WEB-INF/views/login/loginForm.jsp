@@ -75,13 +75,14 @@
 					
 					<div class="loginForm-footer">
 						<span>
-							<a href="idFind">아이디 찾기ㅣ</a>
+							<a onmouseover="this.style.color='#09cc7f'" onmouseout="this.style.color='#072366'" href="idFind">아이디 찾기</a>
+							<a> |</a>
 						</span>
 						<span>
-							<a href="pwFind">비밀번호 찾기</a>
+							<a onmouseover="this.style.color='#09cc7f'" onmouseout="this.style.color='#072366'" href="pwFind">비밀번호 찾기</a>
 						</span>
 						<span>
-							<a href="registrationForm">회원가입</a>
+							<a onmouseover="this.style.color='#09cc7f'" onmouseout="this.style.color='#072366'" href="registrationForm">회원가입</a>
 						</span>
 					</div>
 	

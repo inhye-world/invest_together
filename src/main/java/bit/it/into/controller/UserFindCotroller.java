@@ -1,21 +1,16 @@
 package bit.it.into.controller;
 
-
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
+import javax.servlet.http.HttpServletRequest;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import bit.it.into.dto.MemberDTO;
-import bit.it.into.dto.PwdVaildDTO;
 import bit.it.into.service.LoginService;
 import bit.it.into.service.MailSendService;
 import bit.it.into.service.UserService;
@@ -49,28 +44,31 @@ public class UserFindCotroller {
 		return "find/pwFind";
 	}
 	
-	@RequestMapping("/idEmailSend")
-	public String idEmailSend(MemberDTO memberDTO, Model model, HttpServletResponse response) throws Exception {
+	@ResponseBody
+	@RequestMapping("rest/idEmailSend")
+	public String idEmailSend(HttpServletRequest request) throws Exception {
 		log.info("UserFindCotroller - idEmailSend()");
 		
-		//name와 매칭되는 이메일 호출
-		String email = userService.nameCheck(memberDTO.getName());
+		Map<String, String> info = new HashMap<String, String>();
 		
-		if(email.equals(memberDTO.getEmail())) {
-			String authKey = mailSendService.idsendFindMail(memberDTO.getEmail());
-			model.addAttribute("authKey", authKey);
-			
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('이메일이 전송되었습니다 이메일을 확인해주세요.'); </script>");
-			out.flush();
-			
-		} else {
-			
-			return "redirect:idFind";
-		}
+		info.put("name", request.getParameter("name"));
+		info.put("email", request.getParameter("email"));
 		
-		return "forward:/idFind";
+		Integer email = userService.nameCheck(info);
+		
+		JSONObject object = new JSONObject();
+		
+		if(email == 1) {
+			
+			String authKey = mailSendService.idsendFindMail(request.getParameter("email"));
+			object.put("authKey", authKey);
+			
+			object.put("hasEmail", true);
+			return object.toString();
+		} 
+		
+		object.put("hasEmail", false);
+		return object.toString();
 	}
 	
 	@RequestMapping("/verifyId")
@@ -84,60 +82,47 @@ public class UserFindCotroller {
 		return "find/idInfo";
 	}
 	
-	
-	@RequestMapping(value="/pwdEmailSend", method = RequestMethod.POST)
-	public String pwdEmailSend(MemberDTO memberDTO, Model model, HttpServletResponse response) throws Exception {
-		log.info("UserFindCotroller - pwdEmailSend()");	
+	@ResponseBody
+	@RequestMapping("rest/pwdEmailSend")
+	public String pwdEmailSend(HttpServletRequest request) throws Exception {
+		log.info("UserFindCotroller - pwdEmailSend()");
+
+		String email = userService.idCheck(request.getParameter("id"));
 		
-		//id와 매칭되는 이메일 호출
-		String email = userService.idCheck(memberDTO.getId());
+		JSONObject object = new JSONObject();
 		
-		if(loginService.hasUserById(memberDTO.getId())) {
+		if(loginService.hasUserById(request.getParameter("id"))) {
 			
-			//비밀번호 찾기를 위한 인증번호 email전송 
 			String authKey = mailSendService.pwsendFindMail(email);
-
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('이메일이 전송되었습니다 이메일을 확인해주세요.'); </script>");
-			out.flush();
-
-			model.addAttribute("authKey", authKey);
-					
-		} else {
+			object.put("authKey", authKey);
 			
-			return "redirect:pwFind";
-		}
+			object.put("hasEmail", true);
+			return object.toString();
+		} 
 		
-		return "forward:/pwFind";
+		object.put("hasEmail", false);
+		return object.toString();
 	}
 	
+	
 	@RequestMapping("/verifyPwd")
-	public String verifyPwd(MemberDTO memberDTO) {
-		log.info("UserFindCotroller - verifyPwd()");
+	public String verifyPwd(MemberDTO memberDTO, Model model) {
+		log.info("UserFindCotroller - verifyPwd()");		
+		
+		model.addAttribute("id", memberDTO.getId());
 		
 		return "find/resetPwd";
 	}
 	
 	//인증된 user 비밀번호 변경
-	@RequestMapping(value="/resetPwd", method = RequestMethod.POST)
-	public String resetPwd(@Valid PwdVaildDTO pwdVaildDTO, Errors errors, Model model) throws Exception {
+	@RequestMapping("/resetPwd")
+	public String resetPwd(MemberDTO memberDTO, Model model) throws Exception {
 		log.info("UserFindCotroller - resetPwd()");
-		
-		if (errors.hasErrors()) {
-            
-			Map<String, String> validatorResult = loginService.validateHandling(errors);
-            for (String key : validatorResult.keySet()) {
-                model.addAttribute(key, validatorResult.get(key));
-            }
-
-            return "forward:/verifyPwd";
-        }
-		
+			
 		Map<String, String> userInfo = new HashMap<>();
 		
-		userInfo.put("id", pwdVaildDTO.getId());
-		userInfo.put("pw", pwdVaildDTO.getPw());
+		userInfo.put("id", memberDTO.getId());
+		userInfo.put("pw", memberDTO.getPw());
 		
 		userService.resetPwd(userInfo);
 		

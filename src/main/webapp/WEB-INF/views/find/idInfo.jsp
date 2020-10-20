@@ -9,10 +9,35 @@
       <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <link href="resources/find.css" rel="stylesheet" type="text/css">
+		
+		<style type="text/css">
+			
+			.user-info {
+				color: black;
+				font-weight: 800;
+				font-size: 20px;
+			}
+			
+	/* 		.button{
+			    color: #fff;
+			    background-color: #7086bb;
+			    border: 1px solid #B9C6BC;
+			    text-align: center;
+			    width: 150px;
+			    height: 30px;
+			    font-family: "Lucida Console", Courier, monospace;
+			    border-radius: 3px;
+			    cursor: pointer;
+			} */
+			
+			
+		</style>
+      
+      
    </head>
    <body>
    	 <jsp:include page="../main/header.jsp"/>
-      <div class="wrapper">
+      <div class="container">
          <header class="header-pw">
          </header>         
          <!-- body -->
@@ -38,22 +63,24 @@
                            </dt>
                         </dl>   
                      </article>
-                     <article class="user-area">   
+                     <article class="user-area">
+                     <div class="user-info">
                      <c:forEach items="${id}" var="dto">
-                        <c:if test="${dto.sns_type eq 'normal'}">${dto.id}</c:if>             
-                     <br>
-                        <c:if test="${dto.sns_type eq 'kakao'}">카카오 계정</c:if>        
-                     <br>
-                        <c:if test="${dto.sns_type eq 'naver'}">네이버 계정</c:if>    
+                        <c:if test="${dto.sns_type eq 'normal'}">▷${dto.id}</c:if>
+                     
+                     <br><c:if test="${dto.sns_type eq 'kakao'}">▷카카오 계정</c:if>         
+                     
+                     <c:if test="${dto.sns_type eq 'naver'}">▷네이버 계정</c:if>    
                      </c:forEach>
+                     </div>
                      </article>
                      <br>
-                     <button class="button button--base-m button--shape-a" style="top: 70px;" onclick="location.href='pwFind'">
-                        <span class="button__text">비밀번호 찾기</span>
+                     <button class="genric-btn primary" onclick="location.href='pwFind'">
+                        <span>비밀번호 찾기</span>
                      </button>
                      
-                     <button class="button button--base-m button--shape-a" style="top: 70px;" onclick="location.href='loginForm'">
-                        <span class="button__text">로그인 페이지로 이동</span>
+                     <button class="genric-btn primary"  onclick="location.href='loginForm'">
+                        <span>로그인 페이지로 이동</span>
                      </button>
                      
                   </section>
