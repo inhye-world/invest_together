@@ -10,8 +10,10 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>같이투자 : 구독목록</title>
+	<title>같이투자 | 구독목록</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="shortcut icon" type="image/x-icon" href="resources/main/assets/img/favicon.ico">
 	
 	<link href="resources/sb_admin/css/bttn.css" rel="stylesheet" type="text/css">
 	<link href="resources/ranking.css" rel="stylesheet" type="text/css">
