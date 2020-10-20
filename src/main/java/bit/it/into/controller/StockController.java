@@ -44,7 +44,7 @@ public class StockController {
 		log.info("StockController - stockBondTable()");
 		
 		if(authentication==null) {
-			return "redirect:/loginForm";
+			return "login/login_require";
 		}
 		
 		

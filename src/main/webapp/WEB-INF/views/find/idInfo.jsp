@@ -18,9 +18,18 @@
 				font-size: 20px;
 			}
 			
-			.button__text {
-				color: black;
-			}
+	/* 		.button{
+			    color: #fff;
+			    background-color: #7086bb;
+			    border: 1px solid #B9C6BC;
+			    text-align: center;
+			    width: 150px;
+			    height: 30px;
+			    font-family: "Lucida Console", Courier, monospace;
+			    border-radius: 3px;
+			    cursor: pointer;
+			} */
+			
 			
 		</style>
       
@@ -66,12 +75,12 @@
                      </div>
                      </article>
                      <br>
-                     <button class="button button--base-m button--shape-a" onclick="location.href='pwFind'">
-                        <span class="button__text">비밀번호 찾기</span>
+                     <button class="genric-btn primary" onclick="location.href='pwFind'">
+                        <span>비밀번호 찾기</span>
                      </button>
                      
-                     <button class="button button--base-m button--shape-a" onclick="location.href='loginForm'">
-                        <span class="button__text">로그인 페이지로 이동</span>
+                     <button class="genric-btn primary"  onclick="location.href='loginForm'">
+                        <span>로그인 페이지로 이동</span>
                      </button>
                      
                   </section>

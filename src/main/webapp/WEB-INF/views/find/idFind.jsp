@@ -26,6 +26,14 @@
 				padding-top: 15px;
 			}
 			
+			.content__body__page h2 {
+				color: #072366;
+			    font-size: 30px;
+			    font-weight: 800;
+			    text-transform: capitalize;
+			    line-height: 1;
+			}
+			
 		</style>
 		
 	</head>
@@ -65,7 +73,7 @@
 											<br>
 												이메일 주소: <input type="text" id="email" name="email" maxlength="100">
 									</span>
-											<div class="auth-submit"><input id="authKey-submit" type="submit" value="인증번호 받기"></div>
+											<div class="auth-submit"><input class="genric-btn primary" type="submit" value="인증번호 받기"></div>
 										</form:form>
 										
 										<div class="verify_form-content">
@@ -73,7 +81,7 @@
 											<input type="hidden" id="authEmail" name="email" />
 											<input type="hidden" id="authKey" />
 											<input class="verifyNumber-input" type="password" name="verifyNumber" placeholder="인증번호 6자리 숫자 입력" maxlength="6" style="display: none;">
-											<input class="verifyNumber-submit" type="submit" value="확인" style="display: none;">
+											<input class="genric-btn primary" id="verifyNumber-submit" type="submit" value="확인" style="display: none;">
 										</form:form>
 										</div>
 									</span>		
@@ -97,13 +105,12 @@
       		AstNotif.snackbar(content, {
           		theme: 'default',
           	});
-     	}
-
+     	}   
 
 		$(document).ready(function (){
 			
 			var validError = false;
-			
+					
 			$(".auth_form").validate({
 				
 				//규칙
@@ -188,7 +195,7 @@
 					
 					if(data.hasEmail) {
 						$(".verifyNumber-input").attr({"style":"display:inline-block"});
-						$(".verifyNumber-submit").attr({"style":"display:inline-block"});
+						$("#verifyNumber-submit").attr({"style":"display:inline-block"});
 						
 						alerting("이메일이 발송되었습니다.");
 						
@@ -200,10 +207,20 @@
 						alerting("다시 입력해 주세요.")	
 					}
 				},
+				
+				beforeSend: function () {
+					 $('#preloader-active').show(); 
+				},
+				
 				error: function(data){
 					alerting("다시 입력해 주세요.");
 					return false;
+				},
+				
+				complete: function () {
+					$('#preloader-active').hide();
 				}
+				 
 			});	
 		}); 
 	});

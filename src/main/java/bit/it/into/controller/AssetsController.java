@@ -37,7 +37,7 @@ public class AssetsController {
 		log.info("AssetsController - assets()");
 		
 		if(authentication==null) {
-			return "redirect:/loginForm";
+			return "login/login_require";
 		}
 		
 		CustomUser user = (CustomUser)authentication.getPrincipal();

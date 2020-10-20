@@ -34,7 +34,7 @@ public class BoardCotroller {
 		log.info("list");
 		 
 		if(authentication == null) {
-			return "redirect:/loginForm";
+			return "login/login_require";
 		}	
 		
 		model.addAttribute("list", boardService.getList(cri));

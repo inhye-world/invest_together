@@ -43,7 +43,7 @@
 									<input type="password" id="pw2" placeholder="비밀번호 재입력" /><br>	
 									<div id="pw-correct"></div>
 									<br>				
-									<input id="pwd-submit" class="button5" type="submit" value="완료">
+									<input id="pwd-submit" class="genric-btn primary" type="submit" value="완료">
 								</form:form>
 							</article>
 						</section>

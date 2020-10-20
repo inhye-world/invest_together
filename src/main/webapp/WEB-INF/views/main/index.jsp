@@ -11,6 +11,7 @@
 		.point{
 			cursor:pointer;
 		}
+		
 	</style>
 
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -78,11 +79,11 @@
                                     <div class="main-menu d-none d-lg-block">
                                          <nav>
                                             <ul id="navigation">   
-                                          		<li class="point"><a id="accountTransaction">가계부</a></li>
+                                                <li class="point"><a id="accountTransaction">가계부</a></li>
                                                 <li class="point"><a id="salaryList">월급관리</a></li>
                                                 <li><a href="assets" id="assets">자산</a></li>
                                                 <li><a href="calculator" id="calculator">계산기</a>
-                                                	<ul class="submenu">
+                                                   <ul class="submenu">
                                                         <li><a href="myCalculator">나의 기업관리</a></li>
                                                         <li><a href="target">적정주가계산</a></li>
                                                         <li><a href="calculator">계산기</a></li>
@@ -438,7 +439,11 @@
                             <div class="col-xl-10 col-lg-9 ">
                                 <div class="footer-copy-right">
                                     <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  Copyright &copy;
+  <script>
+  document.write(new Date().getFullYear());
+  </script> 
+  All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                                 </div>
                             </div>

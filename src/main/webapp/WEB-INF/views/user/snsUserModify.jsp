@@ -6,7 +6,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-	<title>유저 정보 수정</title>
+	<title>같이투자 | 회원 정보 수정</title>
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
 	<link href="resources/user_modify.css" rel="stylesheet" type="text/css">
@@ -17,14 +18,21 @@
   	<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
 	
 	<style type="text/css">
-		.usermodify-title{
-			margin-left: 500px;
-   			margin-top: 50px;
+		
+		
+		 .usermodify-title{
+			margin-left: 50%;
+   			margin-top: 7%;
    			color: #032380;
+		} 
+		
+		 .table{
+			 left:50%; 
+			 
 		}
 		
-		.usermodify-table{
-			margin-left: 500px;
+		.member-container{
+			left:40%;
 		}
 		
 		 th{
@@ -37,7 +45,7 @@
 		<div class="member-container page-modify">			
 			<h1 class="usermodify-title">회원정보 수정</h1>
 			<br>
-			<table class="usermodify-table">
+			<table class="table">
 				<sec:authorize access="isAuthenticated()">
 				<sec:authentication var="principal" property="principal"/>
 				<tr>
@@ -106,7 +114,7 @@
 				 탈퇴를 원하시면 우측의 회원탈퇴 버튼을 눌러주세요.
 				<a class="usermodify-secession-btn">회원탈퇴</a>
 			
-			<!-- <div class="usermodify-foot"> -->
+			<!-- <div class="usermodify-foot">  -->
 				<button onclick = "location.href = ${pageContext.request.contextPath}/"  type="button" class="usermodify-cancel">나가기</button>
 			</div>
 		</div>

@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>유저 정보 수정</title>
+	<title>같이투자 | 회원 정보 수정</title>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
@@ -13,15 +13,17 @@
 	<link href="resources/ranking.css" rel="stylesheet" type="text/css">
 	
 	<style>
-		/* .member-web-adapter{
-    		margin: 150px 200px 200px 500px;
-    	} */
-    	.usermodify-table th {
+		
+    	.table th {
     		font-family: "Lucida Console", Courier, monospace;
     		margin:center;
     	}
     	.passwordConfirmForm{
-    	margin: 150px 200px 200px 700px;
+    		position: relative;
+    		border-collapse: collapse;
+  			border-spacing: 0;
+  			top:25%;
+  			left:40%;
     	}
 
 	</style>
@@ -45,7 +47,7 @@
 							
 						</ul>
    					</div>
-				<table class="usermodify-table">
+				<table class="table">
 					<tbody>
 						<tr>
 							<th scope="row">닉네임<th>

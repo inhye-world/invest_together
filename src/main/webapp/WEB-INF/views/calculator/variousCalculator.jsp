@@ -13,7 +13,7 @@
      function nwc(){
  		document.getElementById("calculator2").innerHTML = "";
  		document.getElementById("calculator2").innerHTML = '<div class="card shadow">'+
- 														  '<div class="single-cases mb-40">'+
+ 														  '<div class="single-cases">'+
         													  '<div class="cases-caption">'+
           											      '<h1>순운전자본</h1>'+
           											      '<table id="inputInfo">'+
@@ -22,8 +22,8 @@
           							            		  '<tr><td class="inputName">유동부채 :</td>'+
           							            		  '<td><input type="text" id="currentDebts" name="유동부채" class="inputHere" /> 원</td></tr>'+
           							            		  '</table>'+
-          							            		  '<button type="button" class="genric-btn info" onclick="calculateNwc();">계산</button>&nbsp;'+
-          							            		  '<button type="button" class="genric-btn info" onclick="refresh();">초기화</button>'+
+          							            		  '<button type="button" class="genric-btn primary" onclick="calculateNwc();">계산</button>&nbsp;'+
+          							            		  '<button type="button" class="genric-btn primary" onclick="refresh();">초기화</button>'+
          												  '</div>'+
          												  '</div>'+
     														  '</div>';
@@ -48,7 +48,7 @@
   	 var result = currentAssets/currentDebts;
   	 
   	 document.getElementById("outcome").innerHTML = '<div class="card shadow">'+
-   		 											'<div class="single-cases mb-40">'+
+   		 											'<div class="single-cases">'+
 													  '<div class="cases-caption">'+
 													      '<h1>결과</h1>'+
 													      '<table id="resultTable"><tr><td>순운전자본</td></tr>'+
@@ -99,7 +99,7 @@ $(document).on("input","input[id=currentDebts]",function(){
  	function atr(){
  		document.getElementById("calculator2").innerHTML = "";
  		document.getElementById("calculator2").innerHTML = '<div class="card shadow">'+
- 														  '<div class="single-cases mb-40">'+
+ 														  '<div class="single-cases">'+
         													  '<div class="cases-caption">'+
           											      '<h1>자산회전율</h1>'+
           											      '<table id="inputInfo">'+
@@ -108,8 +108,8 @@ $(document).on("input","input[id=currentDebts]",function(){
           							            		  '<tr><td class="inputName">자산총계 :</td>'+
           							            		  '<td><input type="text" id="assetTotal" name="자산총계" class="inputHere" /> 원</td></tr>'+
           							            		  '</table>'+
-          							            		  '<button type="button" class="genric-btn info" onclick="calculateAtr();">계산</button>&nbsp;'+
-          							            		  '<button type="button" class="genric-btn info" onclick="refresh();">초기화</button>'+
+          							            		  '<button type="button" class="genric-btn primary" onclick="calculateAtr();">계산</button>&nbsp;'+
+          							            		  '<button type="button" class="genric-btn primary" onclick="refresh();">초기화</button>'+
          												  '</div>'+
          												  '</div>'+
     														  '</div>';
@@ -134,7 +134,7 @@ $(document).on("input","input[id=currentDebts]",function(){
   	 var result = revenue/assetTotal;
   	 
   	 document.getElementById("outcome").innerHTML = '<div class="card shadow">'+
-   		 											'<div class="single-cases mb-40">'+
+   		 											'<div class="single-cases">'+
 													  '<div class="cases-caption">'+
 													      '<h1>결과</h1>'+
 													      '<table id="resultTable"><tr><td>자산회전율</td></tr>'+
@@ -185,7 +185,7 @@ $(document).on("input","input[id=assetTotal]",function(){
    function debtRatio(){
    	document.getElementById("calculator2").innerHTML = "";
  		document.getElementById("calculator2").innerHTML = '<div class="card shadow">'+
- 														  '<div class="single-cases mb-40">'+
+ 														  '<div class="single-cases">'+
         												  '<div class="cases-caption">'+
           											      '<h1>부채비율</h1>'+
           											      '<table id="inputInfo">'+
@@ -194,8 +194,8 @@ $(document).on("input","input[id=assetTotal]",function(){
           							            		  '<tr><td class="inputName">총 자산 :</td>'+
           							            		  '<td><input type="text" id="assetT" name="총 자산" class="inputHere" /> 원</td></tr>'+
           							            		  '</table>'+
-          							            		  '<button type="button" class="genric-btn info" onclick="calculateDebtRatio();">계산</button>&nbsp;'+
-          							            		  '<button type="button" class="genric-btn info" onclick="refresh();">초기화</button>'+
+          							            		  '<button type="button" class="genric-btn primary" onclick="calculateDebtRatio();">계산</button>&nbsp;'+
+          							            		  '<button type="button" class="genric-btn primary" onclick="refresh();">초기화</button>'+
          												  '</div>'+
          												  '</div>'+
     													  '</div>';
@@ -220,7 +220,7 @@ $(document).on("input","input[id=assetTotal]",function(){
 	   	 var result = debtT/assetT;
 	   	 
 	   	 document.getElementById("outcome").innerHTML = '<div class="card shadow">'+
-	   		 												'<div class="single-cases mb-40">'+
+	   		 												'<div class="single-cases">'+
 															 '<div class="cases-caption">'+
 														     '<h1>결과</h1>'+
 														     '<table id="resultTable"><tr><td>부채비율</td></tr>'+
@@ -271,7 +271,7 @@ $(document).on("input","input[id=assetTotal]",function(){
    function roe(){
    	document.getElementById("calculator2").innerHTML = "";
  		document.getElementById("calculator2").innerHTML = '<div class="card shadow">'+
- 														  '<div class="single-cases mb-40">'+
+ 														  '<div class="single-cases">'+
         												  '<div class="cases-caption">'+
           											      '<h1>ROE</h1>'+
           											      '<table id="inputInfo">'+
@@ -280,8 +280,8 @@ $(document).on("input","input[id=assetTotal]",function(){
           							            		  '<tr><td class="inputName">평균주주자본 :</td>'+
           							            		  '<td><input type="text" id="avgEquity" name="평균주주자본" class="inputHere" /> 원</td></tr>'+
           							            		  '</table>'+
-          							            		  '<button type="button" class="genric-btn info" onclick="calculateROE();">계산</button>&nbsp;'+
-          							            		  '<button type="button" class="genric-btn info" onclick="refresh();">초기화</button>'+
+          							            		  '<button type="button" class="genric-btn primary" onclick="calculateROE();">계산</button>&nbsp;'+
+          							            		  '<button type="button" class="genric-btn primary" onclick="refresh();">초기화</button>'+
          												  '</div>'+
          												  '</div>'+
     													  '</div>';
@@ -306,7 +306,7 @@ $(document).on("input","input[id=assetTotal]",function(){
 	   	 var result = ni/avgEquity;
 	   	 
 	   	 document.getElementById("outcome").innerHTML =  '<div class="card shadow">'+
-	   		 												'<div class="single-cases mb-40">'+
+	   		 												'<div class="single-cases">'+
 															  '<div class="cases-caption">'+
 														      '<h1>결과</h1>'+
 														      '<table id="resultTable"><tr><td>ROE</td></tr>'+
@@ -357,7 +357,7 @@ $(document).on("input","input[id=assetTotal]",function(){
    function itr(){
    	document.getElementById("calculator2").innerHTML = "";
  		document.getElementById("calculator2").innerHTML = '<div class="card shadow">'+
- 														  '<div class="single-cases mb-40">'+
+ 														  '<div class="single-cases">'+
         												  '<div class="cases-caption">'+
           											      '<h1>재고자산회전율</h1>'+
           											      '<table id="inputInfo">'+
@@ -366,8 +366,8 @@ $(document).on("input","input[id=assetTotal]",function(){
           							            		  '<tr><td class="inputName">평균재고자산 :</td>'+
           							            		  '<td><input type="text" id="avgInventory" name="평균재고자산" class="inputHere" /> 원</td></tr>'+
           							            		  '</table>'+
-          							            		  '<button type="button" class="genric-btn info" onclick="calculateITR();">계산</button>&nbsp;'+
-          							            		  '<button type="button" class="genric-btn info" onclick="refresh();">초기화</button>'+
+          							            		  '<button type="button" class="genric-btn primary" onclick="calculateITR();">계산</button>&nbsp;'+
+          							            		  '<button type="button" class="genric-btn primary" onclick="refresh();">초기화</button>'+
          												  '</div>'+
          												  '</div>'+
     													  '</div>';
@@ -392,7 +392,7 @@ $(document).on("input","input[id=assetTotal]",function(){
 	   	 var result = revenue/avgInventory;
 	   	 
 	   	 document.getElementById("outcome").innerHTML =  '<div class="card shadow">'+
-	   		 												'<div class="single-cases mb-40">'+
+	   		 												'<div class="single-cases">'+
 															  '<div class="cases-caption">'+
 														      '<h1>결과</h1>'+
 														      '<table id="resultTable"><tr><td>재고자산회전율</td></tr>'+
