@@ -24,6 +24,7 @@
   			border-spacing: 0;
   			top:35%;
   			left:40%;
+  			
     	}
 
 	</style>
@@ -71,8 +72,9 @@
 			</sec:authorize>
 			</section>
 			</div>
+			<br><br><br>
 		</div>
-	
+		
 		<jsp:include page="../main/footer.jsp"/>
 		
 		<script type="text/javascript">
