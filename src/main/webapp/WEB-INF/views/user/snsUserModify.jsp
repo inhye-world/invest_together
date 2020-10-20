@@ -6,7 +6,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-	<title>유저 정보 수정</title>
+	<title>같이투자 | 회원 정보 수정</title>
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
 	<link href="resources/user_modify.css" rel="stylesheet" type="text/css">

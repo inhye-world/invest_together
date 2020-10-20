@@ -4,14 +4,17 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import bit.it.into.dto.MemberDTO;
 import bit.it.into.security.CustomUser;
@@ -131,10 +134,23 @@ public class UserModifyController {
 					
 		CustomUser user = (CustomUser)authentication.getPrincipal();
 		
-		user.getDto().setPhone(memberDTO.getPhone());
+		String snsType = user.getDto().getSns_type();
 		
-		userService.alterPhone(user.getDto());
-		
+		if(snsType.equals("normal")) {
+			
+			user.getDto().setPhone(memberDTO.getPhone());
+			
+			userService.alterPhone(user.getDto());
+			
+		} else {
+			
+			user.getDto().setPhone(memberDTO.getPhone());
+			
+			userService.alterPhone(user.getDto());
+			
+			return "user/snsUserModify";
+		}
+
 		return "user/userModifyInfo";
 	}
 	
@@ -165,18 +181,18 @@ public class UserModifyController {
 		return "user/userModifyInfo";
 	}
 	
-	@RequestMapping("/emailChange")
-	public String emailChange(MemberDTO memberDTO, HttpServletResponse response, Model model) throws Exception {
+	@ResponseBody
+	@RequestMapping("rest/emailChange")
+	public String emailChange(HttpServletRequest request) throws Exception {
 		log.info("UserModifyController - emailChange()");
+				
+		mailSendService.emailChangeMail(request.getParameter("email"));
+				
+		JSONObject object = new JSONObject();
 		
-		mailSendService.emailChangeMail(memberDTO.getEmail());
+		object.put("hasEmail", true);
 		
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		out.println("<script>alert('이메일이 전송되었습니다. 이메일을 확인해주세요.'); </script>");
-		out.flush();
-		
-		return "user/userModifyInfo";
+		return object.toString();
 	}
 	
 	@RequestMapping("/checkEmail")

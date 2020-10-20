@@ -77,6 +77,14 @@ div {
 	color:red;
 } 
 
+.content__body__page h2 {
+	color: #072366;
+    font-size: 30px;
+    font-weight: 800;
+    text-transform: capitalize;
+    line-height: 1;
+}
+
 img {
     vertical-align: top;
     border: 0 none;

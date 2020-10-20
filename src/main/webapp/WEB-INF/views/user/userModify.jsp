@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>유저 정보 수정</title>
+	<title>같이투자 | 회원 정보 수정</title>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
@@ -19,7 +19,7 @@
     		margin:center;
     	}
     	.passwordConfirmForm{
-    		position:absolute;
+    		position: relative;
     		border-collapse: collapse;
   			border-spacing: 0;
   			top:25%;

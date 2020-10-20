@@ -53,7 +53,7 @@
 										<form:form class="id_form" action="pwdEmailSend" method="POST">
 											<input type="text" class="form-control--base-c" id="id" name="id" placeholder="아이디 (대소문자 구분)" maxlength="12">
 										
-										<div class="auth-submit"><input id="pwFind-submit" type="submit" value="인증번호전송"></div>
+										<div class="auth-submit"><input class="genric-btn primary" id="pwFind-submit" type="submit" value="인증번호전송"></div>
 										</form:form>
 										<br>
 									</span>
@@ -61,7 +61,7 @@
 											<input type="hidden" name="id" id="authId">
 											<input type="hidden" id="authKey" />
 											<input type="password" id="verifyNumber" name="verifyNumber" placeholder="이메일 인증 번호" maxlength="50" style="display: none;" maxlength="6" >
-											<input id="verifyNumber-submit" type="submit" value="확인" style="display: none;">
+											<input class="genric-btn primary" id="verifyNumber-submit" type="submit" value="확인" style="display: none;">
 										</form:form>
 										<br>		
 								</div>
@@ -69,8 +69,8 @@
 									<span class="list-bul">
 										아이디를 찾으시나요?			
 									</span>
-									<button class="button button--base-m button--shape-a" style="top: 70px;" onclick="location.href='idFind'">
-										<span class="button__text">아이디 찾기</span>
+									<button class="genric-btn primary" onclick="location.href='idFind'">
+										<span>아이디 찾기</span>
 									</button>			
 								</div>
 							</article>
@@ -185,9 +185,18 @@
 							alerting("다시 입력해 주세요.")	
 						}
 					},
+					
+					beforeSend: function () {
+						 $('#preloader-active').show(); 
+					},
+					
 					error: function(data){
 						alerting("다시 입력해 주세요.");
 						return false;
+					},
+					
+					complete: function () {
+						$('#preloader-active').hide();
 					}
 				});	
 			}); 	
