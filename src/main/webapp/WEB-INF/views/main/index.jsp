@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!doctype html>
 <html class="no-js">
@@ -302,6 +303,38 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Single Testimonial -->
+                        <div class="single-testimonial text-center">
+                            <div class="testimonial-caption ">
+                                <!-- founder -->
+                                <div class="testimonial-founder">
+                                    <div class="founder-img mb-40">
+                                        <img src="resources/main/assets/img/gallery/testimonial.png" alt="">
+                                        <span>Margaret Lawson</span>
+                                        <p>Creative Director</p>
+                                    </div>
+                                </div>
+                                <div class="testimonial-top-cap">
+                                    <p>âI am at an age where I just want to be fit and healthy our bodies are our responsibility! So start caring for your body and it will care for you. Eat clean it will care for you and workout hard.â</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single Testimonial -->
+                        <div class="single-testimonial text-center">
+                            <div class="testimonial-caption ">
+                                <!-- founder -->
+                                <div class="testimonial-founder">
+                                    <div class="founder-img mb-40">
+                                        <img src="resources/main/assets/img/gallery/testimonial.png" alt="">
+                                        <span>Margaret Lawson</span>
+                                        <p>Creative Director</p>
+                                    </div>
+                                </div>
+                                <div class="testimonial-top-cap">
+                                    <p>âI am at an age where I just want to be fit and healthy our bodies are our responsibility! So start caring for your body and it will care for you. Eat clean it will care for you and workout hard.â</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -320,7 +353,7 @@
                             <div class="col-lg-3 col-md-6 col-sm-6">
                                 <!-- Counter Up -->
                                 <div class="single-counter text-center">
-                                    <span class="counter color-green">200,000</span>
+                                    <span class="counter color-green"><fmt:formatNumber value="${total_member}"/></span>
                                     <span class="plus">+</span>
                                     <p class="color-green">총 가입자 수</p>
                                 </div>
@@ -328,25 +361,25 @@
                             <div class="col-lg-3 col-md-6 col-sm-6">
                                 <!-- Counter Up -->
                                 <div class="single-counter text-center">
-                                    <span class="counter color-green">1,000</span>
+                                    <span class="counter color-green"><fmt:formatNumber value="${total_account}"/></span>
                                     <span class="plus">+</span>
-                                    <p class="color-green">신규 가입자 수</p>
+                                    <p class="color-green">등록된 계좌 수</p>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-6">
                                 <!-- Counter Up -->
                                 <div class="single-counter text-center">
-                                    <span class="counter color-green">2,540,000</span>
+                                    <span class="counter color-green"><fmt:formatNumber value="${total_stock}"/></span>
                                     <span class="plus">+</span>
-                                    <p class="color-green">누적 접속자 수</p>
+                                    <p class="color-green">등록된 주식 수</p>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-6">
                                 <!-- Counter Up -->
                                 <div class="single-counter text-center">
-                                    <span class="counter color-green">2,560</span>
+                                    <span class="counter color-green"><fmt:formatNumber value="${total_subsribe}"/></span>
                                     <span class="plus">+</span>
-                                    <p class="color-green">오늘 접속자 수</p>
+                                    <p class="color-green">총 거래 횟수</p>
                                 </div>
                             </div>
                         </div>

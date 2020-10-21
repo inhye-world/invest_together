@@ -213,6 +213,35 @@ public class LoginService {
 		
 		} else 
 			return false;
+	}
+
+
+	public Integer totalMember() {
+		log.info("LoginService -totalMember()");
+		
+		return mapper.selectMember();
+		
+	}
+
+
+	public Integer totalAccount() {
+		log.info("LoginService -totalAccount()");
+		
+		return mapper.selectAccount();
+	}
+
+
+	public Integer totalStock() {
+		log.info("LoginService -totalStock()");
+		
+		return mapper.selectStock();
+	}
+
+
+	public Integer totalSubsribe() {
+		log.info("LoginService -totalSubsribe()");
+		
+		return mapper.selectSubscribe();
 	}	
 	
 }
