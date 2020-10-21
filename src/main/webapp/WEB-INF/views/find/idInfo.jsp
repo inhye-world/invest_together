@@ -8,6 +8,7 @@
       <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
       <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
       <link href="resources/find.css" rel="stylesheet" type="text/css">
 		
 		<style type="text/css">
