@@ -61,7 +61,7 @@
          margin-left:100px;
       }
       #salary-modify-form{
-         width:120%;
+         width:100%;
       }
       .salary-table-empty{
       	 padding-top: 100px !important;

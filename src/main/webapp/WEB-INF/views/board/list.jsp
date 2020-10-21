@@ -15,14 +15,22 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <link rel="manifest" href="site.webmanifest">
 	    <link rel="shortcut icon" type="image/x-icon" href="resources/main/assets/img/favicon.ico">
-	
+		<link href="resources/ranking.css" rel="stylesheet" type="text/css">
 	</head>
 
 	<style>
 	
-		.table .title{
-			font-weight: bold;
-		    background-color: whitesmoke;
+		.freeBoard{
+		    width: 90%;
+		    text-align: center;
+		    margin-left: auto;
+		    margin-right: auto;
+		    padding-bottom: 50px;
+		}
+	
+		.freeBoardTitle{
+		    background-color: #363944;
+		    color: #fff;
 		}
 	
 		.container{
@@ -31,7 +39,8 @@
 	
 		.pagination {
 	    	justify-content: center;
-	    	padding-bottom: 100px;
+	    	padding-top: 20px;
+	    	padding-bottom: 20px;
 		}
 		
 		.hero-cap h2 {
@@ -42,26 +51,19 @@
 		    line-height: 1;
 		    padding-bottom: 30px;
 		}
-		
-		.notice-btn{
-		  display: inline-block;
-		  outline: none;
-		  line-height: 25px;
-		  padding: 0 15px;
-		  font-size: .9em;
-		  text-align: center;
-		  text-decoration: none;
-		  font-weight: 500;
-		  cursor: pointer;
-		  -webkit-transition: all 0.3s ease 0s;
-		  -moz-transition: all 0.3s ease 0s;
-		  -o-transition: all 0.3s ease 0s;
-		  transition: all 0.3s ease 0s;
-		  color: #fff;
- 		  background: #f44a40;
- 		  border: 1px solid transparent;
-		}
+		.button{
+			float: right;
+			margin-right: 100px;
+			width: 20px;
+			height: 10px;
+			line-height: 5px;
+		}	
+		#writeGo{
+			padding: 15px 17px;
+			width:80px;
+			text-align:left;
 			
+		}
 	</style>
 	
 	<body>
@@ -69,10 +71,10 @@
 		
 		  <div class="container">
 		     <div class="hero-cap">
-                 <h2>자유게시판</h2>
+                 <h2 style="margin-left:55px;">자유게시판</h2>
              </div>     
-				<table class="table">
-					<tr class="title">
+				<table class="freeBoard">
+					<tr class="freeBoardTitle">
 						<td>글번호</td>
 						<td>제목</td>
 						<td>작성자</td>
@@ -98,9 +100,6 @@
 					</tr>
 					</c:forEach>
 				</table>
-				<tr>
-					<td colspan="5"> <input class="button button-contactForm btn_1 boxed-btn" onclick="location.href='write_view'" type="button" value="글작성"/> </td>
-				</tr>
 			</div>			
 			<ul class="pagination">
 				<c:if test="${pageMaker.prev}">
@@ -125,7 +124,9 @@
 					</li>
 				</c:if>
 			</ul>
-			
+			<div> <input id="writeGo" class="button button-contactForm btn_1 boxed-btn" onclick="location.href='write_view'" type="button" value="글작성"/>
+			</div>
+			<br><br><br><br><br>
 	<!-- footer -->
 	<jsp:include page="../main/footer.jsp"/>	
 		
