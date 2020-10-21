@@ -140,11 +140,13 @@
 			background-color: #112026;
 			color: #fff !important;
 		}
+
 	</style>
 
 </head>
 	<body>
 	<jsp:include page="../main/header.jsp"/>
+
 	<h1 class="usermodify-title">회원정보 수정</h1>
 	<br>
 		<div class="member-container page-modify">			
@@ -257,6 +259,7 @@
 				</tr>	
 			</sec:authorize>
 			</table>	
+
 			</div>
 			<div class="usermodify-secession">
 				 탈퇴를 원하시면 우측의 회원탈퇴 버튼을 눌러주세요.
@@ -265,8 +268,10 @@
 			<!-- <div class="usermodify-foot"> -->
 				<button onclick = "location.href = ${pageContext.request.contextPath}/"  type="button" class="usermodify-cancel">나가기</button>
 			</div>
+
 		
 		<br><br><br><br><br><br>
+
 		<script>
 			function alerting(content){
 	    		AstNotif.dialog('알림', content, {
