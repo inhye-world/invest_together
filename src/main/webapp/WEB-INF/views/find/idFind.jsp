@@ -100,12 +100,6 @@
            		theme: 'default',
            	});
        	}
-         
-        function confirming(content){
-      		AstNotif.snackbar(content, {
-          		theme: 'default',
-          	});
-     	}   
 
 		$(document).ready(function (){
 			
@@ -205,9 +199,6 @@
 						
 					}else {
 						alerting("아이디 또는 이메일을 잘못 입력하셨습니다.")
-						setTimeout(function(){
-						location.reload();
-						},2000); // 3000밀리초 = 3초
 					}
 				},
 				

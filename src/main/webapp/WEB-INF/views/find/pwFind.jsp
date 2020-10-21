@@ -193,9 +193,6 @@
 							
 						}else {
 							alerting("아이디를 잘못 입력하셨습니다.")
-							setTimeout(function(){
-							location.reload();
-							},2000); // 3000밀리초 = 3초
 						}
 					},
 					
