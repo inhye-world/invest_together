@@ -15,41 +15,32 @@
   	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
   	
   	<link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
-  	<script src="resources/ast-notif.js"></script>
   	<script src="resources/sb_admin/js/ast-notif.js"></script>
+	
+	<link href="resources/sb_admin/css/bttn.css" rel="stylesheet" type="text/css">
+	<link href="resources/ranking.css" rel="stylesheet" type="text/css">
+	<link href="resources/assets.css" rel="stylesheet" type="text/css">
   	
 	<!-- ajax사용 위해 csrf설정 -->
   	<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
   	<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
   	
 	<style type="text/css">
-	
-		 .usermodify-title{
-			margin-left: 50%;
-   			margin-top: 7%;
-   			color: #032380;
-		} 
-		
-		 .table{
-			 left:50%; 
-			 
-		}
-		
+		 
 		.member-container{
-			left:40%;
-			padding:20%;
+			margin-left: auto;
+			margin-right: auto;
 		}
-		
+		 
 		 th{
 			font-family: "Lucida Console", Courier, monospace;
 		} 
-		
 	</style>
 
 </head>
 	<body>
 	<jsp:include page="../main/header.jsp"/>
-		<div class="member-container page-modify">			
+		<div class="member-container page-modify">		
 			<h1 class="usermodify-title">회원정보 수정</h1>
 			<br>
 			<table class="table">
@@ -109,7 +100,7 @@
 							<button type="button" class="usermodify-email-change-btn" style="display: inline-block;">이메일 변경</button>
 							<button type="button" class="usermodify-email-change-cancel" style="display: none;">이메일 변경취소</button>
 						<form:form class="usermodify-email-change-auth" action="emailChange" method="post" style="display: none;">
-							<input class="usermodify-email-if" type="text" id="email" name="email" placeholder="이메일 입력">
+							<input class="usermodify-email-if" type="text" name="email" placeholder="이메일 입력">
 							<button type="submit" class="usermodify-email-change-auth-send">인증메일 전송</button>
 						</form:form>
 						</div>	
@@ -151,29 +142,22 @@
 			</sec:authorize>
 			</table>	
 			
-			<div class="usermodify-secession">
+			<div class="usermodify-secession" >
 				 탈퇴를 원하시면 우측의 회원탈퇴 버튼을 눌러주세요.
 				<a class="usermodify-secession-btn">회원탈퇴</a>
 			
 			<!-- <div class="usermodify-foot"> -->
 				<button onclick = "location.href = ${pageContext.request.contextPath}/"  type="button" class="usermodify-cancel">나가기</button>
 			</div>
-		</div>
+	</div>
 		<br><br><br>
-<script>
-		
-			function alertingExit(content){
-				Astif.dialog('알림', content, {
-	        	  theme: 'default',
-	        	});
-	    	}
-			
-			function alerting(content){
-				AstNotif.dialog('알림', content, {
-	        	  theme: 'default',
-	        	});
-	    	}
-			
+		<script>
+				function alerting(content){
+		    		AstNotif.dialog('알림', content, {
+		        	  theme: 'default',
+		        	});
+		    	}
+		      
 			$(document).ready(function (){
 				
 				$.validator.addMethod("idRegex", function(value, element) {
@@ -194,6 +178,7 @@
 							},
 						},
 					},
+
 					//메시지
 					messages:{
 						id:{
@@ -204,6 +189,7 @@
 							remote :  "중복된 아이디 입니다."
 						},
 					},
+
 					//메시지 태그
 					errorElement : 'span', 	//태그
 					errorClass: 'error',	//클래스 이름
@@ -228,6 +214,7 @@
 							},
 						},
 					},
+
 					//메시지
 					messages:{
 						nickname:{
@@ -238,6 +225,7 @@
 							remote :  "중복된 닉네임 입니다."
 						},
 					},
+
 					//메시지 태그
 					errorElement : 'span', 	//태그
 					errorClass: 'error',	//클래스 이름
@@ -260,6 +248,7 @@
 							},
 						},
 					},
+
 					//메시지
 					messages:{
 						phone:{
@@ -268,6 +257,7 @@
 							remote :  "중복된 핸드폰 번호입니다."
 						},
 					},
+
 					//메시지 태그
 					errorElement : 'span', 	//태그
 					errorClass: 'error',	//클래스 이름
@@ -275,7 +265,6 @@
 				});
 				
 				$(".usermodify-email-change-auth").validate({
-										
 					//규칙
 					rules:{
 						email:{
@@ -287,6 +276,7 @@
 							},
 						},
 					},
+
 					//메시지
 					messages:{
 						email:{
@@ -295,56 +285,14 @@
 							remote :  "중복된 이메일 입니다."
 						},
 					},
+
 					//메시지 태그
 					errorElement : 'span', 	//태그
 					errorClass: 'error',	//클래스 이름
-					validClass:'vaild',
-					
+					validClass:'vaild' 
+
 				});	
-				
-		 			$(".usermodify-email-change-auth").on("submit", function() {
-												
-						event.preventDefault();
-						/* 이메일 중복 체크 후 메일 발송 비동기 처리 */
-						$.ajax({
-							type:"get",
-							url : "rest/emailChange",
-							dataType: 'json',
-							data : "email=" + $("#email").val(),
-							
-						success : function(data){
-							
-							console.log(data);
-							
-							if(data.hasEmail) {
-								
-								alerting("이메일이 발송되었습니다.");
-								
-								var authEmail = $("#email").val();
-								$("#authEmail").val(authEmail);
-								
-							}else {
-								
-								alerting("이메일을 다시 입력해 주세요.")	
-							}
-						},
-						
-						beforeSend: function () {
-							 $('#preloader-active').show(); 
-						},
-						
-						error: function(data){
-							alerting("이메일을 다시 입력해 주세요.");
-							return false;
-						},
-						
-						complete: function () {
-							$('#preloader-active').hide();
-						}
-						 
-					});	
-				});
-				
+
 				$.validator.addMethod("pwRegex", function(value, element) {
 					return this.optional(element) || value.match(/^(?=.*[a-z])(?=.*[0-9])[0-9A-Za-z$&+,:;=?@#|'<>.^*()%!-]{8,32}$/);   
 				});
@@ -359,6 +307,7 @@
 							pwRegex : true
 						},
 					},
+
 					//메시지
 					messages:{
 						pw:{
@@ -368,10 +317,12 @@
 							pwRegex : "영문과 숫자가 포함된 비밀번호를 입력해 주세요."
 						},	
 					},
+
 					//메시지 태그
 					errorElement : 'span', 	//태그
 					errorClass: 'error',	//클래스 이름
 					validClass:'vaild' 
+
 				});	
 				
 			});	
@@ -441,7 +392,12 @@
 				});
 				
 				$(".usermodify-secession-btn").on("click", function() {
-					alertingExit("탈퇴 하시겠습니까?");
+					var result = confirm("회원정보를 탈퇴 하시겠습니까?");
+					if(result){
+						
+						$(".usermodify-secession-btn").attr({"href":"secession"});
+					} else 
+						$(".usermodify-secession-btn").attr({"href":"modify"});
 				});
 								
 			});

@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix ="javatime" uri="http://sargue.net/jsptags/time" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>  
 <!DOCTYPE html>
 <html>
 <style>
@@ -79,13 +80,19 @@
 					<ul>
 						<li>
 							<div>
-								 <h5>통장 내역</h5>
+								 <h4 style="font-weight: bold; color:#032380;">통장 내역</h4>
 							</div>
 						</li>
 					</ul>
 				</div>
+				
             	  <ul class="ranking-notice">
-					<li>회원님의 해당통장에 대한 내역을 보여드립니다.</li>
+            	  <li> 
+            	  	<sec:authorize access="isAuthenticated()">
+					<sec:authentication var="principal" property="principal"/>
+					<P data-animation="fadeInUp" data-delay=".8s"><span style="color:#2B66A0;">${principal.dto.name}</span> 님의 해당통장에 대한 내역을 보여드립니다.</P>
+					</sec:authorize>    
+					</li>
 				</ul>
     	</div>
 		<table id="salary-table" class="table">

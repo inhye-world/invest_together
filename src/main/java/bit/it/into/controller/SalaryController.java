@@ -165,7 +165,7 @@ public class SalaryController {
 		log.info("BankController - aTransaction()");
 
 		if (authentication == null) {
-			return "redirect:/loginForm";
+			return "login/login_require";
 		}
 
 		CustomUser user = (CustomUser) authentication.getPrincipal();
@@ -180,7 +180,7 @@ public class SalaryController {
 		int expenseSum = 0;
 
 		String fintech_use_num = request.getParameter("fin");
-		JsonNode node = open.getAccountTransactionList(access_token, fintech_use_num, "2020", "09");
+		JsonNode node = open.getAccountTransactionList(access_token, fintech_use_num, "2020", "10");
 
 		String product_name = open.getAccountBalance(access_token, fintech_use_num).get("product_name").asText();
 
@@ -239,7 +239,7 @@ public class SalaryController {
 		}
 
 		return "bank/account_salary_list";
-
 	}
 
 }
+

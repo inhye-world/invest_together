@@ -17,22 +17,19 @@
   <!-- alert -->
   <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
   <script src="resources/sb_admin/js/ast-notif.js"></script>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
   <link href="resources/ranking.css" rel="stylesheet" type="text/css">
-  <link href="resources/sub.css" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
   
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		.error{
+			color:red;
+		}
+	</style>
   
 </head>
 
 	<style>
-		.error{
-			color:red;
-		}
-	
 		.container{
 			padding-top: 150px;
 			padding-bottom: 300px;
@@ -50,7 +47,6 @@
 		    line-height: 1;
 		    padding-bottom: 30px;
 		}
-		
 	</style>
 	
 	<body>
@@ -84,7 +80,7 @@
 	                 <h2>거래내역</h2>
 	            </div>     
 	            
-					<table id="ranking-individual-table" class="table leaderboards">
+					<table class="table leaderboards">
 						<thead>
 							<tr>
 								<th>구매일</th>
@@ -96,7 +92,7 @@
 						<tbody>
 							<c:if test="${empty list}">
 								<tr>
-									<td class="sub-list-empty" colspan="7">아직 구독한 회원이 없습니다</td>
+									<td class="sub-list-empty" colspan="7">아직 구독한 회원이 없습니다.</td>
 								</tr>
 							</c:if>
 							
