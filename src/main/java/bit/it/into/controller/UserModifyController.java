@@ -185,7 +185,7 @@ public class UserModifyController {
 	@RequestMapping("rest/emailChange")
 	public String emailChange(HttpServletRequest request) throws Exception {
 		log.info("UserModifyController - emailChange()");
-				
+		
 		mailSendService.emailChangeMail(request.getParameter("email"));
 				
 		JSONObject object = new JSONObject();

@@ -51,7 +51,7 @@ public class MailSendService {
 	        	     "<img src=\"http://localhost:8282/into/resources/main/assets/img/logo/logo.png\"></img>"+
 	        	     "<h1>[이메일 인증]</h1>" +
 	        	     "<br>" +
-	        	     "<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>"+
+	        	     "<p style=\"font-weight:700;\">아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>"+
 	        	     "<br>" +
 	        	     "<a href='http://localhost:8282/into/authConfirm?email=" + email + "&authKey=" + authKey + "' target='_blenk'>이메일 인증 확인</a>" +
 	        	     "</div>"+
@@ -87,9 +87,9 @@ public class MailSendService {
 	        	     "<img src=\"http://localhost:8282/into/resources/main/assets/img/logo/logo.png\"></img>"+
 	        	     "<h1>[인증번호 안내]</h1>" +
 	        	     "<br>" +
-	        	     "<p>아래의 인증번호를 복사하신 후 이메일 인증번호 입력란에 입력해 주시기 바랍니다.</p>"+
+	        	     "<p style=\"font-weight:700;\">아래의 인증번호를 복사하신 후 이메일 인증번호 입력란에 입력해 주시기 바랍니다.</p>"+
 	        	     "<br>" +
-	        	     "인증번호 : <p style=\"color:red; font-size:25px\">" + authKey + " </p>" +
+	        	     "인증번호 : <p style=\"color:red; font-size:25px; font-weight:700;\">" + authKey + " </p>" +
 	        	     "</div>"+
 	        	     "</BODY>" +
 	        	     "</HTML>";
@@ -125,7 +125,7 @@ public class MailSendService {
 	        	     "<br>" +
 	        	     "<p>아래의 인증번호를 복사하신 후 이메일 인증번호 입력란에 입력해 주시기 바랍니다.</p>"+
 	        	     "<br>" +
-	        	     "인증번호 : <p style=\"color:red; font-size:25px\">" + authKey + " </p>" +
+	        	     "인증번호 : <p style=\"color:red; font-size:25px; font-weight:700;\">" + authKey + " </p>" +
 	        	     "</div>"+
 	        	     "</BODY>" +
 	        	     "</HTML>";
@@ -157,7 +157,7 @@ public class MailSendService {
 	        	     "<img src=\"http://localhost:8282/into/resources/main/assets/img/logo/logo.png\"></img>"+
 	        	     "<h1>[이메일 변경]</h1>" +
 	        	     "<br>" +
-	        	     "<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>"+
+	        	     "<p style=\"font-weight:700;\">아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>"+
 	        	     "<br>" +
 	        	     "<a href='http://localhost:8282/into/alterEmail?email=" + email + "' target='_blenk'>이메일 변경</a>" +
 	        	     "</div>"+

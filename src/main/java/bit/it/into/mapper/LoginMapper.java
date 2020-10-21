@@ -35,4 +35,12 @@ public interface LoginMapper {
 
 	public String selectAuthKey(String parameter);
 
+	public Integer selectMember();
+
+	public Integer selectAccount();
+
+	public Integer selectStock();
+
+	public Integer selectSubscribe();
+
 }

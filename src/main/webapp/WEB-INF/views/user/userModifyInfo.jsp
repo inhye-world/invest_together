@@ -109,7 +109,7 @@
 							<button type="button" class="usermodify-email-change-btn" style="display: inline-block;">이메일 변경</button>
 							<button type="button" class="usermodify-email-change-cancel" style="display: none;">이메일 변경취소</button>
 						<form:form class="usermodify-email-change-auth" action="emailChange" method="post" style="display: none;">
-							<input class="usermodify-email-if" type="text" name="email" placeholder="이메일 입력">
+							<input class="usermodify-email-if" type="text" id="email" name="email" placeholder="이메일 입력">
 							<button type="submit" class="usermodify-email-change-auth-send">인증메일 전송</button>
 						</form:form>
 						</div>	
@@ -319,7 +319,10 @@
 							if(data.hasEmail) {
 								
 								alerting("이메일이 발송되었습니다.");
-					
+								
+								var authEmail = $("#email").val();
+								$("#authEmail").val(authEmail);
+								
 							}else {
 								
 								alerting("이메일을 다시 입력해 주세요.")	
