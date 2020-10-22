@@ -7,10 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import bit.it.into.dto.BoardDTO;
 import bit.it.into.dto.NoticeDTO;
-import bit.it.into.page.CommentsCriteria;
-import bit.it.into.page.CommentsPageDTO;
 import bit.it.into.security.CustomUser;
 import bit.it.into.service.NoticeService;
 import lombok.AllArgsConstructor;
@@ -28,7 +25,16 @@ public class NoticeCotroller {
 		public String write_view(Model model, Authentication authentication) {
 			log.info("write_notice()");
 			
+			if(authentication == null) {
+				return "login/login_require";
+			}
+			
 			CustomUser user = (CustomUser)authentication.getPrincipal();
+			
+			String authority = user.getDto().getAuthoritiesDTO().getAuthority();
+			if(!authority.equals("ROLE_ADMIN")) {
+				return "error/accessDenied";
+			}
 			
 			model.addAttribute("dto", user);
 			
@@ -73,18 +79,37 @@ public class NoticeCotroller {
 		public String modify_view(NoticeDTO noticeDTO, Model model, Authentication authentication) throws Exception{
 			log.info("modify_notice()");
 			
+			if(authentication == null) {
+				return "login/login_require";
+			}
+			
 			CustomUser user = (CustomUser)authentication.getPrincipal();
 			
-			model.addAttribute("dto", user);
+			String authority = user.getDto().getAuthoritiesDTO().getAuthority();
+			if(!authority.equals("ROLE_ADMIN")) {
+				return "error/accessDenied";
+			}
 			
+			model.addAttribute("dto", user);
 			model.addAttribute("notice", noticeService.get(noticeDTO.getNotice_num()));
 			
 			return "notice/modify_notice";	
 		}
 		
 		@RequestMapping("/noticeDelete")
-		public String delete(NoticeDTO noticeDTO) {
+		public String delete(NoticeDTO noticeDTO, Authentication authentication) {
 			log.info("NoticeDelete()");
+			
+			if(authentication == null) {
+				return "login/login_require";
+			}
+			
+			CustomUser user = (CustomUser)authentication.getPrincipal();
+			
+			String authority = user.getDto().getAuthoritiesDTO().getAuthority();
+			if(!authority.equals("ROLE_ADMIN")) {
+				return "error/accessDenied";
+			}
 			
 			noticeService.remove(noticeDTO.getNotice_num());
 			

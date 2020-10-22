@@ -147,7 +147,7 @@
 			                    borderColor: chartcolor,
 			                    fill: false,
 			                    borderWidth: 1,
-			                    pointRadius: 2,
+			                    pointRadius: 2
 			                }]
 		            	},
 		           		options: {

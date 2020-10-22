@@ -32,6 +32,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>	
 	
+
 	<link href="resources/sb_admin/css/bttn.css" rel="stylesheet" type="text/css">
 	<link href="resources/ranking.css" rel="stylesheet" type="text/css">
 	<link href="resources/assets.css" rel="stylesheet" type="text/css">
@@ -995,27 +996,14 @@
               
           }); 
 
-<<<<<<< HEAD
-      </script>
+         </script>
+         
+         <script src="resources/sb_admin/vendor/chart.js/Chart.min.js"></script>
+         
+         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
       
-      <script src="resources/sb_admin/vendor/chart.js/Chart.min.js"></script>
-      
-      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-   
-      <script src="resources/tableExport/tableExport.min.js" type="text/javascript"></script>
-      <script src="resources/tableExport/xlsx.core.min.js" type="text/javascript"></script>
-      <script src="resources/tableExport/FileSaver.min.js" type="text/javascript"></script>
-   </body>
-=======
-		</script>
-		
-		<script src="resources/sb_admin/vendor/chart.js/Chart.min.js"></script>
-	
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	
-		<script src="resources/tableExport/tableExport.min.js" type="text/javascript"></script>
-		<script src="resources/tableExport/xlsx.core.min.js" type="text/javascript"></script>
-		<script src="resources/tableExport/FileSaver.min.js" type="text/javascript"></script>
-	</body>
->>>>>>> origin/master_JaeKwon2
-</html>
+         <script src="resources/tableExport/tableExport.min.js" type="text/javascript"></script>
+         <script src="resources/tableExport/xlsx.core.min.js" type="text/javascript"></script>
+         <script src="resources/tableExport/FileSaver.min.js" type="text/javascript"></script>
+      </body>
+   </html>
