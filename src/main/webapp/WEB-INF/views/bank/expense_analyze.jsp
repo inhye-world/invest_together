@@ -46,6 +46,7 @@
 		console.log(yDomain);
 	</script>
 	<style>
+	
 		#graphs{
 			display:flex;
 			left:50%
