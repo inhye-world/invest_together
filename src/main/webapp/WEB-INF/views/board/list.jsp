@@ -89,7 +89,7 @@
 					<c:forEach items="${nlist}" var="ndto">
 					<tr id="content" onmouseover="this.style.backgroundColor='rgba(9, 204, 127, 0.4)'" onmouseout="this.style.backgroundColor='white'" onclick="location.href='notice_view?notice_num=${ndto.notice_num}'">
 						<td><button class="notice-btn">공지</button></td>
-						<td>${ndto.notice_title}</td>
+						<td class="point">${ndto.notice_title}</td>
 						<td>관리자</td>
 						<td><fmt:formatDate value="${ndto.notice_date}" dateStyle="full" /></td>
 						<td>${ndto.notice_hit}</td>
@@ -98,7 +98,7 @@
 					<c:forEach items="${list}" var="dto">
 					<tr id="content" onmouseover="this.style.backgroundColor='rgba(9, 204, 127, 0.4)'" onmouseout="this.style.backgroundColor='white'" onclick="location.href='content_view?board_num=${dto.board_num}'">
 						<td>${dto.board_num}</td>
-						<td>${dto.board_title}</td>
+						<td class="point">${dto.board_title}</td>
 						<td>${dto.board_name}</td>
 						<td><fmt:formatDate value="${dto.board_date}" dateStyle="full" /></td>
 						<td>${dto.board_hit}</td>
