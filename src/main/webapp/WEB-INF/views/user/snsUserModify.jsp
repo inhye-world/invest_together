@@ -70,6 +70,7 @@
 		
 		.snsModiTable th{
 			background-color: #dfe5f8;
+			text-align: center;
 		}
 		
 		.usermodify-secession{

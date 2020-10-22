@@ -30,6 +30,14 @@
 </head>
 
    <style>
+   
+	  .sub-list-empty {
+		 padding-top: 100px !important;
+		 padding-bottom: 100px !important;
+		 font-family: 'Noto Sans KR', sans-serif;
+		 font-size: 20px;
+	  }
+   
       .setPriceCon{
          width: 80%;
          margin-left:auto;

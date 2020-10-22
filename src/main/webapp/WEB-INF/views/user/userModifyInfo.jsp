@@ -56,6 +56,7 @@
       .ModiUserTable th, td{
          border-bottom : 1px solid #000;
          padding: 10px;
+         
       }
       
       .usermodify-input-table{
@@ -75,6 +76,7 @@
       
       .ModiUserTable th{
          background-color: #dfe5f8;
+         text-align: center;
       }
    
       .usermodify-id-change-btn, .usermodify-id-change-cancel, .usermodify-id-change-auth-send{

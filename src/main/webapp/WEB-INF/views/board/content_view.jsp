@@ -20,6 +20,14 @@
    <!-- <script src="resources/sb_admin/js/ast-notif-board.js"></script> -->
 		
 	<style>
+		.pagination .page-link {
+		    color: #09cc7f;
+		}
+		
+		.pagination .active .page-link {
+		    background-color: #09cc7f !important;
+		    border-color: #09cc7f !important;
+		}
 		
 		.form-group textarea.form-control {
 		    height: 100px;
