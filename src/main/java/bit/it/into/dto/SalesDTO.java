@@ -12,6 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SalesDTO {
-	private int daily_sales;
 	private Timestamp sales_date;
+	private int daily_sales;
+	private int daily_count;
 }

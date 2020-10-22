@@ -23,4 +23,15 @@
 		]]>
 	</insert>
 	
+	<select id="selectSalesList" resultType="bit.it.into.dto.SalesDTO">
+		<![CDATA[
+			SELECT * FROM sales WHERE sales_date BETWEEN TO_DATE(#{startDate}, 'YYYY-MM-DD') AND TO_DATE(#{endDate}, 'YYYY-MM-DD') ORDER BY sales_date DESC
+		]]>
+	</select>
+	
+	<select id="selectAllSalesList" resultType="bit.it.into.dto.SalesDTO">
+		<![CDATA[
+			SELECT * FROM sales ORDER BY sales_date ASC
+		]]>
+	</select>
 </mapper>

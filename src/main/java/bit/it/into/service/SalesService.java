@@ -1,10 +1,13 @@
 package bit.it.into.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import bit.it.into.dto.SalesDTO;
 import bit.it.into.mapper.SalesMapper;
 import lombok.extern.log4j.Log4j;
 
@@ -27,5 +30,17 @@ public class SalesService {
 		if(count != 1) {
 			log.info("insertDailySales 오류");
 		}
+	}
+
+	public List<SalesDTO> getSalesList(String startDate, String endDate) {
+		log.info("SalesService -getSalesList()");
+		
+		return mapper.selectSalesList(startDate, endDate);
+	}
+	
+	public List<SalesDTO> getAllSalesList() {
+		log.info("SalesService -getAllSalesList()");
+		
+		return mapper.selectAllSalesList();
 	}
 }
