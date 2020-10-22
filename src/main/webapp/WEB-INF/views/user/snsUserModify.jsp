@@ -13,6 +13,9 @@
 
 	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
 	
+	<link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
+	<script src="resources/ast-notif.js"></script>
+	
 	<!-- ajax사용 위해 csrf설정 -->
   	<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
   	<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
@@ -189,8 +192,15 @@
 			<button onclick = "location.href = ${pageContext.request.contextPath}/"  type="button" class="usermodify-cancel">나가기</button>
 		</div>
 		<br><br><br><br><br><br>
+		
 		<script>
 			
+			function confirming(content){
+				Astif.dialog('알림', content, {
+	        	  theme: 'default',
+	        	});
+	    	}
+		
 			$(document).ready(function (){
 								
 				$.validator.addMethod("nicknameRegex", function(value, element) {
@@ -302,11 +312,8 @@
 				});
 				
 				$(".usermodify-secession-btn").on("click", function() {
-					var result = confirm("회원정보를 탈퇴 하시겠습니까?")
-					if(result){
-						$(".usermodify-secession-btn").attr({"href":"secession"});
-					} else 
-						$(".usermodify-secession-btn").attr({"href":"modify"});
+					confirming("회원정보를 탈퇴 하시겠습니까?");
+					
 				});
 								
 			});
