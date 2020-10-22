@@ -74,7 +74,7 @@
 			margin: auto;
 			text-align: center;
 			margin-bottom: 50px;
-			font-size: 2em;
+			font-size: 20px;
 		}
 		
 		@media ( max-width: 768px ) {
