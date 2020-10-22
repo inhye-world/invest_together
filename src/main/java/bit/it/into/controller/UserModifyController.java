@@ -186,11 +186,15 @@ public class UserModifyController {
 	public String emailChange(HttpServletRequest request) throws Exception {
 		log.info("UserModifyController - emailChange()");
 		
-		mailSendService.emailChangeMail(request.getParameter("email"));
-				
 		JSONObject object = new JSONObject();
 		
-		object.put("hasEmail", true);
+		if(loginService.hasUserByEmail(request.getParameter("email"))) {	
+			object.put("hasEmail", false);
+			
+		} else {
+			mailSendService.emailChangeMail(request.getParameter("email"));		
+			object.put("hasEmail", true);
+		}
 		
 		return object.toString();
 	}
