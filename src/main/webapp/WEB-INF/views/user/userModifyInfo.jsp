@@ -6,6 +6,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+
    <title>같이투자 | 유저 정보 수정</title>
    
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -218,7 +219,7 @@
                      <button type="button" class="usermodify-email-change-cancel" style="display: none;">이메일 변경취소</button>
                   <form:form class="usermodify-email-change-auth" action="emailChange" method="post" style="display: none;">
                      <div class="formArea">
-                        <div id=inputArea><input class="usermodify-email-if" type="text" name="email" placeholder="이메일 입력" style="width:225px;"></div>
+                        <div id=inputArea><input class="usermodify-email-if" type="text" id="email" name="email" placeholder="이메일 입력" style="width:225px;"></div>
                         <button type="submit" class="usermodify-email-change-auth-send">인증메일 전송</button>
                      </div>
                   </form:form>

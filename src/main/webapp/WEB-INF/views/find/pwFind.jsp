@@ -20,6 +20,22 @@
 			.button__text {
 				color:black;
 			}
+			
+			.formArea {
+	        	display:flex;
+	        	place-content: center;
+	      	}
+	   
+	        #inputArea {
+	         	width: 190px;
+	      	}
+			
+			#verifyNumber-submit {
+	         	height:40px !important;
+	      	}
+			
+			
+			
 		</style>
 	</head>
 	<body>
@@ -49,7 +65,7 @@
 								</dl>
 							</article>
 							<article class="user-area">
-								<div class="user-area_content">
+									<div class="user-area_content">
 									<span class="input-state input-state--success is-block" id="user_id_box">
 										<form:form class="id_form" action="pwdEmailSend" method="POST">
 											<input type="text" class="form-control--base-c" id="id" name="id" placeholder="아이디 (대소문자 구분)" maxlength="12">
@@ -59,27 +75,21 @@
 										<br>
 									</span>
 										<form:form class="auth_form" action="verifyPwd">
+										<div class="formArea">
 											<input type="hidden" name="id" id="authId">
 											<input type="hidden" id="authKey" />
-											<input type="password" id="verifyNumber" name="verifyNumber" placeholder="이메일 인증 번호" maxlength="50" style="display: none;" maxlength="6" >
+											<div id="inputArea"><input type="password" id="verifyNumber" name="verifyNumber" placeholder="이메일 인증 번호" maxlength="50" style="display: none;" maxlength="6" style="width:225px;" ></div>
 											<input class="genric-btn primary" id="verifyNumber-submit" type="submit" value="확인" style="display: none;">
+										</div>
 										</form:form>
 										<br>		
-								</div>
-								<div class="user-area__help">
-									<span class="list-bul">
-										아이디를 찾으시나요?			
-									</span>
-									<button class="genric-btn primary" onclick="location.href='idFind'">
-										<span>아이디 찾기</span>
-									</button>			
-								</div>
-							</article>
-						</section>
-					</div>	
-				</div>		
-			</section>
-		</div>
+									</div>
+								</article>
+							</section>
+						</div>	
+					</div>		
+				</section>
+			</div>
 		
 	 <script type="text/javascript">	
 		 
@@ -147,7 +157,7 @@
 					},
 
 					//메시지 태그
-					errorElement : 'div', 	//태그
+					errorElement : 'span', 	//태그
 					errorClass: 'error',	//클래스 이름
 					validClass:'vaild' 
 				});
@@ -183,7 +193,7 @@
 							$("#authId").val(authId);
 							
 						}else {
-							alerting("다시 입력해 주세요.")	
+							alerting("아이디를 잘못 입력하셨습니다.")
 						}
 					},
 					

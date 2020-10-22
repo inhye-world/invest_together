@@ -1,3 +1,4 @@
+  
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -5,18 +6,19 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>같이투자 | 유저 정보 수정</title>
+	<title>같이투자 | 회원 정보 수정</title>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
 	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
+
 	<style>
 		.member-container{
 			width:100%;
 			height:500px;
 			text-align: center;
 		}
-		
+
 		.usermodify-auth-title{
 			padding-top: 10%;
 			margin-left: -400px;
@@ -88,7 +90,7 @@
 			border-radius: 3px;
 			font-size: 13px;
 		}
-		
+
 	</style>
 	
 </head>
@@ -101,7 +103,6 @@
 			
 			<form:form class="passwordConfirm" action="userModify" method="post">
 				<h1 class="usermodify-auth-title">회원정보확인</h1>	
-						
          			<div>
            	  		<ul class="ranking-notice">
            	  		<li><strong class="usermodify-auth-nickname" style="color:#072366;">${principal.dto.nickname}</strong>
@@ -136,8 +137,6 @@
 			</sec:authorize>
 		</div>
 		<br><br><br>
-		
-		
 		<jsp:include page="../main/footer.jsp"/>
 		
 		<script>

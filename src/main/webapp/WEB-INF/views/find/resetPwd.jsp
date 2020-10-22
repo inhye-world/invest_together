@@ -40,7 +40,7 @@
 							<article class="user-area">
 								<form:form class="pw_form" action="resetPwd" method="POST">
 									<input type="hidden" name="id" value="${id}">	
-									<input type="password" id="pw1" name="pw" placeholder="비밀번호 (8~32자리)" /><br>
+									<input type="password" id="pw1" name="pw" placeholder="비밀번호 (8~32자리)"/><br>
 									<input type="password" id="pw2" placeholder="비밀번호 재입력" /><br>	
 									<div id="pw-correct"></div>
 									<br>				

@@ -17,6 +17,7 @@
   <!-- alert -->
   <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
   <script src="resources/sb_admin/js/ast-notif.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
   <link href="resources/ranking.css" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
@@ -26,10 +27,11 @@
 			color:red;
 		}
 	</style>
-  
+
 </head>
 
 	<style>
+
 		.setPriceCon{
 			width: 80%;
 			margin-left:auto;
@@ -61,6 +63,7 @@
 			height:30px !important;
 			margin-left: 5px;
 		}
+
 	</style>
 	
 	<body>
@@ -96,7 +99,7 @@
 	                 <h2>거래내역</h2>
 	            </div>     
 	            
-					<table class="table leaderboards">
+					<table id="ranking-individual-table" class="table leaderboards">
 						<thead>
 							<tr>
 								<th>구매일</th>

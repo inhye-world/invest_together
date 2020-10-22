@@ -101,12 +101,6 @@
            		theme: 'default',
            	});
        	}
-         
-        function confirming(content){
-      		AstNotif.snackbar(content, {
-          		theme: 'default',
-          	});
-     	}   
 
 		$(document).ready(function (){
 			
@@ -205,7 +199,7 @@
 						$("#authEmail").val(authEmail);
 						
 					}else {
-						alerting("다시 입력해 주세요.")	
+						alerting("아이디 또는 이메일을 잘못 입력하셨습니다.")
 					}
 				},
 				

@@ -76,7 +76,7 @@
 					<div class="loginForm-footer">
 						<span>
 							<a onmouseover="this.style.color='#09cc7f'" onmouseout="this.style.color='#072366'" href="idFind">아이디 찾기</a>
-							<a> |</a>
+							<a>&nbsp</a>
 						</span>
 						<span>
 							<a onmouseover="this.style.color='#09cc7f'" onmouseout="this.style.color='#072366'" href="pwFind">비밀번호 찾기</a>

@@ -13,6 +13,10 @@
    <meta name="description" content="">
    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+   <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
+   <script src="resources/sb_admin/js/ast-notif.js"></script>
+   <!-- <script src="resources/sb_admin/js/ast-notif-board.js"></script> -->
+  	
 </head>
 	
 	<style>
@@ -59,8 +63,8 @@
                            <li><i>작성일:</i><fmt:formatDate value="${modify_view.board_date}"/></a></li>
                            <li><i>조회수:</i>${modify_view.board_hit}</a></li>
                         </ul>
-                        <form:form action="boardModify">
-                        <textarea class="form-control w-100" name="board_content" maxlength="2000">${modify_view.board_content}</textarea>             
+                        <form:form class="boardModify-form" action="boardModify">
+                        <textarea class="form-control w-100" id="board_content" name="board_content" maxlength="2000">${modify_view.board_content}</textarea>             
                      </div>
                   </div>
 				  <br>
@@ -79,6 +83,34 @@
    
    <!-- footer -->
    <jsp:include page="../main/footer.jsp"/>
+      
+   <script type="text/javascript">
+	
+		function alerting(content){
+			AstNotif.dialog('알림', content, {
+	    	  theme: 'default',
+	    	});
+		}
+		
+/* 		function confirm(content){
+			Ascomeif.dialog('알림', content, {
+	    	  theme: 'default',
+	    	});
+		} */
+		
+		$(document).ready(function (){
+			
+			$(".boardModify-form").on("submit", function() {
+			
+			if($('#board_content').val()==''){
+				event.preventDefault();
+				alerting("내용을 입력해주세요.");
+			}
+			
+			});
+		});
+		
+	</script> 
       
    </body>
 </html>

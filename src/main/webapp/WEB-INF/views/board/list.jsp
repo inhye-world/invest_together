@@ -38,6 +38,8 @@
 			margin-left:auto;
 			margin-right:auto;
 			padding-top: 100px;
+			font-family: 'Noto Sans KR', sans-serif;
+    		font-weight: 500;
 		}
 	
 		.pagination {

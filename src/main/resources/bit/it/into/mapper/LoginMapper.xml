@@ -132,4 +132,28 @@
 		]]>
 	</select>
 	
+	<select id="selectMember" resultType="Integer">
+		<![CDATA[
+			SELECT count(*) FROM member
+		]]>
+	</select>
+	
+	<select id="selectAccount" resultType="Integer">
+		<![CDATA[
+			SELECT count(account_alias) as total_account FROM account
+		]]>
+	</select>
+	
+	<select id="selectStock" resultType="Integer">
+		<![CDATA[
+			SELECT count(stockinfo_symbols) as total_stock FROM stock
+		]]>
+	</select>
+	
+	<select id="selectSubscribe" resultType="Integer">
+		<![CDATA[
+			SELECT count(sub_date) as total_subscribe FROM subscribe
+		]]>
+	</select>
+	
 </mapper>
