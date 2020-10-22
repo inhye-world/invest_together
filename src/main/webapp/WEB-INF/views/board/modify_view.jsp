@@ -15,6 +15,7 @@
 
    <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
    <script src="resources/sb_admin/js/ast-notif.js"></script>
+   <!-- <script src="resources/sb_admin/js/ast-notif-board.js"></script> -->
   	
 </head>
 	
@@ -90,6 +91,12 @@
 	    	  theme: 'default',
 	    	});
 		}
+		
+/* 		function confirm(content){
+			Ascomeif.dialog('알림', content, {
+	    	  theme: 'default',
+	    	});
+		} */
 		
 		$(document).ready(function (){
 			

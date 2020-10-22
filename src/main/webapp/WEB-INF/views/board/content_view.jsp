@@ -15,7 +15,10 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
 	
-	
+   <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
+   <script src="resources/sb_admin/js/ast-notif.js"></script>
+   <!-- <script src="resources/sb_admin/js/ast-notif-board.js"></script> -->
+		
 	<style>
 		
 		.form-group textarea.form-control {
@@ -24,6 +27,9 @@
 		    font-size:17px;
 		}
 	
+		.re-comment-div {
+			padding-bottom: 20px;
+		}
 		
 		.container{
 			padding-top: 100px;
@@ -76,7 +82,7 @@
 				  
                   <c:if test="${content_view.board_name eq principal.dto.nickname}">
 	                  <a class="button button-contactForm btn_1 boxed-btn" onclick="location.href='modify_view?board_num=${content_view.board_num}'">수정</a> &nbsp;&nbsp; 
-	                  <a class="button button-contactForm btn_1 boxed-btn" onclick="location.href='boardDelete?board_num=${content_view.board_num}'">삭제</a> &nbsp;&nbsp; 
+	                  <a class="button button-contactForm btn_1 boxed-btn" onclick="location.href='boardDelete?board_num=${content_view.board_num}'" id="contents-delete-button">삭제</a> &nbsp;&nbsp;
 				  </c:if>
 				  
 				  </sec:authorize>
@@ -118,28 +124,50 @@
 	                           </div> 
 	                        </div>
 	                     </div>
-	                     <div id="comments-${dto.comment_num}">
+	                     <div class="re-comment-div" id="comments-${dto.comment_num}">
 	                     	<div class="reply-comments" style="display: none;">
-	                        	<form:form class="reply-comments-form" action="modify_comments" id="commentForm">
+	                        	<form:form class="reply-comments-form" action="modify_comments" id="re-commentForm">
 	                       	<div class="col-12">
 	                          <div class="form-group">
-	                             <textarea class="form-control w-100" name="comment_content" id="comment" maxlength="200"
-	                                placeholder="${dto.comment_content}"></textarea>
+	                             <textarea class="form-control w-100" name="comment_content" id="re_comment" maxlength="200"></textarea>
 			                  </div>
 			                </div>
 			                  <div class="form-group">
 			                     <input type="hidden" name="comment_num" value="${dto.comment_num}"> 
 			                     <input type="hidden" name="board_num" value="${content_view.board_num}">
-			                     <button type="submit" class="button button-contactForm btn_1 boxed-btn">수정하기</button>
+			                     <button id="re-comments-submit" type="submit" class="button button-contactForm btn_1 boxed-btn">수정하기</button>&nbsp;&nbsp;
+	                    	  	 <button id="cancle" type="button" class="button button-contactForm btn_1 boxed-btn">취소</button>
 	                    	  </div>
 	              				</form:form>
 	                       	</div>
-	                     </div>        
+	                     </div>     
+	                        
 	                     <script>
+	                     
+		         			function alerting(content){
+		        				AstNotif.dialog('알림', content, {
+		        		    	  theme: 'default',
+		        		    	});
+		        			}
+	                     	
 	                     	$("#"+${dto.comment_num}+" .btn-modity").click(function() {
 	                     		$("#comments-"+${dto.comment_num}+" .reply-comments").css("display", "block");
 	                     	});
-	                     </script>                  
+	                     	
+	                     	$("#comments-"+ ${dto.comment_num}+" #cancle").click(function() {
+	                     		$("#comments-"+${dto.comment_num}+" .reply-comments").css("display", "none");
+	                     	});
+	                     	
+	            			$("#comments-"+ ${dto.comment_num}+" #re-commentForm").on("submit", function() {
+	            				
+	            				if($("#comments-"+ ${dto.comment_num}+" #re_comment").val()==''){
+	            					event.preventDefault();
+	            					alerting("내용을 입력해주세요.");
+	            				}
+	            			});
+	                     	
+	                     </script>       
+	                                
                      </c:forEach>
                      <ul class="pagination">
                       <c:if test="${content_view.board_num eq pageMaker.board_num}">
@@ -172,13 +200,13 @@
                      <form:form class="form-contact comment_form" action="writeComment" id="commentForm">
                            <div class="col-12">
                               <div class="form-group">
-                                 <textarea class="form-control" name="comment_content" id="comment" cols="3" rows="7" placeholder="Write Comment" maxlength="200"></textarea>
+                                 <textarea class="form-control" name="comment_content" id="fir_comment" cols="3" rows="7" placeholder="Write Comment" maxlength="200"></textarea>
                               </div>
                            </div>
                         <div class="form-group">
 						   <input type="hidden" name="comment_name" value="${principal.dto.nickname}">                        
                            <input type="hidden" name="board_num" value="${content_view.board_num}">
-                           <button type="submit" class="button button-contactForm btn_1 boxed-btn">댓글 입력</button>
+                           <button id="comments-submit" type="submit" class="button button-contactForm btn_1 boxed-btn">댓글 입력</button>
                         </div>
                      </form:form>
                   </div>
@@ -189,6 +217,34 @@
    
    	<!-- footer -->
 	<jsp:include page="../main/footer.jsp"/>
+      
+    <script type="text/javascript">
+		
+		function alerting(content){
+			AstNotif.dialog('알림', content, {
+	    	  theme: 'default',
+	    	});
+		}
+    			
+		/* function confirm(content){
+			Ascomeif.dialog('알림', content, {
+	    	  theme: 'default',
+	    	});
+		} */
+		
+		$(document).ready(function (){			
+			
+			$("#comments-submit").on("click", function() {
+			
+				if($('#fir_comment').val()==''){
+					event.preventDefault();
+					alerting("내용을 입력해주세요.");
+				}
+			});
+		});
+
+				
+	</script>   
       
    </body>
 </html>
