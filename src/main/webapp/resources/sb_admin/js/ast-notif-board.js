@@ -266,7 +266,7 @@
 
 		// Callback positive function
 		callbackPositive: function () {
-			location.href='boardDelete?board_num='+ board_num;
+			
 		},
 
 		// Callback negative function

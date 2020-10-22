@@ -17,13 +17,7 @@
 	
    <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
    <script src="resources/sb_admin/js/ast-notif.js"></script>
-   
-   <script>
-		var board_num = ${content_view.board_num};	
-   </script>
-   <script src="resources/sb_admin/js/ast-notif-board.js"></script>
-   <script src="resources/sb_admin/js/ast-notif-board-comments.js"></script> 
-</head>
+   <!-- <script src="resources/sb_admin/js/ast-notif-board.js"></script> -->
 		
 	<style>
 		.pagination .page-link {
@@ -96,14 +90,14 @@
 				  
                   <c:if test="${content_view.board_name eq principal.dto.nickname}">
 	                  <a class="button button-contactForm btn_1 boxed-btn" onclick="location.href='modify_view?board_num=${content_view.board_num}'">수정</a> &nbsp;&nbsp; 
-	                  <a class="button button-contactForm btn_1 boxed-btn" id="contents-delete-button">삭제</a> &nbsp;&nbsp;
+	                  <a class="button button-contactForm btn_1 boxed-btn" onclick="location.href='boardDelete?board_num=${content_view.board_num}'" id="contents-delete-button">삭제</a> &nbsp;&nbsp;
 				  </c:if>
 				  
 				  </sec:authorize>
 				  <a class="button button-contactForm btn_1 boxed-btn" onclick="location.href='${pageContext.request.contextPath}/boardList'">목록보기</a>
 				  
 				  <sec:authorize access="hasRole('ROLE_ADMIN')">   
-				  &nbsp;&nbsp; <a class="button button-contactForm btn_1 boxed-btn" id="admin-delete-button">관리자 삭제</a>           
+				  &nbsp;&nbsp; <a class="button button-contactForm btn_1 boxed-btn" onclick="location.href='boardDelete?board_num=${content_view.board_num}'">관리자 삭제</a>           
                   </sec:authorize>
                   
                   <div class="navigation-top">
@@ -134,14 +128,9 @@
 	                                       <a type="button" class="btn-modity" onmouseover="this.style.color='#09CC7F'" onmouseout="this.style.color='black'">수정</a>
 	                                    </div>
 	                                    <div>&nbsp;&nbsp;
-	                                       <a type="button" class="btn-delete" onmouseover="this.style.color='#09CC7F'" onmouseout="this.style.color='black'">삭제</a>
+	                                       <a type="button" class="btn-delete" onclick="location.href='${pageContext.request.contextPath}/delete_comments?board_num=${content_view.board_num}&comment_num=${dto.comment_num}'" onmouseover="this.style.color='#09CC7F'" onmouseout="this.style.color='black'">삭제</a>
 	                                    </div>
 	                                    </c:if>
-	                                    <div>&nbsp;&nbsp;
-		                                    <sec:authorize access="hasRole('ROLE_ADMIN')">   
-											<a type="button" class="btn-delete" onmouseover="this.style.color='#09CC7F'" onmouseout="this.style.color='black'">관리자 삭제</a>           
-							                </sec:authorize>
-						                </div>
 	                                 </div>
 	                              </div>
 	                           </div> 
@@ -167,16 +156,8 @@
 	                        
 	                     <script>
 	                     
-	                     	var comment_num = ${dto.comment_num};	
-	                     	
 		         			function alerting(content){
 		        				AstNotif.dialog('알림', content, {
-		        		    	  theme: 'default',
-		        		    	});
-		        			}
-		         			
-		         			function confirmings(content){
-		         				Asconeif.dialog('알림', content, {
 		        		    	  theme: 'default',
 		        		    	});
 		        			}
@@ -196,13 +177,9 @@
 	            					alerting("내용을 입력해주세요.");
 	            				}
 	            			});
-	            			
-	            			$("#"+${dto.comment_num}+" .btn-delete").on("click", function() {
-	            				confirmings("정말 삭제하시겠습니까??");
-	            			});
-	            			   	
+	                     	
 	                     </script>       
-	                             
+	                                
                      </c:forEach>
                      <ul class="pagination">
                       <c:if test="${content_view.board_num eq pageMaker.board_num}">
@@ -261,11 +238,11 @@
 	    	});
 		}
     			
-		function confirming(content){
+		/* function confirm(content){
 			Ascomeif.dialog('알림', content, {
 	    	  theme: 'default',
 	    	});
-		}
+		} */
 		
 		$(document).ready(function (){			
 			
@@ -276,15 +253,6 @@
 					alerting("내용을 입력해주세요.");
 				}
 			});
-			
-			$("#contents-delete-button").on("click", function() {
-				confirming("정말 삭제하시겠습니까??");
-			});
-			
-			$("#admin-delete-button").on("click", function() {
-				confirming("정말 삭제하시겠습니까??");
-			});
-			
 		});
 
 				
