@@ -6,159 +6,272 @@
 <html>
 <head>
     <meta charset="utf-8">
-	<title>같이투자 | 유저 정보 수정</title>
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
-	<link href="../resources/temporary.css" rel="stylesheet" type="text/css">
-	<link href="resources/user_modify.css" rel="stylesheet" type="text/css">
-  	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
-  	
-  	<link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
-  	<script src="resources/sb_admin/js/ast-notif.js"></script>
-  	
-	<!-- ajax사용 위해 csrf설정 -->
-  	<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
-  	<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
-  	
-	<style type="text/css">
-	
-		 .usermodify-title{
-			margin-left: 50%;
-   			margin-top: 7%;
-   			color: #032380;
-		} 
-		
-		 .table{
-			 left:50%; 
-			 
-		}
-		
-		.member-container{
-			left:40%;
-			padding:20%;
-		}
-		
-		 th{
-			font-family: "Lucida Console", Courier, monospace;
-		} 
-		
-	</style>
+   <title>같이투자 | 유저 정보 수정</title>
+   
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
+   
+   <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
+   
+   <!-- alert -->
+   <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
+   <script src="resources/sb_admin/js/ast-notif.js"></script>
+   <script src="resources/ast-notif.js"></script>
+     
+   <!-- ajax사용 위해 csrf설정 -->
+   <meta id="_csrf" name="_csrf" content="${_csrf.token}" />
+   <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
+     
+   <style>
+      .formArea{
+         display:flex;
+         margin-top: 5px;
+      }
+   
+      #inputArea{
+         width: 230px;
+      }
+      
+      .usermodify-id-change-auth-send, .usermodify-nickname-change-auth-send, .usermodify-phone-change-auth-send, .usermodify-email-change-auth-send{
+         height:30px !important;
+      }
+      
+      .usermodify-id-change-auth span, .usermodify-nickname-change-auth span, .usermodify-phone-change-auth span, .usermodify-email-change-auth span, .usermodify-password-change span{
+         display:block;
+         color:red;
+      }
+      .usermodify-title{
+         margin-top: 100px;
+         margin-left: 20%;
+      }
+      
+      .ModiUserTable{
+         width: 60%;
+         margin-left: auto;
+         margin-right: auto;
+         border-top : 1px solid #000;
+         margin-bottom: 20px;
+      }
+      
+      .ModiUserTable th, td{
+         border-bottom : 1px solid #000;
+         padding: 10px;
+         
+      }
+      
+      .usermodify-input-table{
+         width: 95%;
+         margin-left: 10px;
+         border : 1px solid #000;
+         padding: 10px;
+      }
+      
+      .usermodify-input-table th{
+         border-right: 1px solid #000;
+      }
+      
+      .usermodify-input-table th, td{
+         padding: 10px;
+      }
+      
+      .ModiUserTable th{
+         background-color: #dfe5f8;
+         text-align: center;
+      }
+   
+      .usermodify-id-change-btn, .usermodify-id-change-cancel, .usermodify-id-change-auth-send{
+         border: 1px solid #112026;
+         padding: 5px;
+         cursor: pointer;
+         border-radius: 3px;
+         font-size: 13px;
+      }   
+   
+      .usermodify-nickname-change-btn, .usermodify-nickname-change-cancel, .usermodify-nickname-change-auth-send{
+         border: 1px solid #112026;
+         padding: 5px;
+         cursor: pointer;
+         border-radius: 3px;
+         font-size: 13px;
+      }   
+   
+      .usermodify-phone-change-btn, .usermodify-phone-change-cancel, .usermodify-phone-change-auth-send{
+         border: 1px solid #112026;
+         padding: 5px;
+         cursor: pointer;
+         border-radius: 3px;
+         font-size: 13px;
+      }   
+   
+      .usermodify-email-change-btn, .usermodify-email-change-cancel, .usermodify-email-change-auth-send{
+         border: 1px solid #112026;
+         padding: 5px;
+         cursor: pointer;
+         border-radius: 3px;
+         font-size: 13px;
+      }   
+   
+      .usermodify-password-submit{
+         border: 1px solid #112026;
+         padding: 5px;
+         cursor: pointer;
+         border-radius: 3px;
+         font-size: 13px;
+      }   
+      
+      .usermodify-cancel{
+         border: 1px solid #112026;
+         padding: 5px;
+         cursor: pointer;
+         border-radius: 3px;
+         font-size: 13px;
+      }
+      
+      .usermodify-secession{
+         float: right;
+         padding-right: 20%;
+         padding-left: 20%;
+      }
+   
+      .usermodify-secession-btn{
+         border: 1px solid #112026;
+         padding: 5px;
+         cursor: pointer;
+         border-radius: 3px;
+      }
+      
+      .usermodify-secession-btn:hover{
+         border: 1px solid #112026;
+         background-color: #112026;
+         color: #fff !important;
+      }
+   </style>
 
 </head>
-	<body>
-	<jsp:include page="../main/header.jsp"/>
-		<div class="member-container page-modify">			
-			<h1 class="usermodify-title">회원정보 수정</h1>
-			<br>
-			<table class="table">
+   <body>
+   <jsp:include page="../main/header.jsp"/>
 
-				<sec:authorize access="isAuthenticated()">
-				<sec:authentication var="principal" property="principal"/>
-				<tr>
-					<th scope="row">아이디</th>
-					<td>
-						<div class="usermodify-id">
-							<strong class="usermodify-id-current-mail">${principal.dto.id}</strong>
-							<button type="button" class="usermodify-id-change-btn" style="display: inline-block;">아이디 변경</button>
-							<button type="button" class="usermodify-id-change-cancel" style="display: none;">아이디 변경취소</button>
-						<form:form class="usermodify-id-change-auth" action="alterId" method="post" style="display: none;">
-							<input name="id" class="usermodify-id-if" type="text" placeholder="아이디 입력">
-							<button type="submit" class="usermodify-id-change-auth-send">변경</button>
-						</form:form>
-						</div>	
-					</td>
-				</tr>
-				
-				<tr>
-					<th scope="row">닉네임</th>
-					<td>
-						<div class="usermodify-nickname">
-							<strong class="usermodify-nickname-current-mail">${principal.dto.nickname}</strong>
-							<button type="button" class="usermodify-nickname-change-btn" style="display: inline-block;">닉네임 변경</button>
-							<button type="button" class="usermodify-nickname-change-cancel" style="display: none;">닉네임 변경취소</button>
-						<form:form  class="usermodify-nickname-change-auth" action="alterNickname" method="post" style="display: none;">
-							<input class="usermodify-nickname-if" type="text" name="nickname" placeholder="닉네임 입력">
-							<button type="submit" class="usermodify-nickname-change-auth-send">변경</button>		
-						</form:form>
-						</div>	
-					</td>
-				</tr>
-				
-				<tr>
-					<th scope="row">휴대폰 번호</th>
-					<td>
-						<div class="usermodify-phone">
-							<strong class="usermodify-phone-current-mail">${principal.dto.phone}</strong>
-							<button type="button" class="usermodify-phone-change-btn" style="display: inline-block;">휴대폰 번호 변경</button>
-							<button type="button" class="usermodify-phone-change-cancel" style="display: none;">휴대폰 번호 변경취소</button>
-						<form:form class="usermodify-phone-change-auth" action="alterPhone" method="post" style="display: none;">
-							<input class="usermodify-phone-if" type="text" name="phone" maxlength="11" placeholder="휴대폰 번호 입력">
-							<button type="submit" class="usermodify-phone-change-auth-send">변경</button>		
-						</form:form>
-						</div>	
-					</td>
-				</tr>
-				
-				<tr>
-					<th scope="row">이메일</th>
-					<td>
-						<div class="usermodify-email">
-							<strong class="usermodify-email-current-mail">${principal.dto.email}</strong>
-							<button type="button" class="usermodify-email-change-btn" style="display: inline-block;">이메일 변경</button>
-							<button type="button" class="usermodify-email-change-cancel" style="display: none;">이메일 변경취소</button>
-						<form:form class="usermodify-email-change-auth" action="emailChange" method="post" style="display: none;">
-							<input class="usermodify-email-if" type="text" name="email" placeholder="이메일 입력">
-							<button type="submit" class="usermodify-email-change-auth-send">인증메일 전송</button>
-						</form:form>
-						</div>	
-					</td>
-				</tr>
-				
-				<tr>
-					<th scope="row">비밀번호변경</th>
-					<td>
-						<div class="usermodify-pw">
-						<form:form class="usermodify-password-change" action="alterPw" method="post">
-							<table class="usermodify-input-table">
-								<tbody>
-								<tr>
-									<th>새 비밀번호</th>
-									<td>
-										<input type="password" id="pw1" name="pw" class="usermodify-pw-newpassword" placeholder="비밀번호 (8~32자리)">
-									</td>
-								</tr>
-								<tr>
-									<th>비밀번호 재입력</th>
-									<td>
-										<input type="password" id="pw2" class="usermodify-pw-newpassword-confirm" placeholder="비밀번호 (8~32자리)">
-										<div id="pw-correct"></div>	
-									</td>
-								</tr>
-								<tr>
-									<td></td>
-									<td>
-										<button type="submit" class="usermodify-password-submit">비밀번호 변경</button>
-									</td>
-								</tr>
-								</tbody>		
-							</table>
-							</form:form>
-						</div>	
-					</td>
-				</tr>	
-			</sec:authorize>
-			</table>	
-			
-			<div class="usermodify-secession">
-				 탈퇴를 원하시면 우측의 회원탈퇴 버튼을 눌러주세요.
-				<a class="usermodify-secession-btn">회원탈퇴</a>
-			
-			<!-- <div class="usermodify-foot"> -->
-				<button onclick = "location.href = ${pageContext.request.contextPath}/"  type="button" class="usermodify-cancel">나가기</button>
-			</div>
-		</div>
-		<br><br><br>
+   <h1 class="usermodify-title">회원정보 수정</h1>
+   <br>
+      <div class="member-container page-modify">         
+         
+         <table class="ModiUserTable">
+
+            <sec:authorize access="isAuthenticated()">
+            <sec:authentication var="principal" property="principal"/>
+            <tr>
+               <th scope="row">아이디</th>
+               <td>
+                  <div class="usermodify-id">
+                     <strong class="usermodify-id-current-mail">${principal.dto.id}</strong>
+                     <button type="button" class="usermodify-id-change-btn" style="display: inline-block;">아이디 변경</button>
+                     <button type="button" class="usermodify-id-change-cancel" style="display: none;">아이디 변경취소</button>
+                     
+                  <form:form class="usermodify-id-change-auth" action="alterId" method="post" style="display: none;">
+                     <div class="formArea">
+                        <div id="inputArea"><input name="id" class="usermodify-id-if" type="text" placeholder="아이디 입력" style="width:225px;"></div>
+                        <button type="submit" class="usermodify-id-change-auth-send">변경</button>
+                        </div>
+                  </form:form>
+                  </div>   
+               </td>
+            </tr>
+            
+            <tr>
+               <th scope="row">닉네임</th>
+               <td>
+                  <div class="usermodify-nickname">
+                     <strong class="usermodify-nickname-current-mail">${principal.dto.nickname}</strong>
+                     <button type="button" class="usermodify-nickname-change-btn" style="display: inline-block;">닉네임 변경</button>
+                     <button type="button" class="usermodify-nickname-change-cancel" style="display: none;">닉네임 변경취소</button>
+                     
+                  <form:form  class="usermodify-nickname-change-auth" action="alterNickname" method="post" style="display: none;">
+                     <div class="formArea">
+                        <div id=inputArea><input class="usermodify-nickname-if" type="text" name="nickname" placeholder="닉네임 입력" style="width:225px;"></div>
+                        <button type="submit" class="usermodify-nickname-change-auth-send">변경</button>      
+                     </div>
+                  </form:form>
+                  
+                  </div>   
+               </td>
+            </tr>
+            
+            <tr>
+               <th scope="row">휴대폰 번호</th>
+               <td>
+                  <div class="usermodify-phone">
+                     <strong class="usermodify-phone-current-mail">${principal.dto.phone}</strong>
+                     <button type="button" class="usermodify-phone-change-btn" style="display: inline-block;">휴대폰 번호 변경</button>
+                     <button type="button" class="usermodify-phone-change-cancel" style="display: none;">휴대폰 번호 변경취소</button>
+                  <form:form class="usermodify-phone-change-auth" action="alterPhone" method="post" style="display: none;">
+                     <div class="formArea">
+                        <div id=inputArea><input class="usermodify-phone-if" type="text" name="phone" maxlength="11" placeholder="휴대폰 번호 입력" style="width:225px;"></div>
+                        <button type="submit" class="usermodify-phone-change-auth-send">변경</button>
+                     </div>      
+                  </form:form>
+                  </div>   
+               </td>
+            </tr>
+            
+            <tr>
+               <th scope="row">이메일</th>
+               <td>
+                  <div class="usermodify-email">
+                     <strong class="usermodify-email-current-mail">${principal.dto.email}</strong>
+                     <button type="button" class="usermodify-email-change-btn" style="display: inline-block;">이메일 변경</button>
+                     <button type="button" class="usermodify-email-change-cancel" style="display: none;">이메일 변경취소</button>
+                  <form:form class="usermodify-email-change-auth" action="emailChange" method="post" style="display: none;">
+                     <div class="formArea">
+                        <div id=inputArea><input class="usermodify-email-if" type="text" id="email" name="email" placeholder="이메일 입력" style="width:225px;"></div>
+                        <button type="submit" class="usermodify-email-change-auth-send">인증메일 전송</button>
+                     </div>
+                  </form:form>
+                  </div>   
+               </td>
+            </tr>
+            
+            <tr>
+               <th scope="row">비밀번호변경</th>
+               <td>
+                  <div class="usermodify-pw">
+                  <form:form class="usermodify-password-change" action="alterPw" method="post">
+                     <table class="usermodify-input-table">
+                        <tbody>
+                        <tr>
+                           <th>새 비밀번호</th>
+                           <td>
+                              <input type="password" id="pw1" name="pw" class="usermodify-pw-newpassword" placeholder="비밀번호 (8~32자리)">
+                           </td>
+                        </tr>
+                        <tr>
+                           <th>비밀번호 재입력</th>
+                           <td>
+                              <input type="password" id="pw2" class="usermodify-pw-newpassword-confirm" placeholder="비밀번호 (8~32자리)">
+                              <div id="pw-correct"></div>   
+                           </td>
+                        </tr>
+                        <tr>
+                           <td colspan="2" style="text-align:center;">
+                              <button type="submit" class="usermodify-password-submit">비밀번호 변경</button>
+                           </td>
+                        </tr>
+                        </tbody>      
+                     </table>
+                     </form:form>
+                  </div>   
+               </td>
+            </tr>   
+         </sec:authorize>
+         </table>   
+         </div>
+         <div class="usermodify-secession">
+             탈퇴를 원하시면 우측의 회원탈퇴 버튼을 눌러주세요.
+            <a class="usermodify-secession-btn">회원탈퇴</a>
+         
+         <!-- <div class="usermodify-foot"> -->
+            <button onclick = "location.href = ${pageContext.request.contextPath}/"  type="button" class="usermodify-cancel">나가기</button>
+         </div>      
+      <br><br><br><br><br><br>
 	<script>
 		
 			function alerting(content){
@@ -167,11 +280,12 @@
 	        	});
 	    	}
 		      
-	        function confirming(content){
-		      	 AstNotif.snackbar(content, {
-		          	theme: 'default',
-		          });
-	      	}
+			function confirming(content){
+				Astif.dialog('알림', content, {
+	        	  theme: 'default',
+	        	});
+	    	}
+
 				
 			$(document).ready(function (){
 				
@@ -437,13 +551,7 @@
 				});
 				
 				$(".usermodify-secession-btn").on("click", function() {
-					
-					var result = confirm("회원정보를 탈퇴 하시겠습니까?");
-					
-					if(result){		
-						$(".usermodify-secession-btn").attr({"href":"secession"});
-					} else 
-						$(".usermodify-secession-btn").attr({"href":"modify"});
+					confirming("회원정보를 탈퇴 하시겠습니까?");
 				});
 								
 			});
@@ -473,6 +581,6 @@
 			});
 			
 		</script>
-		<jsp:include page="../main/footer.jsp"/>
-	</body>
+      <jsp:include page="../main/footer.jsp"/>
+   </body>
 </html>
