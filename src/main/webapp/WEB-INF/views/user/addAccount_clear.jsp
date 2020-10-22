@@ -5,6 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>같이투자 | 계좌등록 완료</title>
+	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
 	
 	<style>
 		footer:{ 

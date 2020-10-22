@@ -61,7 +61,7 @@
          margin-left:100px;
       }
       #salary-modify-form{
-         width:120%;
+         width:100%;
       }
       .salary-table-empty{
       	 padding-top: 100px !important;
@@ -86,6 +86,7 @@
                    <div>
                        <ul class="ranking-notice">
                      <li>회원님의 적금·예금 현황을 나타냅니다.</li>
+                     <li>'수정'을 클릭하여 카테고리를 선택해주세요.</li>
                      <li>'통장이름' 클릭시 해당 통장의 상세 내역을 나타냅니다.</li>
                   </ul>
                   </div>

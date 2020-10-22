@@ -166,7 +166,7 @@
 									</sec:authorize>
 									<sec:authorize access="isAuthenticated()">
 										<sec:authentication var="principal" property="principal"/>
-										<P data-animation="fadeInUp" data-delay=".8s" >${principal.dto.name}님 , 반갑습니다</P>		
+										<P data-animation="fadeInUp" data-delay=".8s" ><span style="font-weight:bold">${principal.dto.name}</span>님 , 반갑습니다</P>		
 									</sec:authorize>
                                     
                                 </div>
