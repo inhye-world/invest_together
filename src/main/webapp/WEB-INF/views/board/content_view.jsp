@@ -20,6 +20,14 @@
    <!-- <script src="resources/sb_admin/js/ast-notif-board.js"></script> -->
 		
 	<style>
+		.pagination .page-link {
+		    color: #09cc7f;
+		}
+		
+		.pagination .active .page-link {
+		    background-color: #09cc7f !important;
+		    border-color: #09cc7f !important;
+		}
 		
 		.form-group textarea.form-control {
 		    height: 100px;
@@ -86,7 +94,11 @@
 				  </c:if>
 				  
 				  </sec:authorize>
-				  <a class="button button-contactForm btn_1 boxed-btn" onclick="location.href='${pageContext.request.contextPath}/boardList'">목록보기</a>                
+				  <a class="button button-contactForm btn_1 boxed-btn" onclick="location.href='${pageContext.request.contextPath}/boardList'">목록보기</a>
+				  
+				  <sec:authorize access="hasRole('ROLE_ADMIN')">   
+				  &nbsp;&nbsp; <a class="button button-contactForm btn_1 boxed-btn" onclick="location.href='boardDelete?board_num=${content_view.board_num}'">관리자 삭제</a>           
+                  </sec:authorize>
                   
                   <div class="navigation-top">
                   <div class="comments-area">
