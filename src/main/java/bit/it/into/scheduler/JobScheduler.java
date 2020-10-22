@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 import bit.it.into.dto.RankDTO;
 import bit.it.into.dto.StockDTO;
 import bit.it.into.service.RankService;
+import bit.it.into.service.SalesService;
 import bit.it.into.service.StockService;
-import bit.it.into.service.SubscribeService;
 import bit.it.into.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -24,12 +24,11 @@ public class JobScheduler {
 	private UserService user;
 	private StockService stock;
 	private RankService rank;
-	private SubscribeService sub;
+	private SalesService sales;
 	
 	// 4시간마다로 변경시
 	// (cron="0 */4 * * *") 
-
-	@Scheduled(cron="00 07 15 20 10 ?")
+	@Scheduled(cron="50 46 12 20 10 ?")
 	public void updateRanking() {
 		log.info("============================ 랭킹 업데이트 ============================");
 		
@@ -74,6 +73,6 @@ public class JobScheduler {
 	public void updateSales() {
 		log.info("============================ 매출 업데이트 ============================");
 		
-		sub.updateDailySales();
+		sales.updateDailySales();
 	}
 }

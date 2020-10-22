@@ -6,7 +6,6 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import bit.it.into.dto.SubscribeDTO;
 import bit.it.into.mapper.SubscribeMapper;
@@ -84,18 +83,7 @@ public class SubscribeService {
 		
 	}
 	
-	@Transactional
-	public void updateDailySales() {
-		log.info("SubscribeService -updateDailySales()");
-		
-		int dailySaleSum = mapper.selectSubPriceDay();
-		
-		int count = mapper.insertDailySales(dailySaleSum);
-		
-		if(count != 1) {
-			log.info("insertDailySales 오류");
-		}
-	}
+	
 
 	
 

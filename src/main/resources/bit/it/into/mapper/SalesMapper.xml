@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="bit.it.into.mapper.SalesMapper">
+	<select id="selectSubPriceDay" resultType="int">
+		<![CDATA[
+			SELECT NVL(SUM(sub_price), 0) FROM subscribe WHERE sub_date BETWEEN(TO_DATE(TO_CHAR(sysdate-1, 'YYYY-MM-DD') ,'YYYY-MM-DD')) AND (TO_DATE(TO_CHAR(sysdate, 'YYYY-MM-DD') ,'YYYY-MM-DD'))
+		]]>
+	</select>
+	
+	<select id="selectCountSubPriceDay" resultType="int">
+		<![CDATA[
+			SELECT NVL(COUNT(sub_price), 0) FROM subscribe WHERE sub_date BETWEEN(TO_DATE(TO_CHAR(sysdate-1, 'YYYY-MM-DD') ,'YYYY-MM-DD')) AND (TO_DATE(TO_CHAR(sysdate, 'YYYY-MM-DD') ,'YYYY-MM-DD'))
+		]]>
+	</select>
+	
+	<insert id="insertDailySales">
+		<![CDATA[
+			INSERT INTO SALES(sales_date, daily_sales, daily_count) VALUES(TO_DATE(TO_CHAR(sysdate-1, 'YYYY-MM-DD') ,'YYYY-MM-DD'), #{dailySaleSum}, #{dailySaleCount})
+		]]>
+	</insert>
+	
+	<select id="selectSalesList" resultType="bit.it.into.dto.SalesDTO">
+		<![CDATA[
+			SELECT * FROM sales WHERE sales_date BETWEEN TO_DATE(#{startDate}, 'YYYY-MM-DD') AND TO_DATE(#{endDate}, 'YYYY-MM-DD') ORDER BY sales_date DESC
+		]]>
+	</select>
+	
+	<select id="selectAllSalesList" resultType="bit.it.into.dto.SalesDTO">
+		<![CDATA[
+			SELECT * FROM sales ORDER BY sales_date ASC
+		]]>
+	</select>
+</mapper>

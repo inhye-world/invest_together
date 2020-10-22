@@ -59,16 +59,4 @@
 		]]>
 	</update>
 	
-	<select id="selectSubPriceDay" resultType="int">
-		<![CDATA[
-			SELECT NVL(SUM(sub_price), 0) FROM subscribe WHERE sub_date BETWEEN(TO_DATE(TO_CHAR(sysdate-1, 'YYYY-MM-DD') ,'YYYY-MM-DD')) AND (TO_DATE(TO_CHAR(sysdate, 'YYYY-MM-DD') ,'YYYY-MM-DD'))
-		]]>
-	</select>
-	
-	<insert id="insertDailySales">
-		<![CDATA[
-			INSERT INTO SALES(daily_sales, sales_date) VALUES(#{dailySaleSum}, TO_DATE(TO_CHAR(sysdate-1, 'YYYY-MM-DD') ,'YYYY-MM-DD'))
-		]]>
-	</insert>
-	
 </mapper>
