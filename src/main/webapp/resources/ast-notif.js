@@ -265,7 +265,6 @@
 
 		// Callback negative function
 		callbackNegative: function () {
-			window.location.href = "modify";
 		},
 
 		// Close the dialog
