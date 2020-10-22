@@ -69,7 +69,7 @@
 		}
 		
 		.snsModiTable th{
-			background-color: #ddd;
+			background-color: #dfe5f8;
 		}
 		
 		.usermodify-secession{

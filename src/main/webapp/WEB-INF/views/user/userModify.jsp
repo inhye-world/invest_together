@@ -40,7 +40,7 @@
       }
 
       .userPreCheck th{
-         background-color: #ddd;
+         background-color: #dfe5f8;
       }
 
       .userPreCheck th, td{
