@@ -114,7 +114,7 @@
 					<tbody>
 						<tr>
 							<th scope="row">닉네임<th>
-							<td style="font-weight:bold;">${principal.dto.nickname}</td>
+							<td style="font-weight: bold;">${principal.dto.nickname}</td>
 						</tr>
 						<tr>
 						 	<th scope="row">비밀번호<th>

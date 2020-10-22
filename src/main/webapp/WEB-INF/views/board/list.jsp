@@ -33,7 +33,10 @@
 		    color: #fff;
 		}
 	
-		.container{
+		.boardContainer{
+			width: 70%;
+			margin-left:auto;
+			margin-right:auto;
 			padding-top: 100px;
 		}
 	
@@ -53,7 +56,7 @@
 		}
 		.button{
 			float: right;
-			margin-right: 100px;
+			margin-right: 19%;
 			width: 20px;
 			height: 10px;
 			line-height: 5px;
@@ -69,7 +72,7 @@
 	<body>
 		<jsp:include page="../main/header.jsp"/>
 		
-		  <div class="container">
+		  <div class="boardContainer">
 		     <div class="hero-cap">
                  <h2 style="margin-left:55px;">자유게시판</h2>
              </div>     

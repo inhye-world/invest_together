@@ -30,13 +30,22 @@
 </head>
 
 	<style>
-		.container{
+		.setPriceCon{
+			width: 80%;
+			margin-left:auto;
+			margin-right:auto;
+			margin-bottom:150px;
 			padding-top: 150px;
 			padding-bottom: 300px;
+			height: 600px;
 		}
 		
 		.setPrice{
 			padding-bottom: 100px;
+		}
+		
+		#priceArea{
+			display: flex;
 		}
 		
 		.hero-cap h2 {
@@ -47,20 +56,27 @@
 		    line-height: 1;
 		    padding-bottom: 30px;
 		}
+		
+		.priceSet{
+			height:30px !important;
+			margin-left: 5px;
+		}
 	</style>
 	
 	<body>
 		<jsp:include page="../main/header.jsp"/>
 	
-			<div class="container">
+			<div class="setPriceCon">
 				<div class="setPrice">
 					<div class="hero-cap">
 		                 <h2>보유자산 판매금액 설정</h2>
 		            </div>  
 					
 				    <form:form class="setPrice-form" action="setPrice" method="post">
-	            		<input type="text" name="set_price" placeholder="판매금액" maxlength="8">
-	            		<input type="submit" value="입력"> 
+				    	<div id="priceArea">
+		            		<div id="inputArea"><input type="text" name="set_price" placeholder="판매금액" maxlength="8" style="color:#000;"></div>
+		            		<input class="priceSet" type="submit" value="입력"> 
+	            		</div>
 	            	</form:form>
 	            		            		
 	            	<div>
@@ -107,8 +123,9 @@
 							</c:forEach>
 						</tbody>
 					</table>
+					
 				</div>
-				
+			
 			<script type="text/javascript">
 				
 				$(document).ready(function (){
