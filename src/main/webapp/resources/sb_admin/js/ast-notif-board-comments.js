@@ -9,20 +9,20 @@
 	if( typeof define === 'function' && define.amd ) {
 		// AMD. Register as an anonymous module.
 		define( function() {
-			root.Ascomeif = factory();
-			return root.Ascomeif;
+			root.Asconeif = factory();
+			return root.Asconeif;
 		} );
 	} else if( typeof exports === 'object' ) {
 		// Node. Does not work with strict CommonJS.
 		module.exports = factory();
 	} else {
 		// Browser globals.
-		root.Ascomeif = factory();
+		root.Asconeif = factory();
 	}
 }( this, function() {
 
 	'use strict';
-	var Ascomeif;
+	var Asconeif;
 
 	// The ast-notif.js version
 	var VERSION = '0.0.5';
@@ -266,9 +266,9 @@
 
 		// Callback positive function
 		callbackPositive: function () {
-			location.href='boardDelete?board_num='+ board_num;
+			location.href='delete_comments?board_num='+board_num+'&comment_num='+comment_num        
 		},
-
+                                           
 		// Callback negative function
 		callbackNegative: function () {
 			
@@ -358,7 +358,7 @@
 		show: function() {
 			// Call all dialog element
 			if (!!this.inited()) return;
-			var $AscomeifThis = this; // Passing this to another inner function
+			var $AsconeifThis = this; // Passing this to another inner function
 
 			var bgElement = this.initBackdrop();
 			var dialogElement = this.initDialog();
@@ -405,20 +405,20 @@
 				var textElement = bodyElement.querySelector("#ast-dialog-message");
 				textElement.innerHTML = "";
 				setTimeout(function() {
-					typewriterEffect(textElement, $AscomeifThis.message);
+					typewriterEffect(textElement, $AsconeifThis.message);
 				}, 200);
 			}
 
 			// Append listener to the button
 			dialogElement.addEventListener('click', function(e) {
 			    if (e.target && e.target.id == 'ast-positive-dialog-button') {
-					$AscomeifThis.callbackPositive();
-					$AscomeifThis.close();
+					$AsconeifThis.callbackPositive();
+					$AsconeifThis.close();
 			    }
 
 			    if (e.target && e.target.id == 'ast-negative-dialog-button') {
-					$AscomeifThis.callbackNegative();
-					$AscomeifThis.close();
+					$AsconeifThis.callbackNegative();
+					$AsconeifThis.close();
 			    }
 			});
 		}
@@ -765,9 +765,9 @@
 
 		// Check if the elemen has been initialized
 		inited: function() {
-			var AscomeifyElement = document.getElementById("ast-notify-container");
-			if (typeof AscomeifyElement !== "undefined" && AscomeifyElement != null) {
-				return AscomeifyElement;
+			var AsconeifyElement = document.getElementById("ast-notify-container");
+			if (typeof AsconeifyElement !== "undefined" && AsconeifyElement != null) {
+				return AsconeifyElement;
 			}
 			else
 				return false;
@@ -1024,7 +1024,7 @@
 	//////////////////////////////////////////////////
 	// AST Notif API
 	//////////////////////////////////////////////////
-	Ascomeif = {
+	Asconeif = {
 		init: function() {
 		},
 
@@ -1039,5 +1039,5 @@
 		VERSION: VERSION
 	};
 
-	return (window.Ascomeif = window.astn = Ascomeif);
+	return (window.Asconeif = window.astn = Asconeif);
 }));
