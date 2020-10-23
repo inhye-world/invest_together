@@ -16,6 +16,9 @@
 	    <link rel="shortcut icon" type="image/x-icon" href="resources/main/assets/img/favicon.ico">
 	    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 	
+		<link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
+        <script src="resources/sb_admin/js/ast-notif.js"></script>
+    
 		<style>
 			.table .write-submit{
 				padding-bottom: 100px;
@@ -53,7 +56,7 @@
 			<sec:authorize access="isAuthenticated()">
 			<sec:authentication var="principal" property="principal"/>
 			
-			<form:form action="noticeWrite" method="post">
+			<form:form class="boardWrite-form" action="noticeWrite" method="post">
 				<tr>
 					<td> 작성자 </td>
 					<td> ${principal.dto.nickname}
@@ -61,11 +64,11 @@
 				</tr>
 				<tr>
 					<td> 제목 </td>
-					<td> <input type="text" name="notice_title" size = "50"> </td>
+					<td> <input id="board_title" type="text" name="notice_title" size = "50" maxlength="40"> </td>
 				</tr>
 				<tr>
 					<td> 내용 </td>
-					<td><textarea name="notice_content" rows="10" cols="50" maxlength="2000"></textarea></td>
+					<td><textarea id="board_content" name="notice_content" rows="10" cols="50" maxlength="500"></textarea></td>
 				</tr>
 				<tr>
 					<td class="write-submit" colspan="2">
@@ -82,5 +85,33 @@
 		
 		<!-- footer -->
 	   <jsp:include page="../main/footer.jsp"/>
+	       
+       <script type="text/javascript">
+    
+        function alerting(content){
+            AstNotif.dialog('알림', content, {
+              theme: 'default',
+            });
+        }
+        
+        $(document).ready(function (){
+            
+            $(".boardWrite-form").on("submit", function() {
+            
+            if($('#board_title').val()==''){
+                event.preventDefault();
+                alerting("제목을 입력해주세요.");
+                
+            } else if ($('#board_content').val()==''){
+                event.preventDefault();
+                alerting("내용을 입력해주세요.");
+            }
+            
+            });
+        });
+        
+    </script>
+       
+       
 	</body>
 </html>

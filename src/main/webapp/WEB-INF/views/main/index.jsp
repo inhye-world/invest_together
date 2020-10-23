@@ -495,6 +495,14 @@
     </footer>
     
     <script>
+    window.onload = function() {
+		setTimeout (function () {
+			scrollTo(0,0);
+
+		},100);
+
+	}
+    
 	$(function() {
 		$("#logoutBtn").click(function(){
 			$("#logout-form").submit();

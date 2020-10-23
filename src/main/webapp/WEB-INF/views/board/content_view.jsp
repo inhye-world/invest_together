@@ -17,8 +17,14 @@
 	
    <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
    <script src="resources/sb_admin/js/ast-notif.js"></script>
-   <!-- <script src="resources/sb_admin/js/ast-notif-board.js"></script> -->
-		
+      
+   <script>
+        var board_num = ${content_view.board_num};    
+   </script>
+   <script src="resources/sb_admin/js/ast-notif-board.js"></script>
+   <script src="resources/sb_admin/js/ast-notif-board-comments.js"></script> 
+</head>
+
 	<style>
 		.pagination .page-link {
 		    color: #09cc7f;
@@ -43,8 +49,18 @@
 			padding-top: 100px;
 		}
 		
+		.comments-area .comment-list{
+			padding-bottom: 0px !important;
+			background-color: #f0ffec;
+    		border-radius: 32px;
+		}
+		
 		.comments-area .comment{
 		    overflow-wrap: anywhere;
+		    font-family: 'Jeju Gothic';
+		    color: black;
+		    font-size: 17px;
+		    margin: 6px;
 		}
 		
 		.pagination {
@@ -58,6 +74,30 @@
 		    text-transform: capitalize;
 		    line-height: 1;
 		    padding-bottom: 30px;
+		}
+		
+		.btn-modity {
+			cursor: pointer;
+		}
+		
+		.btn-delete {
+			cursor: pointer;
+		}
+		
+		.blog-info-link li, .desc {
+			font-family: 'Jeju Gothic';
+		}
+		
+		#re_comment {
+			margin-top: 20px;
+		}
+		
+		.thumb {
+			margin: auto;
+		}
+		
+		.single-post {
+			word-break: break-word;
 		}
 		
 	</style>
@@ -90,14 +130,14 @@
 				  
                   <c:if test="${content_view.board_name eq principal.dto.nickname}">
 	                  <a class="button button-contactForm btn_1 boxed-btn" onclick="location.href='modify_view?board_num=${content_view.board_num}'">수정</a> &nbsp;&nbsp; 
-	                  <a class="button button-contactForm btn_1 boxed-btn" onclick="location.href='boardDelete?board_num=${content_view.board_num}'" id="contents-delete-button">삭제</a> &nbsp;&nbsp;
+	                  <a class="button button-contactForm btn_1 boxed-btn" id="contents-delete-button">삭제</a> &nbsp;&nbsp;
 				  </c:if>
 				  
 				  </sec:authorize>
 				  <a class="button button-contactForm btn_1 boxed-btn" onclick="location.href='${pageContext.request.contextPath}/boardList'">목록보기</a>
 				  
 				  <sec:authorize access="hasRole('ROLE_ADMIN')">   
-				  &nbsp;&nbsp; <a class="button button-contactForm btn_1 boxed-btn" onclick="location.href='boardDelete?board_num=${content_view.board_num}'">관리자 삭제</a>           
+				  &nbsp;&nbsp; <a class="button button-contactForm btn_1 boxed-btn" id="admin-delete-button">관리자 삭제</a>                  
                   </sec:authorize>
                   
                   <div class="navigation-top">
@@ -124,13 +164,20 @@
 	                                       <a class="date"><fmt:formatDate value="${dto.comment_date}" dateStyle="full" /></a>
 	                                    </div>
 	                                    <c:if test="${dto.comment_name eq principal.dto.nickname}">
+	                                    <sec:authorize access="hasRole('ROLE_USER')">
 	                                    <div class="reply-btn">&nbsp;&nbsp;
 	                                       <a type="button" class="btn-modity" onmouseover="this.style.color='#09CC7F'" onmouseout="this.style.color='black'">수정</a>
 	                                    </div>
 	                                    <div>&nbsp;&nbsp;
-	                                       <a type="button" class="btn-delete" onclick="location.href='${pageContext.request.contextPath}/delete_comments?board_num=${content_view.board_num}&comment_num=${dto.comment_num}'" onmouseover="this.style.color='#09CC7F'" onmouseout="this.style.color='black'">삭제</a>
+	                                       <a type="button" class="btn-delete" onmouseover="this.style.color='#09CC7F'" onmouseout="this.style.color='black'">삭제</a>
 	                                    </div>
+	                                    </sec:authorize>
 	                                    </c:if>
+	                                    <div>&nbsp;&nbsp;
+                                            <sec:authorize access="hasRole('ROLE_ADMIN')">   
+                                            <a type="button" class="btn-delete" onmouseover="this.style.color='#09CC7F'" onmouseout="this.style.color='black'">관리자 삭제</a>           
+                                            </sec:authorize>
+                                        </div>
 	                                 </div>
 	                              </div>
 	                           </div> 
@@ -141,7 +188,7 @@
 	                        	<form:form class="reply-comments-form" action="modify_comments" id="re-commentForm">
 	                       	<div class="col-12">
 	                          <div class="form-group">
-	                             <textarea class="form-control w-100" name="comment_content" id="re_comment" maxlength="200"></textarea>
+	                             <textarea class="form-control w-100" name="comment_content" id="re_comment" maxlength="150"></textarea>
 			                  </div>
 			                </div>
 			                  <div class="form-group">
@@ -156,11 +203,19 @@
 	                        
 	                     <script>
 	                     
-		         			function alerting(content){
+                         	var comment_num = ${dto.comment_num};    
+                         	
+	                     	function alerting(content){
 		        				AstNotif.dialog('알림', content, {
 		        		    	  theme: 'default',
 		        		    	});
 		        			}
+                            
+                            function confirmings(content){
+                                Asconeif.dialog('알림', content, {
+                                 theme: 'default',
+                               });
+                           	}    	
 	                     	
 	                     	$("#"+${dto.comment_num}+" .btn-modity").click(function() {
 	                     		$("#comments-"+${dto.comment_num}+" .reply-comments").css("display", "block");
@@ -178,6 +233,11 @@
 	            				}
 	            			});
 	                     	
+                            $("#"+${dto.comment_num}+" .btn-delete").on("click", function() {
+                                confirmings("정말 삭제하시겠습니까??");
+                            });
+                                   
+	            			
 	                     </script>       
 	                                
                      </c:forEach>
@@ -212,7 +272,7 @@
                      <form:form class="form-contact comment_form" action="writeComment" id="commentForm">
                            <div class="col-12">
                               <div class="form-group">
-                                 <textarea class="form-control" name="comment_content" id="fir_comment" cols="3" rows="7" placeholder="Write Comment" maxlength="200"></textarea>
+                                 <textarea class="form-control" name="comment_content" id="fir_comment" cols="3" rows="7" placeholder="Write Comment" maxlength="150"></textarea>
                               </div>
                            </div>
                         <div class="form-group">
@@ -237,12 +297,12 @@
 	    	  theme: 'default',
 	    	});
 		}
-    			
-		/* function confirm(content){
+		
+        function confirming(content){
 			Ascomeif.dialog('알림', content, {
 	    	  theme: 'default',
 	    	});
-		} */
+		} 
 		
 		$(document).ready(function (){			
 			
@@ -253,6 +313,15 @@
 					alerting("내용을 입력해주세요.");
 				}
 			});
+            
+            $("#contents-delete-button").on("click", function() {
+                confirming("정말 삭제하시겠습니까??");
+            });
+            
+            $("#admin-delete-button").on("click", function() {
+                confirming("정말 삭제하시겠습니까??");
+            });
+            
 		});
 
 	</script>   

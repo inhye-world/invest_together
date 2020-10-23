@@ -7,20 +7,19 @@
 
 	<title>같이투자 | 로그인 후 이용 가능합니다</title>
 	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
-
+	<style>
+	   	.wrapper{
+	   		margin: 10% 0;
+	   	}
+    </style>
 </head>
-	<body>
+<body>
+	<jsp:include page="../main/header.jsp"/>
 		<div class="wrapper">
-
-			<jsp:include page="../main/header.jsp"/>
-		
 			<div class="loginContainer">
-				<br><br><br><br><br><br><br>
-			
 				<h2 style="text-align:center;">로그인 후 이용 가능합니다 </h2>
-				<br><br><br><br><br><br><br><br><br>
 			</div>
 		</div>
 		<jsp:include page="../main/footer.jsp"/>
-	</body>
+</body>
 </html>

@@ -56,19 +56,41 @@
 		    line-height: 1;
 		    padding-bottom: 30px;
 		}
+		
 		.button{
 			float: right;
 			margin-right: 19%;
 			width: 20px;
 			height: 10px;
 			line-height: 5px;
-		}	
+		}
+			
 		#writeGo{
 			padding: 15px 17px;
 			width:80px;
 			text-align:left;
 			
 		}
+		
+		.notice-btn{
+	        display: inline-block;
+	        outline: none;
+	        line-height: 25px;
+	        padding: 0 15px;
+	        font-size: .9em;
+	        text-align: center;
+	        text-decoration: none;
+	        font-weight: 500;
+	        cursor: pointer;
+	        -webkit-transition: all 0.3s ease 0s;
+	        -moz-transition: all 0.3s ease 0s;
+	        -o-transition: all 0.3s ease 0s;
+	        transition: all 0.3s ease 0s;
+	        color: #fff;
+	         background: #f44a40;
+	         border: 1px solid transparent;
+      	}
+		
 	</style>
 	
 	<body>
