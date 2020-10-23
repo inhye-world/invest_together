@@ -6,16 +6,17 @@
 <html>
 <head>
     <meta charset="utf-8">
+
    <title>같이투자 | 유저 정보 수정</title>
    
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
-   
    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
    
    <!-- alert -->
    <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
    <script src="resources/sb_admin/js/ast-notif.js"></script>
+   <script src="resources/ast-notif.js"></script>
      
    <!-- ajax사용 위해 csrf설정 -->
    <meta id="_csrf" name="_csrf" content="${_csrf.token}" />
@@ -56,7 +57,6 @@
       .ModiUserTable th, td{
          border-bottom : 1px solid #000;
          padding: 10px;
-         
       }
       
       .usermodify-input-table{
@@ -281,11 +281,12 @@
 	        	});
 	    	}
 		      
-	        function confirming(content){
-		      	 AstNotif.snackbar(content, {
-		          	theme: 'default',
-		          });
-	      	}
+			function confirming(content){
+				Astif.dialog('알림', content, {
+	        	  theme: 'default',
+	        	});
+	    	}
+
 				
 			$(document).ready(function (){
 				
@@ -551,13 +552,7 @@
 				});
 				
 				$(".usermodify-secession-btn").on("click", function() {
-					
-					var result = confirm("회원정보를 탈퇴 하시겠습니까?");
-					
-					if(result){		
-						$(".usermodify-secession-btn").attr({"href":"secession"});
-					} else 
-						$(".usermodify-secession-btn").attr({"href":"modify"});
+					confirming("회원정보를 탈퇴 하시겠습니까?");
 				});
 								
 			});

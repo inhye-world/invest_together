@@ -15,6 +15,7 @@
 					<br><br><br><br><br><br>
 						<h3 style="text-align:center">회원가입이 완료 되었습니다 </h3>
 
+
 					<br><br><br><br><br><br>
 
 				</div>

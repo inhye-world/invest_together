@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>같이투자 | 권한이 없습니다</title>
 </head>
+<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
 <body>
 	<div class="wrapper">
 		<jsp:include page="../main/header.jsp"/>

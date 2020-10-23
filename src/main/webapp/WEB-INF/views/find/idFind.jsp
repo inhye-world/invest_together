@@ -15,8 +15,6 @@
 	    <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
 	    <script src="resources/sb_admin/js/ast-notif.js"></script>
 		
-		
-		
 		<style type="text/css">
 				
 			.name-input {

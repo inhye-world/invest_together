@@ -207,6 +207,15 @@
           }
        }
        
+       if(href.indexOf('subList') != -1 || href.indexOf('subInfo') != -1){
+          $('#subList').addClass('activated');
+       } else {
+          $('#subList').removeClass('activated');
+          if(page == 'subList'){
+             $('#subList').addClass('activated');
+          }
+       }
+       
        if(href.indexOf('accountTransaction') != -1 || href.indexOf('expenseAnalyze') != -1){
           $('#accountTransaction').addClass('activated');
        } else {

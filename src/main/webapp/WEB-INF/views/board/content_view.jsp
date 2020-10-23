@@ -66,7 +66,6 @@
   <jsp:include page="../main/header.jsp"/>
      <main>
       <!--? Blog Area Start -->
-         <div class="container">
          	<div class="hero-cap">
                  <h2>자유게시판</h2>
             </div>
@@ -94,7 +93,11 @@
 				  </c:if>
 				  
 				  </sec:authorize>
-				  <a class="button button-contactForm btn_1 boxed-btn" onclick="location.href='${pageContext.request.contextPath}/boardList'">목록보기</a>                
+				  <a class="button button-contactForm btn_1 boxed-btn" onclick="location.href='${pageContext.request.contextPath}/boardList'">목록보기</a>
+				  
+				  <sec:authorize access="hasRole('ROLE_ADMIN')">   
+				  &nbsp;&nbsp; <a class="button button-contactForm btn_1 boxed-btn" onclick="location.href='boardDelete?board_num=${content_view.board_num}'">관리자 삭제</a>           
+                  </sec:authorize>
                   
                   <div class="navigation-top">
                   <div class="comments-area">
