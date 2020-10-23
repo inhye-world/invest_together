@@ -24,7 +24,7 @@
    <script src="resources/sb_admin/js/ast-notif-board.js"></script>
    <script src="resources/sb_admin/js/ast-notif-board-comments.js"></script> 
 </head>
-		
+
 	<style>
 		.pagination .page-link {
 		    color: #09cc7f;
@@ -49,8 +49,18 @@
 			padding-top: 100px;
 		}
 		
+		.comments-area .comment-list{
+			padding-bottom: 0px !important;
+			background-color: #f0ffec;
+    		border-radius: 32px;
+		}
+		
 		.comments-area .comment{
 		    overflow-wrap: anywhere;
+		    font-family: 'Jeju Gothic';
+		    color: black;
+		    font-size: 17px;
+		    margin: 6px;
 		}
 		
 		.pagination {
@@ -64,6 +74,30 @@
 		    text-transform: capitalize;
 		    line-height: 1;
 		    padding-bottom: 30px;
+		}
+		
+		.btn-modity {
+			cursor: pointer;
+		}
+		
+		.btn-delete {
+			cursor: pointer;
+		}
+		
+		.blog-info-link li, .desc {
+			font-family: 'Jeju Gothic';
+		}
+		
+		#re_comment {
+			margin-top: 20px;
+		}
+		
+		.thumb {
+			margin: auto;
+		}
+		
+		.single-post {
+			word-break: break-word;
 		}
 		
 	</style>
@@ -130,12 +164,14 @@
 	                                       <a class="date"><fmt:formatDate value="${dto.comment_date}" dateStyle="full" /></a>
 	                                    </div>
 	                                    <c:if test="${dto.comment_name eq principal.dto.nickname}">
+	                                    <sec:authorize access="hasRole('ROLE_USER')">
 	                                    <div class="reply-btn">&nbsp;&nbsp;
 	                                       <a type="button" class="btn-modity" onmouseover="this.style.color='#09CC7F'" onmouseout="this.style.color='black'">수정</a>
 	                                    </div>
 	                                    <div>&nbsp;&nbsp;
 	                                       <a type="button" class="btn-delete" onmouseover="this.style.color='#09CC7F'" onmouseout="this.style.color='black'">삭제</a>
 	                                    </div>
+	                                    </sec:authorize>
 	                                    </c:if>
 	                                    <div>&nbsp;&nbsp;
                                             <sec:authorize access="hasRole('ROLE_ADMIN')">   
@@ -152,7 +188,7 @@
 	                        	<form:form class="reply-comments-form" action="modify_comments" id="re-commentForm">
 	                       	<div class="col-12">
 	                          <div class="form-group">
-	                             <textarea class="form-control w-100" name="comment_content" id="re_comment" maxlength="200"></textarea>
+	                             <textarea class="form-control w-100" name="comment_content" id="re_comment" maxlength="150"></textarea>
 			                  </div>
 			                </div>
 			                  <div class="form-group">
@@ -236,7 +272,7 @@
                      <form:form class="form-contact comment_form" action="writeComment" id="commentForm">
                            <div class="col-12">
                               <div class="form-group">
-                                 <textarea class="form-control" name="comment_content" id="fir_comment" cols="3" rows="7" placeholder="Write Comment" maxlength="200"></textarea>
+                                 <textarea class="form-control" name="comment_content" id="fir_comment" cols="3" rows="7" placeholder="Write Comment" maxlength="150"></textarea>
                               </div>
                            </div>
                         <div class="form-group">

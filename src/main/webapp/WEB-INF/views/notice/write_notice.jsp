@@ -64,11 +64,11 @@
 				</tr>
 				<tr>
 					<td> 제목 </td>
-					<td> <input id="board_title" type="text" name="notice_title" size = "50"> </td>
+					<td> <input id="board_title" type="text" name="notice_title" size = "50" maxlength="40"> </td>
 				</tr>
 				<tr>
 					<td> 내용 </td>
-					<td><textarea id="board_content" name="notice_content" rows="10" cols="50" maxlength="2000"></textarea></td>
+					<td><textarea id="board_content" name="notice_content" rows="10" cols="50" maxlength="500"></textarea></td>
 				</tr>
 				<tr>
 					<td class="write-submit" colspan="2">

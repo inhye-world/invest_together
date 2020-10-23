@@ -45,6 +45,18 @@
 		    padding-bottom: 30px;
 		}
 		
+		.btn-delete {
+			cursor: pointer;
+		}
+		
+		.blog_details {
+			height: 300px;
+		}
+		
+		.blog-info-link li {
+			font-family: 'Jeju Gothic';
+		}
+		
 	</style>
 	
 <body>
