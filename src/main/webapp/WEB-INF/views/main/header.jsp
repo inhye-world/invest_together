@@ -85,31 +85,31 @@
                                             <ul id="navigation">   
                                                 <li class="point"><a id="accountTransaction">가계부</a></li>
                                                 <li class="point"><a id="salaryList">월급관리</a></li>
-                                                <li><a href="assets" id="assets">자산</a></li>
-                                                <li><a href="calculator" id="calculator">계산기</a>
+                                                <li><a href="${pageContext.request.contextPath}/assets" id="assets">자산</a></li>
+                                                <li><a href="${pageContext.request.contextPath}/calculator" id="calculator">계산기</a>
                                                    <ul class="submenu">
-                                                        <li><a href="myCalculator">나의 기업관리</a></li>
-                                                        <li><a href="target">적정주가계산</a></li>
-                                                        <li><a href="calculator">계산기</a></li>
+                                                        <li><a href="${pageContext.request.contextPath}/myCalculator">나의 기업관리</a></li>
+                                                        <li><a href="${pageContext.request.contextPath}/target">적정주가계산</a></li>
+                                                        <li><a href="${pageContext.request.contextPath}/calculator">계산기</a></li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="subList" id="subList">구독목록</a></li>
-                                                <li><a href="leaderboards" id="leaderboards">투자랭킹</a></li>
-                                                <li><a href="boardList" id="boardList">게시판</a></li>
+                                                <li><a href="${pageContext.request.contextPath}/subList" id="subList">구독목록</a></li>
+                                                <li><a href="${pageContext.request.contextPath}/leaderboards" id="leaderboards">투자랭킹</a></li>
+                                                <li><a href="${pageContext.request.contextPath}/boardList" id="boardList">게시판</a></li>
                                                 <sec:authorize access="hasRole('ROLE_USER')">
                                         <li class="point"><a id="modify">마이페이지</a>
                                            <ul class="submenu">
-                                               <li><a href="addAccount">계좌 추가</a></li>
-                                               <li><a href="modify">회원정보수정</a></li>
-                                               <li><a href="purchaseDetails">거래내역</a></li>
+                                               <li><a href="${pageContext.request.contextPath}/addAccount">계좌 추가</a></li>
+                                               <li><a href="${pageContext.request.contextPath}/modify">회원정보수정</a></li>
+                                               <li><a href="${pageContext.request.contextPath}/purchaseDetails">거래내역</a></li>
                                            </ul>
                                         </li>
                                     </sec:authorize>
                                     <sec:authorize access="hasRole('ROLE_ADMIN')">
-                                        <li><a href="sales_manage" id="profits-admin">관리자모드</a>
+                                        <li><a href="${pageContext.request.contextPath}/sales_manage" id="profits-admin">관리자모드</a>
                                            <ul class="submenu">
-                                                           <li><a href="sales_manage">매출분석</a></li>
-                                                           <li><a href="write_notice">공지등록</a></li>
+                                                           <li><a href="${pageContext.request.contextPath}/sales_manage">매출분석</a></li>
+                                                           <li><a href="${pageContext.request.contextPath}/write_notice">공지등록</a></li>
                                                        </ul>
                                         </li>
                                     </sec:authorize>
@@ -292,11 +292,11 @@
          var month = numberPad((date.getMonth()+1), 2);
          
          $(function() {
-            $("#accountTransaction").attr("onclick", "location.href='accountTransaction-"+year+"-"+month+"'");
+            $("#accountTransaction").attr("onclick", "location.href='${pageContext.request.contextPath}/accountTransaction-"+year+"-"+month+"'");
          });
       
          $(function() {
-            $("#salaryList").attr("onclick", "location.href='salaryList-"+year+"-"+month+"'");
+            $("#salaryList").attr("onclick", "location.href='${pageContext.request.contextPath}/salaryList-"+year+"-"+month+"'");
          });
    </script>
     </body>
