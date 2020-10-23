@@ -25,8 +25,8 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
    
    <!-- alert -->
-     <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
-     <script src="resources/sb_admin/js/ast-notif.js"></script>
+   <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
+   <script src="resources/sb_admin/js/ast-notif.js"></script>
    
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -37,6 +37,35 @@
    <link href="resources/ranking.css" rel="stylesheet" type="text/css">
    <link href="resources/assets.css" rel="stylesheet" type="text/css">
    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
+   
+   <script>
+   	  var stockbondCheck;
+      function deleteStock() {
+    	  $("#stock-form").attr("action", "deleteStock").submit();
+      }
+      
+      function deleteBond() {
+    	  var checkArr = [];
+          
+          $("input[class='checkRow']:checked").each(function(){
+          	checkArr.push($(this).attr("data-symbols"));
+          });
+           
+          $.ajax({
+	      	url : "deleteBond",
+            type : "post",
+            data : {"checkRow" : checkArr},
+            dataType : "json",
+            success : function(result){
+                if(result == 1){
+                      window.location.href = "/into/assets";
+                }
+                   
+             }
+          });
+      }
+   </script>
+   <script src="resources/sb_admin/js/ast-notif-assets.js"></script>
    <script>
       var codeArr = [];
       var symbolArr = [];
@@ -58,13 +87,19 @@
            });
        }
       
-         function confirming(content){
+   	  function confirming(content){
             AstNotif.snackbar(content, {
                 theme: 'default',
              });
-        }
+      }
+   	  
+   	  function confirming2(content){
+			AstComeif.dialog('알림', content, {
+	    	  	theme: 'default',
+	        });
+   	  }	
       
-      $(function() {
+   	  $(function() {
          
          <c:if test="${!(empty stockList and empty bondList and accountSum==0)}">
          
@@ -336,11 +371,8 @@
                return false;
             }
             
-            confirming("삭제했습니다.");
-            setTimeout(function() {
-               $("#stock-form").attr("action", "deleteStock").submit();
-            }, 1000);
-            
+            stockbondCheck = 'stock';
+           	confirming2("삭제하시겠습니까?");
          });
          
          
@@ -857,33 +889,20 @@
           
           //삭제 버튼
           $(document).on("click","button[name=delRow]",function(){
-             //var confirm_val = confirming("정말 삭제하시겠습니까?");
-               
-               //if(confirm_val) {
-                var checkArr = [];
-                
-                $("input[class='checkRow']:checked").each(function(){
-                 checkArr.push($(this).attr("data-symbols"));
-                });
-                 
-                $.ajax({
-                 url : "deleteBond",
-                 type : "post",
-                 data : {"checkRow" : checkArr},
-                 dataType : "json",
-                 success : function(result){
-                       if(result == 1){
-                          confirming("삭제했습니다.");
-                          setTimeout(function() {
-                             window.location.href = "/into/assets";
-                             }, 1000);
-                       }
-                          
-                    }
-                 });
-                //}
-
-            });
+        	  var checkCount2 = 0;
+              
+        	  $("input[class='checkRow']:checked").each(function(){
+              	 checkCount2 += 1;
+              });
+              
+              if(checkCount2==0) {
+                 alerting("삭제할 채권을 선택해주세요");
+                 return false;
+              }
+        	  
+        	  stockbondCheck = 'bond';
+		  	  confirming2("삭제하시겠습니까?");
+          });
           
           //ajax csrf
           $(document).ready(function(){

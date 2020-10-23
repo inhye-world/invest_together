@@ -3318,10 +3318,24 @@ hr {
   text-transform: capitalize;
 }
 
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
+@media only screen and (min-width: 1200px) and (max-width: 1324px) {
   /* line 161, C:/Users/HP/Desktop/jun-2020/277.Charity _Non-profit/assets/scss/_headerMenu.scss */
   .main-header .main-menu ul li a {
-    padding: 39px 14px;
+    padding: 39px 11px;
+  }
+}
+
+@media only screen and (min-width: 1100px) and (max-width: 1199px) {
+  /* line 161, C:/Users/HP/Desktop/jun-2020/277.Charity _Non-profit/assets/scss/_headerMenu.scss */
+  .main-header .main-menu ul li a {
+    padding: 39px 8px;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1099px) {
+  /* line 161, C:/Users/HP/Desktop/jun-2020/277.Charity _Non-profit/assets/scss/_headerMenu.scss */
+  .main-header .main-menu ul li a {
+    padding: 39px 5px;
   }
 }
 
