@@ -9,7 +9,8 @@
 		<link href="resources/find.css" rel="stylesheet" type="text/css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
-	
+		<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
+		
 	</head>
 	<body>
 	  <jsp:include page="../main/header.jsp"/>
@@ -39,7 +40,7 @@
 							<article class="user-area">
 								<form:form class="pw_form" action="resetPwd" method="POST">
 									<input type="hidden" name="id" value="${id}">	
-									<input type="password" id="pw1" name="pw" placeholder="비밀번호 (8~32자리)" /><br>
+									<input type="password" id="pw1" name="pw" placeholder="비밀번호 (8~32자리)"/><br>
 									<input type="password" id="pw2" placeholder="비밀번호 재입력" /><br>	
 									<div id="pw-correct"></div>
 									<br>				

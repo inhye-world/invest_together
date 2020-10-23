@@ -9,35 +9,96 @@
 	<title>같이투자 | 유저 정보 수정</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
-	<link href="resources/user_modify.css" rel="stylesheet" type="text/css">
-	<link href="../resources/temporary.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
 	
 	<!-- ajax사용 위해 csrf설정 -->
   	<meta id="_csrf" name="_csrf" content="${_csrf.token}" />
   	<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}" />
 	
-	<style type="text/css">
-		
-		
-		 .usermodify-title{
-			margin-left: 50%;
-   			margin-top: 7%;
-   			color: #032380;
-		} 
-		
-		 .table{
-			 left:50%; 
-			 
+	<style>
+		.formArea{
+			display:flex;
+			margin-top: 5px;
+		}
+	
+		#inputArea{
+			width: 230px;
 		}
 		
-		.member-container{
-			left:40%;
+		.usermodify-nickname-change-auth-send, .usermodify-phone-change-auth-send{
+			height:30px !important;
 		}
 		
-		 th{
-			font-family: "Lucida Console", Courier, monospace;
-		} 
+		.usermodify-id-change-auth span, .usermodify-nickname-change-auth span, .usermodify-phone-change-auth span, .usermodify-email-change-auth span, .usermodify-password-change span{
+			display:block;
+			color:red;
+		}
+	
+		.usermodify-title{
+			margin-top: 100px;
+			margin-left: 20%;
+		}
+		
+		.usermodify-nickname-change-btn, .usermodify-nickname-change-cancel, .usermodify-nickname-change-auth-send{
+			border: 1px solid #112026;
+			padding: 5px;
+			cursor: pointer;
+			border-radius: 3px;
+			font-size: 13px;
+		}	
+	
+		.usermodify-phone-change-btn, .usermodify-phone-change-cancel, .usermodify-phone-change-auth-send{
+			border: 1px solid #112026;
+			padding: 5px;
+			cursor: pointer;
+			border-radius: 3px;
+			font-size: 13px;
+		}	
+	
+		.snsModiTable{
+			width: 60%;
+			margin-left: auto;
+			margin-right: auto;
+			border-top : 1px solid #000;
+			margin-bottom: 20px;
+		}
+		
+		th, td{
+			border-bottom : 1px solid #000;
+			padding: 10px;
+		}
+		
+		.snsModiTable th{
+			background-color: #dfe5f8;
+			text-align: center;
+		}
+		
+		.usermodify-secession{
+			float: right;
+			padding-right: 20%;
+			padding-left: 20%;
+		}
+	
+		.usermodify-secession-btn{
+			border: 1px solid #112026;
+			padding: 5px;
+			cursor: pointer;
+			border-radius: 3px;
+		}
+		
+		.usermodify-secession-btn:hover{
+			border: 1px solid #112026;
+			background-color: #112026;
+			color: #fff !important;
+		}
+		
+		.usermodify-cancel{
+			border: 1px solid #112026;
+			padding: 5px;
+			cursor: pointer;
+			border-radius: 3px;
+			font-size: 13px;
+		}
 	</style>
 </head>
 	<body>
@@ -45,7 +106,7 @@
 		<div class="member-container page-modify">			
 			<h1 class="usermodify-title">회원정보 수정</h1>
 			<br>
-			<table class="table">
+			<table class="snsModiTable">
 				<sec:authorize access="isAuthenticated()">
 				<sec:authentication var="principal" property="principal"/>
 				<tr>
@@ -67,10 +128,14 @@
 							<strong class="usermodify-nickname-current-mail">${principal.dto.nickname}</strong>
 							<button type="button" class="usermodify-nickname-change-btn" style="display: inline-block;">닉네임 변경</button>
 							<button type="button" class="usermodify-nickname-change-cancel" style="display: none;">닉네임 변경취소</button>
+							
 						<form:form  class="usermodify-nickname-change-auth" action="alterNickname" method="post" style="display: none;">
-							<input class="usermodify-nickname-if" type="text" name="nickname" placeholder="닉네임 입력">
-							<button type="submit" class="usermodify-nickname-change-auth-send">변경</button>
+							<div class="formArea">
+								<div id=inputArea><input class="usermodify-nickname-if" type="text" name="nickname" placeholder="닉네임 입력" style="width:225px;"></div>
+								<button type="submit" class="usermodify-nickname-change-auth-send">변경</button>		
+							</div>
 						</form:form>
+						
 						</div>	
 					</td>
 				</tr>
@@ -83,8 +148,10 @@
 							<button type="button" class="usermodify-phone-change-btn" style="display: inline-block;">휴대폰 번호 변경</button>
 							<button type="button" class="usermodify-phone-change-cancel" style="display: none;">휴대폰 번호 변경취소</button>
 						<form:form class="usermodify-phone-change-auth" action="alterPhone" method="post" style="display: none;">
-							<input class="usermodify-phone-if" type="text" name="phone" maxlength="11" placeholder="휴대폰 번호 입력">
-							<button type="submit" class="usermodify-phone-change-auth-send">변경</button>		
+							<div class="formArea">
+								<div id=inputArea><input class="usermodify-phone-if" type="text" name="phone" maxlength="11" placeholder="휴대폰 번호 입력" style="width:225px;"></div>
+								<button type="submit" class="usermodify-phone-change-auth-send">변경</button>
+							</div>		
 						</form:form>
 						</div>	
 					</td>
@@ -110,15 +177,16 @@
 					
 			</sec:authorize>
 			</table>
-			<div class="usermodify-secession">
-				 탈퇴를 원하시면 우측의 회원탈퇴 버튼을 눌러주세요.
-				<a class="usermodify-secession-btn">회원탈퇴</a>
 			
-			<!-- <div class="usermodify-foot">  -->
-				<button onclick = "location.href = ${pageContext.request.contextPath}/"  type="button" class="usermodify-cancel">나가기</button>
-			</div>
 		</div>
-		<br>
+		<div class="usermodify-secession">
+			 탈퇴를 원하시면 우측의 회원탈퇴 버튼을 눌러주세요.
+			<a class="usermodify-secession-btn">회원탈퇴</a>
+		
+		<!-- <div class="usermodify-foot">  -->
+			<button onclick = "location.href = ${pageContext.request.contextPath}/"  type="button" class="usermodify-cancel">나가기</button>
+		</div>
+		<br><br><br><br><br><br>
 		<script>
 			
 			$(document).ready(function (){

@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 
 <!doctype html>
 <html class="no-js">
@@ -11,7 +13,9 @@
 		.point{
 			cursor:pointer;
 		}
-		
+		#transShort{
+			height:478px;
+		}
 	</style>
 
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -40,7 +44,8 @@
 	<link rel="stylesheet" href="resources/main/assets/css/slick.css">
 	<link rel="stylesheet" href="resources/main/assets/css/nice-select.css">
 	<link rel="stylesheet" href="resources/main/assets/css/style.css">
-	
+	<link rel="stylesheet" href="resources/main/assets/css/backbutton.css">
+	<link rel="stylesheet" href="resources/main/assets/css/buttonsena.css">
 </head>
 
 
@@ -164,7 +169,7 @@
 									</sec:authorize>
 									<sec:authorize access="isAuthenticated()">
 										<sec:authentication var="principal" property="principal"/>
-										<P data-animation="fadeInUp" data-delay=".8s" >${principal.dto.name}님 , 반갑습니다</P>		
+										<P data-animation="fadeInUp" data-delay=".8s" ><span style="font-weight:bold">${principal.dto.name}</span>님 , 반갑습니다</P>		
 									</sec:authorize>
                                     
                                 </div>
@@ -207,38 +212,44 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat text-center mb-50">
+                <div class="col-lg-4 col-md-6 col-sm-6" id="transShortcut" style="cursor:pointer;">
+                    <div class="single-cat text-center mb-50" id="transShort">
                         <div class="cat-icon">
                             <span class="flaticon-null-1"></span>
                         </div>
-                        <div class="cat-cap">
-                            <h5><a href="accountBalance">가계부</a></h5>
+                        <div class="cat-cap" >
+                            <h5><a>가계부</a></h5>
                             <p>계좌를 연동해서 지출 내역을 관리하세요. </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
+                
+                <div class="col-lg-4 col-md-6 col-sm-6" >
+                	<a href="calculator">
                     <div class="single-cat active text-center mb-50">
                         <div class="cat-icon">
                             <span class="flaticon-think"></span>
                         </div>
                         <div class="cat-cap">
-                            <h5><a href="calculator">계산기</a></h5>
+                            <h5><a>계산기</a></h5>
                             <p>같이투자에서 제공하는 적정 주가 계산기로 편리하게 주식을 관리하세요.</p>
                         </div>
                     </div>
+                     </a>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
+               
+                <div class="col-lg-4 col-md-6 col-sm-6"  >
+                <a href="leaderboards">
                     <div class="single-cat text-center mb-50">
                         <div class="cat-icon">
                             <span class="flaticon-gear"></span>
                         </div>
                         <div class="cat-cap">
-                            <h5><a href="leaderboards">투자 랭킹</a></h5>
+                            <h5><a>투자 랭킹</a></h5>
                             <p>같이투자의 다양한 고객들은 어떻게 자산관리를 하고 있는지 구독을 통해 확인해보세요.</p>
                         </div>
                     </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -269,38 +280,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Single Testimonial -->
-                        <div class="single-testimonial text-center">
-                            <div class="testimonial-caption ">
-                                <!-- founder -->
-                                <div class="testimonial-founder">
-                                    <div class="founder-img mb-40">
-                                        <img src="resources/main/assets/img/gallery/testimonial.png" alt="">
-                                        <span>Margaret Lawson</span>
-                                        <p>Creative Director</p>
-                                    </div>
-                                </div>
-                                <div class="testimonial-top-cap">
-                                    <p>âI am at an age where I just want to be fit and healthy our bodies are our responsibility! So start caring for your body and it will care for you. Eat clean it will care for you and workout hard.â</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Testimonial -->
-                        <div class="single-testimonial text-center">
-                            <div class="testimonial-caption ">
-                                <!-- founder -->
-                                <div class="testimonial-founder">
-                                    <div class="founder-img mb-40">
-                                        <img src="resources/main/assets/img/gallery/testimonial.png" alt="">
-                                        <span>Margaret Lawson</span>
-                                        <p>Creative Director</p>
-                                    </div>
-                                </div>
-                                <div class="testimonial-top-cap">
-                                    <p>âI am at an age where I just want to be fit and healthy our bodies are our responsibility! So start caring for your body and it will care for you. Eat clean it will care for you and workout hard.â</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -308,7 +287,6 @@
     </div>
     <!-- Testimonial End -->
 
-    
     <!--? Count Down Start -->
     <div class="count-down-area pt-25 section-bg" data-background="resources/main/assets/img/gallery/background.png">
         <div class="container">
@@ -319,7 +297,7 @@
                             <div class="col-lg-3 col-md-6 col-sm-6">
                                 <!-- Counter Up -->
                                 <div class="single-counter text-center">
-                                    <span class="counter color-green">200,000</span>
+                                    <span class="counter color-green"><fmt:formatNumber value="${total_member}"/></span>
                                     <span class="plus">+</span>
                                     <p class="color-green">총 가입자 수</p>
                                 </div>
@@ -327,25 +305,25 @@
                             <div class="col-lg-3 col-md-6 col-sm-6">
                                 <!-- Counter Up -->
                                 <div class="single-counter text-center">
-                                    <span class="counter color-green">1,000</span>
+                                    <span class="counter color-green"><fmt:formatNumber value="${total_account}"/></span>
                                     <span class="plus">+</span>
-                                    <p class="color-green">신규 가입자 수</p>
+                                    <p class="color-green">등록된 계좌 수</p>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-6">
                                 <!-- Counter Up -->
                                 <div class="single-counter text-center">
-                                    <span class="counter color-green">2,540,000</span>
+                                    <span class="counter color-green"><fmt:formatNumber value="${total_stock}"/></span>
                                     <span class="plus">+</span>
-                                    <p class="color-green">누적 접속자 수</p>
+                                    <p class="color-green">등록된 주식 수</p>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-6">
                                 <!-- Counter Up -->
                                 <div class="single-counter text-center">
-                                    <span class="counter color-green">2,560</span>
+                                    <span class="counter color-green"><fmt:formatNumber value="${total_subsribe}"/></span>
                                     <span class="plus">+</span>
-                                    <p class="color-green">오늘 접속자 수</p>
+                                    <p class="color-green">총 거래 횟수</p>
                                 </div>
                             </div>
                         </div>
@@ -404,26 +382,15 @@
                         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
                             <div class="single-footer-caption mb-50">
                                 <div class="footer-tittle">
-                                    <h4>Newsletter</h4>
+                                    <h4>More Information</h4>
                                     <div class="footer-pera footer-pera2">
-                                    <p>자산관리에 유용한 정보를 받아보세요!</p>
+                                    <p style="margin:0px;">같이투자의 Git에서 자세한 정보를 얻을 수 있습니다.</p>
                                 </div>
-                                <!-- Form -->
-                                <div class="footer-form" >
-                                    <div id="mc_embed_signup">
-                                        <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                        method="get" class="subscribe_form relative mail_part">
-                                            <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
-                                            class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
-                                            onblur="this.placeholder = ' Email Address '">
-                                            <div class="form-icon">
-                                                <button type="submit" name="submit" id="newsletter-submit"
-                                                class="email_icon newsletter-submit button-contactForm"><img src="resources/main/assets/img/gallery/form.png" alt=""></button>
-                                            </div>
-                                            <div class="mt-10 info"></div>
-                                        </form>
-                                    </div>
-                                </div>
+                                <!-- button -->
+									<button name="git" id="git" class="btn10" onclick="window.open('https://github.com/inhye-world/invest_together.git')">
+									     <span>같이투자 Git</span>
+									  <div class="transition"></div>
+									</button>
                                 </div>
                             </div>
                         </div>
@@ -529,6 +496,10 @@
 
 			$(function() {
 				$("#accountTransaction").attr("onclick", "location.href='accountTransaction-"+year+"-"+month+"'");
+			});
+		
+			$(function() {
+				$("#transShortcut").attr("onclick", "location.href='accountTransaction-"+year+"-"+month+"'");
 			});
 		
 			$(function() {

@@ -9,20 +9,20 @@
 	if( typeof define === 'function' && define.amd ) {
 		// AMD. Register as an anonymous module.
 		define( function() {
-			root.AstNotif2 = factory();
-			return root.AstNotif2;
+			root.Ascomeif = factory();
+			return root.Ascomeif;
 		} );
 	} else if( typeof exports === 'object' ) {
 		// Node. Does not work with strict CommonJS.
 		module.exports = factory();
 	} else {
 		// Browser globals.
-		root.AstNotif2 = factory();
+		root.Ascomeif = factory();
 	}
 }( this, function() {
 
 	'use strict';
-	var AstNotif2;
+	var Ascomeif;
 
 	// The ast-notif.js version
 	var VERSION = '0.0.5';
@@ -266,10 +266,12 @@
 
 		// Callback positive function
 		callbackPositive: function () {
+			
 		},
 
 		// Callback negative function
 		callbackNegative: function () {
+			
 		},
 
 		// Close the dialog
@@ -356,7 +358,7 @@
 		show: function() {
 			// Call all dialog element
 			if (!!this.inited()) return;
-			var $AstNotif2This = this; // Passing this to another inner function
+			var $AscomeifThis = this; // Passing this to another inner function
 
 			var bgElement = this.initBackdrop();
 			var dialogElement = this.initDialog();
@@ -403,20 +405,20 @@
 				var textElement = bodyElement.querySelector("#ast-dialog-message");
 				textElement.innerHTML = "";
 				setTimeout(function() {
-					typewriterEffect(textElement, $AstNotif2This.message);
+					typewriterEffect(textElement, $AscomeifThis.message);
 				}, 200);
 			}
 
 			// Append listener to the button
 			dialogElement.addEventListener('click', function(e) {
 			    if (e.target && e.target.id == 'ast-positive-dialog-button') {
-					$AstNotif2This.callbackPositive();
-					$AstNotif2This.close();
+					$AscomeifThis.callbackPositive();
+					$AscomeifThis.close();
 			    }
 
 			    if (e.target && e.target.id == 'ast-negative-dialog-button') {
-					$AstNotif2This.callbackNegative();
-					$AstNotif2This.close();
+					$AscomeifThis.callbackNegative();
+					$AscomeifThis.close();
 			    }
 			});
 		}
@@ -763,9 +765,9 @@
 
 		// Check if the elemen has been initialized
 		inited: function() {
-			var AstNotif2yElement = document.getElementById("ast-notify-container");
-			if (typeof AstNotif2yElement !== "undefined" && AstNotif2yElement != null) {
-				return AstNotif2yElement;
+			var AscomeifyElement = document.getElementById("ast-notify-container");
+			if (typeof AscomeifyElement !== "undefined" && AscomeifyElement != null) {
+				return AscomeifyElement;
 			}
 			else
 				return false;
@@ -1022,7 +1024,7 @@
 	//////////////////////////////////////////////////
 	// AST Notif API
 	//////////////////////////////////////////////////
-	AstNotif2 = {
+	Ascomeif = {
 		init: function() {
 		},
 
@@ -1037,5 +1039,5 @@
 		VERSION: VERSION
 	};
 
-	return (window.AstNotif2 = window.astn = AstNotif2);
+	return (window.Ascomeif = window.astn = Ascomeif);
 }));

@@ -1,8 +1,10 @@
 package bit.it.into.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import bit.it.into.service.LoginService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -11,9 +13,22 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class MainCotroller {
 	
+	private LoginService service;
+	
 	@RequestMapping("/")
-	public String home() {
+	public String home(Model model) {
 		log.info("MainController - home()");
+		
+		Integer total_mamber = service.totalMember();
+		Integer total_account = service.totalAccount();
+		Integer total_stock = service.totalStock();
+		Integer total_subsribe = service.totalSubsribe();
+		
+		model.addAttribute("total_member", total_mamber);
+		model.addAttribute("total_account", total_account);
+		model.addAttribute("total_stock", total_stock);
+		model.addAttribute("total_subsribe", total_subsribe);
+		
 		return "main/index";
 	}
 	
@@ -29,34 +44,4 @@ public class MainCotroller {
 		return "main/index";
 	}
 	
-	@RequestMapping("/blog_details")
-	public String blog_details() {
-		return "main/blog_details";
-	}
-	
-	@RequestMapping("/blog")
-	public String blog() {
-		return "main/blog";
-	}
-	
-	@RequestMapping("/contact")
-	public String contact() {
-		return "main/contact";
-	}
-	
-	@RequestMapping("/elements")
-	public String elements() {
-		return "main/elements";
-	}
-
-	@RequestMapping("/program")
-	public String program() {
-		return "main/program";
-
-	}
-	
-	@RequestMapping("/element")
-	public String element() {
-		return "main/elements";
-	}
 }

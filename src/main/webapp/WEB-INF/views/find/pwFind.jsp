@@ -8,6 +8,7 @@
 		<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+		<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
 		<link href="resources/find.css" rel="stylesheet" type="text/css">
 	
 		<!-- alert -->
@@ -19,6 +20,22 @@
 			.button__text {
 				color:black;
 			}
+			
+			.formArea {
+	        	display:flex;
+	        	place-content: center;
+	      	}
+	   
+	        #inputArea {
+	         	width: 190px;
+	      	}
+			
+			#verifyNumber-submit {
+	         	height:40px !important;
+	      	}
+			
+			
+			
 		</style>
 	</head>
 	<body>
@@ -58,10 +75,12 @@
 										<br>
 									</span>
 										<form:form class="auth_form" action="verifyPwd">
+										<div class="formArea">
 											<input type="hidden" name="id" id="authId">
 											<input type="hidden" id="authKey" />
-											<input type="password" id="verifyNumber" name="verifyNumber" placeholder="이메일 인증 번호" maxlength="50" style="display: none;" maxlength="6" >
+											<div id="inputArea"><input type="password" id="verifyNumber" name="verifyNumber" placeholder="이메일 인증 번호" maxlength="50" style="display: none;" maxlength="6" style="width:225px;" ></div>
 											<input class="genric-btn primary" id="verifyNumber-submit" type="submit" value="확인" style="display: none;">
+										</div>
 										</form:form>
 										<br>		
 									</div>
@@ -138,7 +157,7 @@
 					},
 
 					//메시지 태그
-					errorElement : 'div', 	//태그
+					errorElement : 'span', 	//태그
 					errorClass: 'error',	//클래스 이름
 					validClass:'vaild' 
 				});
@@ -174,7 +193,7 @@
 							$("#authId").val(authId);
 							
 						}else {
-							alerting("다시 입력해 주세요.")	
+							alerting("아이디를 잘못 입력하셨습니다.")
 						}
 					},
 					

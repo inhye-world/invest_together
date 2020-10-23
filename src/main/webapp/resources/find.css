@@ -61,7 +61,7 @@ div {
 	padding-top: 15px;
 }
 
-.auth_form div.error {
+.auth_form span.error {
 	color:red;
 } 
 

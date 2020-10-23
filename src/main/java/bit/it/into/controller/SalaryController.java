@@ -157,7 +157,6 @@ public class SalaryController {
 
 	}
 
-	// ---------------------------------------
 	@RequestMapping(value = "/account_salary", produces = "application/json", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public String aTransaction(Authentication authentication, HttpServletRequest request, Model model)
@@ -165,7 +164,7 @@ public class SalaryController {
 		log.info("BankController - aTransaction()");
 
 		if (authentication == null) {
-			return "redirect:/loginForm";
+			return "login/login_require";
 		}
 
 		CustomUser user = (CustomUser) authentication.getPrincipal();
@@ -173,14 +172,13 @@ public class SalaryController {
 		String access_token = user.getDto().getAccess_token();
 
 		int user_num = user.getDto().getMember_num();
-		List<AccountDTO> accountList = service.getAccountList(user_num);
 		List<AccountTransactionDTO> accountTransactionList = new ArrayList<>();
 
 		int incomeSum = 0;
 		int expenseSum = 0;
 
 		String fintech_use_num = request.getParameter("fin");
-		JsonNode node = open.getAccountTransactionList(access_token, fintech_use_num, "2020", "09");
+		JsonNode node = open.getAccountTransactionList(access_token, fintech_use_num, "2020", "10");
 
 		String product_name = open.getAccountBalance(access_token, fintech_use_num).get("product_name").asText();
 
@@ -203,13 +201,6 @@ public class SalaryController {
 			AccountTransactionDTO transactionDTO = new AccountTransactionDTO(tran_date_time, inout_type, tran_type,
 					print_content, tran_amt, branch_name, product_name, after_balance_amt, day);
 			accountTransactionList.add(transactionDTO);
-
-			if (inout_type.equals("입금")) {
-				incomeSum += Integer.valueOf(tran_amt);
-			}
-			if (inout_type.equals("출금")) {
-				expenseSum += Integer.valueOf(tran_amt);
-			}
 
 			++count;
 			if (node.get("res_list").get(count) == null) {
@@ -239,7 +230,7 @@ public class SalaryController {
 		}
 
 		return "bank/account_salary_list";
-
 	}
 
 }
+

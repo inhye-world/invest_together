@@ -46,6 +46,7 @@
 		console.log(yDomain);
 	</script>
 	<style>
+	
 		#graphs{
 			display:flex;
 			left:50%
@@ -73,7 +74,7 @@
 			margin: auto;
 			text-align: center;
 			margin-bottom: 50px;
-			font-size: 2em;
+			font-size: 20px;
 		}
 		
 		@media ( max-width: 768px ) {
@@ -306,6 +307,7 @@
 					datasets:[{
 						label:'일별 지출액(원)',
 						backgroundColor:'#4C5775',
+						fontSize:20,
 						data:yDomain
 					}]
 				};

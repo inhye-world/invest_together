@@ -9,6 +9,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
 		<link href="resources/find.css" rel="stylesheet" type="text/css">
+		<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
 		
 		<!-- alert -->
 	    <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
@@ -100,12 +101,6 @@
            		theme: 'default',
            	});
        	}
-         
-        function confirming(content){
-      		AstNotif.snackbar(content, {
-          		theme: 'default',
-          	});
-     	}   
 
 		$(document).ready(function (){
 			
@@ -204,7 +199,7 @@
 						$("#authEmail").val(authEmail);
 						
 					}else {
-						alerting("다시 입력해 주세요.")	
+						alerting("아이디 또는 이메일을 잘못 입력하셨습니다.")
 					}
 				},
 				
