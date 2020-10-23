@@ -37,7 +37,6 @@ import net.sf.json.JSONObject;
 @Log4j
 public class BankController {
 
-	@Autowired
 	private OpenBankingService open;
 	private BankService service;
 	

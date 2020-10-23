@@ -66,7 +66,6 @@
   <jsp:include page="../main/header.jsp"/>
      <main>
       <!--? Blog Area Start -->
-         <div class="container">
          	<div class="hero-cap">
                  <h2>자유게시판</h2>
             </div>
