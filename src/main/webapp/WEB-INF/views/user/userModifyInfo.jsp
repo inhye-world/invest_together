@@ -6,11 +6,11 @@
 <html>
 <head>
     <meta charset="utf-8">
+
    <title>같이투자 | 유저 정보 수정</title>
    
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script> 
-   
    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
    
    <!-- alert -->
@@ -40,6 +40,7 @@
          display:block;
          color:red;
       }
+
       .usermodify-title{
          margin-top: 100px;
          margin-left: 20%;
@@ -56,7 +57,6 @@
       .ModiUserTable th, td{
          border-bottom : 1px solid #000;
          padding: 10px;
-         
       }
       
       .usermodify-input-table{
@@ -145,6 +145,7 @@
          background-color: #112026;
          color: #fff !important;
       }
+
    </style>
 
 </head>

@@ -27,7 +27,7 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/themify-icons.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/slick.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/style.css">
-
+	<link rel="stylesheet" href="resources/main/assets/css/buttonsena.css">
 	
 </head>
 <body>
@@ -80,29 +80,16 @@
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
                             <div class="single-footer-caption mb-50">
-                                <div class="footer-tittle">
-                                    <h4>Newsletter</h4>
+                               <div class="footer-tittle">
+                                    <h4>More Information</h4>
                                     <div class="footer-pera footer-pera2">
-                                    <p>자산관리에 유용한 정보를 받아보세요!</p>
+                                    <p style="margin:0px;">같이투자의 Git에서 자세한 정보를 얻을 수 있습니다.</p>
                                 </div>
-                                <!-- Form -->
-                                <div class="footer-form" >
-                                    <div id="mc_embed_signup">
-                                        <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                        method="get" class="subscribe_form relative mail_part">
-                                            <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
-                                            class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
-                                            onblur="this.placeholder = ' Email Address '">
-                                            <div class="form-icon">
-                                                <button type="submit" name="submit" id="newsletter-submit" class="email_icon newsletter-submit button-contactForm">
-                                                <img src="${pageContext.request.contextPath}/resources/main/assets/img/gallery/form.png" alt="">
-                                                </button>
-
-                                            </div>
-                                            <div class="mt-10 info"></div>
-                                        </form>
-                                    </div>
-                                </div>
+                                <!-- button -->
+									<button name="git" id="git" class="btn10" onclick="window.open('https://github.com/inhye-world/invest_together.git')">
+									     <span>같이투자 Git</span>
+									  <div class="transition"></div>
+									</button>
                                 </div>
                             </div>
                         </div>

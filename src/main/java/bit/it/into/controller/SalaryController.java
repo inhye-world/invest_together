@@ -157,7 +157,6 @@ public class SalaryController {
 
 	}
 
-	// ---------------------------------------
 	@RequestMapping(value = "/account_salary", produces = "application/json", method = { RequestMethod.GET,
 			RequestMethod.POST })
 	public String aTransaction(Authentication authentication, HttpServletRequest request, Model model)
@@ -173,7 +172,6 @@ public class SalaryController {
 		String access_token = user.getDto().getAccess_token();
 
 		int user_num = user.getDto().getMember_num();
-		List<AccountDTO> accountList = service.getAccountList(user_num);
 		List<AccountTransactionDTO> accountTransactionList = new ArrayList<>();
 
 		int incomeSum = 0;
@@ -203,13 +201,6 @@ public class SalaryController {
 			AccountTransactionDTO transactionDTO = new AccountTransactionDTO(tran_date_time, inout_type, tran_type,
 					print_content, tran_amt, branch_name, product_name, after_balance_amt, day);
 			accountTransactionList.add(transactionDTO);
-
-			if (inout_type.equals("입금")) {
-				incomeSum += Integer.valueOf(tran_amt);
-			}
-			if (inout_type.equals("출금")) {
-				expenseSum += Integer.valueOf(tran_amt);
-			}
 
 			++count;
 			if (node.get("res_list").get(count) == null) {

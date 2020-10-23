@@ -12,6 +12,7 @@
 	
 	<link href="${pageContext.request.contextPath}/resources/error.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/backbutton.css">
+	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
 
 	<body>
 		<div class="wrapper">

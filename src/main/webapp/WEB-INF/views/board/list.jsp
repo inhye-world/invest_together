@@ -26,6 +26,7 @@
 		    margin-left: auto;
 		    margin-right: auto;
 		    padding-bottom: 50px;
+		    font-size: 15px;
 		}
 	
 		.freeBoardTitle{
@@ -89,8 +90,8 @@
 	        color: #fff;
 	         background: #f44a40;
 	         border: 1px solid transparent;
-      	}
-		
+      }
+
 	</style>
 	
 	<body>
