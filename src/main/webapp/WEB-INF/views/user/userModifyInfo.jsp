@@ -429,7 +429,7 @@
 							
 							console.log(data);
 							
-							if(data.hasEmail) {
+							if(data.hasEmail && $(".usermodify-email-if").val() != "" ) {
 								
 								alerting("이메일이 발송되었습니다.");
 					
