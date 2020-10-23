@@ -544,7 +544,7 @@
 				<c:set var="league" value="${pageMaker.cri.league}" />
 				
 				<c:if test="${!empty list}">
-					<ul class="pagination pagination-sm">
+					<ul class="pagination">
 						<c:if test="${pageMaker.prev}">
 							<li class="page-item">
 						      	<a class="page-link" href="leaderboards${pageMaker.makeQuery(league, pageMaker.startPage-1)}" aria-label="Previous">

@@ -107,6 +107,12 @@
 		]]>
 	</delete>
 	
+	<delete id="deleteSalaryAccount">
+		<![CDATA[
+			delete from salary_account where FINTECH_USE_NUM IN ( SELECT FINTECH_USE_NUM from account where member_num = #{member_num})
+		]]>
+	</delete>
+	
 	<delete id="deleteAccount">
 		<![CDATA[
 			delete from account where member_num = #{member_num}

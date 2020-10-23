@@ -237,7 +237,11 @@ public class UserModifyController {
 	@RequestMapping("/secession")
 	public String secession(Authentication authentication, HttpSession session) {
 		log.info("UserModifyController - secession()");
-
+		
+		if(authentication==null) {
+			return "login/login_require";
+		}
+		
 		CustomUser user = (CustomUser)authentication.getPrincipal();
 		
 		session.invalidate();

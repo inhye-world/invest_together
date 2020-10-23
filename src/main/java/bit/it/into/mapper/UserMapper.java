@@ -50,4 +50,6 @@ public interface UserMapper {
 
 	public void deleteSubsribe(int member_num);
 
+	public void deleteSalaryAccount(int member_num);
+
 }
