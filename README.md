@@ -6,4 +6,5 @@ Asset management project of Minju Kim, Tae Jun Kim, In Hye Ryu, Jae Kwon Song an
 ## 발표자료
 https://drive.google.com/file/d/109lKpXZsKms7LUmtHJPUyxwF70AZOXDi/view?usp=sharing
 ## 주요 구현 내용
+![이미지](./images/ezgif.com-gif-maker.gif)
 ## How To Start
