@@ -30,23 +30,6 @@ public class BondController {
 
 	@Inject
 	BondService bondService;
-	
-	@GetMapping("/bond")
-	public String list(Model model, Authentication authentication) throws Exception {	
-		log.info("////////////////////list/////////////////////");
-		
-		if(authentication == null) {
-			return "login/login_require";
-		}
-		
-		
-		CustomUser user = (CustomUser)authentication.getPrincipal();
-		int user_num = user.getDto().getMember_num();
-		
-		model.addAttribute("list", bondService.getList(user_num));
-		
-		return "bond/list";
-	}
 
 	@PostMapping("/writeBond")
 	public String write(@Valid BondDTO bondDTO, BindingResult result, Authentication authentication) throws Exception {

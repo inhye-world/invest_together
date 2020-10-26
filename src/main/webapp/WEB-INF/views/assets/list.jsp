@@ -187,9 +187,27 @@
          
          }
          
+       //전체선택 
+         $(document).ready(function(){
+             //최상단 체크박스 클릭
+             $("#checkAllStock").click(function(){
+                 //클릭되었으면
+                 if($("#checkAllStock").prop("checked")){
+                     //input태그의 class가  checkRow인 태그들을 찾아서 checked옵션을 true로 정의
+                     $(".checkRowStock").prop("checked",true);
+                     //클릭이 안되있으면
+                 }else{
+                     //input태그의 class가  checkRow인 태그들을 찾아서 checked옵션을 false로 정의
+                     $(".checkRowStock").prop("checked",false);
+                 }
+             })
+         });
          
-         $("#stockAllSelect").click(function() {
-            $("#stock-table input[type=checkbox]").prop("checked", true);
+         //개별 체크박스가 선택되거나 선택해제되면 모두 선택 체크박스가 해체   
+         $(document).ready(function(){
+            $(".checkRowStock").click(function(){
+             $("#checkAllStock").prop("checked", false);
+            })
          });
          
          $("#buyStock").click(function() {
@@ -202,7 +220,20 @@
                var str = '<tr>';
                str += '<td><input type="submit" id="buy_stock_submit" class="bttn-material-flat assets-submit-bttn" value="" onclick="javascript: form.action=`buyStock`;" /></td>';
                str += '<td><input type="text" id="buy_stockinfo_symbols" name="buy_stockinfo_symbols" placeholder="종목명" size="13" /></td>';
-               str += '<td><input type="text" id="buy_company" name="buy_company" placeholder="증권사" size="6" /></td>';
+               str += '    <td><select id="buy_company" name="buy_company" placeholder="증권사">'+
+		               '    <option value="" disabled selected>증권사</option>'+
+		               '    <option value="한국투자증권">한국투자증권</option>'+
+		               '    <option value="미래에셋대우">미래에셋대우</option>'+
+		               '    <option value="메리츠종금증권">메리츠종금증권</option>'+
+		               '    <option value="NH투자증권">NH투자증권</option>'+
+		               '    <option value="삼성증권">삼성증권</option>'+
+		               '    <option value="신한금융투자">신한금융투자</option>'+
+		               '    <option value="키움증권">키움증권</option>'+
+		               '    <option value="KB증권">KB증권</option>'+
+		               '    <option value="하나금융투자">하나금융투자</option>'+
+		               '    <option value="대신증권">대신증권</option>'+
+		               '    <option value="유안타증권">유안타증권</option>'+
+		               '    </select></td>';
                str += '<td><input type="text" id="buy_purchase_price" name="buy_purchase_price" placeholder="매수가" size="6" /></td>';
                str += '<td>-</td><td>-</td><td>-</td>';
                str += '<td><input type="text" id="buy_quantity" name="buy_quantity" placeholder="매수수량" size="5" /></td>';
@@ -478,7 +509,6 @@
                <span>주식</span>
             </div>
             <div class="assets-bttn-container">
-               <button id="stockAllSelect" class="bttn-simple bttn-xs bttn-ggreen">전체선택</button>
                <button id="buyStock" class="bttn-simple bttn-xs bttn-ggreen">매수</button>
                <button id="sellStock" class="bttn-simple bttn-xs bttn-ggreen">매도</button>
                <button id="deleteStock" class="bttn-simple bttn-xs bttn-ggreen">삭제</button>
@@ -490,7 +520,7 @@
             <table id="stock-table" class="table leaderboards">
                <thead>
                   <tr>
-                     <th></th>
+                     <th><input type="checkbox" id="checkAllStock" /></th>
                      <th>종목명</th>
                      <th>증권사</th>
                      <th>평균매수가</th>
@@ -514,7 +544,7 @@
                   </c:if>
                   <c:forEach var="stock" items="${stockList}" varStatus="status">
                      <tr id="stock-${status.index}">
-                        <td><input type="checkbox" id="stock-check-${status.index}" name="deleteStockSymbol" value="${stock.stockinfo_symbols}"/></td>
+                        <td><input type="checkbox" class="checkRowStock" id="stock-check-${status.index}" name="deleteStockSymbol" value="${stock.stockinfo_symbols}"/></td>
                         <td>${stock.stockinfo_symbols}</td>
                         <td>${stock.company}</td>
                         <td><fmt:formatNumber type="number" maxFractionDigits="3" value="${stock.purchase_price}" />원</td>
@@ -591,7 +621,7 @@
                              <td><input type="checkbox" class="checkRow" name="checkRow" data-symbols="${bond.bond_num}" /></td>
                              <td style="display:none;">${bond.bond_num}</td> <!-- jQuery.Deferred exception의 원인 th, td 컬럼 수가 불일치 -->
                              <td>${bond.bond_symbols}</td>
-                             <td><fmt:formatNumber type="number" maxFractionDigits="3" value="${bond.total_interest}" />원</td>
+                             <td><fmt:formatNumber type="number" maxFractionDigits="3" value="${bond.total_interest}" />%</td>
                              <td>${bond.bond_company}</td>
                              <td><fmt:formatNumber type="number" maxFractionDigits="3" value="${bond.bond_price}" />원</td>
                              <td><fmt:parseDate var="dateString" value="${bond.bond_date}" pattern="yyyy-MM-dd HH:mm:ss" /><fmt:formatDate value="${dateString}" pattern="yyyy-MM-dd" /></td>
@@ -760,10 +790,10 @@
              
               var addTableRow =     
                  '    <tr id="bondList_${dto.bond_num}">'+
-                  '    <td></td>'+
+                  '    <td><input type="checkbox" class="checkRow" name="checkRow" data-symbols="${bond.bond_num}" /></td>'+
                   '    <td style="display:none;"><input type="hidden" name="bond_num" value="${dto.bond_num}" /></td>'+
-                  '    <td><input type="text" id="bond_symbols" name="bond_symbols" placeholder="종목명" size="5"/></td>'+
-                  '    <td><input type="text" id="total_interest" name="total_interest" placeholder="세후이자" size="7"/></td>'+
+                  '    <td><input type="text" id="bond_symbols" name="bond_symbols" placeholder="종목명" size="7"/></td>'+
+                  '    <td><input type="text" id="total_interest" name="total_interest" placeholder="세후이자" size="6"/></td>'+
                   '    <td><select id="bond_company" name="bond_company" placeholder="증권사">'+
                   '    <option value="" disabled selected>증권사</option>'+
                   '    <option value="한국투자증권">한국투자증권</option>'+
@@ -833,7 +863,6 @@
                 return true;
              }
              
-                theForm = document.form;
                 document.getElementById("frm").action = "writeBond";
                 document.getElementById("frm").submit();
        
@@ -868,7 +897,6 @@
                 return true;
              }
              
-                theForm = document.form;
                 document.getElementById("frm").action = "modifyBond";
                 document.getElementById("frm").submit();
        
@@ -925,16 +953,11 @@
                console.log(num);
                
                // checkBtn.parent() : checkBtn의 부모는 <td>이다.
-                  // checkBtn.parent().parent() : <td>의 부모이므로 <tr>이다.
-                  var tr = checkBtn.parent().parent();
-                  var td = tr.children();
-                  var id = tr.attr('id');
-                  console.log("id: "+id);
-               
-               // tr.text()는 클릭된 Row 즉 tr에 있는 모든 값을 가져온다.
-               console.log("클릭한 row의 모든 데이터: "+tr.text());
-               
-               
+               // checkBtn.parent().parent() : <td>의 부모이므로 <tr>이다.
+               var tr = checkBtn.parent().parent();
+               var td = tr.children();
+               var id = tr.attr('id');
+  
                // 반복문을 이용해서 배열에 값을 담아 사용할 수 도 있다.
                   td.each(function(i){
                       tdArr.push(td.eq(i).text());
@@ -943,10 +966,10 @@
                console.log("배열에 담긴 값: "+tdArr);
 
                str +=     
-                     '    <td></td>'+
+                     '    <td><input type="checkbox" class="checkRow" name="checkRow" data-symbols='+tdArr[1]+' checked="checked" /></td>'+
                      '    <td style="display:none;"><input type="hidden" name="bond_num" value='+tdArr[1]+' /></td>'+
-                     '    <td><input type="text" id="bond_symbols" name="bond_symbols" value='+tdArr[2]+' placeholder='+tdArr[2]+' size="5"/></td>'+
-                     '    <td><input type="text" id="total_interest" name="total_interest" value='+tdArr[3]+' placeholder='+tdArr[3]+' size="7"/></td>'+
+                     '    <td><input type="text" id="bond_symbols" name="bond_symbols" value='+tdArr[2]+' placeholder='+tdArr[2]+' size="7"/></td>'+
+                     '    <td><input type="text" id="total_interest" name="total_interest" value='+tdArr[3].replace(/[^0-9]/g,'')+' placeholder='+tdArr[3]+' size="6"/></td>'+
                      '    <td><select id="bond_company" name="bond_company" placeholder="bond_company">'+
                      '    <option value='+tdArr[4]+' selected>'+tdArr[4]+'</option>'+
                      '    <option value="한국투자증권">한국투자증권</option>'+
@@ -961,11 +984,11 @@
                      '    <option value="대신증권">대신증권</option>'+
                      '    <option value="유안타증권">유안타증권</option>'+
                      '    </select></td>'+
-                     '    <td><input type="text" id="bond_price" name="bond_price" value='+tdArr[5]+' placeholder='+tdArr[5]+' size="6"/></td>'+
+                     '    <td><input type="text" id="bond_price" name="bond_price" value='+tdArr[5].replace(/[^0-9]/g,'')+' placeholder='+tdArr[5]+' size="6"/></td>'+
                      '    <td><input type="date" id="bond_date" name="bond_date" value='+tdArr[6]+' placeholder='+tdArr[6]+' /></td>'+
-                     '    <td><input type="text" id="coupon_interest_rate" name="coupon_interest_rate" value='+tdArr[7]+' placeholder='+tdArr[7]+' size="6"/></td>'+
-                     '    <td><input type="text" id="discount_rate" name="discount_rate" value='+tdArr[8]+' placeholder='+tdArr[8]+' size="6"/></td>'+
-                     '    <td><input type="text" id="gross_price" name="gross_price" value='+tdArr[9]+' placeholder='+tdArr[9]+' size="6"/></td>'+
+                     '    <td><input type="text" id="coupon_interest_rate" name="coupon_interest_rate" value='+tdArr[7].replace(/[^0-9]/g,'')+' placeholder='+tdArr[7]+' size="6"/></td>'+
+                     '    <td><input type="text" id="discount_rate" name="discount_rate" value='+tdArr[8].replace(/[^0-9]/g,'')+' placeholder='+tdArr[8]+' size="6"/></td>'+
+                     '    <td><input type="text" id="gross_price" name="gross_price" value='+tdArr[9].replace(/[^0-9]/g,'')+' placeholder='+tdArr[9]+' size="6"/></td>'+
                      '    <td><input type="date" id="maturity_date" name="maturity_date" value='+tdArr[10]+' placeholder='+tdArr[10]+' /></td>'+
                      '    <td><select id="grade" name="grade" placeholder="grade">'+
                      '    <option value='+tdArr[11]+' selected>'+tdArr[11]+'</option>'+
@@ -980,7 +1003,7 @@
                      '    <option value="C">C</option>'+
                      '    <option value="D">D</option>'+
                      '    </select>'+
-                     '      <button type="button" class="bttn-material-flat assets-submit-bttn" onclick="modifyCheck();"></button></td>';
+                     '    <button type="button" class="bttn-material-flat assets-submit-bttn" onclick="modifyCheck();"></button></td>';
                
                $("#"+id).html(str);
                

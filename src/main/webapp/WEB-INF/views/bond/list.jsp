@@ -382,9 +382,6 @@
 		    
 		    //삭제 버튼
 		    $(document).on("click","button[name=delRow]",function(){
-		    	//var confirm_val = confirming("정말 삭제하시겠습니까?");
-		    	  
-		    	  //if(confirm_val) {
 		    	   var checkArr = [];
 		    	   
 		    	   $("input[class='checkRow']:checked").each(function(){
@@ -406,7 +403,6 @@
 		    	    			
 		    	    	}
 		    	    });
-		    	   //}
 
  	        });
 		    
