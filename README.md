@@ -10,7 +10,7 @@ Asset management project of Minju Kim, Tae Jun Kim, In Hye Ryu, Jae Kwon Song an
 https://drive.google.com/file/d/109lKpXZsKms7LUmtHJPUyxwF70AZOXDi/view?usp=sharing
 ## 주요 구현 내용
 
-#####가계부
++가계부
 <img src="./images/bank_trans.gif" width="800" height="500">
 
 
