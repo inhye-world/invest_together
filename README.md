@@ -11,14 +11,22 @@ https://drive.google.com/file/d/109lKpXZsKms7LUmtHJPUyxwF70AZOXDi/view?usp=shari
 
 <img src="./images/bank_trans.gif" width="800" height="500">  
 
+
+
 + 자산(주식) : 보유 주식의 실시간 현재가 및 평가 손익을 알 수 있다.
 
 <img src="./images/asset_stock.gif" width="800" height="500">  
 
+
+
 + 자산(채권) : 보유 채권 현황을 정리할 수 있다.
 <img src="./images/asset_bond.gif" width="800" height="500">  
 
+
+
 + 투자 랭킹 : 투자 규모별 리그로 나눠 각 회원의 투자랭킹을 알 수 있으며, 원하는 회원의 포트폴리오를 구독할 수 있다.
 <img src="./images/ranking.gif" width="800" height="500">
+
+
 
 ## How To Start
