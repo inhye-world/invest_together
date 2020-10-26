@@ -39,9 +39,4 @@ public class MainCotroller {
 		return "error/accessDenied";
 	}
 	
-	@RequestMapping("/index")
-	public String testmain() {
-		return "main/index";
-	}
-	
 }
