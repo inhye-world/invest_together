@@ -29,4 +29,9 @@ https://drive.google.com/file/d/109lKpXZsKms7LUmtHJPUyxwF70AZOXDi/view?usp=shari
 
 
 
++ 관리자 패이지 : 주간 월간 매출 분석과 공지 사항을 기재할 수 있는 페이지
+<img src="./images/adminPage.gif" width="800" height="500">
+
+
+
 ## How To Start
