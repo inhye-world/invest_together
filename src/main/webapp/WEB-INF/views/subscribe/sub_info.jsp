@@ -426,7 +426,7 @@
 						<c:forEach var="bond" items="${bondList}">
 							<tr>
 			                    <td>${bond.bond_symbols}</td>
-			                    <td><fmt:formatNumber type="number" maxFractionDigits="3" value="${bond.total_interest}" />원</td>
+			                    <td><fmt:formatNumber type="number" maxFractionDigits="3" value="${bond.total_interest}" />%</td>
 			                    <td>${bond.bond_company}</td>
 			                    <td><fmt:formatNumber type="number" maxFractionDigits="3" value="${bond.bond_price}" />원</td>
 			                    <td><fmt:parseDate var="dateString" value="${bond.bond_date}" pattern="yyyy-MM-dd HH:mm:ss" /><fmt:formatDate value="${dateString}" pattern="yyyy-MM-dd" /></td>

@@ -388,7 +388,7 @@
                                 </div>
                                 <!-- button -->
 									<button name="git" id="git" class="btn10" onclick="window.open('https://github.com/inhye-world/invest_together.git')">
-									     <span>같이투자 Git</span>
+									     <span>GO TO GIT</span>
 									  <div class="transition"></div>
 									</button>
                                 </div>
@@ -443,7 +443,23 @@
 		});
 	});
 	</script>
+	
+	 <script>
+			function numberPad(n, width) {
+			    n = n + '';
+			    return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;
+			}	
+		
+			var date = new Date();
+			var year = date.getFullYear();
+			var month = numberPad((date.getMonth()+1), 2);
 
+			$("#accountTransaction").attr("onclick", "location.href='accountTransaction-"+year+"-"+month+"'");
+			$("#transShortcut").attr("onclick", "location.href='accountTransaction-"+year+"-"+month+"'");
+			$("#salaryList").attr("onclick", "location.href='salaryList-"+year+"-"+month+"'");
+			
+	</script>
+	
     <!-- Scroll Up -->
     <div id="back-top" >
         <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
@@ -492,27 +508,6 @@
     <script src="./resources/main/assets/js/plugins.js"></script>
     <script src="./resources/main/assets/js/main.js"></script>
     
-    <script>
-			function numberPad(n, width) {
-			    n = n + '';
-			    return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;
-			}	
-		
-			var date = new Date();
-			var year = date.getFullYear();
-			var month = numberPad((date.getMonth()+1), 2);
-
-			$(function() {
-				$("#accountTransaction").attr("onclick", "location.href='accountTransaction-"+year+"-"+month+"'");
-			});
-		
-			$(function() {
-				$("#transShortcut").attr("onclick", "location.href='accountTransaction-"+year+"-"+month+"'");
-			});
-		
-			$(function() {
-				$("#salaryList").attr("onclick", "location.href='salaryList-"+year+"-"+month+"'");
-			});
-	</script>
+   
     </body>
 </html>

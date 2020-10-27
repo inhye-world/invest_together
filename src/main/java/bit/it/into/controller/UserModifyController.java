@@ -213,10 +213,14 @@ public class UserModifyController {
 	}
 	
 	@RequestMapping("/alterEmail")
-	public String alterEmail(MemberDTO memberDTO, HttpServletResponse response) throws Exception {
+	public String alterEmail(MemberDTO memberDTO, Authentication authentication) throws Exception {
 		log.info("UserModifyController - emailChange()");
 		
-		userService.changeEmail(memberDTO.getEmail());
+		CustomUser user = (CustomUser)authentication.getPrincipal();
+		
+		user.getDto().setEmail(memberDTO.getEmail());
+		
+		userService.changeEmail(user.getDto().getEmail());
 			
 		return "user/alterEmail";
 	}

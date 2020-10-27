@@ -45,7 +45,7 @@
          margin-bottom:150px;
          padding-top: 150px;
          padding-bottom: 300px;
-         height: 600px;
+         height: 1000px;
       }
       
       .setPrice{

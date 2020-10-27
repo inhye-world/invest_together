@@ -15,32 +15,31 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>	
 	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
+	<style>
+	   	.wrapper{
+	   		margin: 10% 0;
+	   	}
+    </style>
 </head>
 	<body>
-	<script>
-		
-		function alerting(content){
-    		AstNotif.dialog('알림', content, {
-        	  theme: 'default',
-        	});
-    	}
-	</script>
-		
-		<script type="text/javascript">
-			alerting("이메일이 전송되었습니다. 메일 인증 후 정상적으로 로그인이 가능합니다.")
-		</script>
-		
+		<jsp:include page="../main/header.jsp"/>
 		<div class="wrapper">
-			<jsp:include page="../main/header.jsp"/>
 			<div class="loginSucceed">
-				<br><br><br><br><br>
-				
 				<h3 style="text-align:center">회원가입이 완료 되었습니다 </h3>
 				<h3 style="text-align:center">이메일 인증 후 정상적으로 로그인이 가능합니다.</h3>
-				<br><br><br><br><br><br>
-
 			</div>
-			<jsp:include page="../main/footer.jsp"/>
 		</div>
+		<jsp:include page="../main/footer.jsp"/>
+		
+		<script type="text/javascript">
+		
+			function alerting(content){
+		   		AstNotif.dialog('알림', content, {
+		       	  theme: 'default',
+		       	});
+		   	}
+		
+			alerting("이메일이 전송되었습니다. 메일 인증 후 정상적으로 로그인이 가능합니다.")
+		</script>
 	</body>
 </html>
