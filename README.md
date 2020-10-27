@@ -4,7 +4,9 @@
 Asset management project of Minju Kim, Tae Jun Kim, In Hye Ryu, Jae Kwon Song and Sun Young Yang.
 
 ## 발표자료
-https://drive.google.com/file/d/109lKpXZsKms7LUmtHJPUyxwF70AZOXDi/view?usp=sharing
+https://drive.google.com/file/d/1VDPSVw0yvgwWtrc7eFYQAYk2WrvG6dkU/view?usp=sharing
+
+
 ## 주요 구현 내용
 
 + 가계부 : 회원들의 월별 거래 내역과 그래프를 통해 한눈에 소비패턴을 알 수 있다.
