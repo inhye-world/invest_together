@@ -47,7 +47,7 @@
 	   	function deleteBond() {
 	 	    var checkArr = [];
 	       
-	        $("input[class='checkRow']:checked").each(function(){
+	        $("input[name='checkRow']:checked").each(function(){
 	       		checkArr.push($(this).attr("data-symbols"));
 	        });
 	        
@@ -73,13 +73,26 @@
       	var buyStockisRun = false;
       	var sellStockisRun = false;
       	var checking = -1;
+      	var checking2 = -1;
       	var stockSum = 0;
       	var bondSum = 0;
       	var accountSum = ${accountSum}
       
       	var addBondisRun = false;
       	var modifyBondisRun = false;
-      
+      	
+      	var bnArr = [];
+      	var bsArr = [];
+      	var btiArr = [];
+      	var bcArr = [];
+      	var bpArr = [];
+      	var bdArr = [];
+      	var bcirArr = [];
+      	var bdrArr = [];
+      	var bgpArr = [];
+      	var bmdArr = [];
+      	var bgArr = [];
+      	
       	function alerting(content){
           	AstNotif.dialog('알림', content, {
             	theme: 'default',
@@ -615,9 +628,9 @@
                      var bondisEmpty = true;
                   </script>   
                   </c:if>
-                  <c:forEach var="bond" items="${bondList}">
-                     <tr id="bondList_${bond.bond_num}">
-                             <td><input type="checkbox" class="checkRow" name="checkRow" data-symbols="${bond.bond_num}" /></td>
+                  <c:forEach var="bond" items="${bondList}" varStatus="status">
+                     <tr id="bondList_${bond.bond_num}" class="bond-${status.index}">
+                             <td><input type="checkbox" class="checkRow bond-check-${status.index}" name="checkRow" data-symbols="${bond.bond_num}" /></td>
                              <td style="display:none;">${bond.bond_num}</td> <!-- jQuery.Deferred exception의 원인 th, td 컬럼 수가 불일치 -->
                              <td>${bond.bond_symbols}</td>
                              <td><fmt:formatNumber type="number" maxFractionDigits="3" value="${bond.total_interest}" />%</td>
@@ -632,6 +645,29 @@
                           </tr>
                           
                       <script>
+                      	 var bn = ${bond.bond_num}
+                      	 bnArr.push(bn);
+                      	 var bs = "${bond.bond_symbols}";
+                      	 bsArr.push(bs);
+                      	 var bti = ${bond.total_interest}
+                      	 btiArr.push(bti);
+                      	 var bc = "${bond.bond_company}";
+                      	 bcArr.push(bc);
+                      	 var bp = ${bond.bond_price}
+                      	 bpArr.push(bp);
+                      	 var bd = "${bond.bond_date}";
+                      	 bdArr.push(bd);
+                      	 var bcir = ${bond.coupon_interest_rate}
+                      	 bcirArr.push(bcir);
+                      	 var bdr = ${bond.discount_rate}
+                      	 bdrArr.push(bdr);
+                      	 var bgp = ${bond.gross_price}
+                      	 bgpArr.push(bgp);
+                      	 var bmd = "${bond.maturity_date}";
+                      	 bmdArr.push(bmd);
+                      	 var bg = "${bond.grade}";
+                      	 bgArr.push(bg);
+                      
                          var bondprice = ${bond.bond_price}
                          bondSum += bondprice;
                          
@@ -646,6 +682,7 @@
       </div>
    <jsp:include page="../main/footer.jsp"/>
    
+   <script type='text/javascript' src="https://momentjs.com/downloads/moment.js"></script>
    <script type="text/javascript">
           
           function alerting(content){
@@ -787,7 +824,7 @@
 	             
 	             var addTableRow =     
 	                 '    <tr id="bondList_${dto.bond_num}">'+
-	                 '    <td><input type="checkbox" class="checkRow" name="checkRow" data-symbols="${bond.bond_num}" /></td>'+
+	                 '    <td><button type="button" class="bttn-material-flat assets-submit-bttn" onclick="insertCheck();"></button></td>'+
 	                 '    <td style="display:none;"><input type="hidden" name="bond_num" value="${dto.bond_num}" /></td>'+
 	                 '    <td><input type="text" id="bond_symbols" name="bond_symbols" placeholder="종목명" size="7"/></td>'+
 	                 '    <td><input type="text" id="total_interest" name="total_interest" placeholder="세후이자" size="6"/></td>'+
@@ -824,13 +861,15 @@
 	                 '    <option value="C">C</option>'+
 	                 '    <option value="D">D</option>'+
 	                 '    </select>'+
-	                 '      <button type="button" class="bttn-material-flat assets-submit-bttn" onclick="insertCheck();"></button></td>'+
+	                 '    </td>'+
 	                 '</tr>';
 	                 
 	            $("#bond_tbody").append(addTableRow);
 	            addBondisRun = true;
           	}else {
-          		return false;
+          		$("#bond-table tr:last").remove();
+                $("#bond-table tr:last").css("display", "table-row");
+                addBondisRun=false;
           	}
           });
 
@@ -919,7 +958,7 @@
           $(document).on("click","button[name=delRow]",function(){
         	  var checkCount2 = 0;
               
-        	  $("input[class='checkRow']:checked").each(function(){
+        	  $("input[name='checkRow']:checked").each(function(){
               	 checkCount2 += 1;
               });
               
@@ -943,75 +982,139 @@
           
           
         //수정 input박스 띄우기 
-         $(document).on("click","button[name=modify]",function(){
-            $("input[class='checkRow']:checked").each(function(){
-               
-               var str = "";
-               var tdArr = new Array();
-               var checkBtn = $(this);
-               var num = $(this).attr("data-symbols");
-               console.log(num);
-               
-               // checkBtn.parent() : checkBtn의 부모는 <td>이다.
-               // checkBtn.parent().parent() : <td>의 부모이므로 <tr>이다.
-               var tr = checkBtn.parent().parent();
-               var td = tr.children();
-               var id = tr.attr('id');
-  
-               // 반복문을 이용해서 배열에 값을 담아 사용할 수 도 있다.
-                  td.each(function(i){
-                      tdArr.push(td.eq(i).text());
-                  });
-
-               console.log("배열에 담긴 값: "+tdArr);
-
-               str +=     
-                     '    <td><input type="checkbox" class="checkRow" name="checkRow" data-symbols='+tdArr[1]+' checked="checked" /></td>'+
-                     '    <td style="display:none;"><input type="hidden" name="bond_num" value='+tdArr[1]+' /></td>'+
-                     '    <td><input type="text" id="bond_symbols" name="bond_symbols" value='+tdArr[2]+' placeholder='+tdArr[2]+' size="7"/></td>'+
-                     '    <td><input type="text" id="total_interest" name="total_interest" value='+tdArr[3].replace(/[^0-9]/g,'')+' placeholder='+tdArr[3]+' size="6"/></td>'+
-                     '    <td><select id="bond_company" name="bond_company" placeholder="bond_company">'+
-                     '    <option value='+tdArr[4]+' selected>'+tdArr[4]+'</option>'+
-                     '    <option value="한국투자증권">한국투자증권</option>'+
-                     '    <option value="미래에셋대우">미래에셋대우</option>'+
-                     '    <option value="메리츠종금증권">메리츠종금증권</option>'+
-                     '    <option value="NH투자증권">NH투자증권</option>'+
-                     '    <option value="삼성증권">삼성증권</option>'+
-                     '    <option value="신한금융투자">신한금융투자</option>'+
-                     '    <option value="키움증권">키움증권</option>'+
-                     '    <option value="KB증권">KB증권</option>'+
-                     '    <option value="하나금융투자">하나금융투자</option>'+
-                     '    <option value="대신증권">대신증권</option>'+
-                     '    <option value="유안타증권">유안타증권</option>'+
-                     '    </select></td>'+
-                     '    <td><input type="text" id="bond_price" name="bond_price" value='+tdArr[5].replace(/[^0-9]/g,'')+' placeholder='+tdArr[5]+' size="6"/></td>'+
-                     '    <td><input type="date" id="bond_date" name="bond_date" value='+tdArr[6]+' placeholder='+tdArr[6]+' /></td>'+
-                     '    <td><input type="text" id="coupon_interest_rate" name="coupon_interest_rate" value='+tdArr[7].replace(/[^0-9]/g,'')+' placeholder='+tdArr[7]+' size="6"/></td>'+
-                     '    <td><input type="text" id="discount_rate" name="discount_rate" value='+tdArr[8].replace(/[^0-9]/g,'')+' placeholder='+tdArr[8]+' size="6"/></td>'+
-                     '    <td><input type="text" id="gross_price" name="gross_price" value='+tdArr[9].replace(/[^0-9]/g,'')+' placeholder='+tdArr[9]+' size="6"/></td>'+
-                     '    <td><input type="date" id="maturity_date" name="maturity_date" value='+tdArr[10]+' placeholder='+tdArr[10]+' /></td>'+
-                     '    <td><select id="grade" name="grade" placeholder="grade">'+
-                     '    <option value='+tdArr[11]+' selected>'+tdArr[11]+'</option>'+
-                     '    <option value="AAA">AAA</option>'+
-                     '    <option value="AA">AA</option>'+
-                     '    <option value="A">A</option>'+
-                     '    <option value="BBB">BBB</option>'+
-                     '    <option value="BB">BB</option>'+
-                     '    <option value="B">B</option>'+
-                     '    <option value="CCC">CCC</option>'+
-                     '    <option value="CC">CC</option>'+
-                     '    <option value="C">C</option>'+
-                     '    <option value="D">D</option>'+
-                     '    </select>'+
-                     '    <button type="button" class="bttn-material-flat assets-submit-bttn" onclick="modifyCheck();"></button></td>';
-               
-               $("#"+id).html(str);
-               
-               modifyBondisRun = true;
-                });
+        $(document).on("click","button[name=modify]",function(){
+        	if(addBondisRun) {
+        		alerting("채권 추가중에는 수정하실 수 없습니다")
+        		return false;
+        	}
+        	
+        	var check2;
+            var checkCount2 = 0;
+            for(var i=0; i<bnArr.length; ++i) {
+               	if($(".bond-check-"+i).is(":checked")==true) {
+                	check2 = i;
+                  	++checkCount2;
+            	}
+            }
+        	
+            if(checkCount2>1) {
+               	alerting("한개만 체크해주세요");
+            	return false;
+            }
+        	
+            if(checkCount2==0 && modifyBondisRun) {
+            	var str = 	'<td><input type="checkbox" class="checkRow bond-check-'+checking2+'" name="checkRow" data-symbols="'+bnArr[checking2]+'" /></td>';
+        		str +=	'<td style="display:none;">'+bnArr[checking2]+'</td>';
+        		str +=	'<td>'+bsArr[checking2]+'</td>';
+        		str += 	'<td>'+btiArr[checking2].toLocaleString()+'%</td>';
+        		str += 	'<td>'+bcArr[checking2]+'</td>';
+        		str +=	'<td>'+bpArr[checking2].toLocaleString()+'원</td>';
+        		str +=	'<td>'+moment(bdArr[checking2]).format("YYYY-MM-DD");+'</td>';
+        		str +=	'<td>'+bcirArr[checking2]+'%</td>';
+        		str +=	'<td>'+bdrArr[checking2]+'%</td>';
+        		str +=	'<td>'+bgpArr[checking2].toLocaleString()+'원</td>';
+        		str	+=	'<td>'+moment(bmdArr[checking2]).format("YYYY-MM-DD");+'</td>';
+        		str +=	'<td>'+bgArr[checking2]+'</td>';
+        	
+        		$(".bond-"+checking2).html(str);	
+            	
+            	modifyBondisRun = false;
+            	checking2 = -1;
+            	return false;
+            }
             
-              
-          }); 
+            if(checkCount2==0) {
+            	alerting("수정할 채권을 선택해주세요")
+            	return false;
+            }
+        	
+            if(checkCount2==1) {
+	            if(checking2 != -1) {
+	            	var str = 	'<td><input type="checkbox" class="checkRow bond-check-'+checking2+'" name="checkRow" data-symbols="'+bnArr[checking2]+'" /></td>';
+	            		str +=	'<td style="display:none;">'+bnArr[checking2]+'</td>';
+	            		str +=	'<td>'+bsArr[checking2]+'</td>';
+	            		str += 	'<td>'+btiArr[checking2].toLocaleString()+'%</td>';
+	            		str += 	'<td>'+bcArr[checking2]+'</td>';
+	            		str +=	'<td>'+bpArr[checking2].toLocaleString()+'원</td>';
+	            		str +=	'<td>'+moment(bdArr[checking2]).format("YYYY-MM-DD");+'</td>';
+	            		str +=	'<td>'+bcirArr[checking2]+'%</td>';
+	            		str +=	'<td>'+bdrArr[checking2]+'%</td>';
+	            		str +=	'<td>'+bgpArr[checking2].toLocaleString()+'원</td>';
+	            		str	+=	'<td>'+moment(bmdArr[checking2]).format("YYYY-MM-DD");+'</td>';
+	            		str +=	'<td>'+bgArr[checking2]+'</td>';
+	            	
+	            	$(".bond-"+checking2).html(str);	
+	            }
+            	
+            	
+            	$("input[name='checkRow']:checked").each(function(){
+	               
+	               var str = "";
+	               var tdArr = new Array();
+	               var checkBtn = $(this);
+	               var num = $(this).attr("data-symbols");
+	               console.log(num);
+	               
+	               // checkBtn.parent() : checkBtn의 부모는 <td>이다.
+	               // checkBtn.parent().parent() : <td>의 부모이므로 <tr>이다.
+	               var tr = checkBtn.parent().parent();
+	               var td = tr.children();
+	               var id = tr.attr('id');
+	  
+	               // 반복문을 이용해서 배열에 값을 담아 사용할 수 도 있다.
+	                  td.each(function(i){
+	                      tdArr.push(td.eq(i).text());
+	                  });
+	
+	               console.log("배열에 담긴 값: "+tdArr);
+	
+	               str +=     
+	                     '    <td><button type="button" class="bttn-material-flat assets-submit-bttn" onclick="modifyCheck();"></button></td>'+
+	                     '    <td style="display:none;"><input type="hidden" name="bond_num" value='+tdArr[1]+' /></td>'+
+	                     '    <td><input type="text" id="bond_symbols" name="bond_symbols" value='+tdArr[2]+' placeholder='+tdArr[2]+' size="7"/></td>'+
+	                     '    <td><input type="text" id="total_interest" name="total_interest" value='+tdArr[3].replace(/[^0-9]/g,'')+' placeholder='+tdArr[3]+' size="6"/></td>'+
+	                     '    <td><select id="bond_company" name="bond_company" placeholder="bond_company">'+
+	                     '    <option value='+tdArr[4]+' selected>'+tdArr[4]+'</option>'+
+	                     '    <option value="한국투자증권">한국투자증권</option>'+
+	                     '    <option value="미래에셋대우">미래에셋대우</option>'+
+	                     '    <option value="메리츠종금증권">메리츠종금증권</option>'+
+	                     '    <option value="NH투자증권">NH투자증권</option>'+
+	                     '    <option value="삼성증권">삼성증권</option>'+
+	                     '    <option value="신한금융투자">신한금융투자</option>'+
+	                     '    <option value="키움증권">키움증권</option>'+
+	                     '    <option value="KB증권">KB증권</option>'+
+	                     '    <option value="하나금융투자">하나금융투자</option>'+
+	                     '    <option value="대신증권">대신증권</option>'+
+	                     '    <option value="유안타증권">유안타증권</option>'+
+	                     '    </select></td>'+
+	                     '    <td><input type="text" id="bond_price" name="bond_price" value='+tdArr[5].replace(/[^0-9]/g,'')+' placeholder='+tdArr[5]+' size="6"/></td>'+
+	                     '    <td><input type="date" id="bond_date" name="bond_date" value='+tdArr[6]+' placeholder='+tdArr[6]+' /></td>'+
+	                     '    <td><input type="text" id="coupon_interest_rate" name="coupon_interest_rate" value='+tdArr[7].replace(/[^0-9]/g,'')+' placeholder='+tdArr[7]+' size="6"/></td>'+
+	                     '    <td><input type="text" id="discount_rate" name="discount_rate" value='+tdArr[8].replace(/[^0-9]/g,'')+' placeholder='+tdArr[8]+' size="6"/></td>'+
+	                     '    <td><input type="text" id="gross_price" name="gross_price" value='+tdArr[9].replace(/[^0-9]/g,'')+' placeholder='+tdArr[9]+' size="6"/></td>'+
+	                     '    <td><input type="date" id="maturity_date" name="maturity_date" value='+tdArr[10]+' placeholder='+tdArr[10]+' /></td>'+
+	                     '    <td><select id="grade" name="grade" placeholder="grade">'+
+	                     '    <option value='+tdArr[11]+' selected>'+tdArr[11]+'</option>'+
+	                     '    <option value="AAA">AAA</option>'+
+	                     '    <option value="AA">AA</option>'+
+	                     '    <option value="A">A</option>'+
+	                     '    <option value="BBB">BBB</option>'+
+	                     '    <option value="BB">BB</option>'+
+	                     '    <option value="B">B</option>'+
+	                     '    <option value="CCC">CCC</option>'+
+	                     '    <option value="CC">CC</option>'+
+	                     '    <option value="C">C</option>'+
+	                     '    <option value="D">D</option>'+
+	                     '    </select>'+
+	                     '    </td>';
+               
+               		$("#"+id).html(str);
+               
+               	});
+            	checking2 = check2;
+            	modifyBondisRun = true;  	
+        	} 
+      	}); 
 
       </script>
       
