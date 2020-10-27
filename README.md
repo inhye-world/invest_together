@@ -29,7 +29,7 @@ https://drive.google.com/file/d/109lKpXZsKms7LUmtHJPUyxwF70AZOXDi/view?usp=shari
 
 
 
-+ 관리자 페이지 : 관리자 모드로 접속 시, 주간 월간 매출 분석 조회와 공지 사항 기재할 수 있는 페이지
++ 관리자 페이지 : 관리자 모드로 접속 시, 주간 월간 매출 분석 조회와 공지사항 기재할 수 있는 페이지
 <img src="./images/adminPage.gif" width="800" height="500">
 
 
