@@ -54,11 +54,11 @@
       }
       #myPieChart{
          height:250px;
-         margin-left:100px;
       }
       
       #test{
-         margin-left:100px;
+      	 text-align: center;
+      	 padding-top: 25px;
       }
       #salary-modify-form{
          width:100%;
