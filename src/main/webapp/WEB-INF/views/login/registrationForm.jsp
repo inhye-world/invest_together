@@ -43,7 +43,7 @@
 					<div>${valid_nickname} </div>
 					<input type="text" name="email" placeholder="이메일" value="${dto.email}" />
 					<div>${valid_email} </div>
-					<input type="text" name="phone" placeholder="핸드폰" value="${dto.phone}" maxlength="11"/>
+					<input type="text" name="phone" placeholder="핸드폰번호(-없이 입력해주세요.)" value="${dto.phone}" maxlength="11"/>
 					<div>${valid_phone} </div>
 					<input id="regi-submit" class="button5" type="submit" value="가입">
 				</form:form>
