@@ -98,8 +98,6 @@
 				dataType: "json",
 				data: {"nickname": nickname},
 				success: function(result) {
-					console.log(result);
-					
 					if(result.ranking.league=="empty") {
 						return;
 					}

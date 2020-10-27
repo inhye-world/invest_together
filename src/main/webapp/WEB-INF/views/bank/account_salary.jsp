@@ -20,7 +20,12 @@
    <link href="resources/ranking.css" rel="stylesheet" type="text/css">
    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
 
-
+   <script>
+   	  var count=0;
+   	  var accountSum = ${sum1}
+   	  var accountSum2 = ${sum2}
+   	  var accountSum3 = ${sum3}
+   </script>
    <style>
    
       .button {
@@ -95,8 +100,7 @@
                      <canvas id="myPieChart"></canvas>
                      <br>
                   </div>
-               </c:if>
-                  <div id="test">
+               	  <div id="test">
                      <span >
                               <i class="fas fa-circle text-primary"></i> 적금 &nbsp;
                         </span>
@@ -106,7 +110,9 @@
                         <span >
                             <i class="fas fa-circle text-success"></i> 자유 입출금 &nbsp;
                         </span> 
-                      </div><br>
+                  </div>	
+               </c:if>
+               <br>   
                <div class="account-list">
                   <div >
                      <button id="modifySalT" class="btn">수정</button>
@@ -153,20 +159,8 @@
                               <td class="test2"><input type="hidden" name="fintech_use_num" value="${salary.fintech_use_num}" /><button id="modifyBtn-${status.index}" class="btn" style="padding: 20px;font-size:1em;border:1px solid #fff;background-color: #595959;border-radius: 4px;">저장</button></td>
                            </tr>
                            <script>
-                               var count = ${status.count} 
+                               count = ${status.count} 
                            </script>
-                           <script>
-                               var accountSum = ${sum1}
-                               accountSum += sum1;
-                           </script>
-                           <script>
-                              var accountSum2= ${sum2}
-                              accountSum2 += sum2;   
-                           </script>   
-                           <script>
-                              var accountSum3= ${sum3}
-                              accountSum3 += sum3;   
-                           </script>   
                         </c:forEach>                
                      </tbody>
                   </table>

@@ -216,11 +216,17 @@ public class UserModifyController {
 	public String alterEmail(MemberDTO memberDTO, Authentication authentication) throws Exception {
 		log.info("UserModifyController - emailChange()");
 		
+		if(authentication==null) {
+			return "login/login_require";
+		}
+		
 		CustomUser user = (CustomUser)authentication.getPrincipal();
 		
 		user.getDto().setEmail(memberDTO.getEmail());
 		
-		userService.changeEmail(user.getDto().getEmail());
+		MemberDTO dto = user.getDto();
+		
+		userService.changeEmail(dto);
 			
 		return "user/alterEmail";
 	}

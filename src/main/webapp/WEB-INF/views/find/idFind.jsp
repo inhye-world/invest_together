@@ -178,41 +178,39 @@
 				/* 이메일 중복 체크 후 메일 발송 비동기 처리 */
 				$.ajax({
 					type:"get",
-					url : "rest/idEmailSend",
+					url : "rest/idEmailSend?email=" + $("#email").val() + "&name=" + $("#name").val(),
 					dataType: 'json',
-					data : "email=" + $("#email").val() + "&name=" + $("#name").val(),
+					success : function(data){
 					
-				success : function(data){
+						console.log(data);
+						
+						if(data.hasEmail) {
+							$(".verifyNumber-input").attr({"style":"display:inline-block"});
+							$("#verifyNumber-submit").attr({"style":"display:inline-block"});
+							
+							alerting("이메일이 발송되었습니다.");
+							
+							$("#authKey").val(data.authKey);
+							var authEmail = $("#email").val();
+							$("#authEmail").val(authEmail);
+							
+						}else {
+							alerting("아이디 또는 이메일을 잘못 입력하셨습니다.")
+						}
+					},
 					
-					console.log(data);
+					beforeSend: function () {
+						 $('#preloader-active').show(); 
+					},
 					
-					if(data.hasEmail) {
-						$(".verifyNumber-input").attr({"style":"display:inline-block"});
-						$("#verifyNumber-submit").attr({"style":"display:inline-block"});
-						
-						alerting("이메일이 발송되었습니다.");
-						
-						$("#authKey").val(data.authKey);
-						var authEmail = $("#email").val();
-						$("#authEmail").val(authEmail);
-						
-					}else {
-						alerting("아이디 또는 이메일을 잘못 입력하셨습니다.")
+					error: function(data){
+						alerting("다시 입력해 주세요.");
+						return false;
+					},
+					
+					complete: function () {
+						$('#preloader-active').hide();
 					}
-				},
-				
-				beforeSend: function () {
-					 $('#preloader-active').show(); 
-				},
-				
-				error: function(data){
-					alerting("다시 입력해 주세요.");
-					return false;
-				},
-				
-				complete: function () {
-					$('#preloader-active').hide();
-				}
 				 
 			});	
 		}); 

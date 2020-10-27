@@ -67,7 +67,7 @@
 	
 	<update id="updateEmail">
 		<![CDATA[
-			update member set email = #{email}
+			update member set email = #{email} where member_num = #{member_num}
 		]]>
 	</update>
 	

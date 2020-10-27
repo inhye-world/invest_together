@@ -30,7 +30,7 @@ public interface UserMapper {
 
 	public void updateId(MemberDTO dto);
 
-	public void updateEmail(String email);
+	public void updateEmail(MemberDTO dto);
 	
 	public void updatePw(MemberDTO dto);
 	

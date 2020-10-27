@@ -69,9 +69,9 @@
                      <c:forEach items="${id}" var="dto">
                      <c:if test="${dto.sns_type eq 'normal'}">▷${dto.id}</c:if>
                      
-                     <c:if test="${dto.sns_type eq 'kakao'}">▷카카오 계정</c:if>         
+                     <c:if test="${dto.sns_type eq 'kakao'}"><br><br>▷카카오 계정</c:if>         
                      
-                     <br><br><c:if test="${dto.sns_type eq 'naver'}">▷네이버 계정</c:if>    
+                     <c:if test="${dto.sns_type eq 'naver'}"><br><br>▷네이버 계정</c:if>    
                      </c:forEach>
                      </div>
                      </article>

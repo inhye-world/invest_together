@@ -100,10 +100,10 @@ public class UserService {
 		
 	}
 	
-	public void changeEmail(String email) {
+	public void changeEmail(MemberDTO dto) {
 		log.info("UserService - changeEmail()");
 		
-		mapper.updateEmail(email);
+		mapper.updateEmail(dto);
 	}
 	
 	public void alterPw(MemberDTO dto) {
