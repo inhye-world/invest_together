@@ -33,5 +33,3 @@ https://drive.google.com/file/d/109lKpXZsKms7LUmtHJPUyxwF70AZOXDi/view?usp=shari
 <img src="./images/adminPage.gif" width="800" height="500">
 
 
-
-## How To Start
