@@ -9,206 +9,205 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <meta charset="UTF-8">
-   <title>같이투자 | 자산</title>
-   <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	<title>같이투자 | 자산</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
+	 <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
+	
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+	
+	<link href="resources/sb_admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
+	<!-- alert -->
+	<link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
+	<script src="resources/sb_admin/js/ast-notif.js"></script>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>   
+	   
+	<link href="resources/sb_admin/css/bttn.css" rel="stylesheet" type="text/css">
+	<link href="resources/ranking.css" rel="stylesheet" type="text/css">
+	<link href="resources/assets.css" rel="stylesheet" type="text/css">
+	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
    
-   <meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
-    <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
-   
-   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
-   
-   <link href="resources/sb_admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-   
-   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-   
-   <!-- alert -->
-   <link rel="stylesheet" href="resources/sb_admin/css/ast-notif.css" />
-   <script src="resources/sb_admin/js/ast-notif.js"></script>
-   
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>   
+	<script>
+		var stockbondCheck;
+	   	function deleteStock() {
+	 		$("#stock-form").attr("action", "deleteStock").submit();
+	   	}
+	   
+	   	function deleteBond() {
+	 	    var checkArr = [];
+	       
+	        $("input[class='checkRow']:checked").each(function(){
+	       		checkArr.push($(this).attr("data-symbols"));
+	        });
+	        
+	        $.ajax({
+	    		url : "deleteBond",
+	         	type : "post",
+	         	data : {"checkRow" : checkArr},
+	         	dataType : "json",
+	         	success : function(result){
+		            if(result == 1){
+		            	window.location.href = "/into/assets";
+		            }
+	            }
+	     	});
+		}
+	</script>
+   	<script src="resources/sb_admin/js/ast-notif-assets.js"></script>
+   	<script>
+    	var codeArr = [];
+      	var symbolArr = [];
+      	var priceArr = [];
+      	var quantityArr = [];
+      	var buyStockisRun = false;
+      	var sellStockisRun = false;
+      	var checking = -1;
+      	var stockSum = 0;
+      	var bondSum = 0;
+      	var accountSum = ${accountSum}
       
-   <link href="resources/sb_admin/css/bttn.css" rel="stylesheet" type="text/css">
-   <link href="resources/ranking.css" rel="stylesheet" type="text/css">
-   <link href="resources/assets.css" rel="stylesheet" type="text/css">
-   <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
-   
-   <script>
-   	  var stockbondCheck;
-      function deleteStock() {
-    	  $("#stock-form").attr("action", "deleteStock").submit();
-      }
+      	var addBondisRun = false;
+      	var modifyBondisRun = false;
       
-      function deleteBond() {
-    	  var checkArr = [];
-          
-          $("input[class='checkRow']:checked").each(function(){
-          	checkArr.push($(this).attr("data-symbols"));
-          });
-           
-          $.ajax({
-	      	url : "deleteBond",
-            type : "post",
-            data : {"checkRow" : checkArr},
-            dataType : "json",
-            success : function(result){
-                if(result == 1){
-                      window.location.href = "/into/assets";
-                }
-                   
-             }
-          });
-      }
-   </script>
-   <script src="resources/sb_admin/js/ast-notif-assets.js"></script>
-   <script>
-      var codeArr = [];
-      var symbolArr = [];
-      var priceArr = [];
-      var quantityArr = [];
-      var buyStockisRun = false;
-      var sellStockisRun = false;
-      var checking = -1;
-      var stockSum = 0;
-      var bondSum = 0;
-      var accountSum = ${accountSum}
+      	function alerting(content){
+          	AstNotif.dialog('알림', content, {
+            	theme: 'default',
+        	});
+       	}
       
-      var addBondisRun = false;
-      var modifyBondisRun = false;
-      
-      function alerting(content){
-          AstNotif.dialog('알림', content, {
-              theme: 'default',
-           });
-       }
-      
-   	  function confirming(content){
+   	  	function confirming(content){
             AstNotif.snackbar(content, {
                 theme: 'default',
              });
-      }
+      	}
    	  
-   	  function confirming2(content){
+   	  	function confirming2(content){
 			AstComeif.dialog('알림', content, {
 	    	  	theme: 'default',
 	        });
-   	  }	
+   	  	}	
       
-   	  $(function() {
+   	  	$(function() {
          
-         <c:if test="${!(empty stockList and empty bondList and accountSum==0)}">
+        	<c:if test="${!(empty stockList and empty bondList and accountSum==0)}">
          
-            // Set new default font family and font color to mimic Bootstrap's default styling
-            Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-            Chart.defaults.global.defaultFontColor = '#858796';
-   
-            // Pie Chart Example
-            var ctx = document.getElementById("myPieChart");
-            var myPieChart = new Chart(ctx, {
-              type: 'doughnut',
-              data: {
-                labels: ["현금", "주식", "채권"],
-                datasets: [{
-                  data: [accountSum, stockSum, bondSum],
-                  backgroundColor: ['#4e73df', '#09CC7F', '#36b9cc'],
-                  hoverBackgroundColor: ['#2e59d9', '#06995E', '#2c9faf'],
-                  hoverBorderColor: "rgba(234, 236, 244, 1)",
-                }],
-              },
-              options: {
-                maintainAspectRatio: true,
-                tooltips: {
-                  backgroundColor: "rgb(255,255,255)",
-                  bodyFontColor: "#858796",
-                  borderColor: '#dddfeb',
-                  borderWidth: 1,
-                  xPadding: 15,
-                  yPadding: 15,
-                  displayColors: false,
-                  caretPadding: 10,
-                  callbacks: {
-                     beforeLabel: function(tooltipItem, data) {
-                          return data.labels[tooltipItem.index]+" "+(data.datasets[0].data[tooltipItem.index]/(accountSum+stockSum+bondSum)*100).toFixed(2)+"%";      
-                     },
-                     label:function(tooltipItem, data) {
-                        return data.datasets[0].data[tooltipItem.index].toLocaleString()+"원";
-                     }
-                  }
-                },
-                legend: {
-                  display: false
-                },
-                cutoutPercentage: 80,
-              },
-            });
-         </c:if>
+	            // Set new default font family and font color to mimic Bootstrap's default styling
+	            Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+	            Chart.defaults.global.defaultFontColor = '#858796';
+	   
+	            // Pie Chart Example
+	            var ctx = document.getElementById("myPieChart");
+	            var myPieChart = new Chart(ctx, {
+	              type: 'doughnut',
+	              data: {
+	                labels: ["현금", "주식", "채권"],
+	                datasets: [{
+	                  data: [accountSum, stockSum, bondSum],
+	                  backgroundColor: ['#4e73df', '#09CC7F', '#36b9cc'],
+	                  hoverBackgroundColor: ['#2e59d9', '#06995E', '#2c9faf'],
+	                  hoverBorderColor: "rgba(234, 236, 244, 1)",
+	                }],
+	              },
+	              options: {
+	                maintainAspectRatio: true,
+	                tooltips: {
+	                  backgroundColor: "rgb(255,255,255)",
+	                  bodyFontColor: "#858796",
+	                  borderColor: '#dddfeb',
+	                  borderWidth: 1,
+	                  xPadding: 15,
+	                  yPadding: 15,
+	                  displayColors: false,
+	                  caretPadding: 10,
+	                  callbacks: {
+	                     beforeLabel: function(tooltipItem, data) {
+	                          return data.labels[tooltipItem.index]+" "+(data.datasets[0].data[tooltipItem.index]/(accountSum+stockSum+bondSum)*100).toFixed(2)+"%";      
+	                     },
+	                     label:function(tooltipItem, data) {
+	                        return data.datasets[0].data[tooltipItem.index].toLocaleString()+"원";
+	                     }
+	                  }
+	                },
+	                legend: {
+	                  display: false
+	                },
+	                cutoutPercentage: 80,
+	              },
+	            });
+         	</c:if>
          
-         for(var i=0; i<codeArr.length; ++i) {
+         	for(var i=0; i<codeArr.length; ++i) {
             
-            (function(i){
-               var url = 'rest/stockInfo/'+codeArr[i]+'.json';
-               
-               $.ajax({
-                  url: url,
-                  type: 'GET',
-                  dataType: 'json',
-                  success: function(result) {
-                     var curJuka = result.stockprice.TBL_StockInfo.CurJuka;
-                     $("#stock-"+i+" td:nth-child(5)").text(curJuka+"원");
-                     
-                     curJuka = parseInt(curJuka.replace(/,/g, ''));
-                     if(curJuka == priceArr[i]) {
-                        $("#stock-"+i+" td:nth-child(6)").text("-");
-                        $("#stock-"+i+" td:nth-child(7)").text("-");
-                     }else if(curJuka > priceArr[i]) {
-                        var yield = (curJuka-priceArr[i])/priceArr[i]*100;
-                        var pl = (curJuka-priceArr[i])*quantityArr[i];
-                        
-                        $("#stock-"+i+" td:nth-child(6)").text(yield.toFixed(2)+"%").css("color", "red");
-                        $("#stock-"+i+" td:nth-child(7)").text(pl.toLocaleString()+"원").css("color", "red");
-                     }else if(curJuka < priceArr[i]) {
-                        var yield = (priceArr[i]-curJuka)/priceArr[i]*100;
-                        var pl = (priceArr[i]-curJuka)*quantityArr[i];
-                        
-                        $("#stock-"+i+" td:nth-child(6)").text("-"+yield.toFixed(2)+"%").css("color", "blue");
-                        $("#stock-"+i+" td:nth-child(7)").text("-"+pl.toLocaleString()+"원").css("color", "blue");
-                     }
-                     
-                     var eva = curJuka * quantityArr[i];
-                     $("#stock-"+i+" td:nth-child(9)").text(eva.toLocaleString()+"원");
-                  }
-               });
-            })(i);
+	            (function(i){
+	               var url = 'rest/stockInfo/'+codeArr[i]+'.json';
+	               
+	               $.ajax({
+	                  url: url,
+	                  type: 'GET',
+	                  dataType: 'json',
+	                  success: function(result) {
+	                     var curJuka = result.stockprice.TBL_StockInfo.CurJuka;
+	                     $("#stock-"+i+" td:nth-child(5)").text(curJuka+"원");
+	                     
+	                     curJuka = parseInt(curJuka.replace(/,/g, ''));
+	                     if(curJuka == priceArr[i]) {
+	                        $("#stock-"+i+" td:nth-child(6)").text("-");
+	                        $("#stock-"+i+" td:nth-child(7)").text("-");
+	                     }else if(curJuka > priceArr[i]) {
+	                        var yield = (curJuka-priceArr[i])/priceArr[i]*100;
+	                        var pl = (curJuka-priceArr[i])*quantityArr[i];
+	                        
+	                        $("#stock-"+i+" td:nth-child(6)").text(yield.toFixed(2)+"%").css("color", "red");
+	                        $("#stock-"+i+" td:nth-child(7)").text(pl.toLocaleString()+"원").css("color", "red");
+	                     }else if(curJuka < priceArr[i]) {
+	                        var yield = (priceArr[i]-curJuka)/priceArr[i]*100;
+	                        var pl = (priceArr[i]-curJuka)*quantityArr[i];
+	                        
+	                        $("#stock-"+i+" td:nth-child(6)").text("-"+yield.toFixed(2)+"%").css("color", "blue");
+	                        $("#stock-"+i+" td:nth-child(7)").text("-"+pl.toLocaleString()+"원").css("color", "blue");
+	                     }
+	                     
+	                     var eva = curJuka * quantityArr[i];
+	                     $("#stock-"+i+" td:nth-child(9)").text(eva.toLocaleString()+"원");
+	                  }
+	               });
+	            })(i);
          
-         }
+         	}
          
-       //전체선택 
-         $(document).ready(function(){
-             //최상단 체크박스 클릭
-             $("#checkAllStock").click(function(){
-                 //클릭되었으면
-                 if($("#checkAllStock").prop("checked")){
-                     //input태그의 class가  checkRow인 태그들을 찾아서 checked옵션을 true로 정의
-                     $(".checkRowStock").prop("checked",true);
-                     //클릭이 안되있으면
-                 }else{
-                     //input태그의 class가  checkRow인 태그들을 찾아서 checked옵션을 false로 정의
-                     $(".checkRowStock").prop("checked",false);
-                 }
-             })
-         });
+      		//전체선택 
+         	$(document).ready(function(){
+            	//최상단 체크박스 클릭
+             	$("#checkAllStock").click(function(){
+                	//클릭되었으면
+                 	if($("#checkAllStock").prop("checked")){
+	                    //input태그의 class가  checkRow인 태그들을 찾아서 checked옵션을 true로 정의
+	                    $(".checkRowStock").prop("checked",true);
+                    //클릭이 안되있으면
+                 	}else{
+	                    //input태그의 class가  checkRow인 태그들을 찾아서 checked옵션을 false로 정의
+	                    $(".checkRowStock").prop("checked",false);
+                 	}
+             	})
+         	});
          
-         //개별 체크박스가 선택되거나 선택해제되면 모두 선택 체크박스가 해체   
-         $(document).ready(function(){
-            $(".checkRowStock").click(function(){
-             $("#checkAllStock").prop("checked", false);
-            })
-         });
+         	//개별 체크박스가 선택되거나 선택해제되면 모두 선택 체크박스가 해체   
+         	$(document).ready(function(){
+	            $(".checkRowStock").click(function(){
+	            	$("#checkAllStock").prop("checked", false);
+	            })
+         	});
          
          $("#buyStock").click(function() {
             
@@ -592,7 +591,7 @@
             <table id="bond-table" class="table leaderboards">
                <thead>
                    <tr>
-                      <th><input type="checkbox" id="checkAll" /></th>
+                   	  <th><input type="checkbox" id="checkAll" /></th>
                       <th>종목명</th>
                       <th>세후보유기간이자</th>
                       <th>증권사</th>
@@ -780,58 +779,59 @@
           //추가 버튼
           $(document).on("click","button[name=addRow]",function(){
               
-             if(addBondisRun) {
-                return false;
-             }
+      	  if(!addBondisRun) {              
              
-             if(bondisEmpty) {
-                $("#bond-table tr:last").css("display", "none");
-             }
-             
-              var addTableRow =     
-                 '    <tr id="bondList_${dto.bond_num}">'+
-                  '    <td><input type="checkbox" class="checkRow" name="checkRow" data-symbols="${bond.bond_num}" /></td>'+
-                  '    <td style="display:none;"><input type="hidden" name="bond_num" value="${dto.bond_num}" /></td>'+
-                  '    <td><input type="text" id="bond_symbols" name="bond_symbols" placeholder="종목명" size="7"/></td>'+
-                  '    <td><input type="text" id="total_interest" name="total_interest" placeholder="세후이자" size="6"/></td>'+
-                  '    <td><select id="bond_company" name="bond_company" placeholder="증권사">'+
-                  '    <option value="" disabled selected>증권사</option>'+
-                  '    <option value="한국투자증권">한국투자증권</option>'+
-                  '    <option value="미래에셋대우">미래에셋대우</option>'+
-                  '    <option value="메리츠종금증권">메리츠종금증권</option>'+
-                  '    <option value="NH투자증권">NH투자증권</option>'+
-                  '    <option value="삼성증권">삼성증권</option>'+
-                  '    <option value="신한금융투자">신한금융투자</option>'+
-                  '    <option value="키움증권">키움증권</option>'+
-                  '    <option value="KB증권">KB증권</option>'+
-                  '    <option value="하나금융투자">하나금융투자</option>'+
-                  '    <option value="대신증권">대신증권</option>'+
-                  '    <option value="유안타증권">유안타증권</option>'+
-                  '    </select></td>'+
-                  '    <td><input type="text" id="bond_price" name="bond_price" placeholder="매수금액" size="6"/></td>'+
-                  '    <td><input type="date" id="bond_date" name="bond_date" placeholder="매수일자" /></td>'+
-                  '    <td><input type="text" id="coupon_interest_rate" name="coupon_interest_rate" placeholder="발행이자율" size="6"/></td>'+
-                  '    <td><input type="text" id="discount_rate" name="discount_rate" placeholder="할인발행율" size="6"/></td>'+
-                  '    <td><input type="text" id="gross_price" name="gross_price" placeholder="총상환금액" size="6"/></td>'+
-                  '    <td><input type="date" id="maturity_date" name="maturity_date" placeholder="만기일" /></td>'+
-                  '    <td><select id="grade" name="grade" placeholder="등급">'+
-                  '    <option value="" disabled selected>등급</option>'+
-                  '    <option value="AAA">AAA</option>'+
-                  '    <option value="AA">AA</option>'+
-                  '    <option value="A">A</option>'+
-                  '    <option value="BBB">BBB</option>'+
-                  '    <option value="BB">BB</option>'+
-                  '    <option value="B">B</option>'+
-                  '    <option value="CCC">CCC</option>'+
-                  '    <option value="CC">CC</option>'+
-                  '    <option value="C">C</option>'+
-                  '    <option value="D">D</option>'+
-                  '    </select>'+
-                  '      <button type="button" class="bttn-material-flat assets-submit-bttn" onclick="insertCheck();"></button></td>'+
-                  '</tr>';
-                  
-                  $("#bond_tbody").append(addTableRow);
-                 addBondisRun = true;
+	             if(bondisEmpty) {
+	                $("#bond-table tr:last").css("display", "none");
+	             }
+	             
+	             var addTableRow =     
+	                 '    <tr id="bondList_${dto.bond_num}">'+
+	                 '    <td><input type="checkbox" class="checkRow" name="checkRow" data-symbols="${bond.bond_num}" /></td>'+
+	                 '    <td style="display:none;"><input type="hidden" name="bond_num" value="${dto.bond_num}" /></td>'+
+	                 '    <td><input type="text" id="bond_symbols" name="bond_symbols" placeholder="종목명" size="7"/></td>'+
+	                 '    <td><input type="text" id="total_interest" name="total_interest" placeholder="세후이자" size="6"/></td>'+
+	                 '    <td><select id="bond_company" name="bond_company" placeholder="증권사">'+
+	                 '    <option value="" disabled selected>증권사</option>'+
+	                 '    <option value="한국투자증권">한국투자증권</option>'+
+	                 '    <option value="미래에셋대우">미래에셋대우</option>'+
+	                 '    <option value="메리츠종금증권">메리츠종금증권</option>'+
+	                 '    <option value="NH투자증권">NH투자증권</option>'+
+	                 '    <option value="삼성증권">삼성증권</option>'+
+	                 '    <option value="신한금융투자">신한금융투자</option>'+
+	                 '    <option value="키움증권">키움증권</option>'+
+	                 '    <option value="KB증권">KB증권</option>'+
+	                 '    <option value="하나금융투자">하나금융투자</option>'+
+	                 '    <option value="대신증권">대신증권</option>'+
+	                 '    <option value="유안타증권">유안타증권</option>'+
+	                 '    </select></td>'+
+	                 '    <td><input type="text" id="bond_price" name="bond_price" placeholder="매수금액" size="6"/></td>'+
+	                 '    <td><input type="date" id="bond_date" name="bond_date" placeholder="매수일자" /></td>'+
+	                 '    <td><input type="text" id="coupon_interest_rate" name="coupon_interest_rate" placeholder="발행이자율" size="6"/></td>'+
+	                 '    <td><input type="text" id="discount_rate" name="discount_rate" placeholder="할인발행율" size="6"/></td>'+
+	                 '    <td><input type="text" id="gross_price" name="gross_price" placeholder="총상환금액" size="6"/></td>'+
+	                 '    <td><input type="date" id="maturity_date" name="maturity_date" placeholder="만기일" /></td>'+
+	                 '    <td><select id="grade" name="grade" placeholder="등급">'+
+	                 '    <option value="" disabled selected>등급</option>'+
+	                 '    <option value="AAA">AAA</option>'+
+	                 '    <option value="AA">AA</option>'+
+	                 '    <option value="A">A</option>'+
+	                 '    <option value="BBB">BBB</option>'+
+	                 '    <option value="BB">BB</option>'+
+	                 '    <option value="B">B</option>'+
+	                 '    <option value="CCC">CCC</option>'+
+	                 '    <option value="CC">CC</option>'+
+	                 '    <option value="C">C</option>'+
+	                 '    <option value="D">D</option>'+
+	                 '    </select>'+
+	                 '      <button type="button" class="bttn-material-flat assets-submit-bttn" onclick="insertCheck();"></button></td>'+
+	                 '</tr>';
+	                 
+	            $("#bond_tbody").append(addTableRow);
+	            addBondisRun = true;
+          	}else {
+          		return false;
+          	}
           });
 
           //null check B4 submit
