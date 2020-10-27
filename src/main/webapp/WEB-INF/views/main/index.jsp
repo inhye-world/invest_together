@@ -13,9 +13,7 @@
 		.point{
 			cursor:pointer;
 		}
-		#transShort{
-			height:478px;
-		}
+
 	</style>
 
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -218,27 +216,29 @@
                             <span class="flaticon-null-1"></span>
                         </div>
                         <div class="cat-cap" >
+                            <br>	
                             <h5><a>가계부</a></h5>
-                            <p>계좌를 연동해서 지출 내역을 관리하세요. </p>
-                        </div>
+                       		<p>계좌를 연동시켜서 지출 내역을 관리해보세요. </p>
+                       		<br>
+                       </div>
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6 col-sm-6" >
+                <div class="col-lg-4 col-md-6 col-sm-6" id="transCalculator" style="cursor:pointer;">
                 	<a href="calculator">
-                    <div class="single-cat active text-center mb-50">
+                    <div class="single-cat text-center mb-50" >
                         <div class="cat-icon">
                             <span class="flaticon-think"></span>
                         </div>
                         <div class="cat-cap">
                             <h5><a>계산기</a></h5>
                             <p>같이투자에서 제공하는 적정 주가 계산기로 편리하게 주식을 관리하세요.</p>
-                        </div>
+                        </div>     
                     </div>
-                     </a>
+                    </a>
                 </div>
                
-                <div class="col-lg-4 col-md-6 col-sm-6"  >
+                <div class="col-lg-4 col-md-6 col-sm-6" id="transLeaderboards" style="cursor:pointer;">
                 <a href="leaderboards">
                     <div class="single-cat text-center mb-50">
                         <div class="cat-icon">
@@ -457,7 +457,8 @@
 			$("#accountTransaction").attr("onclick", "location.href='accountTransaction-"+year+"-"+month+"'");
 			$("#transShortcut").attr("onclick", "location.href='accountTransaction-"+year+"-"+month+"'");
 			$("#salaryList").attr("onclick", "location.href='salaryList-"+year+"-"+month+"'");
-			
+			$("#transCalculator").attr("onclick", "location.href='calculator'");
+			$("#transLeaderboards").attr("onclick", "location.href='leaderboards'");
 	</script>
 	
     <!-- Scroll Up -->
