@@ -144,15 +144,6 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<!-- mock -->
-		<dependency>
-		    <groupId>org.mockito</groupId>
-		    <artifactId>mockito-all</artifactId>
-		    <version>1.9.5</version>
-		    <scope>test</scope>
-		</dependency>
-		<!-- mock 끝 -->
-		
         <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
         <dependency>
             <groupId>org.assertj</groupId>
