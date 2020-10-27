@@ -388,7 +388,7 @@
                                 </div>
                                 <!-- button -->
 									<button name="git" id="git" class="btn10" onclick="window.open('https://github.com/inhye-world/invest_together.git')">
-									     <span>같이투자 Git</span>
+									     <span>GO TO GIT</span>
 									  <div class="transition"></div>
 									</button>
                                 </div>
