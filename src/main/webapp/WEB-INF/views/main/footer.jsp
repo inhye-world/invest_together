@@ -27,7 +27,7 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/themify-icons.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/slick.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/style.css">
-	<link rel="stylesheet" href="resources/main/assets/css/buttonsena.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/main/assets/css/buttonsena.css">
 	
 </head>
 <body>

@@ -234,6 +234,15 @@
           }
        }
        
+       if(href.indexOf('leaderboards') != -1 ){
+           $('#leaderboards').addClass('activated');
+        } else {
+           $('#leaderboards').removeClass('activated');
+           if(page == 'leaderboards'){
+              $('#leaderboards').addClass('activated');
+           }
+        }
+       
 
     </script>
 

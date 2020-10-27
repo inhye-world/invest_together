@@ -19,7 +19,7 @@
    <script src="resources/sb_admin/vendor/chart.js/Chart.min.js"></script> 
    <link href="resources/ranking.css" rel="stylesheet" type="text/css">
    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
-
+   <link href="resources/sb_admin/css/bttn.css" rel="stylesheet" type="text/css">
 
    <style>
    
@@ -36,9 +36,10 @@
           cursor:pointer;
          }
          
-        #modifySalT{
-            padding: 20px;
-            font-size:1em;
+        #modifySalT,.bttn-ggreen{
+            width: 70px;
+   			height: 40px;
+            font-size:17px;
             border:1px solid #fff;
             background-color: #595959;
             border-radius: 4px;
@@ -81,7 +82,6 @@
             
             <br><br><br>
             
-             <!-- Page Heading -->
                    <h1>월급 관리</h1>
                    <div>
                        <ul class="ranking-notice">
@@ -109,7 +109,7 @@
                       </div><br>
                <div class="account-list">
                   <div >
-                     <button id="modifySalT" class="btn">수정</button>
+                     <button id="modifySalT" class="bttn-simple bttn-xs bttn-ggreen">수정</button>
                   </div> 
                   <form:form id="salary-modify-form" name="salary-modify-form" method = "post">
                      <table id="account-table" class="table leaderboards" width="100%" cellspacing="0">
@@ -150,7 +150,7 @@
                               <td class="test2"><fmt:formatNumber type="number" maxFractionDigits="3" value="${salary.tran_amt}" />원</td>
                               <td class="test2"><fmt:formatNumber type="number" maxFractionDigits="3" value="${salary.balance_amt}" />원</td>
                               <td class="test2"><input type="date" name="strMaturity" id="strMaturity" value="${salary.strMaturity}" disabled required="required"/></td>
-                              <td class="test2"><input type="hidden" name="fintech_use_num" value="${salary.fintech_use_num}" /><button id="modifyBtn-${status.index}" class="btn" style="padding: 20px;font-size:1em;border:1px solid #fff;background-color: #595959;border-radius: 4px;">저장</button></td>
+                              <td class="test2"><input type="hidden" name="fintech_use_num" value="${salary.fintech_use_num}" /><button id="modifyBtn-${status.index}" class="bttn-simple bttn-xs bttn-ggreen" style="font-size:15px;">저장</button></td>
                            </tr>
                            <script>
                                var count = ${status.count} 

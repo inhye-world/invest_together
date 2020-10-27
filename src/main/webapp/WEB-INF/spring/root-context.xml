@@ -14,7 +14,7 @@
 		<property name="driverClassName"
 			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 		<property name="jdbcUrl"
-			value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE"></property>
+			value="jdbc:log4jdbc:oracle:thin:@192.168.6.64:1521:XE"></property>
 		<property name="username" value="invest"></property>
 		<property name="password" value="together"></property>
 	</bean>

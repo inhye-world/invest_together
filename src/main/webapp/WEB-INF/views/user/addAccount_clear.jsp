@@ -8,7 +8,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main/assets/img/favicon.ico">
 	
 	<style>
-		footer:{ 
+		footer{ 
 		     position:fixed; 
 		     left:0px; 
 		     bottom:0px; 
