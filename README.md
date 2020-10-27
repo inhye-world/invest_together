@@ -4,7 +4,7 @@
 Asset management project of Minju Kim, Tae Jun Kim, In Hye Ryu, Jae Kwon Song and Sun Young Yang.
 
 ## 발표자료
-https://drive.google.com/file/d/1VDPSVw0yvgwWtrc7eFYQAYk2WrvG6dkU/view?usp=sharing
+https://drive.google.com/file/d/1LbpDkMgnkx5cziTyN9WCJWT1MXj0LPAw/view?usp=sharing
 
 
 ## 주요 구현 내용
