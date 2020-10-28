@@ -27,4 +27,6 @@ public interface SubscribeMapper {
 
 	public void updateSetPrice(Map<String, Integer> user);
 
+	public List<SubscribeDTO> selectMySellSubList(int member_num);
+
 }

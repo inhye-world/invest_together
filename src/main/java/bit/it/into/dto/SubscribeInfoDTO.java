@@ -21,6 +21,7 @@ public class SubscribeInfoDTO {
 	private Timestamp sub_date;
 	private Timestamp sub_maturity_date;
 	private String seller_nickname;
+	private String buyer_nickname;
 	
 	public SubscribeInfoDTO(SubscribeDTO dto) {
 		this.merchant_uid = dto.getMerchant_uid();

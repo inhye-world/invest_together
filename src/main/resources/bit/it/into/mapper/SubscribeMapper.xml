@@ -59,4 +59,10 @@
 		]]>
 	</update>
 	
+	<select id="selectMySellSubList" resultType="bit.it.into.dto.SubscribeDTO">
+		<![CDATA[
+			SELECT * FROM subscribe WHERE seller_num=#{member_num} ORDER BY sub_date DESC
+		]]>
+	</select>
+	
 </mapper>

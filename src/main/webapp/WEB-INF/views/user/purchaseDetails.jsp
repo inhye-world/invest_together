@@ -101,14 +101,14 @@
             </div>
                
              <div class="hero-cap">
-                    <h2>거래내역</h2>
+                    <h2>판매현황</h2>
                </div>     
                
                <table class="table leaderboards">
                   <thead>
                      <tr>
-                        <th>구매일</th>
-                        <th>판매자 아이디</th>
+                        <th>판매일</th>
+                        <th>구매자 닉네임</th>
                         <th>거래대금</th>
                         <th>만료일</th>
                      </tr>
@@ -116,14 +116,14 @@
                   <tbody>
                      <c:if test="${empty list}">
                         <tr>
-                           <td class="sub-list-empty" colspan="7">아직 구독한 회원이 없습니다.</td>
+                           <td class="sub-list-empty" colspan="7">판매내역이 없습니다.</td>
                         </tr>
                      </c:if>
                      
                      <c:forEach var="dto" items="${list}" varStatus="status">
                         <tr>
                            <td><fmt:formatDate value="${dto.sub_date}" pattern="yyyy-MM-dd" /></td>
-                           <td>${dto.seller_nickname}</td>
+                           <td>${dto.buyer_nickname}</td>
                            <td><fmt:formatNumber value="${dto.sub_price}"/>원</td>
                            <td><fmt:formatDate value="${dto.sub_maturity_date}" pattern="yyyy-MM-dd" /></td>
                         </tr>

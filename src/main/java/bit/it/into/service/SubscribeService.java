@@ -82,6 +82,12 @@ public class SubscribeService {
 		mapper.updateSetPrice(user_info);
 		
 	}
+
+	public List<SubscribeDTO> getmySellSubscribeList(int member_num) {
+		log.info("SubscribeService -getmySellSubscribeList()");
+		
+		return mapper.selectMySellSubList(member_num);
+	}
 	
 	
 

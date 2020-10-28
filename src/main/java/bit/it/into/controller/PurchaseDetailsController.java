@@ -37,14 +37,14 @@ public class PurchaseDetailsController {
 		CustomUser user = (CustomUser)authentication.getPrincipal();
 		int user_num = user.getDto().getMember_num();
 		
-		List<SubscribeDTO> subList = service.getSubscribeList(user_num);
+		List<SubscribeDTO> subList = service.getmySellSubscribeList(user_num);
 		List<SubscribeInfoDTO> list = new ArrayList<>();
 		
 		for(SubscribeDTO dto : subList) {
 			SubscribeInfoDTO infoDTO = new SubscribeInfoDTO(dto);
 			
-			String seller_nickname = service.getNicknameByMemberNum(dto.getSeller_num());
-			infoDTO.setSeller_nickname(seller_nickname);
+			String buyer_nickname = service.getNicknameByMemberNum(dto.getMember_num());
+			infoDTO.setBuyer_nickname(buyer_nickname);
 			
 			list.add(infoDTO);
 		}
