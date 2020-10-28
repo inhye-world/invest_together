@@ -83,7 +83,12 @@
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">   
-                                                <li class="point"><a id="accountTransaction">가계부</a></li>
+                                                <li class="point"><a id="accountTransaction">가계부</a>
+                                                	<ul class="submenu">
+                                                        <li><a id="accountHistory">가계부 내역</a></li>
+                                                        <li><a id="expenseAnalyze">가계부 분석</a></li>
+                                                    </ul>
+                                                </li>
                                                 <li class="point"><a id="salaryList">월급관리</a></li>
                                                 <li><a href="${pageContext.request.contextPath}/assets" id="assets">자산</a></li>
                                                 <li><a href="${pageContext.request.contextPath}/calculator" id="calculator">계산기</a>
@@ -234,6 +239,12 @@
           }
        }
        
+       if(href.indexOf('leaderboards') != -1){
+           $('#leaderboards').addClass('activated');
+        } else {
+           $('#leaderboards').removeClass('activated');
+        }
+       
 
     </script>
 	
@@ -249,6 +260,8 @@
          var month = numberPad((date.getMonth()+1), 2);
          
          $("#accountTransaction").attr("onclick", "location.href='${pageContext.request.contextPath}/accountTransaction-"+year+"-"+month+"'");
+         $("#accountHistory").attr("onclick", "location.href='${pageContext.request.contextPath}/accountTransaction-"+year+"-"+month+"'");
+         $("#expenseAnalyze").attr("onclick", "location.href='${pageContext.request.contextPath}/expenseAnalyze-"+year+"-"+month+"'");
          $("#salaryList").attr("onclick", "location.href='${pageContext.request.contextPath}/salaryList-"+year+"-"+month+"'");
          
    	</script>

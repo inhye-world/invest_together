@@ -82,7 +82,12 @@
                                     <div class="main-menu d-none d-lg-block">
                                          <nav>
                                             <ul id="navigation">   
-                                                <li class="point"><a id="accountTransaction">가계부</a></li>
+                                                <li class="point"><a id="accountTransaction">가계부</a>
+                                                	<ul class="submenu">
+                                                        <li><a id="accountHistory">가계부 내역</a></li>
+                                                        <li><a id="expenseAnalyze">가계부 분석</a></li>
+                                                    </ul>
+                                                </li>
                                                 <li class="point"><a id="salaryList">월급관리</a></li>
                                                 <li><a href="assets" id="assets">자산</a></li>
                                                 <li><a href="calculator" id="calculator">계산기</a>
@@ -455,10 +460,13 @@
 			var month = numberPad((date.getMonth()+1), 2);
 
 			$("#accountTransaction").attr("onclick", "location.href='accountTransaction-"+year+"-"+month+"'");
+			$("#accountHistory").attr("onclick", "location.href='accountTransaction-"+year+"-"+month+"'");
+	        $("#expenseAnalyze").attr("onclick", "location.href='expenseAnalyze-"+year+"-"+month+"'");
 			$("#transShortcut").attr("onclick", "location.href='accountTransaction-"+year+"-"+month+"'");
 			$("#salaryList").attr("onclick", "location.href='salaryList-"+year+"-"+month+"'");
 			$("#transCalculator").attr("onclick", "location.href='calculator'");
 			$("#transLeaderboards").attr("onclick", "location.href='leaderboards'");
+			 
 	</script>
 	
     <!-- Scroll Up -->

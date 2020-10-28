@@ -186,17 +186,17 @@
 	                     <div class="re-comment-div" id="comments-${dto.comment_num}">
 	                     	<div class="reply-comments" style="display: none;">
 	                        	<form:form class="reply-comments-form" action="modify_comments" id="re-commentForm">
-	                       	<div class="col-12">
-	                          <div class="form-group">
-	                             <textarea class="form-control w-100" name="comment_content" id="re_comment" maxlength="150"></textarea>
-			                  </div>
-			                </div>
-			                  <div class="form-group">
-			                     <input type="hidden" name="comment_num" value="${dto.comment_num}"> 
-			                     <input type="hidden" name="board_num" value="${content_view.board_num}">
-			                     <button id="re-comments-submit" type="submit" class="button button-contactForm btn_1 boxed-btn">수정하기</button>&nbsp;&nbsp;
-	                    	  	 <button id="cancle" type="button" class="button button-contactForm btn_1 boxed-btn">취소</button>
-	                    	  </div>
+			                       	<div class="col-12">
+			                          <div class="form-group">
+			                             <textarea class="form-control w-100" name="comment_content" id="re_comment" maxlength="150"></textarea>
+					                  </div>
+					                </div>
+					                  <div class="form-group">
+					                     <input type="hidden" name="comment_num" value="${dto.comment_num}"> 
+					                     <input type="hidden" name="board_num" value="${content_view.board_num}">
+					                     <button id="re-comments-submit" type="submit" class="button button-contactForm btn_1 boxed-btn">수정하기</button>&nbsp;&nbsp;
+			                    	  	 <button id="cancle" type="button" class="button button-contactForm btn_1 boxed-btn">취소</button>
+			                    	  </div>
 	              				</form:form>
 	                       	</div>
 	                     </div>     
